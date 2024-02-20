@@ -10,5 +10,6 @@ public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(
         
         }
         public DbSet<BrandEntity> Brand { get; set; }  
+        public DbSet<TypeEntity> Type { get; set; }
     }
 }
