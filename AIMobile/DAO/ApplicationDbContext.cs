@@ -3,13 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AIMobile.DAO
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext :DbContext
     {
-public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options) { 
-        
-        
-        }
-        public DbSet<BrandEntity> Brand { get; set; }  
+public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+       public DbSet<BrandEntity> Brand { get; set; }
         public DbSet<TypeEntity> Type { get; set; }
+        public DbSet<ProductEntity> Product { get; set; }
     }
 }

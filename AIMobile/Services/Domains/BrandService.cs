@@ -28,15 +28,19 @@ namespace AIMobile.Services.Domains
 
         }
 
-        public BrandEntity GetById(int id)
+        public void Entry(ProductEntity productEntity)
         {
-            return _applicationDbContext.Brand.Find(id);
+            throw new NotImplementedException();
+        }
+
+        public BrandEntity GetById(string id)
+        {
+            return _applicationDbContext.Brand.Where(w => w.Id == id).SingleOrDefault();
         }
 
         public IList<BrandEntity> ReteriveAll()
         {
-       IList<BrandEntity> brands = _applicationDbContext.Brand.ToList();
-            return brands;
+            return _applicationDbContext.Brand.ToList();
         }
 
         public void Update(BrandEntity brand)

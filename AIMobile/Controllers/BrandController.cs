@@ -2,6 +2,7 @@
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AIMobile.Controllers
 {
@@ -21,17 +22,29 @@ namespace AIMobile.Controllers
         [HttpPost]
         public IActionResult Entry(BrandViewModels bvm)
         {
-            var BrandEntity = new BrandEntity()
+            try
             {
-                Id = Guid.NewGuid().ToString(),
-                Name=bvm.Name,
+                var BrandEntity = new BrandEntity()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = bvm.Name,
 
-            };
+                };
+                _brandService.Entry(BrandEntity);
+                TempData["Info"] = "Entry Success";
+
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Entry Unsuccess";
+                
+            }
             return View();
         }
         public IActionResult list()
         {
-            IList<BrandViewModels> brands =_brandService.ReteriveAll().Select(b=>new BrandViewModels { 
+            IList<BrandViewModels> brands =_brandService.ReteriveAll().Select(b=>new BrandViewModels
+            { 
             Id=b.Id,
             Name=b.Name,
             
@@ -50,8 +63,44 @@ namespace AIMobile.Controllers
                 TempData["Info"] = "Unsuccessful Delete ";
                 throw;
             }
-            return View();
-        }    
+            return RedirectToAction("List");
+        }
+        [HttpGet]   
+        
+        public IActionResult Edit(string Id) { 
+            var brandDataModel=_brandService.GetById(Id);
+            BrandViewModels bvm = new BrandViewModels();
+            BrandEntity brandEntity = new BrandEntity();
+            if (brandDataModel!=null)
+            {
+                bvm.Id = brandDataModel.Id;
+                bvm.Name = brandDataModel.Name;
+            };
+
+        return View(bvm);
+
+        }
+        [HttpPost]
+        public IActionResult Edit(BrandViewModels bvm) {
+            try
+            {
+                BrandEntity brandEntity = new BrandEntity()
+                {
+                    Id = bvm.Id,
+                    Name = bvm.Name,
+                };
+                _brandService.Update(brandEntity);
+                TempData["Info"] = "Update Successful";
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Update Unsuccessful";
+                throw;
+            }
+        return RedirectToAction("List");
+        
+        
+        }
 
     }
 }

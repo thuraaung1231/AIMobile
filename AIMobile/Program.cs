@@ -1,4 +1,5 @@
 using AIMobile.DAO;
+using AIMobile.Services.Domains;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var config = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(o=>o.UseSqlServer(config.GetConnectionString("AIMobileDB")));
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<ITypeServices, TypeServices>();
+builder.Services.AddScoped<IProductService, ProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

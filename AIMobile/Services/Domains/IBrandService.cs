@@ -7,7 +7,8 @@ namespace AIMobile.Services.Domains
         void Entry(BrandEntity brand);
         IList<BrandEntity> ReteriveAll();
         void Update(BrandEntity brand);
-        BrandEntity GetById(int id);
+        BrandEntity GetById(string id);
         void Delete(string Id);
+      
     }
 }
