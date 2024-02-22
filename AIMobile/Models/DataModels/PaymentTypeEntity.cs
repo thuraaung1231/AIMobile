@@ -2,7 +2,7 @@
 
 namespace AIMobile.Models.DataModels
 {
-    [Table("tbl_paymenttype")]
+    [Table("Tbl_PaymentType")]
     public class PaymentTypeEntity : BaseEntity 
 
     {
