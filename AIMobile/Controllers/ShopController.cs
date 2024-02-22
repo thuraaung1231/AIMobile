@@ -1,20 +1,17 @@
 ﻿using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace AIMobile.Controllers
 {
-    public class UserController : Controller
+    public class ShopController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IShopService _shopService;
 
-        public UserController(IUserService userService)
+        public ShopController(IShopService shopService)
         {
-            _userService = userService;
+            _shopService = shopService;
         }
         public IActionResult Entry()
         {
@@ -23,19 +20,18 @@ namespace AIMobile.Controllers
 
 
         [HttpPost]
-        public IActionResult Entry(UserViewModel uvm)
+        public IActionResult Entry(ShopEntity svm)
         {
             try
             {
-                UserEntity user = new UserEntity()
+                ShopEntity shop = new ShopEntity()
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Name = uvm.Name,
-                    PhoneNo = uvm.PhoneNo,
-                    Email = uvm.Email,
-                    Address = uvm.Address,
+                    Name = svm.Name,
+                    Status = svm.Status,
+                    Address = svm.Address,
                 };
-                _userService.Entry(user);
+                _shopService.Entry(shop);
                 TempData["info"] = "Save Successfully the record to the system";
                 return View();
             }
@@ -48,23 +44,22 @@ namespace AIMobile.Controllers
 
         public IActionResult List()
         {
-            IList<UserViewModel> userViewModels = _userService.ReteriveAll().Select(u => new UserViewModel
+            IList<ShopViewModel> shopViewModels = _shopService.ReteriveAll().Select(u => new ShopViewModel
             {
                 Id = u.Id,
                 Name = u.Name,
-                PhoneNo = u.PhoneNo,
-                Email = u.Email,
+                Status = u.Status,
                 Address = u.Address,
             }).ToList();
-            return View(userViewModels);
+            return View(shopViewModels);
         }
 
-        
+
         public IActionResult Delete(string id)
         {
             try
             {
-                _userService.Delete(id);
+                _shopService.Delete(id);
                 TempData["Info"] = "Successfully delete the data";
             }
             catch (Exception e)
@@ -74,40 +69,38 @@ namespace AIMobile.Controllers
             return RedirectToAction("List");
         }
 
-        
+
 
         public IActionResult Edit(string id)
         {
-            UserViewModel user = new UserViewModel();
-            var UserDataModel = _userService.GetById(id);
-            if (UserDataModel != null)
+            ShopViewModel shop = new ShopViewModel();
+            var ShopDataModel = _shopService.GetById(id);
+            if (ShopDataModel != null)
             {
-                user.Id = UserDataModel.Id;
-                user.Name = UserDataModel.Name;
-                user.PhoneNo = UserDataModel.PhoneNo;
-                user.Email = UserDataModel.Email;
-                user.Address = UserDataModel.Address;
+                shop.Id = ShopDataModel.Id;
+                shop.Name = ShopDataModel.Name;
+                shop.Status = ShopDataModel.Status;
+                shop.Address = ShopDataModel.Address;
             }
-            return View(user);
+            return View(shop);
         }
 
-        
+
         [HttpPost]
 
-        public IActionResult Update(UserViewModel uvm)
+        public IActionResult Update(ShopViewModel uvm)
         {
             try
             {
-                UserEntity user = new UserEntity()
+                ShopEntity shop = new ShopEntity()
                 {
                     Id = uvm.Id,
                     Name = uvm.Name,
-                    PhoneNo = uvm.PhoneNo,
-                    Email = uvm.Email,
+                    Status = uvm.Status,
                     Address = uvm.Address,
                     UpdatedAt = DateTime.Now,
                 };
-                _userService.Update(user);
+                _shopService.Update(shop);
                 TempData["info"] = " Successfully update the record to the system";
             }
             catch (Exception e)

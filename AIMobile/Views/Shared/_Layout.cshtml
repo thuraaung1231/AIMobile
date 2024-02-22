@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AIMobile.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/5c9d3a4741.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -25,14 +26,33 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Brand" asp-action="Entry">Entry</a>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                User
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/user/entry">Entry</a></li>
+                                <li><a class="dropdown-item" href="/user/list">List</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Brand" asp-action="List">List</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Payment Type
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/paymenttype/entry">Entry</a></li>
+                                <li><a class="dropdown-item" href="/paymenttype/list">List</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Type" asp-action="Entry">TypeEntry</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Shop
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/shop/entry">Entry</a></li>
+                                <li><a class="dropdown-item" href="/shop/list">List</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

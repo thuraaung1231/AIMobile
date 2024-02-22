@@ -1,20 +1,17 @@
 ﻿using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace AIMobile.Controllers
 {
-    public class UserController : Controller
+    public class PaymentTypeController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IPaymentTypeService _paymentTypeService;
 
-        public UserController(IUserService userService)
+        public PaymentTypeController(IPaymentTypeService paymentTypeService)
         {
-            _userService = userService;
+            _paymentTypeService = paymentTypeService;
         }
         public IActionResult Entry()
         {
@@ -23,19 +20,16 @@ namespace AIMobile.Controllers
 
 
         [HttpPost]
-        public IActionResult Entry(UserViewModel uvm)
+        public IActionResult Entry(PaymentTypeViewModel pvm)
         {
             try
             {
-                UserEntity user = new UserEntity()
+                PaymentTypeEntity payment = new PaymentTypeEntity()
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Name = uvm.Name,
-                    PhoneNo = uvm.PhoneNo,
-                    Email = uvm.Email,
-                    Address = uvm.Address,
+                    PaymentType = pvm.PaymentType,
                 };
-                _userService.Entry(user);
+                _paymentTypeService.Entry(payment);
                 TempData["info"] = "Save Successfully the record to the system";
                 return View();
             }
@@ -48,23 +42,20 @@ namespace AIMobile.Controllers
 
         public IActionResult List()
         {
-            IList<UserViewModel> userViewModels = _userService.ReteriveAll().Select(u => new UserViewModel
+            IList<PaymentTypeViewModel> payments = _paymentTypeService.ReteriveAll().Select(u => new PaymentTypeViewModel
             {
                 Id = u.Id,
-                Name = u.Name,
-                PhoneNo = u.PhoneNo,
-                Email = u.Email,
-                Address = u.Address,
+                PaymentType = u.PaymentType,
             }).ToList();
-            return View(userViewModels);
+            return View(payments);
         }
 
-        
+
         public IActionResult Delete(string id)
         {
             try
             {
-                _userService.Delete(id);
+                _paymentTypeService.Delete(id);
                 TempData["Info"] = "Successfully delete the data";
             }
             catch (Exception e)
@@ -74,40 +65,34 @@ namespace AIMobile.Controllers
             return RedirectToAction("List");
         }
 
-        
+
 
         public IActionResult Edit(string id)
         {
-            UserViewModel user = new UserViewModel();
-            var UserDataModel = _userService.GetById(id);
-            if (UserDataModel != null)
+            PaymentTypeViewModel payment = new PaymentTypeViewModel();
+            var PaymentDataModel = _paymentTypeService.GetById(id);
+            if (PaymentDataModel != null)
             {
-                user.Id = UserDataModel.Id;
-                user.Name = UserDataModel.Name;
-                user.PhoneNo = UserDataModel.PhoneNo;
-                user.Email = UserDataModel.Email;
-                user.Address = UserDataModel.Address;
+                payment.Id = PaymentDataModel.Id;
+                payment.PaymentType = PaymentDataModel.PaymentType;
             }
-            return View(user);
+            return View(payment);
         }
 
-        
+
         [HttpPost]
 
-        public IActionResult Update(UserViewModel uvm)
+        public IActionResult Update(PaymentTypeViewModel pvm)
         {
             try
             {
-                UserEntity user = new UserEntity()
+                PaymentTypeEntity payment = new PaymentTypeEntity()
                 {
-                    Id = uvm.Id,
-                    Name = uvm.Name,
-                    PhoneNo = uvm.PhoneNo,
-                    Email = uvm.Email,
-                    Address = uvm.Address,
+                    Id = pvm.Id,
+                    PaymentType = pvm.PaymentType,
                     UpdatedAt = DateTime.Now,
                 };
-                _userService.Update(user);
+                _paymentTypeService.Update(payment);
                 TempData["info"] = " Successfully update the record to the system";
             }
             catch (Exception e)
