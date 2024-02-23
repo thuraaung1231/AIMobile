@@ -9,5 +9,8 @@ public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : ba
        public DbSet<BrandEntity> Brand { get; set; }
         public DbSet<TypeEntity> Type { get; set; }
         public DbSet<ProductEntity> Product { get; set; }
+        public DbSet<UserEntity> User { get; set; }
+        public DbSet<PaymentTypeEntity> Payment { get; set; }
+        public DbSet<ShopEntity> Shop { get; set; }
     }
 }

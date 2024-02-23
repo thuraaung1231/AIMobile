@@ -11,6 +11,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(o=>o.UseSqlServer(config.Get
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ITypeServices, TypeServices>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
+builder.Services.AddScoped<IShopService, ShopService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
