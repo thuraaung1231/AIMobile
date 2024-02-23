@@ -20,7 +20,7 @@ namespace AIMobile.Controllers
         [HttpGet]
         public IActionResult Entry()
         {
-            ViewBag.FromBrandId = _brandService.ReteriveAll().Select(s=>new BrandViewModels {Id=s.Id,Name=s.Name }).ToList();
+            ViewBag.FromBrandId = _brandService.ReteriveAll().Select(s=>new BrandViewModels {Id=s.Id,Name=s.Name}).ToList();
             ViewBag.FromTypeId = _typeServices.ReteriveAll().Select(s => new TypeViewModel { Id = s.Id, Name = s.Name }).ToList();
             return View();
         }
