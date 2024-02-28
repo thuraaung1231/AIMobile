@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Images\**" />
+    <Content Remove="wwwroot\Images\**" />
+    <EmbeddedResource Remove="wwwroot\Images\**" />
+    <None Remove="wwwroot\Images\**" />
+
     <Compile Remove="wwwroot\Images\ShopImage\**" />
     <Content Remove="wwwroot\Images\ShopImage\**" />
     <EmbeddedResource Remove="wwwroot\Images\ShopImage\**" />
