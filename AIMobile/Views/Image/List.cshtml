@@ -1,0 +1,51 @@
+﻿@model List<ImageViewModel>
+
+<h1>Image List Information</h1>
+@if (TempData["info"] != null)
+{
+    <div class="alert alert-info">@TempData["info"]</div>
+}
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">FrontImageUrl</th>
+            <th scope="col">BackImageUrl</th>
+            <th scope="col">RightSideImageUrl</th>
+            <th scope="col">LeftSideImageUrl</th>
+            <th scope="col">ImageName</th>
+            <th scope="col">Filetype</th>
+            <th scope="col">Filesize</th>
+            <th scope="col">Actions</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@item.FrontImageUrl</td>
+                <td>@item.BackImageUrl</td>
+                <td>@item.RightSideImageUrl</td>
+                <td>@item.LeftSideImageUrl</td>
+                <td>@item.ImageName</td>
+                <td>@item.Filetype</td>
+                <td>@item.Filesize</td>
+
+                <td>
+                    <a class="btn btn-success" href="/Image/Edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/Image/Delete?id=@item.Id" onclick="return confirm('are you sure to delete this recrod?');" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                </td>
+
+
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>

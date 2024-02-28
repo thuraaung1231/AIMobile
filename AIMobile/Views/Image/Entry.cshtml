@@ -1,0 +1,49 @@
+﻿
+<body style="background-color:lightblue">
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Info"]
+        </div>
+    }
+    <h3>Entry Image</h3>
+    <form action="/Image/Entry" method="post">
+
+
+
+        <div class="mb-3">
+            <label class="form-label">FrontImageUrl</label>
+            <input type="file" class="form-control" name="FrontImageUrl">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">BackImageUrl</label>
+            <input type="file" class="form-control" name="BackImageUrl">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">RightSideImageUrl</label>
+            <input type="file" class="form-control" name="RightSideImageUrl">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">LeftSideImageUrl</label>
+            <input type="file" class="form-control" name="LeftSideImageUrl">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">ImageName</label>
+            <input type="text" class="form-control" name="ImageName">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Filetype</label>
+            <input type="text" class="form-control" name="Filetype">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Filesize</label>
+            <input type="text" class="form-control" name="Filesize">
+        </div>
+
+
+        
+
+        <input type="submit" class="btn btn_primary" value="Entry" />
+        <input type="reset" class="btn btn_primary" value="Cancel" />
+    </form>
+</body>
