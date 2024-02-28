@@ -28,11 +28,6 @@ namespace AIMobile.Services.Domains
 
         }
 
-        public void Entry(ProductEntity productEntity)
-        {
-            throw new NotImplementedException();
-        }
-
         public BrandEntity GetById(string id)
         {
             return _applicationDbContext.Brand.Where(w => w.Id == id).SingleOrDefault();
@@ -48,5 +43,6 @@ namespace AIMobile.Services.Domains
             _applicationDbContext.Brand.Update(brand);
             _applicationDbContext.SaveChanges();
         }
+       
     }
 }
