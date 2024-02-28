@@ -5,6 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\Images\ShopImage\**" />
+    <Content Remove="wwwroot\Images\ShopImage\**" />
+    <EmbeddedResource Remove="wwwroot\Images\ShopImage\**" />
+    <None Remove="wwwroot\Images\ShopImage\**" />
+  </ItemGroup>
 	<ItemGroup>
 
 		<PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
@@ -28,9 +35,6 @@
 		<PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
 		<PackageReference Include="System.CodeDom" Version="6.0.0" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="wwwroot\Images\ShopImage\" />
 	</ItemGroup>
 
 </Project>

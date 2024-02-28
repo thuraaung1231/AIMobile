@@ -48,5 +48,6 @@ namespace AIMobile.Services.Domains
             _applicationDbContext.Brand.Update(brand);
             _applicationDbContext.SaveChanges();
         }
+       
     }
 }
