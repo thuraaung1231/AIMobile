@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AIMobile.DAO
 {
-    public class ApplicationDbContext :IdentityDbContext<IdentityUser,IdentityRole,string>
+    public class ApplicationDbContext :DbContext
     {
 public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
        public DbSet<BrandEntity> Brand { get; set; }
