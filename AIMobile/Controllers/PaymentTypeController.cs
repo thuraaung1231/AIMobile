@@ -31,13 +31,13 @@ namespace AIMobile.Controllers
                 };
                 _paymentTypeService.Entry(payment);
                 TempData["info"] = "Save Successfully the record to the system";
-                return View();
+              
             }
             catch (Exception e)
             {
                 TempData["info"] = "Error occur when the data record to the system";
             }
-            return RedirectToAction("List");
+            return View();
         }
 
         public IActionResult List()
