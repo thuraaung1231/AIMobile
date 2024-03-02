@@ -1,8 +1,308 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IList<ImageViewModel>
+<div class="offcanvas offcanvas-start bg-transparent border-0"
+     id="offcanvasExample"
+     aria-labelledby="offcanvasExampleLabel">
+    <div class="w-50 ChildOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
+                Products
+            </h5>
+            <button type="button"
+                    class="btn btn-transparent"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close">
+                <i class="text-light fs-4 fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body overflow-visible">
+            <div class="w-100 dropend">
+                <button type="button"
+                        class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    All Products <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Menu item</a></li>
+                    <li><a class="dropdown-item" href="#">Menu item</a></li>
+                    <li><a class="dropdown-item" href="#">Menu item</a></li>
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Smart Phones <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light">
+                    <li><a class="dropdown-item" href="#">Samsung</a></li>
+                    <li><a class="dropdown-item" href="#">RealMe</a></li>
+                    <li><a class="dropdown-item" href="#">Apple</a></li>
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Laptops <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light">
+                    <li><a class="dropdown-item" href="#">Samsung</a></li>
+                    <li><a class="dropdown-item" href="#">RealMe</a></li>
+                    <li><a class="dropdown-item" href="#">Apple</a></li>
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Tablets <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light">
+                    <li><a class="dropdown-item" href="#">Samsung</a></li>
+                    <li><a class="dropdown-item" href="#">RealMe</a></li>
+                    <li><a class="dropdown-item" href="#">Apple</a></li>
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Other Accessories <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light">
+                    <li><a class="dropdown-item" href="#">Samsung</a></li>
+                    <li><a class="dropdown-item" href="#">RealMe</a></li>
+                    <li><a class="dropdown-item" href="#">Apple</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+     
+<!--Slide Show-->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner SlidecContainer">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome From AIMobile</h1>
-    
+        <div class="carousel-item active" data-bs-interval="2000">
+            <div class="d-flex">
+                <img src="/Images/slide1.jpg"
+                     class="w-50 display-4 d-block slideImg"
+                     alt="..." />
+                <p class="d-flex justify-content-center w-50 align-items-center fs-3 slideFontColor fw-bold bg-light">
+
+                    20% Discount For Summer Promotion <br> Enjoy With Your Life <br> Enjyo the Smooth
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <div class="d-flex">
+                <img src="/images/slide2.jpg"
+                     class="w-50 d-block display-4 slideImg"
+                     alt="..." />
+                <p class="d-flex justify-content-center w-50 align-items-center fs-3 p-sm-3 fw-bold slideFontColor">
+                    10% Discount For March Promotion <br> Enjoy with Your Life <br>Enjoy the Premium
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex">
+                <img src="/images/Slide3.jpg"
+                     class="w-50 d-block display-4 slideImg"
+                     alt="..." />
+                <p class="d-flex justify-content-center align-items-center w-50 fs-3 p-sm-3 fw-bold slideFontColor">
+                    30% Discount For Clearnance Price <br>Be smart with Your Laptop
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="container-fluid mb-2">
+    <div class="overflow-x-scroll d-flex justify-content-lg-around align-items-center p-2"
+         id="myover">
+        <div>
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+                <p class="fw-bold">LAPTOP</p>
+                <div class="ImgContainer">
+                    <img src="/images/coollaptop.png" class="w-100" alt="MaceBook" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+                <p class="fw-bold">SMART PHONE</p>
+                <div class="ImgContainer">
+                    <img src="/images/samsung-flip.png"
+                         class="w-100"
+                         alt="SamsungFlip" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+                <p class="fw-bold">TABLET</p>
+                <div class="ImgContainer">
+                    <img src="/images/tablets.png" class="w-100" alt="SamsungFlip" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+                <p class="fw-bold">POWER BANK</p>
+                <div class="ImgContainer">
+                    <img src="/images/powerbank.png" class="w-100" alt="PowerBank" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+                <p class="fw-bold">SMART WATCH</p>
+                <div class="ImgContainer">
+                    <img src="/images/smartwatch.png"
+                         class="w-100"
+                         alt="SmartWatch" />
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+                <p class="fw-bold">HEADPHONE</p>
+                <div class="ImgContainer">
+                    <img src="/images/HeadPhone.png" class="w-100" alt="HeadPhone" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-12 d-flex justify-content-center align-items-center">
+            <div class="text-start fs-5 fw-semibold slideFontColor mb-2">
+                Secure And Fast Delivery. Door to Door Service in Yangon and Other for the nearest Express Station!
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-12 DeliverySlideConatiner">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="1000">
+                        <img src="/images/deliveryService.jpg" class="d-block w-100 h-50 rounded" alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="/images/secureDelivery.jpg" class="d-block w-100 h-50 rounded" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/homedelivery.png" class="d-block w-100 h-50 rounded" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <p class="text-center fw-bold fs-5 mt-4 mb-1">Most Popular Items</p>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-6 p-2">
+            <div class="col-10 mx-auto shadow-sm p-3 rounded">
+                <img src="/images/xiaomi.png" class="w-100 popularProduct" alt="" />
+                <p class="text-center m-0 p-0 fs-6">Xiaomi 13T Pro</p>
+                <div class="d-flex justify-content-center">
+                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6 p-2">
+            <div class="col-10 mx-auto shadow-sm p-3 rounded">
+                <img src="/images/smg24.png" class="w-100 popularProduct" alt="" />
+                <p class="text-center m-0 p-0 fs-6">Galaxy S24 Ultra</p>
+                <div class="d-flex justify-content-center">
+                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6 p-2">
+            <div class="col-10 mx-auto shadow-sm p-3 rounded">
+                <img src="/images/realme.png" class="w-100 popularProduct" alt="" />
+                <p class="text-center m-0 p-0 fs-6">RealMe 12 Pro 5G</p>
+                <div class="d-flex justify-content-center">
+                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6 p-2">
+            <div class="col-10 mx-auto shadow-sm p-3 rounded">
+                <img src="/images/smg24.png" class="w-100 popularProduct" alt="" />
+                <p class="text-center m-0 p-0 fs-6">This is my phone</p>
+                <div class="d-flex justify-content-center">
+                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pageFooter mt-3 border-top border-secondary">
+    <div class="row border-bottom border-secondary p-2">
+        <div class="col-lg-3 col-6  mb-lg-0 mb-2 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-solid fa-truck display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">Free Shipping</div>
+                    <div class="fs-6 fw-normal text-secondary">For Every State</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-6 mb-lg-0 mb-2 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-solid fa-reply display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">3 Days Return Policy</div>
+                    <div class="fs-6 fw-normal text-secondary">
+                        Return within 3 Days
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-regular fa-credit-card display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">Easy Payment</div>
+                    <div class="fs-6 fw-normal text-secondary">
+                        Pay with various payment methods
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-solid fa-truck-fast display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">Fase Delivery</div>
+                    <div class="fs-6 fw-normal text-secondary">
+                        2 Days deliver in YGN & MDY
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

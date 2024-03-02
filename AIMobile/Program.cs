@@ -26,6 +26,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
 builder.Services.AddScoped<IShopService, ShopService>();
 builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IShopProductService, ShopProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -9,5 +9,6 @@ namespace AIMobile.Services.Domains
         void Update(ShopEntity shop);
         ShopEntity GetById(string id);
         void Delete(string Id);
+        bool IsNameDuplicate(string name);
     }
 }

@@ -15,5 +15,6 @@ public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : ba
         public DbSet<PaymentTypeEntity> Payment { get; set; }
         public DbSet<ShopEntity> Shop { get; set; }
         public DbSet<ImageEntity>Image { get; set; }
+        public DbSet<ShopProductEntity> ShopProduct { get; set; }
     }
 }
