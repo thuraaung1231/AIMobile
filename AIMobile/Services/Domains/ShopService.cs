@@ -32,6 +32,11 @@ namespace AIMobile.Services.Domains
             return _applicationDbContext.Shop.Find(id);
         }
 
+        public bool IsNameDuplicate(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<ShopEntity> ReteriveAll()
         {
             return _applicationDbContext.Shop.ToList();

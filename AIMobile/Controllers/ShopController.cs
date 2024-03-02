@@ -24,16 +24,27 @@ namespace AIMobile.Controllers
         {
             try
             {
-                ShopEntity shop = new ShopEntity()
+                var Shops = _shopService.ReteriveAll().Where(w => w.Name == svm.Name);
+                if (Shops.Any())
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = svm.Name,
-                    Status = svm.Status,
-                    Address = svm.Address,
-                };
-                _shopService.Entry(shop);
-                TempData["info"] = "Save Successfully the record to the system";
-                
+                    TempData["info"] = "Name already exists in the database";
+                }
+                else
+                {
+                    ShopEntity shop = new ShopEntity()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = svm.Name,
+                        Status = svm.Status,
+                        Address = svm.Address,
+                    };
+                    _shopService.Entry(shop);
+                    TempData["info"] = "Save Successfully the record to the system";
+
+                }
+
+
+
             }
             catch (Exception e)
             {

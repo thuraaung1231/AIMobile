@@ -23,14 +23,23 @@ namespace AIMobile.Controllers
         {
             try
             {
-                var TypeEntity = new TypeEntity()
+                var Types = _typeServices.ReteriveAll().Where(w => w.Name == tvm.Name);
+                if (Types.Any())
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = tvm.Name,
+                    TempData["info"] = "Name already exists in the database";
+                }
+                else
+                {
+                    var TypeEntity = new TypeEntity()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = tvm.Name,
 
-                };
-                _typeServices.Entry(TypeEntity);
-                TempData["Info"] = "Entry Success";
+                    };
+                    _typeServices.Entry(TypeEntity);
+                    TempData["Info"] = "Entry Success";
+                }
+                
 
             }
             catch (Exception)
