@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AIMobile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AIMobile.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/5c9d3a4741.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    @*<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AIMobile</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </li>
+
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    User
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/user/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/user/list">List</a></li>
+    </ul>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Payment Type
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/paymenttype/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/paymenttype/list">List</a></li>
+    </ul>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Shop
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/shop/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/shop/list">List</a></li>
+    </ul>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Type
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/type/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/type/list">List</a></li>
+    </ul>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Brand
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/brand/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/brand/list">List</a></li>
+    </ul>
+    </li>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Product
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/product/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/product/list">List</a></li>
+    </ul>
+    Image
+    </a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/Image/entry">Entry</a></li>
+    <li><a class="dropdown-item" href="/Image/list">List</a></li>
+    </ul>
+    </li>
+    <li class="nav-item">
+    <partial name="_LoginPartial" />
+    </li>
+    </ul>
+    </div>
+    </div>
+    </nav>
+    </header>*@
+    <nav class="navbar navbar-expand-lg nav-Bg position-sticky top-0 z-2">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light me-5" href="#">
+                <p class="m-0 p-0">AI Shopping</p>
+            </a>
+            <div class="navbar-brand d-lg-none d-md-none d-inline Pointer"
+                 data-bs-toggle="offcanvas"
+                 data-bs-target="#offcanvasRight"
+                 aria-controls="offcanvasRight">
+                <i class="fa-solid fa-house-chimney-user text-light"></i>
+            </div>
+            <div class="d-flex col-md-6 col-12">
+                <input type="text"
+                       class="rounded-start search-Bar p-2 col"
+                       placeholder="Search Your Product" />
+                <button class="border-none bg-warning rounded-end search-Button py-2 px-3"
+                        type="button"
+                        id="button-addon2">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <div class="navbar-brand d-lg-none d-md-inline d-none">
+                <i class="fa-solid fa-house-chimney-user text-light Pointer"
+                   data-bs-toggle="offcanvas"
+                   data-bs-target="#offcanvasRight"
+                   aria-controls="offcanvasRight"></i>
+            </div>
+            <div class="d-lg-inline d-md-none d-none">
+                <ul class="navbar-nav ms-auto z-4">
+                    <li class="nav-item me-1 px-1 rounded LoginLogout ms-auto">
+                        <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
+                           aria-current="page"
+                           href="#"><i class="fa-solid fa-user px-1"></i>Login</a>
+                    </li>
+                    <li class="nav-item px-1 rounded LoginLogout ms-auto">
+                        <a class="nav-link active text-light px-2 fs-6 d-flex justify-content-center align-items-center"
+                           href="#"><i class="fa-solid fa-user-plus px-1 fs-6"></i>SignUp</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="Delivery d-lg-none d-md-none d-block px-3 mt-1">
+            <i class="fa-solid fa-truck"></i> Enable Delivery Service
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-end"
+         tabindex="-1"
+         id="offcanvasRight"
+         aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header nav-Bg">
+            <h5 class="offcanvas-title text-light" id="offcanvasRightLabel">
+                AI Shopping
+            </h5>
+            <button type="button"
+                    class="btn btn-transparent"
+                    data-bs-dismiss="offcanvas">
+                <i class="fa-solid fa-xmark text-light fs-5"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <button class="btn btn-transparent border-primary d-block w-100 mb-2 LoginLogout">
+                <a href="#" class="text-decoration-none text-warning"><i class="fa-solid fa-user-plus px-1 fs-6"></i> Sign Up</a>
+            </button>
+            <button class="btn btn-transparent border-primary d-block w-100 LoginLogout">
+                <a href="#" class="text-decoration-none text-warning"><i class="fa-solid fa-user px-1"></i> Login In</a>
+            </button>
+        </div>
+    </div>
+    <div class="product-Bar position-sticky z-2">
+        <div class="container-fluid py-2">
+            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                All Products
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+
+            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Smart Phones
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Samsung</a></li>
+                <li><a class="dropdown-item" href="#">RealMe</a></li>
+                <li><a class="dropdown-item" href="#">Apple</a></li>
+            </ul>
+
+            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Laptops
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+
+            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Tablets
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            <button class="btn btn-transparent border border-primary text-light btn-sm my-auto d-lg-inline d-md-inline d-none">
+                Other Accessories
+            </button>
+
+            <button class="btn btn-transparent px-2 d-lg-none d-md-none d-inline"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
+            </button>
+            <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative">
+                <div class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
+                    Cart
+                    <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">+999</span>
+                </div>
+            </button>
+
+            <div class="offcanvas offcanvas-start bg-transparent border-0"
+                 id="offcanvasExample"
+                 aria-labelledby="offcanvasExampleLabel">
+                <div class="w-50 ChildOffcanvas">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
+                            Products
+                        </h5>
+                        <button type="button"
+                                class="btn btn-transparent"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close">
+                            <i class="text-light fs-4 fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="offcanvas-body overflow-visible">
+                        <div class="w-100 dropend">
+                            <button type="button"
+                                    class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                All Products <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                            </ul>
+                        </div>
+                        <div class="w-100 dropend">
+                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Smart Phones <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-light">
+                                <li><a class="dropdown-item" href="#">Samsung</a></li>
+                                <li><a class="dropdown-item" href="#">RealMe</a></li>
+                                <li><a class="dropdown-item" href="#">Apple</a></li>
+                            </ul>
+                        </div>
+                        <div class="w-100 dropend">
+                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Laptops <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-light">
+                                <li><a class="dropdown-item" href="#">Samsung</a></li>
+                                <li><a class="dropdown-item" href="#">RealMe</a></li>
+                                <li><a class="dropdown-item" href="#">Apple</a></li>
+                            </ul>
+                        </div>
+                        <div class="w-100 dropend">
+                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Tablets <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-light">
+                                <li><a class="dropdown-item" href="#">Samsung</a></li>
+                                <li><a class="dropdown-item" href="#">RealMe</a></li>
+                                <li><a class="dropdown-item" href="#">Apple</a></li>
+                            </ul>
+                        </div>
+                        <div class="w-100 dropend">
+                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Other Accessories <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-light">
+                                <li><a class="dropdown-item" href="#">Samsung</a></li>
+                                <li><a class="dropdown-item" href="#">RealMe</a></li>
+                                <li><a class="dropdown-item" href="#">Apple</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+
+    <footer class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-lg-4 col-6">
+                <h6 class="text-center fw-bold">GET TO KNOW US</h6>
+                <div class="d-flex flex-column justify-content-start align-items-center">
+                    <a href="#" class="text-decoration-none">FaQs</a>
+                    <a href="#" class="text-decoration-none">AboutUs</a>
+                    <a href="#" class="text-decoration-none">Contact Us</a>
+                    <a href="#" class="text-decoration-none">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-6">
+                <h6 class="fw-bold text-center">FOLLOW US ON</h6>
+                <div class="d-flex justify-content-center py-2">
+                    <a href="#" class="text-decoration-none px-2">
+                        <i class="fa-brands fa-facebook fs-4"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none px-2">
+                        <i class="fa-brands fa-instagram fs-4"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none px-2">
+                        <i class="fa-brands fa-telegram fs-4"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none px-2">
+                        <i class="fa-brands fa-x-twitter fs-4"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-11 mx-auto mt-lg-0 mt-4">
+                <h6 class="fw-bold">SIGN UP WITH EMAIL</h6>
+                <div class="input-group mb-3">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Please Enter Your Email" />
+                    <button class="btn btn-primary" type="button">SignUp</button>
+                </div>
+                <p class="fontFamilies">Shop With Our AI Online Shopping!</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-5 col-md-7 col-10 mx-auto ">
+                <div class="text-center">Available Payment Methods:</div>
+                <div class="row">
+                    <div class="col-2 p-lg-4 p-md-4 p-3">
+                        <img src="/images/CBPay.jpg" class="w-100" alt="" />
+                    </div>
+                    <div class="col-2 p-lg-4 p-md-4 p-3">
+                        <img src="/images/KBZPay.jpg" class="w-100" alt="" />
+                    </div>
+                    <div class="col-2 p-lg-4 p-md-4 p-3">
+                        <img src="/images/AYAPay.jpg" class="w-100" alt="" />
+                    </div>
+                    <div class="col-2 p-lg-4 p-md-4 p-3">
+                        <img src="/images/UABPay.jpg" class="w-100" alt="" />
+                    </div>
+                    <div class="col-2 p-lg-4 p-md-4 p-3">
+                        <img src="/images/VisaPay.jpg" class="w-100" alt="" />
+                    </div>
+                    <div class="col-2 p-lg-4 p-md-4 p-3">
+                        <img src="/images/MasterPay.jpg" class="w-100" alt="" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="nav-Bg row text-center">
+            <p class="my-auto py-3 text-secondary">
+                &copy;Copyright 2024 <span class="text-light">AI Shop.</span> All
+                Rights Reserved
+            </p>
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/627302b2f5.js"
+            crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

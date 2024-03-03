@@ -1,0 +1,38 @@
+﻿@model ShopViewModel
+@{
+    ViewData["Title"] = "Shop Edit";
+}
+
+<body style="background-color:lightcyan">
+    @if (TempData["info"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["info"]
+        </div>
+    }
+    <h3 class="mx-auto">Edit Shop</h3>
+    <form action="/shop/update" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="PLease Fill the Field!">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <input type="text" class="form-control" name="Status" value="@Model.Status" placeholder="PLease Fill the Field!">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" name="Address" value="@Model.Address" placeholder="PLease Fill the Field!">
+        </div>
+
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input">
+            <label class="form-check-label">Terms And Conditions</label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Update">
+        <input type="reset" class="btn btn-secondary" value="Cancel">
+    </form>
+</body>

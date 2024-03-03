@@ -1,0 +1,43 @@
+﻿@model List<ProductViewModel>
+
+<h1>Type List Information</h1>
+@if (TempData["info"] != null)
+{
+    <div class="alert alert-info">@TempData["info"]</div>
+}
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Brand</th>
+            <th scope="col">UnitPrice</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@item.Name</td>
+                <td>@item.TypeName</td>
+                <td>@item.BrandName</td>
+                <td>@item.UnitPrice</td>
+                 <td>
+                    <a class="btn btn-success" href="/Product/Edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/Product/Delete?id=@item.Id" onclick="return confirm('are you sure to delete this recrod?');" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                </td>
+
+
+            </tr>
+            index++;
+        }
+    </tbody>
+</table>
