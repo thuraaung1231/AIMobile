@@ -25,7 +25,7 @@ html {
 
 .slideFontColor {
     background: linear-gradient(to right, blue, red);
-    -webkit-background-clip: text;  For Safari 
+    -webkit-background-clip: text; /* For Safari */
     -webkit-text-fill-color: transparent; /* For Safari */
     background-clip: text;
     color: transparent;
@@ -72,7 +72,9 @@ html {
     background-color: rgb(4, 47, 117);
 }
 
-
+.SlidecContainer {
+    background-color: rgb(212, 214, 214);
+}
 
 .w-50 {
     user-select: none;
@@ -205,16 +207,23 @@ html {
 .SideNav {
     height: 100vh;
     overflow-y: scroll;
+    overflow-x: hidden;
+    transition: width 0.2s ease;
 }
 
-    .SideNav::-webkit-scrollbar {
-        width: 8px;
-    }
+.myproduct {
+    display: none;
+    color: red
+}
 
-    .SideNav::-webkit-scrollbar-thumb {
-        background-color: gray;
-        border-radius: 10px;
-    }
+.SideNav::-webkit-scrollbar {
+    width: 8px;
+}
+
+.SideNav::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
 
 .rotate {
     transition: all ease-in-out 0.3s;
@@ -232,3 +241,16 @@ html {
 .CollapseBg {
     background-color: rgb(58, 56, 93);
 }
+
+#adjustNav {
+    cursor: pointer;
+}
+
+.Adminbody {
+    background: linear-gradient(-45deg,rgb(232, 232, 238), rgb(199, 199, 219), rgb(222, 222, 231));
+}
+
+.formHeader {
+    font-family: Auriol LT Std Black;
+}
+
