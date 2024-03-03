@@ -1,0 +1,30 @@
+﻿@model PaymentTypeViewModel
+@{
+    ViewData["Title"] = "PaymentType Entry";
+}
+
+<body style="background-color:lightcyan">
+    
+    <h3 class="mx-auto">Entry Payment Type</h3>
+    <form action="/paymenttype/entry" method="post">
+        @if (TempData["info"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["info"]
+            </div>
+        }
+        <div class="mb-3">
+            <label class="form-label">Payment Type</label>
+            <input type="text" class="form-control border-bottom" asp-for="PaymentType" placeholder="PLease Fill the Field!">
+            <span asp-validation-for="PaymentType" class="text-danger"></span>
+        </div>
+        
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input">
+            <label class="form-check-label">Terms And Conditions</label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Entry">
+        <input type="reset" class="btn btn-secondary" value="Cancel">
+    </form>
+</body>

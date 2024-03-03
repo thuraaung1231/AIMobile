@@ -17,386 +17,677 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    @*<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AIMobile</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                User
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/user/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/user/list">List</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Payment Type
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/paymenttype/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/paymenttype/list">List</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Shop
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/shop/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/shop/list">List</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Type
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/type/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/type/list">List</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Brand
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/brand/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/brand/list">List</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Product
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/product/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/product/list">List</a></li>
-                            </ul>
-                                Image
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/Image/entry">Entry</a></li>
-                                <li><a class="dropdown-item" href="/Image/list">List</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <partial name="_LoginPartial" />
-                        </li>
-                    </ul>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-0 d-lg-block d-none AdminNav SideNav">
+                <div class="d-flex row align-items-center justify-content-between py-2 my-auto border-secondary">
+                    <span class="fs-5 col-10 text-light d-flex justify-content-center align-items-center" id="adjustLogo">
+                        <i class="fa-brands fa-airbnb fw-bold fs-5"></i>
+                        <p class="my-auto ms-1 navText">Online Shop</p>
+                    </span>
+                    <span class="col-2 mx-auto" id="adjustNav">
+                        <i class="fa-solid fa-up-right-and-down-left-from-center fs-6 text-light"></i>
+                    </span>
+                </div>
+                <div class="row">
+                    <p class="fw-bold text-center text-light General py-2 m-0">
+                        General
+                    </p>
+
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#Product"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-rectangle-list me-2"></i>
+                        <span class="navText">Product</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Product">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#ShopProduct"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-shuffle me-2"></i>
+                        <span class="navText">Shop Product</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="ShopProduct">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#ShopProductImage"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-file-image me-1"></i>
+                        <span class="navText">ShopProduct Image</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0"
+                         id="ShopProductImage">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#Shop"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-shop me-2"></i>
+                        <span class="navText">Shop</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Shop">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#Image"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-image me-2"></i>
+                        <span class="navText">Image</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Image">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#ProductType"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-list-check me-2"></i>
+                        <span class="navText">Product Type</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="ProductType">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#ProductBrand"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-bandage me-2"></i>
+                        <span class="navText">Product Brand</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0"
+                         id="ProductBrand">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#PaymentType"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-money-check-dollar me-2"></i>
+                        <span class="navText">Payment Type</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="PaymentType">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#City"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-city me-2"></i>
+                        <span class="navText">City</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="City">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#Township"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-earth-americas me-2"></i>
+                        <span class="navText">Township</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Township">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#Delivery"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-truck me-2"></i>
+                        <span class="navText">Delivery</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Delivery">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#multiCollapseExample1"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="navText">Purchase</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0"
+                         id="multiCollapseExample1">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Entry
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> List
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <i class="fa-solid fa-circle me-2"></i> Report
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>*@
-    <nav class="navbar navbar-expand-lg nav-Bg position-sticky top-0 z-2">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light me-5" href="#">
-                <p class="m-0 p-0">AI Shopping</p>
-            </a>
-            <div class="navbar-brand d-lg-none d-md-none d-inline Pointer"
-                 data-bs-toggle="offcanvas"
-                 data-bs-target="#offcanvasRight"
-                 aria-controls="offcanvasRight">
-                <i class="fa-solid fa-house-chimney-user text-light"></i>
-            </div>
-            <div class="d-flex col-md-6 col-12">
-                <input type="text"
-                       class="rounded-start search-Bar p-2 col"
-                       placeholder="Search Your Product" />
-                <button class="border-none bg-warning rounded-end search-Button py-2 px-3"
-                        type="button"
-                        id="button-addon2">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-            <div class="navbar-brand d-lg-none d-md-inline d-none">
-                <i class="fa-solid fa-house-chimney-user text-light Pointer"
-                   data-bs-toggle="offcanvas"
-                   data-bs-target="#offcanvasRight"
-                   aria-controls="offcanvasRight"></i>
-            </div>
-            <div class="d-lg-inline d-md-none d-none">
-                <ul class="navbar-nav ms-auto z-4">
-                    <li class="nav-item me-1 px-1 rounded LoginLogout ms-auto">
-                        <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
-                           aria-current="page"
-                           href="#"><i class="fa-solid fa-user px-1"></i>Login</a>
-                    </li>
-                    <li class="nav-item px-1 rounded LoginLogout ms-auto">
-                        <a class="nav-link active text-light px-2 fs-6 d-flex justify-content-center align-items-center"
-                           href="#"><i class="fa-solid fa-user-plus px-1 fs-6"></i>SignUp</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="Delivery d-lg-none d-md-none d-block px-3 mt-1">
-            <i class="fa-solid fa-truck"></i> Enable Delivery Service
-        </div>
-    </nav>
-    <div class="offcanvas offcanvas-end"
-         tabindex="-1"
-         id="offcanvasRight"
-         aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header nav-Bg">
-            <h5 class="offcanvas-title text-light" id="offcanvasRightLabel">
-                AI Shopping
-            </h5>
-            <button type="button"
-                    class="btn btn-transparent"
-                    data-bs-dismiss="offcanvas">
-                <i class="fa-solid fa-xmark text-light fs-5"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body">
-            <button class="btn btn-transparent border-primary d-block w-100 mb-2 LoginLogout">
-                <a href="#" class="text-decoration-none text-warning"><i class="fa-solid fa-user-plus px-1 fs-6"></i> Sign Up</a>
-            </button>
-            <button class="btn btn-transparent border-primary d-block w-100 LoginLogout">
-                <a href="#" class="text-decoration-none text-warning"><i class="fa-solid fa-user px-1"></i> Login In</a>
-            </button>
-        </div>
-    </div>
-    <div class="product-Bar position-sticky z-2">
-        <div class="container-fluid py-2">
-            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                All Products
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="col-lg-10 Adminbody" id="MainNav">
+                <div class="row bg-light py-2 border">
+                    <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start mb-lg-0 mb-md-0 mb-2 align-items-center my-auto text-body-secondary">
+                        <a href="#" class="me-2 d-lg-none d-block" data-bs-toggle="offcanvas" data-bs-target="#NavScrolling" aria-controls="NavScrolling"><i class="fa-solid fa-bars-staggered fw-bold text-body-secondary"></i></a>
+                        <a href="#"
+                           class="text-decoration-none me-2 text-body-secondary fw-bold">Wai Phyo Aung</a>
+                        <div class="vr me-2"></div>
+                        <a href="#" class="text-decoration-none text-secondary"><i class="fa-solid fa-house-chimney"></i> Home</a>
+                    </div>
 
-            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                Smart Phones
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Samsung</a></li>
-                <li><a class="dropdown-item" href="#">RealMe</a></li>
-                <li><a class="dropdown-item" href="#">Apple</a></li>
-            </ul>
-
-            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                Laptops
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-
-            <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                Tablets
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            <button class="btn btn-transparent border border-primary text-light btn-sm my-auto d-lg-inline d-md-inline d-none">
-                Other Accessories
-            </button>
-
-            <button class="btn btn-transparent px-2 d-lg-none d-md-none d-inline"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample"
-                    aria-controls="offcanvasExample">
-                <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
-            </button>
-            <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative">
-                <div class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
-                   >
-                    <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
-                    Cart
-                    <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">+999</span>
-                </div>
-            </button>
-
-            <div class="offcanvas offcanvas-start bg-transparent border-0"
-                 id="offcanvasExample"
-                 aria-labelledby="offcanvasExampleLabel">
-                <div class="w-50 ChildOffcanvas">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
-                            Products
-                        </h5>
+                    <div class="col-lg-6 col-md-6 ms-auto d-flex justify-content-lg-end justify-content-md-end justify-content-start">
+                        <div class="d-flex me-3">
+                            <input type="text"
+                                   placeholder="Search"
+                                   class="search-Bar rounded-start border border-dark px-4" />
+                            <button class="btn btn-secondary rounded-0 rounded-end">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
                         <button type="button"
-                                class="btn btn-transparent"
-                                data-bs-dismiss="offcanvas"
-                                aria-label="Close">
-                            <i class="text-light fs-4 fa-solid fa-xmark"></i>
+                                class="btn btn-transparent position-relative search-Bar me-4">
+                            <i class="fa-regular fa-bell text-secondary fs-5 fw-bold"></i>
+                            <span class="position-absolute m-0 p-0 Noti fw-bolder bg-warning px-2">
+                                99
+                            </span>
+                        </button>
+                        <button type="button"
+                                class="btn btn-transparent search-Bar"
+                                id="FullScreen">
+                            <i class="fa-solid fa-expand text-secondary fs-5 fw-bold"></i>
+                        </button>
+                        <button type="button" class="btn btn-transparent search-Bar">
+                            <i class="fa-solid fa-circle-half-stroke text-secondary fs-5 fw-bold"></i>
                         </button>
                     </div>
-                    <div class="offcanvas-body overflow-visible">
-                        <div class="w-100 dropend">
-                            <button type="button"
-                                    class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                All Products <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                <li><a class="dropdown-item" href="#">Menu item</a></li>
-                            </ul>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col py-1 px-2">
+                        <span class="fw-bold" id="Title">Product</span> /
+                        <span id="Category">List</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <footer class="bg-light d-flex justify-content-center">
+        <p class="py-3 my-auto text-muted">
+            CopyRight&copy; 2024. <span class="text-primary">AI Online Shop</span>.
+            All rights reserved.
+        </p>
+    </footer>
+
+    @*For the Poppup*@
+    <div class="offcanvas offcanvas-start AdminNav SideNav d-lg-none d-block" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="NavScrolling" aria-labelledby="NavScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title d-flex text-light justify-content-center align-items-center" id="offcanvasScrollingLabel">
+                <i class="fa-brands fa-airbnb fw-bold fs-5"></i>
+                <p class="my-auto ms-1 navText">Online Shop</p>
+            </h5>
+            <button type="button" class="btn btn-transparent" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-xmark text-light fs-4"></i></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="row">
+                <p class="fw-bold text-center text-light General py-2 m-0">
+                    General
+                </p>
+
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#Product"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-rectangle-list me-2"></i>
+                    <span class="navText">Product</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="Product">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
                         </div>
-                        <div class="w-100 dropend">
-                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Smart Phones <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-light">
-                                <li><a class="dropdown-item" href="#">Samsung</a></li>
-                                <li><a class="dropdown-item" href="#">RealMe</a></li>
-                                <li><a class="dropdown-item" href="#">Apple</a></li>
-                            </ul>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
                         </div>
-                        <div class="w-100 dropend">
-                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Laptops <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-light">
-                                <li><a class="dropdown-item" href="#">Samsung</a></li>
-                                <li><a class="dropdown-item" href="#">RealMe</a></li>
-                                <li><a class="dropdown-item" href="#">Apple</a></li>
-                            </ul>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
                         </div>
-                        <div class="w-100 dropend">
-                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Tablets <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-light">
-                                <li><a class="dropdown-item" href="#">Samsung</a></li>
-                                <li><a class="dropdown-item" href="#">RealMe</a></li>
-                                <li><a class="dropdown-item" href="#">Apple</a></li>
-                            </ul>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ShopProduct"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-shuffle me-2"></i>
+                    <span class="navText">Shop Product</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="ShopProduct">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
                         </div>
-                        <div class="w-100 dropend">
-                            <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Other Accessories <i class="fa-solid fa-angle-right"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-light">
-                                <li><a class="dropdown-item" href="#">Samsung</a></li>
-                                <li><a class="dropdown-item" href="#">RealMe</a></li>
-                                <li><a class="dropdown-item" href="#">Apple</a></li>
-                            </ul>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ShopProductImage"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-file-image me-1"></i>
+                    <span class="navText">ShopProduct Image</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0"
+                     id="ShopProductImage">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#Shop"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-shop me-2"></i>
+                    <span class="navText">Shop</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="Shop">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#Image"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-image me-2"></i>
+                    <span class="navText">Image</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="Image">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ProductType"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-list-check me-2"></i>
+                    <span class="navText">Product Type</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="ProductType">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#ProductBrand"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-bandage me-2"></i>
+                    <span class="navText">Product Brand</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0"
+                     id="ProductBrand">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#PaymentType"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-money-check-dollar me-2"></i>
+                    <span class="navText">Payment Type</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="PaymentType">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#City"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-city me-2"></i>
+                    <span class="navText">City</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="City">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#Township"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-earth-americas me-2"></i>
+                    <span class="navText">Township</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="Township">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#Delivery"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-truck me-2"></i>
+                    <span class="navText">Delivery</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0" id="Delivery">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
+                        </div>
+                    </div>
+                </div>
+                <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample1"
+                        aria-expanded="false"
+                        aria-controls="multiCollapseExample2">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="navText">Purchase</span>
+                    <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                </button>
+                <div class="collapse multi-collapse w-100 m-0 p-0"
+                     id="multiCollapseExample1">
+                    <div class="card card-body rounded-0 m-0 p-0">
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Entry
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> List
+                        </div>
+                        <div class="border-0 p-2 text-light collapseItem">
+                            <i class="fa-solid fa-circle me-2"></i> Report
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/627302b2f5.js"
+            crossorigin="anonymous"></script>
 
-    <footer class="container-fluid">
-        <div class="row mt-5">
-            <div class="col-lg-4 col-6">
-                <h6 class="text-center fw-bold">GET TO KNOW US</h6>
-                <div class="d-flex flex-column justify-content-start align-items-center">
-                    <a href="#" class="text-decoration-none">FaQs</a>
-                    <a href="#" class="text-decoration-none">AboutUs</a>
-                    <a href="#" class="text-decoration-none">Contact Us</a>
-                    <a href="#" class="text-decoration-none">Privacy Policy</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-6">
-                <h6 class="fw-bold text-center">FOLLOW US ON</h6>
-                <div class="d-flex justify-content-center py-2">
-                    <a href="#" class="text-decoration-none px-2">
-                        <i class="fa-brands fa-facebook fs-4"></i>
-                    </a>
-                    <a href="#" class="text-decoration-none px-2">
-                        <i class="fa-brands fa-instagram fs-4"></i>
-                    </a>
-                    <a href="#" class="text-decoration-none px-2">
-                        <i class="fa-brands fa-telegram fs-4"></i>
-                    </a>
-                    <a href="#" class="text-decoration-none px-2">
-                        <i class="fa-brands fa-x-twitter fs-4"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-11 mx-auto mt-lg-0 mt-4">
-                <h6 class="fw-bold">SIGN UP WITH EMAIL</h6>
-                <div class="input-group mb-3">
-                    <input type="text"
-                           class="form-control"
-                           placeholder="Please Enter Your Email" />
-                    <button class="btn btn-primary" type="button">SignUp</button>
-                </div>
-                <p class="fontFamilies">Shop With Our AI Online Shopping!</p>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-lg-5 col-md-7 col-10 mx-auto ">
-                <div class="text-center">Available Payment Methods:</div>
-                <div class="row">
-                    <div class="col-2 p-lg-4 p-md-4 p-3">
-                        <img src="/images/CBPay.jpg" class="w-100" alt="" />
-                    </div>
-                    <div class="col-2 p-lg-4 p-md-4 p-3">
-                        <img src="/images/KBZPay.jpg" class="w-100" alt="" />
-                    </div>
-                    <div class="col-2 p-lg-4 p-md-4 p-3">
-                        <img src="/images/AYAPay.jpg" class="w-100" alt="" />
-                    </div>
-                    <div class="col-2 p-lg-4 p-md-4 p-3">
-                        <img src="/images/UABPay.jpg" class="w-100" alt="" />
-                    </div>
-                    <div class="col-2 p-lg-4 p-md-4 p-3">
-                        <img src="/images/VisaPay.jpg" class="w-100" alt="" />
-                    </div>
-                    <div class="col-2 p-lg-4 p-md-4 p-3">
-                        <img src="/images/MasterPay.jpg" class="w-100" alt="" />
-                    </div>
-                </div>
 
-            </div>
-        </div>
-        <div class="nav-Bg row text-center">
-            <p class="my-auto py-3 text-secondary">
-                &copy;Copyright 2024 <span class="text-light">AI Shop.</span> All
-                Rights Reserved
-            </p>
-        </div>
-        
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -404,6 +695,64 @@
     <script src="https://kit.fontawesome.com/627302b2f5.js"
             crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        let CollapseButton = $(".CollapseButton");
+        let CollapseArrow = $(".CollapseArrow");
+        let collapseItem = $(".collapseItem");
+        for (let i = 0; i < CollapseButton.length; i++) {
+            CollapseButton.eq(i).on("click", function () {
+                CollapseArrow.eq(i).toggleClass("rotate");
+            });
+        }
+        for (let i = 0; i < collapseItem.length; i++) {
+            collapseItem.eq(i).on("click", function () {
+                removingClass();
+                $(this).addClass("CollapseBg");
+                let title = $(this).closest(".multi-collapse");
+                let category = $(this).text();
+                $("#Title").text(title.attr("id"));
+                $("#Category").text(category);
+                $(this).children().first().addClass("text-danger");
+            });
+        }
+        function removingClass() {
+            for (let i = 0; i < collapseItem.length; i++) {
+                collapseItem.eq(i).removeClass("CollapseBg");
+                collapseItem.eq(i).children().first().removeClass("text-danger");
+            }
+        }
+        $("#FullScreen").on("click", function () {
+            toggleFullScreen();
+        });
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        let adjustWidth = true;
+        $("#adjustNav").on("click", function () {
+            if (adjustWidth) {
+                $(".SideNav").removeClass("col-lg-2").addClass("col-lg-1");
+                $("#adjustNav").removeClass("col-2").addClass("col-6");
+                $("#adjustLogo").removeClass("col-10").addClass("col-6");
+                $("#MainNav").removeClass("col-lg-10").addClass("col-lg-11");
+                $(".navText").addClass("d-none");
+                adjustWidth = false;
+            } else {
+                $(".SideNav").removeClass("col-lg-1").addClass("col-lg-2");
+                $("#MainNav").removeClass("col-lg-11").addClass("col-lg-10");
+                $(".navText").removeClass("d-none");
+                $("#adjustNav").removeClass("col-6").addClass("col-2");
+                $("#adjustLogo").removeClass("col-6").addClass("col-10");
+                adjustWidth = true;
+            }
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
