@@ -7,60 +7,101 @@
         </div>
     }
     <h3>Entry Image</h3>
-    <form action="/Image/Edit" method="post">
+    <div class="col-12 m-0 p-0">
+        <h4 class="col-lg-9 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Edit Image</h4>
+    </div>
+    <form action="/Image/Edit" method="post"  class="col-lg-9 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
         <input type="hidden" value="@Model.Id" name="Id" />
 
 
-        <div class="mb-3">
-            <label>FrontImage</label>
-            <div style="width:100px;height:100px">
-                <image style="width:100%" src="@Model.FrontImageUrl"></image>
+        <div class="row">
+            <div class="col-12 mb-3 d-flex flex-column">
+
+                <label class="labelFontSize fw-bold pb-2">Front Image</label>
+                <div class="col-5">
+                    <img class="w-50 bg-transparent rounded p-2" src="@Model.FrontImageUrl" alt="">
+                </div>
+
+                <label class="labelFontSize fw-bold pt-2">Front Image URL</label>
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="FrontImageUrl" value="@Model.FrontImageUrl" id="frontImageUrl">
+                <div class="input-group mt-2">
+                    <input type="file" class="form-control" hidden id="HidenFrontImgUrl">
+                    <label class="input-group-text rounded" for="HidenFrontImgUrl">Choose</label>
+                </div>
+
             </div>
-           
-            <input type="file" class="form-control" name="FrontImageUrl" placeholder="Blh blh blh">
-            
-        </div>
-        <div class="mb-3">
-            <label>BackImage</label>
-            <div style="width:100px;height:100px">
-                <image style="width:100%" src="@Model.BackImageUrl"></image>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold pb-2">Back Image</label>
+                <div class="col-5">
+                    <img class="w-50 bg-transparent rounded p-2" src="@Model.BackImageUrl" alt="">
+                </div>
+                <label class="labelFontSize fw-bold">Back Image URL</label>
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="BackImageUrl" value="@Model.BackImageUrl" id="BackImageUrl">
+                <div class="input-group mt-2">
+                    <input type="file" class="form-control" hidden id="HiddenBackImgUrl">
+                    <label class="input-group-text rounded" for="HiddenBackImgUrl">Choose</label>
+                </div>
             </div>
-            <input type="file" class="form-control" name="BackImageUrl">
-            
-        </div>
-        <div class="mb-3">
-            <label>RightSideImage</label>
-            <div style="width:100px;height:100px">
-                <image style="width:100%" src="@Model.RightSideImageUrl"></image>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold pb-2">Right Side Image</label>
+                <div class="col-5">
+                    <img class="w-50 bg-transparent rounded p-2" src="@Model.RightSideImageUrl" alt="">
+                </div>
+                <label class="labelFontSize fw-bold">Right Side Image URL</label>
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="RightSideImageUrl" value="@Model.RightSideImageUrl" id="LeftSideImageUrl">
+                <div class="input-group mt-2">
+                    <input type="file" class="form-control" hidden id="HiddenLeftImgUrl">
+                    <label class="input-group-text rounded" for="HiddenLeftImgUrl">Choose</label>
+                </div>
             </div>
-            <input type="file" class="form-control" name="RightSideImageUrl">
-
-        </div>
-        <div class="mb-3">
-            <label>LeftSideImage</label>
-           <div style="width:100px;height:100px">
-                <image style="width:100%" src="@Model.LeftSideImageUrl"></image>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold pb-2">Left Side Image</label>
+                <div class="col-5">
+                    <img class="w-50 bg-transparent rounded p-2" src="@Model.LeftSideImageUrl" alt="">
+                </div>
+                <label class="labelFontSize fw-bold">Left Side Image URL</label>
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="LeftSideImageUrl" value="@Model.LeftSideImageUrl" id="RightSideImageUrl">
+                <div class="input-group mt-2">
+                    <input type="file" class="form-control" hidden id="HiddenRightImgUrl">
+                    <label class="input-group-text rounded" for="HiddenRightImgUrl">Choose</label>
+                </div>
             </div>
-            <input type="file" class="form-control" name="LeftSideImageUrl">
-
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Model Name</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="ImageName" value="@Model.ImageName">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">File Type</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Filetype" value="@Model.Filetype">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">File Size</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Filesize" value="@Model.Filesize">
+            </div>
+            <div class="col-12 mb-2">
+                <button type="submit" class="btn btn-warning col-5" value="Entry">Update</button>
+                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label">ImageName</label>
-            <input type="text" class="form-control" name="ImageName" value="@Model.ImageName">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Filetype</label>
-            <input type="text" class="form-control" name="Filetype" value="@Model.Filetype">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Filesize</label>
-            <input type="text" class="form-control" name="Filesize" value="@Model.Filesize">
-        </div>
 
-
-
-
-        <input type="submit" class="btn btn_primary" value="Entry" />
-        <input type="reset" class="btn btn_primary" value="Cancel" />
     </form>
+    <script>
+        $("#HidenFrontImgUrl").change(function () {
+            var ImagePath = $(this).val();
+            $("#frontImageUrl").val(ImagePath)
+        })
+        $("#HiddenBackImgUrl").change(function () {
+            var ImagePath = $(this).val();
+            $("#BackImageUrl").val(ImagePath)
+        })
+        $("#HiddenRightImgUrl").change(function () {
+            var ImagePath = $(this).val();
+            $("#RightSideImageUrl").val(ImagePath)
+
+        })
+        $("#HiddenLeftImgUrl").change(function () {
+            var ImagePath = $(this).val();
+            $("#LeftSideImageUrl").val(ImagePath)
+        })
+    </script>
 </body>
