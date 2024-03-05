@@ -56,9 +56,9 @@ namespace AIMobile.Controllers
                 Id = b.Id,
                 Name = b.Name,
                 UnitPrice = b.UnitPrice,
-                BrandName =_brandService.GetById(b.BrandId).Name,
+                BrandName =_brandService.GetById(b.BrandId)?.Name,
                 BrandId = b.BrandId,
-                TypeName =_typeServices.GetById(b.TypeId).Name,
+                TypeName =_typeServices.GetById(b.TypeId)?.Name,
                 TypeId=b.TypeId,
 
             }).ToList();

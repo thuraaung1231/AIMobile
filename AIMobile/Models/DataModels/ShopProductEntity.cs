@@ -5,7 +5,6 @@ namespace AIMobile.Models.DataModels
     [Table("Tbl_Shop_Product")]
     public class ShopProductEntity:BaseEntity
     {
-
         public string ShopId { get; set; }
         public string ProductId { get; set; }
         public string ImageId { get; set; }

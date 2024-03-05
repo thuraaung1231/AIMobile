@@ -2,7 +2,7 @@
 <form action="/shopproduct/entry" method="post">
     <div class="mb-3">
         <label class="form-label">ShopName</label>
-        <select name="Shop_Id" class="form-select">
+        <select name="ShopId" class="form-select">
             @foreach (var shop in ViewBag.Shop)
             {
                 <option value="@shop.Id">@shop.Name</option>
@@ -12,7 +12,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">ProductName</label>
-        <select name="Product_Id" class="form-select">
+        <select name="ProductId" class="form-select">
             @foreach (var product in ViewBag.Product)
             {
                 <option value="@product.Id">@product.Name</option>
@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Model Name</label>
-        <select name="Image_Id" class="form-select">
+        <select name="ImageId" class="form-select">
             @foreach (var image in ViewBag.Image)
             {
                 <option value="@image.Id">@image.ImageName</option>
