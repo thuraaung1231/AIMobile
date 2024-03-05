@@ -1,0 +1,73 @@
+﻿@model ShopProductViewModel
+<body style="background-color:lightblue">
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Info"]
+        </div>
+    }
+    <form action="/ShopProduct/update" method="post">
+        <h3>Edit Shop Product</h3>
+        <input name="Id" type="hidden" value="@Model.Id" />
+        <div class="mb-3">
+            <label class="form-label">Shop Name</label>
+
+            <select name="ShopId" class="form-select">
+                <option value="@Model.ShopId">@Model.ShopName</option>
+                @foreach (var shop in ViewBag.FromShopId)
+                {
+                    if (Model.Id != shop.Id)
+                    {
+                        <option value="@shop.Id">@shop.Name</option>
+                    }
+
+
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Name</label>
+
+            <select name="ProductId" class="form-select">
+                <option value="@Model.ProductId">@Model.ProductName</option>
+                @foreach (var product in ViewBag.FormProductId)
+                {
+                    if (Model.Id != product.Id)
+                    {
+                        <option value="@product.Id">@product.Name </option>
+                    }
+
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Model Name</label>
+
+            <select name="ImageId" class="form-select">
+                <option value="@Model.ImageId">@Model.ImageName</option>
+                @foreach (var image in ViewBag.FormImageId)
+                {
+                    if (Model.Id != image.Id)
+                    {
+                        <option value="@image.Id">@image.ImageName </option>
+                    }
+
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" class="form-control" name="Description" value="@Model.Description">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Stock Count</label>
+            <input type="number" class="form-control" name="StockCount" value="@Model.StockCount">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Update">
+        <input type="reset" class="btn btn-secondary" value="Cancel">
+    </form>
+</body>

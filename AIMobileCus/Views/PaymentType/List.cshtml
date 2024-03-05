@@ -1,0 +1,33 @@
+﻿@model List<PaymentTypeViewModel>
+<h1>Payment Type Information</h1>
+@if (TempData["info"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["info"]</div>
+}
+<table class="table table-striped-columns table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">PaymentType</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@item.PaymentType</td>
+                <td>
+                    <a class="btn btn-success" href="/paymenttype/edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/paymenttype/delete?id=@item.Id" onclick="return confirm('Are you sure to delete this record?');" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            index++;
+        }
+
+    </tbody>
+</table>

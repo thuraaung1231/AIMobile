@@ -13,6 +13,250 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+.nav-Bg {
+    background-color: rgb(2, 34, 85);
 }
+
+.search-Bar {
+    border: none;
+    outline: none;
+    user-select: none;
+}
+
+.slideFontColor {
+    background: linear-gradient(to right, blue, red);
+    -webkit-background-clip: text; /* For Safari */
+    -webkit-text-fill-color: transparent; /* For Safari */
+    background-clip: text;
+    color: transparent;
+    animation: lightning 1s infinite alternate-reverse;
+}
+
+@keyframes lightning {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.search-Button {
+    border: none;
+}
+
+.Delivery-large {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    color: rgb(236, 213, 2);
+}
+
+.Delivery {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 10px;
+    color: rgb(236, 213, 2);
+}
+
+.LoginLogout {
+    background-color: transparent;
+    border: 1px solid rgb(28, 28, 255);
+    transition: all ease-in-out 0.3s;
+}
+
+    .LoginLogout:hover {
+        background-color: rgb(104, 104, 247);
+    }
+
+.product-Bar {
+    top: 55px;
+    background-color: rgb(4, 47, 117);
+}
+
+.SlidecContainer {
+    background-color: rgb(212, 214, 214);
+   
+}
+
+.w-50 {
+    user-select: none;
+}
+
+.carousel-item {
+    cursor: pointer;
+}
+
+.Pointer {
+    cursor: pointer;
+}
+
+.ImgContainer {
+    width: 50%;
+    margin: 0 auto;
+    height: 100px;
+}
+
+.AllProducts {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+
+    .AllProducts:hover {
+        box-shadow: 1px 2px 2px 3px lightgray;
+    }
+
+.popularProduct {
+    cursor: pointer;
+}
+
+    .popularProduct:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+
+.ChildOffcanvas {
+    background-color: rgb(4, 47, 117);
+    height: 100vh;
+}
+
+#myover::-webkit-scrollbar {
+    cursor: pointer;
+    height: 5px;
+}
+
+#myover::-webkit-scrollbar-thumb {
+    background-color: rgb(34, 0, 255);
+    border-radius: 5px;
+}
+
+.pageFooter {
+    background-color: rgb(239, 238, 238);
+}
+
+.Cursor-Pointer {
+    cursor: pointer;
+}
+
+.selectProduct {
+    background-color: rgb(247, 247, 252);
+    ;
+}
+
+.childSelectProduct {
+    height: 100px;
+    overflow: hidden;
+}
+
+.selectItem {
+    background-color: rgb(242, 236, 236);
+    cursor: pointer;
+}
+
+    .selectItem > .w-100:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+
+.fontFamilies {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.paymentMethods > .col-2 {
+    cursor: pointer;
+}
+
+.Filter {
+    top: 150px;
+}
+
+.inputSize {
+    width: 100px;
+}
+
+.delivery {
+    font-size: 13px;
+}
+
+.labelFontSize {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.DeliverySlideConatiner {
+    height: 300px;
+    overflow: hidden;
+}
+
+.Noti {
+    font-size: 10px;
+    color: rgb(245, 16, 16);
+    top: 2px;
+    border-radius: 5px;
+    left: 15px;
+}
+
+.AdminNav {
+    background-color: rgb(5, 5, 102);
+}
+
+.card-body, .General {
+    background-color: rgb(12, 12, 175);
+}
+
+.SideNav {
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: width 0.2s ease;
+}
+
+.myproduct {
+    display: none;
+    color: red
+}
+
+.SideNav::-webkit-scrollbar {
+    width: 8px;
+}
+
+.SideNav::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.rotate {
+    transition: all ease-in-out 0.3s;
+    transform: rotate(-90deg);
+}
+
+.CollapseArrow {
+    transition: all ease-in-out 0.3s;
+}
+
+.collapseItem {
+    cursor: pointer;
+}
+
+.CollapseBg {
+    background-color: rgb(58, 56, 93);
+}
+
+#adjustNav {
+    cursor: pointer;
+}
+
+.Adminbody {
+    background: linear-gradient(-45deg,rgb(232, 232, 238), rgb(199, 199, 219), rgb(222, 222, 231));
+}
+
+.formHeader {
+    font-family: Auriol LT Std Black;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+

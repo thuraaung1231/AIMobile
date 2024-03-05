@@ -1,19 +1,32 @@
 using AIMobile.DAO;
 using AIMobile.Services.Domains;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 var config = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(o=>o.UseSqlServer(config.GetConnectionString("AIMobileDB")));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(o =>
+{
+    o.SignIn.RequireConfirmedAccount = false;
+    o.Password.RequireDigit = true;
+    o.Password.RequiredLength = 8;
+    o.Password.RequireUppercase = true;
+    o.Password.RequireLowercase = true;
+}).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ITypeServices, TypeServices>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
 builder.Services.AddScoped<IShopService, ShopService>();
+builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IShopProductService, ShopProductService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,11 +41,16 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+});
 
 app.Run();
