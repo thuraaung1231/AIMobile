@@ -10,19 +10,21 @@
         </div>
     }
     <h3>Entry Type</h3>
-    <form action="/Type/Entry" method="post">
 
-
-
-        <div class="mb-3">
-            <label class="form-label">Type Name</label>
-            <input type="text" class="form-control border-bottom" asp-for="Name" placeholder="PLease Fill the Field!">
-            <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="col-12 m-0 p-0">
+        <h4 class="col-lg-7 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Entry Product Type</h4>
+    </div>
+    <form action="/Type/Entry" method="post" class="col-lg-7 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
+        
+        <div class="row">
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Type Name*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Name">
+            </div>
+            <div class="col-12 mb-2">
+                <button type="submit" class="btn btn-warning col-5" value="Entry">Entry</button>
+                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+            </div>
         </div>
-
-
-       
-        <input type="submit" class="btn btn-primary" value="Entry">
-        <input type="reset" class="btn btn-secondary" value="Cancel">
     </form>
 </body>
