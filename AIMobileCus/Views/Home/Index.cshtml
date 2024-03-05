@@ -1,99 +1,20 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
+@model ProductImageViewModel
 
-@model IList<ImageViewModel>
-<div class="offcanvas offcanvas-start bg-transparent border-0"
-     id="offcanvasExample"
-     aria-labelledby="offcanvasExampleLabel">
-    <div class="w-50 ChildOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
-                Products
-            </h5>
-            <button type="button"
-                    class="btn btn-transparent"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close">
-                <i class="text-light fs-4 fa-solid fa-xmark"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body overflow-visible">
-            <div class="w-100 dropend">
-                <button type="button"
-                        class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    All Products <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                </ul>
-            </div>
-            <div class="w-100 dropend">
-                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    Smart Phones <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-light">
-                    <li><a class="dropdown-item" href="#">Samsung</a></li>
-                    <li><a class="dropdown-item" href="#">RealMe</a></li>
-                    <li><a class="dropdown-item" href="#">Apple</a></li>
-                </ul>
-            </div>
-            <div class="w-100 dropend">
-                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    Laptops <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-light">
-                    <li><a class="dropdown-item" href="#">Samsung</a></li>
-                    <li><a class="dropdown-item" href="#">RealMe</a></li>
-                    <li><a class="dropdown-item" href="#">Apple</a></li>
-                </ul>
-            </div>
-            <div class="w-100 dropend">
-                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    Tablets <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-light">
-                    <li><a class="dropdown-item" href="#">Samsung</a></li>
-                    <li><a class="dropdown-item" href="#">RealMe</a></li>
-                    <li><a class="dropdown-item" href="#">Apple</a></li>
-                </ul>
-            </div>
-            <div class="w-100 dropend">
-                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                    Other Accessories <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-light">
-                    <li><a class="dropdown-item" href="#">Samsung</a></li>
-                    <li><a class="dropdown-item" href="#">RealMe</a></li>
-                    <li><a class="dropdown-item" href="#">Apple</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--Slide Show-->
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner SlidecContainer">
 
-        <div class="carousel-item active" data-bs-interval="2000">
+        <div class="carousel-item active SlidecContainer" data-bs-interval="2000">
             <div class="d-flex">
                 <img src="/Images/slide1.jpg"
                      class="w-50 display-4 d-block slideImg"
                      alt="..." />
-                <p class="d-flex justify-content-center w-50 align-items-center fs-3 slideFontColor fw-bold bg-light">
+                <p class="d-flex justify-content-center w-50 align-items-center fs-3 slideFontColor fw-bold">
 
                     20% Discount For Summer Promotion <br> Enjoy With Your Life <br> Enjyo the Smooth
                 </p>
@@ -135,6 +56,9 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+@* End of Slide Show *@
+
+
 <div class="container-fluid mb-2">
     <div class="overflow-x-scroll d-flex justify-content-lg-around align-items-center p-2"
          id="myover">
@@ -193,6 +117,8 @@
     </div>
 </div>
 <hr>
+
+@* Second Slide Show *@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-5 col-md-5 col-12 d-flex justify-content-center align-items-center">
@@ -219,91 +145,26 @@
     </div>
 </div>
 
+
+@* Main Product Body *@
 <div class="container-fluid">
     <p class="text-center fw-bold fs-5 mt-4 mb-1">Most Popular Items</p>
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-6 p-2">
-            <div class="col-10 mx-auto shadow-sm p-3 rounded">
-                <img src="/images/xiaomi.png" class="w-100 popularProduct" alt="" />
-                <p class="text-center m-0 p-0 fs-6">Xiaomi 13T Pro</p>
-                <div class="d-flex justify-content-center">
-                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
+        @for(int i=0;i<Model.Images.Count && i<Model.Products.Count;i++)
+        {
+            var image=Model.Images[i];
+            var product = Model.Products[i];
+            <div class="col-lg-3 col-md-6 col-6 p-2 SelectProduct" id="@product.Id">
+                <div class="col-10 mx-auto shadow-sm p-3 rounded" id="@image.Id">
+                    <img src="@image.FrontImageUrl" class="w-100 popularProduct" alt="" />
+                    <p class="text-center m-0 p-0 fs-6">@product.Name</p>
+                    <div class="d-flex justify-content-center">
+                        <span class="text-primary px-2 fw-bold fs-6">@product.UnitPrice Ks</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-6 p-2">
-            <div class="col-10 mx-auto shadow-sm p-3 rounded">
-                <img src="/images/smg24.png" class="w-100 popularProduct" alt="" />
-                <p class="text-center m-0 p-0 fs-6">Galaxy S24 Ultra</p>
-                <div class="d-flex justify-content-center">
-                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-6 p-2">
-            <div class="col-10 mx-auto shadow-sm p-3 rounded">
-                <img src="/images/realme.png" class="w-100 popularProduct" alt="" />
-                <p class="text-center m-0 p-0 fs-6">RealMe 12 Pro 5G</p>
-                <div class="d-flex justify-content-center">
-                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-6 p-2">
-            <div class="col-10 mx-auto shadow-sm p-3 rounded">
-                <img src="/images/smg24.png" class="w-100 popularProduct" alt="" />
-                <p class="text-center m-0 p-0 fs-6">This is my phone</p>
-                <div class="d-flex justify-content-center">
-                    <span class="text-decoration-line-through fs-6">450000 KS</span><span class="text-primary px-2 fw-bold fs-6">400000 Ks</span>
-                </div>
-            </div>
-        </div>
+        }
+        
     </div>
 </div>
-<div class="container-fluid pageFooter mt-3 border-top border-secondary">
-    <div class="row border-bottom border-secondary p-2">
-        <div class="col-lg-3 col-6  mb-lg-0 mb-2 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-solid fa-truck display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">Free Shipping</div>
-                    <div class="fs-6 fw-normal text-secondary">For Every State</div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-lg-3 col-6 mb-lg-0 mb-2 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-solid fa-reply display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">3 Days Return Policy</div>
-                    <div class="fs-6 fw-normal text-secondary">
-                        Return within 3 Days
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-regular fa-credit-card display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">Easy Payment</div>
-                    <div class="fs-6 fw-normal text-secondary">
-                        Pay with various payment methods
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-solid fa-truck-fast display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">Fase Delivery</div>
-                    <div class="fs-6 fw-normal text-secondary">
-                        2 Days deliver in YGN & MDY
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

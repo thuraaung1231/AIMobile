@@ -1,4 +1,23 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(".SelectProduct").on('click', function () {
+    
+    var ImageAndProductId = {};
+    ImageAndProductId.ProductId = $(this).attr("id");
+    ImageAndProductId.ImageId = $(this).children().first().attr("id")
+    var url = "/ShopProduct/ViewShopProduct";
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: ImageAndProductId,
+        success: function (response) {
+            var data = JSON.stringify(response);
+           
+            if (data != null) {
+                window.location.href = "/ShopProduct/DetailProduct?shopProductData=" + encodeURIComponent(JSON.stringify(response));
+            }
 
-// Write your JavaScript code.
+        },
+        failure: function (error) {
+            console.log(error);
+        }
+    })
+})

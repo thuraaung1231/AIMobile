@@ -6,9 +6,9 @@ namespace AIMobile.Models.DataModels
     public class ShopProductEntity:BaseEntity
     {
 
-        public string Shop_Id { get; set; }
-        public string Product_Id { get; set; }
-        public string Image_Id { get; set; }
+        public string ShopId { get; set; }
+        public string ProductId { get; set; }
+        public string ImageId { get; set; }
         public string Description { get; set; }
         public int StockCount { get; set; }
     }

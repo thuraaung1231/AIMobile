@@ -54,9 +54,9 @@ namespace AIMobile.Controllers
                 {
 
                     Id = Guid.NewGuid().ToString(),
-                    Shop_Id = spv.Shop_Id,
-                    Image_Id = spv.Image_Id,
-                    Product_Id = spv.Product_Id,
+                    ShopId = spv.ShopId,
+                    ImageId = spv.ImageId,
+                    ProductId = spv.ProductId,
                     Description = spv.Description,
                     StockCount = spv.StockCount,
                 };

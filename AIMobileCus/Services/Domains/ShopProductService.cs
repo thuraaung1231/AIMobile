@@ -32,7 +32,10 @@ namespace AIMobile.Services.Domains
         {
             return _applicationDbContext.ShopProduct.Find(Id);
         }
-
+        public ShopProductEntity GetShopProduct(string productId,string imageId)
+        {
+            return _applicationDbContext.ShopProduct.Where(p=>p.ProductId==productId && p.ImageId==imageId).FirstOrDefault();
+        }
         public IList<ShopProductEntity> ReteriveAll()
         {
             return _applicationDbContext.ShopProduct.ToList();
