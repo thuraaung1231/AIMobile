@@ -1,0 +1,74 @@
+﻿@model ShopProductViewModel
+<body style="background-color:lightblue">
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Info"]
+        </div>
+    }
+    <form action="/shopProduct/Edit" method="post">
+        <h3>Edit ShopProduct</h3>
+        <div class="mb-3">
+            <label class="form-label">Product Name</label>
+            <input name="Product_Id" type="hidden" value="@Model.Id" />
+
+            <select name="Product_Id" class="form-select">
+                <option value="@Model.ProductId">@Model.ProductName</option>
+                @foreach (var product in ViewBag.Product)
+                {
+                    if (Model.ProductId != product.Id)
+                    {
+                        <option value="@product.Id">@product.Name</option>
+                    }
+
+
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Shop Name</label>
+            <input name="Shop-Id" type="hidden" value="@Model.Id" />
+            <select name="Shop_Id" class="form-select">
+                <option value="@Model.ShopId">@Model.ShopName</option>
+                @foreach (var shop in ViewBag.Shop)
+                {
+                    if (Model.ShopId != shop.Id)
+                    {
+                        <option value="@shop.Id">@shop.Name </option>
+                    }
+
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Image Name</label>
+            <input name="Image_Id" type="hidden" value="@Model.Id" />
+            <select name="Image_Id" class="form-select">
+                <option value="@Model.ImageId">@Model.ImageName</option>
+                @foreach (var image in ViewBag.Image)
+                {
+                    if (Model.ImageId != image.Id)
+                    {
+                        <option value="@image.Id">@image.ImageName </option>
+                    }
+
+
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description </label>
+            <input type="text" class="form-control" name="Description" value="@Model.Description">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"> Stock Count</label>
+            <input type="number" class="form-control" name="StockCount" value="@Model.StockCount">
+        </div>
+        <input type="submit" class="btn btn_primary" value="Entry" />
+        <input type="reset" class="btn btn_primary" value="Cancel" />
+    </form>
+</body>
+
+
