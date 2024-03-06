@@ -11,7 +11,7 @@
         public string ImageName { get; set; }
         public string Description { get; set; }
         public int StockCount { get; set; }
-        
 
+        public string? TypeId { get; set; }
     }
 }

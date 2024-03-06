@@ -40,7 +40,10 @@ namespace AIMobile.Services.Domains
         {
             return _applicationDbContext.ShopProduct.ToList();
         }
-
+        public ShopProductEntity GetShopProductByProductId(string productId)
+        {
+            return _applicationDbContext.ShopProduct.Where(s => s.ProductId == productId).FirstOrDefault();
+        }
         public void Update(ShopProductEntity shopProduct)
         {
             _applicationDbContext.ShopProduct.Update(shopProduct);

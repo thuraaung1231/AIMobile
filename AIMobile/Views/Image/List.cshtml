@@ -7,6 +7,17 @@
 }
 
 <table class="table table-striped-columns" id="tableImage">
+
+<table class="table table-striped-columns table-primary border border-secondary" id="tableRoute">
+    <thead>
+        <tr>
+            <th scope="col">Sr.No</th>
+            <th scope="col">FrontImage</th>
+            <th scope="col">BackImage</th>
+            <th scope="col">RightSide</th>
+            <th scope="col">LeftSide</th>
+
+<table class="table table-striped-columns">
     <thead>
         <tr>
             <th scope="col">Sr.No</th>
@@ -14,6 +25,7 @@
             <th scope="col">BackImageUrl</th>
             <th scope="col">RightSideImageUrl</th>
             <th scope="col">LeftSideImageUrl</th>
+
             <th scope="col">ImageName</th>
             <th scope="col">Filetype</th>
             <th scope="col">Filesize</th>
@@ -30,16 +42,25 @@
         {
             <tr>
                 <td>@index</td>
+                <td><img src="@item.FrontImageUrl" class="w-50"> </td>
+                <td><img src="@item.BackImageUrl" class="w-50"> </td>
+                <td><img src="@item.RightSideImageUrl" class="w-50"> </td>
+                <td> <img src="@item.LeftSideImageUrl" class="w-50"></td>
+
                 <td>@item.FrontImageUrl</td>
                 <td>@item.BackImageUrl</td>
                 <td>@item.RightSideImageUrl</td>
                 <td>@item.LeftSideImageUrl</td>
+
                 <td>@item.ImageName</td>
                 <td>@item.Filetype</td>
                 <td>@item.Filesize</td>
 
                 <td>
+                    <a class="btn btn-success mb-2" href="/Image/Edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+
                     <a class="btn btn-success" href="/Image/Edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+
                     <a href="/Image/Delete?id=@item.Id" onclick="return confirm('are you sure to delete this recrod?');" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </td>
 
@@ -54,3 +75,17 @@
         $("#tableImage").DataTable();
     })
 </script>
+
+</table>
+<script>
+     $(document).ready(function () {
+        $("#tableRoute").DataTable({
+            scrollY: true,
+            scrollX: true,
+            scrollCollapse: true,
+        });
+       
+    })
+</script>
+
+</table>

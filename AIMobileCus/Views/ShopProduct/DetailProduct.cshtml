@@ -1,5 +1,11 @@
 ﻿
-@model List<string>
+@model IList<ProductViewModel>
+@{
+    List<string>DescriptionKeys = ViewBag.DescriptionKey;
+    List<string> DescriptionValues = ViewBag.DescriptionValue;
+    List<ImageViewModel> RelatedImages = ViewBag.RelatedImages;
+}
+
 <div class="container-fluid">
     <div class="row">
         <a href="home.html" class="my-auto py-2 text-decoration-none text-dark"><i class="fa-solid fa-circle-arrow-left"></i> Back to products</a>
@@ -42,17 +48,19 @@
         <div class="col-lg-4 px-3">
             <h4 class="fontFamilies fw-bold">@ViewBag.Product.Name</h4>
             <p class="text-justify fs-6">
-                @ViewBag.Descriptions
+                @DescriptionValues[DescriptionValues.Count-1]
             </p>
             <div class="d-flex mb-2 align-items-center">
+                <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice"/>
                 <span>Price:</span>
                 <div class="text-primary fw-bold fs-5 ms-3">
-                    <p class="d-inline">@ViewBag.Product.UnitPrice</p>
+                    <p class="d-inline" id="TotalPrice">@ViewBag.Product.UnitPrice</p>
                     Ks
                 </div>
             </div>
 
             <span>Quantity : </span>
+            <input id="StockCount" hidden value="@ViewBag.shopProduct.StockCount"/>
             <div class="btn-group"
                  role="group"
                  aria-label="Basic outlined example">
@@ -119,119 +127,42 @@
 </div>
 <div class="container-fluid">
     <div class="row p-2">
-        <p class="mt-4 pb-0 mb-0 fs-5 fw-bold fontFamilies">Product Details of Samsung Galaxy Z Flip5</p>
+        <p class="mt-4 pb-0 mb-0 fs-5 fw-bold fontFamilies">Product Details of <span>@ViewBag.Product.Name</span></p>
         <table class="table mt-2 p-3 table-striped">
-
             <tbody>
-                <tr>
-                    <td scope="row" class="fontFamilies">Model</td>
-                    <td class="fontFamilies fs-6">Samsung Galaxy Z flip5</td>
+                @for (int i = 0; i < DescriptionKeys.Count - 1; i++)
+                {
+                    <tr>
+                        <td scope="row" class="fontFamilies">@DescriptionKeys[i]</td>
+                        <td class="fontFamilies fs-6">@DescriptionValues[i]</td>
 
-                </tr>
-                <tr>
-                    <td scope="row" class="fontFamilies">Ram</td>
-                    <td class="fontFamilies fs-6">8 GB</td>
+                    </tr>
+                }
 
-                </tr>
-                <tr>
-                    <td scope="row" class="fontFamilies">Rom</td>
-                    <td class="fontFamilies fs-6" class="fontFamilies">1 TB</td>
-
-                </tr>
-                <tr>
-                    <td scope="row">Color</td>
-                    <td class="fontFamilies fs-6">Green</td>
-
-                </tr>
-                <tr>
-                    <td scope="row" class="fontFamilies">Screen</td>
-                    <td class="fontFamilies fs-6">5.6"</td>
-
-                </tr>
             </tbody>
         </table>
     </div>
     <hr>
     <div class="row">
         <h4>Other Related Products</h4>
-        <div class="col-2">
-            <div class="p-3 shadow rounded">
-                <div class="bg-body-secondary p-4 rounded">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="">
+        @for(int i = 0; i < RelatedImages.Count; i++)
+        {
+            <div class="col-2">
+                <div class="p-3 shadow rounded">
+                    <div class="bg-body-secondary p-4 rounded">
+                        <img src="@RelatedImages[i].FrontImageUrl" class="w-100" alt="">
+                    </div>
+                    <p class="m-0 p-0 pt-2">@Model[i].Name</p>
+                    <p class="m-0 p-0">
+                        <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
+                    </p>
+                    <span class="text-primary fw-bold fs-6">@Model[i].UnitPrice<p class="d-inline">Ks</p></span>
                 </div>
-                <p class="m-0 p-0 pt-2">Ear Phone</p>
-                <p class="m-0 p-0">
-                    <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                </p>
-                <span class="text-primary fw-bold fs-6">340,000 <p class="d-inline">Ks</p></span>
-            </div>
 
-        </div>
-        <div class="col-2">
-            <div class="p-3 shadow rounded">
-                <div class="bg-body-secondary p-4 rounded">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="">
-                </div>
-                <p class="m-0 p-0 pt-2">Ear Phone</p>
-                <p class="m-0 p-0">
-                    <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                </p>
-                <span class="text-primary fw-bold fs-6">340,000 <p class="d-inline">Ks</p></span>
             </div>
-
-        </div>
-        <div class="col-2">
-            <div class="p-3 shadow rounded">
-                <div class="bg-body-secondary p-4 rounded">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="">
-                </div>
-                <p class="m-0 p-0 pt-2">Ear Phone</p>
-                <p class="m-0 p-0">
-                    <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                </p>
-                <span class="text-primary fw-bold fs-6">340,000 <p class="d-inline">Ks</p></span>
-            </div>
-
-        </div>
-        <div class="col-2">
-            <div class="p-3 shadow rounded">
-                <div class="bg-body-secondary p-4 rounded">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="">
-                </div>
-                <p class="m-0 p-0 pt-2">Ear Phone</p>
-                <p class="m-0 p-0">
-                    <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                </p>
-                <span class="text-primary fw-bold fs-6">340,000 <p class="d-inline">Ks</p></span>
-            </div>
-
-        </div>
-        <div class="col-2">
-            <div class="p-3 shadow rounded">
-                <div class="bg-body-secondary p-4 rounded">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="">
-                </div>
-                <p class="m-0 p-0 pt-2">Ear Phone</p>
-                <p class="m-0 p-0">
-                    <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                </p>
-                <span class="text-primary fw-bold fs-6">340,000 <p class="d-inline">Ks</p></span>
-            </div>
-
-        </div>
-        <div class="col-2">
-            <div class="p-3 shadow rounded">
-                <div class="bg-body-secondary p-4 rounded">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="">
-                </div>
-                <p class="m-0 p-0 pt-2">Ear Phone</p>
-                <p class="m-0 p-0">
-                    <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                </p>
-                <span class="text-primary fw-bold fs-6">340,000 <p class="d-inline">Ks</p></span>
-            </div>
-
-        </div>
+        }
+        
+        
     </div>
 </div>
 <script >
@@ -243,10 +174,15 @@
     })
     $("#increaseButton").click(function () {
         var NumberOfItem = parseInt($("#numberOfItem").val());
-        var IncreaseItem = ++NumberOfItem;
-        $("#numberOfItem").val(IncreaseItem);
-        var totalAmount = $("#productPrice").val() * IncreaseItem;
-        $("#totalPrice").val(totalAmount)
+        if (NumberOfItem <= $("#StockCount").val()) {
+            var IncreaseItem = ++NumberOfItem;
+            $("#numberOfItem").val(IncreaseItem);
+            var totalAmount = $("#UnitPrice").val() * IncreaseItem;
+            $("#TotalPrice").html(totalAmount)
+        }else{
+            alert("Insufficient Product")
+        }
+        
     })
     $("#reduceButton").click(function () {
         var NumberOfItem = parseInt($("#numberOfItem").val());
@@ -255,8 +191,8 @@
         } else {
             var DecreaseItem = --NumberOfItem;
             $("#numberOfItem").val(DecreaseItem);
-            var totalAmount = $("#productPrice").val() * DecreaseItem;
-            $("#totalPrice").val(totalAmount)
+            var totalAmount = $("#UnitPrice").val() * DecreaseItem;
+            $("#TotalPrice").html(totalAmount)
         }
     })
 </script>
