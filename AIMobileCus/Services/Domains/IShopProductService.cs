@@ -11,5 +11,6 @@ namespace AIMobile.Services.Domains
         ShopProductEntity GetById(string Id);
         void Delete(string Id);
         ShopProductEntity GetShopProduct(string ProductId, string ImageId);
+        ShopProductEntity GetShopProductByProductId(string productId);
     }
 }

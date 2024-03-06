@@ -38,6 +38,9 @@ namespace AIMobileCus.Controllers
                 ImageId = s.ImageId,
                 ShopId= s.ShopId,
                 ProductId= s.ProductId,
+                Description= s.Description,
+                StockCount  = s.StockCount,
+                
             }).ToList();
             foreach(var shopProduct in shopProductViewModels)
             {
@@ -47,30 +50,38 @@ namespace AIMobileCus.Controllers
             foreach(var productId in ProductIds)
             {
                 var productEntity=_productService.GetById(productId);
-                ProductViewModel productViewModel = new ProductViewModel()
-                {
-                    Id = productEntity.Id,
-                    Name = productEntity.Name,
-                    UnitPrice = productEntity.UnitPrice,
-                    TypeId = productEntity.TypeId,
-                    BrandId = productEntity.BrandId,
-                };
-               Products.Add(productViewModel);
+               
+                    
+                        ProductViewModel productViewModel = new ProductViewModel()
+                        {
+                            Id = productEntity.Id,
+                            Name = productEntity.Name,
+                            UnitPrice = productEntity.UnitPrice,
+                            TypeId = productEntity.TypeId,
+                            BrandId = productEntity.BrandId,
+                        };
+                        Products.Add(productViewModel);
+                    
+               
+                
             }
             foreach(var imageId in ImageIds)
             {
                 var imageEntity=_imageService.GetById(imageId);
-                ImageViewModel imageViewModel = new ImageViewModel()
-                {
-                    Id = imageEntity.Id,
-                    FrontImageUrl = imageEntity.FrontImageUrl,
-                    BackImageUrl = imageEntity.BackImageUrl,
-                    LeftSideImageUrl = imageEntity.LeftSideImageUrl,
-                    RightSideImageUrl = imageEntity.RightSideImageUrl,
-                    Filesize = imageEntity.Filesize,
-                    Filetype = imageEntity.Filetype,
-                };
-                Images.Add(imageViewModel);
+               
+                    ImageViewModel imageViewModel = new ImageViewModel()
+                    {
+                        Id = imageEntity.Id,
+                        FrontImageUrl = imageEntity.FrontImageUrl,
+                        BackImageUrl = imageEntity.BackImageUrl,
+                        LeftSideImageUrl = imageEntity.LeftSideImageUrl,
+                        RightSideImageUrl = imageEntity.RightSideImageUrl,
+                        Filesize = imageEntity.Filesize,
+                        Filetype = imageEntity.Filetype,
+                    };
+                    Images.Add(imageViewModel);
+               
+               
             }
             ProductImageViewModel ProductImages=new ProductImageViewModel();
             ProductImages.Images = Images;
