@@ -4,7 +4,7 @@
 {
     <div class="alert alert-success" role="alert">@TempData["info"]</div>
 }
-<table class="table table-striped-columns table-dark">
+<table class="table table-striped-columns table-dark" id="tablePaymentType">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -31,3 +31,8 @@
 
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $("#tablePaymentType").DataTable();
+    })
+</script>

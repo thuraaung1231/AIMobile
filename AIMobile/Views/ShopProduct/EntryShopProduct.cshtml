@@ -30,7 +30,7 @@
         </select>
 
     </div>
-    @if (Model.Name == "Phone" || Model.Name == "Tablet")
+    @if (Model.Name == "Mobile" || Model.Name == "Tablet")
     {
         <div>
             <div class="mb-3">
@@ -216,7 +216,7 @@
         <label class="form-label">StockCount</label>
         <input type="number" class="form-control" name="StockCount">
     </div>
-    <input type="text" name="Description" id="DescriptionOutput" />
+    <input type="text" name="Description" id="DescriptionOutput" hidden/>
     <input type="submit" class="btn btn_primary" value="Entry" id="EntryBtn" />
 </form>
     
