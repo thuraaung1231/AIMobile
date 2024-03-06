@@ -1,0 +1,12 @@
+﻿@model List<ProductViewModel>
+<button class="btn btn-transparent border border-primary  text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+    All Products
+</button>
+<ul class="dropdown-menu dropdown-menu-dark">
+    @foreach (var product in Model)
+    {
+        <Li> <a href="/Home/Filter?Id=@product.Id">  @product.Name</a></Li>
+    }
+</ul>

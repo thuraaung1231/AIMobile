@@ -3,6 +3,7 @@
 }
 
 @model IList<ImageViewModel>
+
 <div class="offcanvas offcanvas-start bg-transparent border-0"
      id="offcanvasExample"
      aria-labelledby="offcanvasExampleLabel">
@@ -27,9 +28,9 @@
                     All Products <i class="fa-solid fa-angle-right"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                    <li><a class="dropdown-item" href="#">Menu item</a></li>
+                    @foreach(var product in ViewBag.product){
+                        <Li>@product.Name </Li>
+                    }
                 </ul>
             </div>
             <div class="w-100 dropend">
@@ -136,10 +137,10 @@
     </button>
 </div>
 <div class="container-fluid mb-2">
-    <div class="overflow-x-scroll d-flex justify-content-lg-around align-items-center p-2"
+    <div class="overflow-x-scroll d-flex justify-content-lg-around align-items-center p-2" 
          id="myover">
-        <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+        <div >
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2 " id="Laptop" >
                 <p class="fw-bold">LAPTOP</p>
                 <div class="ImgContainer">
                     <img src="/images/coollaptop.png" class="w-100" alt="MaceBook" />
@@ -147,7 +148,7 @@
             </div>
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Phone">
                 <p class="fw-bold">SMART PHONE</p>
                 <div class="ImgContainer">
                     <img src="/images/samsung-flip.png"
@@ -157,7 +158,7 @@
             </div>
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Tablet">
                 <p class="fw-bold">TABLET</p>
                 <div class="ImgContainer">
                     <img src="/images/tablets.png" class="w-100" alt="SamsungFlip" />
@@ -165,7 +166,7 @@
             </div>
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="PowerBank">
                 <p class="fw-bold">POWER BANK</p>
                 <div class="ImgContainer">
                     <img src="/images/powerbank.png" class="w-100" alt="PowerBank" />
@@ -173,7 +174,7 @@
             </div>
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="SmartWatch">
                 <p class="fw-bold">SMART WATCH</p>
                 <div class="ImgContainer">
                     <img src="/images/smartwatch.png"
@@ -183,7 +184,7 @@
             </div>
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2">
+            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="HeadPhone">
                 <p class="fw-bold">HEADPHONE</p>
                 <div class="ImgContainer">
                     <img src="/images/HeadPhone.png" class="w-100" alt="HeadPhone" />
@@ -261,3 +262,229 @@
     </div>
 </div>
 
+<<<<<<< Updated upstream
+=======
+        <div class="col-lg-3 col-6 mb-lg-0 mb-2 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-solid fa-reply display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">3 Days Return Policy</div>
+                    <div class="fs-6 fw-normal text-secondary">
+                        Return within 3 Days
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-regular fa-credit-card display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">Easy Payment</div>
+                    <div class="fs-6 fw-normal text-secondary">
+                        Pay with various payment methods
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6 Cursor-Pointer">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <i class="fa-solid fa-truck-fast display-6 me-2"></i>
+                <div>
+                    <div class="fw-bold fs-6">Fase Delivery</div>
+                    <div class="fs-6 fw-normal text-secondary">
+                        2 Days deliver in YGN & MDY
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+ 
+    $(document).ready(function () {
+        $("#Laptop").on('click', function () {
+            var searchName = "Laptop";
+            var url = "/Home/Search?searchName=Laptop";
+        
+            $.ajax({
+                type: 'POST',
+                url: url,
+              
+
+                 success: function (response) {
+                    var data = JSON.stringify(response);
+                     if (data!=null) { 
+                        // window.location = "/Home/SearchList";
+                         // window.Date = data;
+                        window.location.href = "/Home/SearchList?Typedata="+ encodeURIComponent(JSON.stringify(response));
+
+
+                     }
+
+                 },
+                 failure: function (error) { 
+                     console.log(error);
+                     alert("unok");
+                 }
+
+
+            })
+        });
+    } );
+    $(document).ready(function () {
+        $("#Phone").on('click', function () {
+        
+            var url = "/Home/Search?searchName=Mobile";
+          
+            $.ajax({
+                type: 'POST',
+                url: url,
+
+
+                success: function (response) {
+                    var data = JSON.stringify(response);
+                    if (data != null) {
+                        // window.location = "/Home/SearchList";
+                        // window.Date = data;
+                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+
+
+                    }
+
+                },
+                failure: function (error) {
+                    console.log(error);
+                    alert("unok");
+                }
+
+
+            })
+        });
+    });
+    $(document).ready(function () {
+    $("#Tablet").on('click', function () {
+
+            var url = "/Home/Search?searchName=Tablet";
+         
+            $.ajax({
+                type: 'POST',
+                url: url,
+
+
+                success: function (response) {
+                    var data = JSON.stringify(response);
+                    if (data != null) {
+                        // window.location = "/Home/SearchList";
+                        // window.Date = data;
+                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+
+
+                    }
+
+                },
+                failure: function (error) {
+                    console.log(error);
+                    alert("unok");
+                }
+
+
+            })
+        });
+    });
+    $(document).ready(function () {
+        $("#PowerBank").on('click', function () {
+
+            var url = "/Home/Search?searchName=PowerBank";
+           
+            $.ajax({
+                type: 'POST',
+                url: url,
+
+
+                success: function (response) {
+                    var data = JSON.stringify(response);
+                    if (data != null) {
+                        // window.location = "/Home/SearchList";
+                        // window.Date = data;
+                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+
+
+                    }
+
+                },
+                failure: function (error) {
+                    console.log(error);
+                    alert("unok");
+                }
+
+
+            })
+        });
+    });
+    $(document).ready(function () {
+        $("#SmartWatch").on('click', function () {
+
+            var url = "/Home/Search?searchName=Smart Watch";
+         
+            $.ajax({
+                type: 'POST',
+                url: url,
+
+
+                success: function (response) {
+                    var data = JSON.stringify(response);
+                    if (data != null) {
+                        // window.location = "/Home/SearchList";
+                        // window.Date = data;
+                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+
+
+                    }
+
+                },
+                failure: function (error) {
+                    console.log(error);
+                    alert("unok");
+                }
+
+
+            })
+        });
+    });
+    $(document).ready(function () {
+        $("#HeadPhone").on('click', function () {
+
+            var url = "/Home/Search?searchName=HeadPhone";
+          
+            $.ajax({
+                type: 'POST',
+                url: url,
+
+
+                success: function (response) {
+                    var data = JSON.stringify(response);
+                    if (data != null) {
+                        // window.location = "/Home/SearchList";
+                        // window.Date = data;
+                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+
+
+                    }
+
+                },
+                failure: function (error) {
+                    console.log(error);
+                    alert("unok");
+                }
+
+
+            })
+        });
+    });
+   
+
+</script>
+>>>>>>> Stashed changes

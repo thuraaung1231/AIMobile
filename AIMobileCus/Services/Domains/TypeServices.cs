@@ -32,6 +32,10 @@ namespace AIMobile.Services.Domains
         {
             return _applicationDbContext.Type.Where(w => w.Id == id).SingleOrDefault();
         }
+        public TypeEntity GetByName(string Name)
+        {
+            return _applicationDbContext.Type.Where(w => w.Name == Name).SingleOrDefault();
+        }
 
         public IList<TypeEntity> ReteriveAll()
         {

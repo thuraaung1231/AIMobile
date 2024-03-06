@@ -9,5 +9,6 @@ namespace AIMobile.Services.Domains
         void Update(TypeEntity Type);
         TypeEntity GetById(string id);
         void Delete(string Id);
+        public TypeEntity GetByName(string Name);
     }
 }
