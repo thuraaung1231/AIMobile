@@ -1,5 +1,6 @@
 using AIMobile.DAO;
 using AIMobile.Services.Domains;
+using AIMobileCus.Services.Domains;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSession();
 var config = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(config.GetConnectionString("AIMobileDB")));
 
@@ -19,6 +21,7 @@ builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
 builder.Services.AddScoped<IShopService, ShopService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IShopProductService, ShopProductService>();
+builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +34,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

@@ -16,5 +16,6 @@ public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : ba
         public DbSet<ShopEntity> Shop { get; set; }
         public DbSet<ImageEntity>Image { get; set; }
         public DbSet<ShopProductEntity> ShopProduct { get; set; }
+        public DbSet<PurchaseEntity> Purchase { get; set; }
     }
 }
