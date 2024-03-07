@@ -11,32 +11,34 @@
         </div>
     }
     <h3 class="mx-auto">Edit User</h3>
-    <form action="/user/update" method="post">
+
+    <div class="col-12 m-0 p-0">
+        <h4 class="col-lg-9 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Edit User</h4>
+    </div>
+    <form action="/user/update" method="post" class="col-lg-9 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
         <input type="hidden" name="id" value="@Model.Id" />
-        <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="PLease Fill the Field!">
 
+        <div class="row">
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Name</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Name" value="@Model.Name">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">PhoneNo</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="PhoneNo" value="@Model.PhoneNo">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Email</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Email" value="@Model.Email">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Address</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Address" value="@Model.Address">
+            </div>
+            <div class="col-12 mb-2">
+                <button type="submit" class="btn btn-warning col-5" value="Update">Update</button>
+                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label">PhoneNo</label>
-            <input type="text" class="form-control" name="PhoneNo" value="@Model.PhoneNo" placeholder="PLease Fill the Field!">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="text" class="form-control" name="Email" value="@Model.Email" placeholder="PLease Fill the Field!">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Address</label>
-            <input type="text" class="form-control" name="Address" value="@Model.Address" placeholder="PLease Fill the Field!">
-        </div>
-
-
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input">
-            <label class="form-check-label">Terms And Conditions</label>
-        </div>
-        <input type="submit" class="btn btn-primary" value="Update">
-        <input type="reset" class="btn btn-secondary" value="Cancel">
     </form>
 </body>

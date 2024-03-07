@@ -6,7 +6,7 @@
     <div class="alert alert-info">@TempData["info"]</div>
 }
 
-<table class="table table-striped-columns">
+<table class="table table-striped-columns"  id="tableShopProduct">
     <thead>
         <tr>
             <th scope="col">No</th>
@@ -31,7 +31,7 @@
                 <td>@item.ShopName</td>
                 <td>@item.ProductName</td>
                 <td>@item.ImageName</td>
-                <td>@item.Description</td>
+                <td class="Description">@item.Description</td>
                 <td>@item.StockCount</td>
                 <td>
                     <a class="btn btn-success" href="/shopproduct/Edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -42,3 +42,8 @@
         }
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $("#tableShopProduct").DataTable();
+    })
+</script>

@@ -1,7 +1,10 @@
 ﻿using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
+using AIMobileCus.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
+using Newtonsoft.Json;
 
 namespace AIMobile.Controllers
 {
@@ -13,7 +16,7 @@ namespace AIMobile.Controllers
         private readonly IImageService _imageService;
         private readonly ITypeServices _typeServices;
 
-        public ShopProductController(IShopProductService shopProductService,IShopService shopService,IProductService productService,IImageService imageService,ITypeServices typeServices)
+        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices)
         {
             _shopProductService = shopProductService;
             _shopService = shopService;
@@ -21,64 +24,93 @@ namespace AIMobile.Controllers
             _imageService = imageService;
             _typeServices = typeServices;
         }
-        public IActionResult Entry()
-        {
-            IList<TypeViewModel> typeViewModel=_typeServices.ReteriveAll().Select(p=>new TypeViewModel
-            {
-                Id = p.Id,
-                Name = p.Name,
-            }).ToList();
-            
-            
-            return View(typeViewModel);
-        }
-        [HttpGet]
-        public IActionResult EntryShopProduct(string id)
-        {
-            ViewBag.Shop = _shopService.ReteriveAll().ToList();
-            ViewBag.Product = _productService.ReteriveAll().Where(p=>p.TypeId==id).ToList();
-            ViewBag.Image = _imageService.ReteriveAll().ToList();
-            TypeEntity typeEntity  =_typeServices.GetById(id);
-            TypeViewModel typeViewModel = new TypeViewModel()
-            {
-                Id = typeEntity.Id,
-                Name = typeEntity.Name,
-            };
-            return View(typeViewModel);
-        }
+
         [HttpPost]
-        public IActionResult Entry(ShopProductViewModel spv) {
-            try
-            {
-                ShopProductEntity shopProductEntity = new ShopProductEntity()
-                {
-
-                    Id = Guid.NewGuid().ToString(),
-                    Shop_Id = spv.Shop_Id,
-                    Image_Id = spv.Image_Id,
-                    Product_Id = spv.Product_Id,
-                    Description = spv.Description,
-                    StockCount = spv.StockCount,
-                };
-                _shopProductService.Entry(shopProductEntity);
-                TempData["info"] = "Save Successfully the record to the system";
-
-            }
-            catch (Exception e)
-            {
-                TempData["info"] = "Error occur when the data record to the system";
-            }
-            return RedirectToAction("Entry");
-        }
-        public IActionResult GetById(string id)
+        public JsonResult ViewShopProduct(string ProductId, string ImageId)
         {
-            var shopProductEntity=_shopProductService.GetById("6b0dc9df-ecc5-4b0b-a2cd-a4b6eb9061b4");
+            ShopProductEntity shopProductEntity = _shopProductService.GetShopProduct(ProductId, ImageId);
+            var typeId = _productService.GetById(ProductId).TypeId;
             ShopProductViewModel shopProductViewModel = new ShopProductViewModel()
             {
+                Id = shopProductEntity.Id,
+                ProductId = shopProductEntity.ProductId,
+                ImageId = shopProductEntity.ImageId,
                 Description = shopProductEntity.Description,
                 StockCount = shopProductEntity.StockCount,
+                TypeId = typeId,
             };
-            return View(shopProductViewModel);
+            //ViewBag.ShopProduct=_shopProductService.GetShopProduct(ProductId,ImageId);
+            //ViewBag.Image = _imageService.GetById(ImageId);
+            //ViewBag.Product = _productService.GetById(ProductId);
+            return Json(shopProductViewModel);
+        }
+        public IActionResult DetailProduct(string shopProductData)
+        {
+            var shopProductViewModel = JsonConvert.DeserializeObject<ShopProductViewModel>(shopProductData);
+         
+
+        //For Search Related Item
+        IList<ImageViewModel> RelatedImages=new List<ImageViewModel>();
+        IList<ProductViewModel>RelatedProducts=new List<ProductViewModel>();
+         IList<ProductViewModel> productViewModels=_productService.ReteriveAll().Where(p=>p.TypeId== shopProductViewModel.TypeId).Select(s=>new ProductViewModel
+         {
+             Id=s.Id,
+             UnitPrice = s.UnitPrice,
+             Name = s.Name,
+             TypeId=s.TypeId,
+         }).ToList();
+
+            foreach (var product in productViewModels)
+            {
+                var shopProduct = _shopProductService.GetShopProductByProductId(product.Id);
+                if (shopProduct != null)
+                {
+                    var ImageId = shopProduct.ImageId;
+                    if (!string.IsNullOrEmpty(ImageId))
+                    {
+                        // ImageId is not empty, proceed with retrieving the image
+                        ImageEntity imageEntity = _imageService.GetById(ImageId);
+                        ImageViewModel imageViewModel = new ImageViewModel()
+                        {
+                            Id = imageEntity.Id,
+                            FrontImageUrl = imageEntity.FrontImageUrl,
+                        };
+                        RelatedImages.Add(imageViewModel);
+                        RelatedProducts.Add(product);
+                    }
+                    else
+                    {
+                        // ImageId is empty, handle this case (optional)
+                        ViewBag.err = "Myname";
+                    }
+                }
+                else
+                {
+                    // Shop product with the given Id doesn't exist, handle this case (optional)
+                    // For example:
+                    // ViewBag.err = "Shop product not found for product Id: " + product.Id;
+                }
+            }
+            //For Show User Select Item
+
+            ViewBag.Image = _imageService.GetById(shopProductViewModel.ImageId);
+            ViewBag.Product = _productService.GetById(shopProductViewModel.ProductId);
+            ViewBag.shopProduct = shopProductViewModel;
+            var Descriptions = shopProductViewModel.Description;
+
+            string[] DescriptionArray = Descriptions.Split(',');
+            List<string> DescriptionKeyList = new List<string>();
+            List<string> DescriptionValueList = new List<string>();
+            foreach (var description in DescriptionArray)
+            {
+                int separatorIndex = description.IndexOf("-");
+                DescriptionKeyList.Add(description.Substring(0, separatorIndex));
+                DescriptionValueList.Add(description.Substring(separatorIndex+1).Trim());
+            }
+            ViewBag.DescriptionKey = DescriptionKeyList;
+            ViewBag.DescriptionValue=DescriptionValueList;
+            ViewBag.RelatedImages = RelatedImages;
+            return View(RelatedProducts);
         }
     }
 }

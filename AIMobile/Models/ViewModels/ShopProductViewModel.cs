@@ -2,6 +2,7 @@
 {
     public class ShopProductViewModel
     {
+
         public string Id { get ; set; } 
         public string ShopId { get; set; }
         public string ShopName { get; set; }

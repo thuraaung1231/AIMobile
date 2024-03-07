@@ -21,8 +21,6 @@
                         <option value="@shop.Id">@shop.Name</option>
                     }
 
-
-
                 }
             </select>
         </div>
@@ -59,8 +57,8 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Description</label>
-            <input type="text" class="form-control" name="Description" value="@Model.Description">
+            <label for="floatingTextarea">Description</label>
+            <textarea class="form-control" name="Description" >@Model.Description</textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Stock Count</label>

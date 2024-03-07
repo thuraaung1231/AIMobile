@@ -74,6 +74,7 @@ html {
 
 .SlidecContainer {
     background-color: rgb(212, 214, 214);
+   
 }
 
 .w-50 {
@@ -257,5 +258,9 @@ html {
 a {
     text-decoration: none;
     color: white;
+}
+
+.Description{
+    font-size:14px;
 }
 

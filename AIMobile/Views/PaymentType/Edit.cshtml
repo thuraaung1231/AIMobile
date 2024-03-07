@@ -11,20 +11,21 @@
         </div>
     }
     <h3 class="mx-auto">Edit Payment Type</h3>
-    <form action="/paymenttype/update" method="post">
+    <div class="col-12 m-0 p-0">
+        <h4 class="col-lg-9 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Edit Payment Type</h4>
+    </div>
+    <form action="/paymenttype/update" method="post" class="col-lg-9 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
         <input type="hidden" name="id" value="@Model.Id" />
-        <div class="mb-3">
-            <label class="form-label">PaymentType</label>
-            <input type="text" class="form-control" name="PaymentType" value="@Model.PaymentType" placeholder="PLease Fill the Field!">
 
+        <div class="row">
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">PaymentType</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentType" value="@Model.PaymentType">
+            </div>
+            <div class="col-12 mb-2">
+                <button type="submit" class="btn btn-warning col-5" value="Entry">Update</button>
+                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+            </div>
         </div>
-        
-
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input">
-            <label class="form-check-label">Terms And Conditions</label>
-        </div>
-        <input type="submit" class="btn btn-primary" value="Update">
-        <input type="reset" class="btn btn-secondary" value="Cancel">
     </form>
 </body>

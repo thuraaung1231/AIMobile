@@ -1,0 +1,198 @@
+﻿
+@model IList<ProductViewModel>
+@{
+    List<string>DescriptionKeys = ViewBag.DescriptionKey;
+    List<string> DescriptionValues = ViewBag.DescriptionValue;
+    List<ImageViewModel> RelatedImages = ViewBag.RelatedImages;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <a href="home.html" class="my-auto py-2 text-decoration-none text-dark"><i class="fa-solid fa-circle-arrow-left"></i> Back to products</a>
+    </div>
+    <div class="row px-2">
+        <div class="col-lg-5 selectProduct">
+            <div class="col-7 mx-auto p-4">
+                <img src="@ViewBag.Image.FrontImageUrl"
+                     class="w-100"
+                     id="mainImg"
+                     alt="" />
+            </div>
+            <hr class="mb-1" />
+            <div class="row childSelectProduct py-2">
+                <div class="col-3">
+                    <div class="selectItem m-1">
+                        <img src="@ViewBag.Image.FrontImageUrl" class="w-100" alt="" />
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="selectItem m-1">
+                        <img src="@ViewBag.Image.BackImageUrl" class="w-100" alt="" />
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="selectItem m-1">
+                        <img src="@ViewBag.Image.RightSideImageUrl" class="w-100" alt="" />
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="selectItem m-1">
+                        <img src="@ViewBag.Image.LeftSideImageUrl" class="w-100" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 px-3">
+            <h4 class="fontFamilies fw-bold">@ViewBag.Product.Name</h4>
+            <p class="text-justify fs-6">
+                @DescriptionValues[DescriptionValues.Count-1]
+            </p>
+            <div class="d-flex mb-2 align-items-center">
+                <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice"/>
+                <span>Price:</span>
+                <div class="text-primary fw-bold fs-5 ms-3">
+                    <p class="d-inline" id="TotalPrice">@ViewBag.Product.UnitPrice</p>
+                    Ks
+                </div>
+            </div>
+
+            <span>Quantity : </span>
+            <input id="StockCount" hidden value="@ViewBag.shopProduct.StockCount"/>
+            <div class="btn-group"
+                 role="group"
+                 aria-label="Basic outlined example">
+                <button type="button"
+                        class="btn btn-primary fs-5"
+                        id="reduceButton">
+                    -
+                </button>
+                <input type="button"
+                       value="1"
+                       class="px-3 btn border-primary"
+                       id="numberOfItem" />
+                <button type="button"
+                        class="btn btn-primary fs-5"
+                        id="increaseButton">
+                    +
+                </button>
+            </div>
+            <hr />
+            <div class="d-flex mt-2 justify-content-around">
+                <button type="button" class="btn btn-primary col-5">
+                    ADD TO CART
+                </button>
+                <button type="button" class="btn btn-warning text-light col-5">
+                    BUY NOW
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-3 shadow p-2">
+            <p class="fs-6 fw-bold">Delivery</p>
+            <p>
+                ရန်ကုန် မြို့တွင်းရှိ order များကို (၂) ရက် မှ (၃) ရက် အတွင်း၊
+                အခြားမြို့များအတွက် order များကို order တင်ပီးနောက်ရက်တွင်
+                သက်ဆိုင်ရာကားဂိတ်အရောက် ပို့ဆောင်ပေးပါသည်။
+            </p>
+            <p class="fw-bold">3 days return policy</p>
+            <p>
+                ဝယ်ယူပီး ပစ္စည်းများကို Factory Fault ပါလျှင် (၃)
+                ရက်အတွင်းပြန်လည်ပို့ပေးရန်လိုပါသည်။
+            </p>
+            <p>Available Payment Methods</p>
+            <div class="row paymentMethods">
+                <div class="col-2">
+                    <img src="/images/cbpay.png" class="w-100" alt="" />
+                </div>
+                <div class="col-2">
+                    <img src="/images/kpay.png" class="w-100" alt="" />
+                </div>
+                <div class="col-2">
+                    <img src="/images/aya.png" class="w-100" alt="" />
+                </div>
+                <div class="col-2">
+                    <img src="/images/uabpay.png" class="w-100" alt="" />
+                </div>
+                <div class="col-2">
+                    <img src="/images/visa.png" class="w-100" alt="" />
+                </div>
+                <div class="col-2">
+                    <img src="/images/master.png" class="w-100" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row p-2">
+        <p class="mt-4 pb-0 mb-0 fs-5 fw-bold fontFamilies">Product Details of <span>@ViewBag.Product.Name</span></p>
+        <table class="table mt-2 p-3 table-striped">
+            <tbody>
+                @for (int i = 0; i < DescriptionKeys.Count - 1; i++)
+                {
+                    <tr>
+                        <td scope="row" class="fontFamilies">@DescriptionKeys[i]</td>
+                        <td class="fontFamilies fs-6">@DescriptionValues[i]</td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="row">
+        <h4>Other Related Products</h4>
+        @for(int i = 0; i < RelatedImages.Count; i++)
+        {
+            <div class="col-2">
+                <div class="p-3 shadow rounded">
+                    <div class="bg-body-secondary p-4 rounded">
+                        <img src="@RelatedImages[i].FrontImageUrl" class="w-100" alt="">
+                    </div>
+                    <p class="m-0 p-0 pt-2">@Model[i].Name</p>
+                    <p class="m-0 p-0">
+                        <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
+                    </p>
+                    <span class="text-primary fw-bold fs-6">@Model[i].UnitPrice<p class="d-inline">Ks</p></span>
+                </div>
+
+            </div>
+        }
+        
+        
+    </div>
+</div>
+<script >
+    $(".selectItem").click(function (event) {
+        var clickedImg = event.target;
+        var src = clickedImg.getAttribute('src');
+
+        $("#mainImg").attr("src", src)
+    })
+    $("#increaseButton").click(function () {
+        var NumberOfItem = parseInt($("#numberOfItem").val());
+        if (NumberOfItem <= $("#StockCount").val()) {
+            var IncreaseItem = ++NumberOfItem;
+            $("#numberOfItem").val(IncreaseItem);
+            var totalAmount = $("#UnitPrice").val() * IncreaseItem;
+            $("#TotalPrice").html(totalAmount)
+        }else{
+            alert("Insufficient Product")
+        }
+        
+    })
+    $("#reduceButton").click(function () {
+        var NumberOfItem = parseInt($("#numberOfItem").val());
+        if (NumberOfItem == 1) {
+            return;
+        } else {
+            var DecreaseItem = --NumberOfItem;
+            $("#numberOfItem").val(DecreaseItem);
+            var totalAmount = $("#UnitPrice").val() * DecreaseItem;
+            $("#TotalPrice").html(totalAmount)
+        }
+    })
+</script>

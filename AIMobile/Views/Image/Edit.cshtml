@@ -6,7 +6,60 @@
             @TempData["Info"]
         </div>
     }
+    <h3>Edit Image</h3>
     <h3>Entry Image</h3>
+    <form action="/Image/Edit" method="post">
+        <input type="hidden" value="@Model.Id" name="Id" />
+
+
+        <div class="mb-3">
+            <label>FrontImage</label>
+            <div style="width:100px;height:100px">
+                <image style="width:100%" src="@Model.FrontImageUrl"></image>
+            </div>
+           
+            <input type="file" class="form-control" name="FrontImageUrl">
+            
+        </div>
+        <div class="mb-3">
+            <label>BackImage</label>
+            <div style="width:100px;height:100px">
+                <image style="width:100%" src="@Model.BackImageUrl"></image>
+            </div>
+            <input type="file" class="form-control" name="BackImageUrl">
+            
+        </div>
+        <div class="mb-3">
+            <label>RightSideImage</label>
+            <div style="width:100px;height:100px">
+                <image style="width:100%" src="@Model.RightSideImageUrl"></image>
+            </div>
+            <input type="file" class="form-control" name="RightSideImageUrl">
+
+        </div>
+        <div class="mb-3">
+            <label>LeftSideImage</label>
+           <div style="width:100px;height:100px">
+                <image style="width:100%" src="@Model.LeftSideImageUrl"></image>
+            </div>
+            <input type="file" class="form-control" name="LeftSideImageUrl">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">ImageName</label>
+            <input type="text" class="form-control" name="ImageName" value="@Model.ImageName">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Filetype</label>
+            <input type="text" class="form-control" name="Filetype" value="@Model.Filetype">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Filesize</label>
+            <input type="text" class="form-control" name="Filesize" value="@Model.Filesize">
+        </div>
+        <input type="submit" class="btn btn_primary" value="Entry" />
+        <input type="reset" class="btn btn_primary" value="Cancel" />
+    </form>
     <div class="col-12 m-0 p-0">
         <h4 class="col-lg-9 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Edit Image</h4>
     </div>

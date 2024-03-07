@@ -6,7 +6,7 @@
     <div class="alert alert-info">@TempData["info"]</div>
 }
 
-<table class="table table-striped-columns">
+<table class="table table-striped-columns" id="tableBrand">
     <thead>
         <tr>
             <th scope="col">Sr.No</th>
@@ -36,3 +36,8 @@
         }
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $("#tableBrand").DataTable();
+    })
+</script>

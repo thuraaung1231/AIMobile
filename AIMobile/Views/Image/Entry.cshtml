@@ -7,43 +7,45 @@
         </div>
     }
     <h3>Entry Image</h3>
-    <form action="/Image/Entry" method="post">
+    <div class="col-12 m-0 p-0">
+        <h4 class="col-lg-7 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Entry Image</h4>
+    </div>
+    <form action="/Image/Entry" method="post" class="col-lg-7 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
 
+        <div class="row">
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">FrontImageUrl*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="FrontImageUrl">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">BackImageUrl*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="BackImageUrl">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">RightSideImageUrl*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="RightSideImageUrl">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">LeftSideImageUrl*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="LeftSideImageUrl">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">ModelName*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="ImageName">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Filetype*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Filetype">
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold">Filesize*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Filesize">
+            </div>
+            <div class="col-12 mb-2">
+                <button type="submit" class="btn btn-warning col-5" value="Entry">Entry</button>
+                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+            </div>
+        </div>
 
-
-        <div class="mb-3">
-            <label class="form-label">FrontImageUrl</label>
-            <input type="file" class="form-control" name="FrontImageUrl">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">BackImageUrl</label>
-            <input type="file" class="form-control" name="BackImageUrl">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">RightSideImageUrl</label>
-            <input type="file" class="form-control" name="RightSideImageUrl">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">LeftSideImageUrl</label>
-            <input type="file" class="form-control" name="LeftSideImageUrl">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">ImageName</label>
-            <input type="text" class="form-control" name="ImageName">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Filetype</label>
-            <input type="text" class="form-control" name="Filetype">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Filesize</label>
-            <input type="text" class="form-control" name="Filesize">
-        </div>
-
-
-        
-
-        <input type="submit" class="btn btn_primary" value="Entry" />
-        <input type="reset" class="btn btn_primary" value="Cancel" />
     </form>
 </body>
