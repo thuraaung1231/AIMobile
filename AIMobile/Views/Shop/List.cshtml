@@ -37,6 +37,10 @@
 </table>
 <script>
     $(document).ready(function () {
-        $("#tableShop").DataTable();
+        $("#tableShop").DataTable({
+            scrollX: true,
+            scrollY: true,
+            scrollCollapse: true,
+        });
     })
 </script>

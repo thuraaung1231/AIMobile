@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Type*</label>
+                <label class="labelFontSize fw-bold fs-5">Type*</label>
                 <select name="BrandId" class="border-0 border-bottom border-primary bg-transparent search-Bar">
                     <option value="@Model.TypeId">@Model.TypeName</option>
                     @foreach (var Type in ViewBag.FromTypeId)
@@ -29,7 +29,7 @@
 
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Brand*</label>
+                <label class="labelFontSize fw-bold fs-5">Brand*</label>
                 <select name="BrandId" class="border-0 border-bottom border-primary bg-transparent search-Bar">
                     <option value="@Model.BrandId">@Model.BrandName</option>
                     @foreach (var Brand in ViewBag.FromBrandId)
@@ -43,16 +43,16 @@
 
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Product Name*</label>
+                <label class="labelFontSize fw-bold fs-5">Product Name*</label>
                 <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Name" value="@Model.Name">
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Unit Price*</label>
+                <label class="labelFontSize fw-bold fs-5">Unit Price*</label>
                 <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="UnitPrice" value="@Model.UnitPrice">
             </div>
             <div class="col-12 mb-2">
-                <button type="submit" class="btn btn-warning col-5" value="Entry">Update</button>
-                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+                <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Update</button>
+                <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>
             </div>
         </div>
     </form>

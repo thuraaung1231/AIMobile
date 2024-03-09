@@ -12,13 +12,13 @@
     }
     <h3 class="mx-auto">Entry Shop Product</h3>
     <div class="col-12 m-0 p-0">
-        <h4 class="col-lg-7 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Entry Product</h4>
+        <h4 class="col-lg-7 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Choose Type To Entry Product</h4>
     </div>
     <form action="/shopproduct/EntryShopProduct" method="get" class="col-lg-7 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
 
         <div class="row">
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Type*</label>
+                <label class="labelFontSize fw-bold fw-bold fs-5">Type*</label>
                 <select name="id" class="border-0 border-bottom border-primary bg-transparent search-Bar">
                     @foreach (var type in Model)
                     {
@@ -28,7 +28,7 @@
 
             </div>
             <div class="col-12 mb-2">
-                <button type="submit" class="btn btn-warning col-5" value="Next >>">Next >></button>
+                <button type="submit" class="btn btn-warning col-5 fw-bold" value="Next >>">Next >></button>
             </div>
         </div>
 

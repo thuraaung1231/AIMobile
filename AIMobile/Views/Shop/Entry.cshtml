@@ -19,20 +19,23 @@
 
         <div class="row">
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Name*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Name">
+                <label class="labelFontSize fw-bold fs-5">Name*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Status*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Status">
+                <label class="labelFontSize fw-bold fs-5">Status*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="Status">
+                <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Address*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Address">
+                <label class="labelFontSize fw-bold fs-5">Address*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="Address">
+                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="col-12 mb-2">
-                <button type="submit" class="btn btn-warning col-5" value="Entry">Entry</button>
-                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+                <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Entry</button>
+                <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>
             </div>
         </div>
 

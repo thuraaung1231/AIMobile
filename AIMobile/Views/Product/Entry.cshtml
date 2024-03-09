@@ -1,4 +1,4 @@
-﻿
+﻿@model ProductViewModel
 <body style="background-color:lightblue">
     @if (TempData["Info"] != null)
     {
@@ -13,12 +13,12 @@
 
         <div class="row">
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Product Name*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Name">
+                <label class="labelfontsize fs-5 fw-bold ">Product Name*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Product Type*</label>
-                <select name="TypeId" class="border-0 border-bottom border-primary bg-transparent search-Bar">
+            <div class="col-12 mb-3 d-flex flex-column p-2">
+                <select name="TypeId" class="border-0 border-bottom border-primary bg-transparent search-Bar fw-bold fs-5">
                     <option value="">Choose Type</option>
                     @foreach (var Type in ViewBag.FromTypeId)
                     {
@@ -29,9 +29,8 @@
                 </select>
                 
             </div>
-            <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Product Brand*</label>
-                <select name="BrandId" class="border-0 border-bottom border-primary bg-transparent search-Bar">
+            <div class="col-12 mb-3 d-flex flex-column p-2">
+                <select name="BrandId" class="border-0 border-bottom border-primary bg-transparent search-Bar fw-bold fs-5">
                     <option value="">Choose Brand</option>
                     @foreach (var Brand in ViewBag.FromBrandId)
                     {
@@ -41,12 +40,13 @@
                 </select>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Unit Price*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="UnitPrice">
+                <label class="labelFontSize fs-5 fw-bold">Unit Price*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="UnitPrice">
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
             </div>
             <div class="col-12 mb-2">
-                <button type="submit" class="btn btn-warning col-5" value="Entry">Entry</button>
-                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+                <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Entry</button>
+                <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>
             </div>
         </div>
 

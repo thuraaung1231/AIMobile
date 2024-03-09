@@ -44,6 +44,11 @@
 </table>
 <script>
     $(document).ready(function () {
-        $("#tableShopProduct").DataTable();
+        $("#tableShopProduct").DataTable({
+            scrollX: true,
+            scrollY: true,
+            scrollCollapse: true,
+        });
+       
     })
 </script>

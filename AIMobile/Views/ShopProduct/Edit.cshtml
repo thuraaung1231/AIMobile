@@ -10,7 +10,7 @@
         <h3>Edit Shop Product</h3>
         <input name="Id" type="hidden" value="@Model.Id" />
         <div class="mb-3">
-            <label class="form-label">Shop Name</label>
+            <label class="form-label fw-bold fs-5">Shop Name</label>
 
             <select name="ShopId" class="form-select">
                 <option value="@Model.ShopId">@Model.ShopName</option>
@@ -25,7 +25,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Product Name</label>
+            <label class="form-label fw-bold fs-5">Product Name</label>
 
             <select name="ProductId" class="form-select">
                 <option value="@Model.ProductId">@Model.ProductName</option>
@@ -41,7 +41,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Model Name</label>
+            <label class="form-label fw-bold fs-5">Model Name</label>
 
             <select name="ImageId" class="form-select">
                 <option value="@Model.ImageId">@Model.ImageName</option>
@@ -57,15 +57,15 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="floatingTextarea">Description</label>
+            <label for="floatingTextarea fw-bold fs-5">Description</label>
             <textarea class="form-control" name="Description" >@Model.Description</textarea>
         </div>
         <div class="mb-3">
-            <label class="form-label">Stock Count</label>
+            <label class="form-label fw-bold fs-5">Stock Count</label>
             <input type="number" class="form-control" name="StockCount" value="@Model.StockCount">
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Update">
-        <input type="reset" class="btn btn-secondary" value="Cancel">
+        <input type="submit" class="btn btn-warning fw-bold fs-6" value="Update">
+        <input type="reset" class="btn btn-secondary fw-bold fs-6" value="Cancel">
     </form>
 </body>
