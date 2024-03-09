@@ -3,10 +3,6 @@
     public class ShopProductViewModel
     {
         public string Id { get; set; }
-
-        public string Type_Id { get; set; }
-        public string Shop_Id { get; set; }
-
         public string ShopId { get; set; }
         public string ShopName { get; set; }
         public string ProductId { get; set; }

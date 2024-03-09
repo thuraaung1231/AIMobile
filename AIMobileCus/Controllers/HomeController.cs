@@ -32,9 +32,101 @@ namespace AIMobileCus.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.product = _productService.ReteriveAll().Select(s => new ProductViewModel { Name = s.Name }).ToList();
-            IList<TypeViewModel> typeViewModels = _typeServices.ReteriveAll().Where(t => t.Name == "Phone").Select(p => new TypeViewModel
+            //for Nav DropDown
 
+            IList<ProductViewModel> productViewModels = _productService.ReteriveAll().Select(p => new ProductViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                TypeId = p.TypeId,
+                BrandId = p.BrandId,
+                UnitPrice = p.UnitPrice,
+
+            }).ToList();
+            ViewBag.ProductList = productViewModels; /*for All Product*/
+
+            IList<TypeViewModel> typeViewModels = _typeServices.ReteriveAll().Select(p => new TypeViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+            }).ToList();
+            var PhoneId = "";
+            var LapTopId = "";
+            var TabletId = "";
+            var SmartWatchId = "";
+            var HeadPhoneId = "";
+            var PowerBankId = "";
+            foreach(var type in typeViewModels)
+            {
+                if (type.Name == "Phone")
+                {
+                    PhoneId = type.Id;
+                }else if (type.Name == "Laptop")
+                {
+                    LapTopId=type.Id;
+                }else if(type.Name == "Tablet")
+                {
+                    TabletId = type.Id;
+                }else if(type.Name=="Smart Watch")
+                {
+                    SmartWatchId= type.Id;
+                }else if(type.Name == "HeadPhone")
+                {
+                    HeadPhoneId = type.Id;
+                }else if (type.Name == "PowerBank")
+                {
+                    PowerBankId = type.Id;
+                }
+            }
+            //for Phone Product
+            IList<ProductViewModel> PhoneViewModel = _productService.ReteriveAll().Where(p=>p.TypeId==PhoneId).Select(s => new ProductViewModel
+            {
+                Id=s.Id,
+                Name=s.Name,
+                TypeId=s.TypeId,
+                BrandId=s.BrandId,
+            }).ToList();
+            ViewBag.Phones=PhoneViewModel;
+
+            IList<ProductViewModel> LaptopViewModel = _productService.ReteriveAll().Where(p => p.TypeId == LapTopId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.Laptops=LaptopViewModel;
+
+            IList<ProductViewModel> TabletViewModel = _productService.ReteriveAll().Where(p => p.TypeId == TabletId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.tablets = TabletViewModel;
+
+            IList<ProductViewModel> SmartWatchViewModel = _productService.ReteriveAll().Where(p => p.TypeId == SmartWatchId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.smartWatchs = SmartWatchViewModel;
+
+            IList<ProductViewModel>OtherAccessoryViewModel= _productService.ReteriveAll().Where(p=>p.TypeId!=PhoneId&&p.TypeId!=TabletId&&p.TypeId!=LapTopId&&p.TypeId!=SmartWatchId).Select(s=>new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+           
+            ViewBag.OtherAccessories=OtherAccessoryViewModel;
+
+
+            //For the Most Populat Items
             List<string> ImageIds= new List<string>();
             List<string> ProductIds=new List<string>();
             IList<ProductViewModel> Products=new List<ProductViewModel>();
@@ -51,9 +143,6 @@ namespace AIMobileCus.Controllers
                 StockCount  = s.StockCount,
                 
             }).ToList();
-
-
-            return View();
 
             foreach(var shopProduct in shopProductViewModels)
             {
@@ -74,9 +163,6 @@ namespace AIMobileCus.Controllers
                             BrandId = productEntity.BrandId,
                         };
                         Products.Add(productViewModel);
-                    
-               
-                
             }
             foreach(var imageId in ImageIds)
             {
@@ -93,12 +179,20 @@ namespace AIMobileCus.Controllers
                         Filetype = imageEntity.Filetype,
                     };
                     Images.Add(imageViewModel);
-               
-               
             }
             ProductImageViewModel ProductImages=new ProductImageViewModel();
             ProductImages.Images = Images;
             ProductImages.Products = Products;
+
+
+            //for search with the type
+            
+            ViewBag.LaptopId = LapTopId;
+            ViewBag.PhoneId=PhoneId;
+            ViewBag.TabletId = TabletId;
+            ViewBag.SmartWatchId = SmartWatchId;
+            ViewBag.PowerBankId = PowerBankId;
+            ViewBag.HeadPhoneId = HeadPhoneId;
             return View(ProductImages);
 
         }
@@ -107,146 +201,126 @@ namespace AIMobileCus.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public JsonResult Search(string searchName) {
-            /* IList<ShopProductViewModel> spvm=new List<ShopProductViewModel>();*/
+        //[HttpPost]
+        //public JsonResult Search(string searchName) {
+
+        //    var typeId = _typeServices.GetByName(searchName).Id;
+        //    return Json(typeId);
+        //}
+        //public IActionResult SearchListResult(string SearchListData) {
 
 
+        //    return View();
+        //}
+        //[HttpGet]
+        //public IActionResult SearchList(string Typedata)
+        //{
+        //    var typeid = JsonConvert.DeserializeObject<string>(Typedata);
+        //    var pvm = _productService.ReteriveAll().Where(w => w.TypeId == typeid).Select(s => new ProductViewModel
+        //    {
+        //        Id = s.Id,
+        //        Name = s.Name,
+        //    }).ToList();
+        //    var spvm = _shopProductService.ReteriveAll().Select(s => new ShopProductViewModel
+        //    {
+        //        Id = s.Id,
+        //        ShopId = s.ShopId,
+        //        ProductId = s.ProductId,
+        //        ImageId = s.ImageId,
+        //        ShopName = _shopService.GetById(s.ShopId).Name,
+        //        ProductName = _productService.GetById(s.ProductId).Name,
+        //        ImageName = _imageService.GetById(s.ImageId).ImageName,
+        //        StockCount = s.StockCount,
+        //        Description = s.Description,
 
-            /*  foreach (var product in pvm)
-              {
-                  var shopProductViewModel = _shopProductService.GetById(product.Id);
-                  ShopProductViewModel shopProduct = new ShopProductViewModel
-                  {
-                      Id = shopProductViewModel.Id,
-                      Image_Id = shopProductViewModel.Image_Id,
-                      Shop_Id = shopProductViewModel.Shop_Id,
-                      Product_Id = shopProductViewModel.Product_Id,
+        //    }).ToList();
+        //    IList<ShopProductResultViewModel> sprvm = (from t in pvm
+        //                                               join s in spvm on t.Id equals s.ProductId
+        //                                               select new ShopProductResultViewModel
+        //                                               {
+        //                                                   Id = s.Id,
+        //                                                   ShopId = s.ShopId,
+        //                                                   ProductId = s.ProductId,
+        //                                                   ImageId = s.ImageId,
+        //                                                   ShopName = _shopService.GetById(s.ShopId).Name,
+        //                                                   ProductName = _productService.GetById(s.ProductId).Name,
+        //                                                   ImageName = _imageService.GetById(s.ImageId).FrontImageUrl,
+        //                                                   StockCount = s.StockCount,
+        //                                                   Description = s.Description,
+        //                                                   Unitprice = _productService.GetById(s.ProductId).UnitPrice,
 
-                      ShopName = shopProductViewModel.Shop_Id,
+        //                                               }).ToList();
 
-                      Description = shopProductViewModel.Description,
-                  };
-                  spvm.Add(shopProduct);
-              }*/
-            var typeId = _typeServices.GetByName(searchName).Id;
-
-
-
-            return Json(typeId);
-        }
-        public IActionResult SearchListResult(string SearchListData) {
-
-
-            return View();
-        }
-        [HttpGet]
-        public IActionResult SearchList(string Typedata)
-        { var typeid = JsonConvert.DeserializeObject<string>(Typedata);
-            var pvm = _productService.ReteriveAll().Where(w => w.TypeId == typeid).Select(s => new ProductViewModel
-            {
-                Id = s.Id,
-                Name = s.Name,
-            }).ToList();
-            var spvm = _shopProductService.ReteriveAll().Select(s => new ShopProductViewModel
-            {
-                Id = s.Id,
-                Shop_Id = s.Shop_Id,
-                Product_Id = s.Product_Id,
-                Image_Id = s.Image_Id,
-                ShopName = _shopService.GetById(s.Shop_Id).Name,
-                ProductName = _productService.GetById(s.Product_Id).Name,
-                ImageName = _imageService.GetById(s.Image_Id).ImageName,
-                StockCount = s.StockCount,
-                Description = s.Description,
-
-            }).ToList();
-            IList<ShopProductResultViewModel> sprvm = (from t in pvm
-                                                       join s in spvm on t.Id equals s.Product_Id
-                                                       select new ShopProductResultViewModel
-                                                       {
-                                                           Id = s.Id,
-                                                           Shop_Id = s.Shop_Id,
-                                                           Product_Id = s.Product_Id,
-                                                           Image_Id = s.Image_Id,
-                                                           ShopName = _shopService.GetById(s.Shop_Id).Name,
-                                                           ProductName = _productService.GetById(s.Product_Id).Name,
-                                                           ImageName = _imageService.GetById(s.Image_Id).FrontImageUrl,
-                                                           StockCount = s.StockCount,
-                                                           Description = s.Description,
-                                                           Unitprice = _productService.GetById(s.Product_Id).UnitPrice,
-
-                                                       }).ToList();
-
-            return View(sprvm);
-        }
+        //    return View(sprvm);
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpGet]
-        public IActionResult Filter(string Id) 
-        {
-            var productList=_shopProductService.ReteriveAll().Where(w=>w.Product_Id==Id).Select(s=> new ShopProductResultViewModel {
+        
+        //[HttpGet]
+        //public IActionResult Filter(string Id) 
+        //{
+        //    var productList=_shopProductService.ReteriveAll().Where(w=>w.ProductId==Id).Select(s=> new ShopProductResultViewModel {
 
-                Id = s.Id,
-                Shop_Id = s.Shop_Id,
-                Product_Id = s.Product_Id,
-                Image_Id = s.Image_Id,
-                ShopName = _shopService.GetById(s.Shop_Id).Name,
-                ProductName = _productService.GetById(s.Product_Id).Name,
-                ImageName = _imageService.GetById(s.Image_Id).FrontImageUrl,
-                StockCount = s.StockCount,
-                Description = s.Description,
-                Unitprice = _productService.GetById(s.Product_Id).UnitPrice,
+        //        Id = s.Id,
+        //        ShopId = s.ShopId,
+        //        ProductId = s.ProductId,
+        //        ImageId = s.ImageId,
+        //        ShopName = _shopService.GetById(s.ShopId).Name,
+        //        ProductName = _productService.GetById(s.ProductId).Name,
+        //        ImageName = _imageService.GetById(s.ImageId).FrontImageUrl,
+        //        StockCount = s.StockCount,
+        //        Description = s.Description,
+        //        Unitprice = _productService.GetById(s.ProductId).UnitPrice,
 
-            }).ToList();
+        //    }).ToList();
             
             
-            return View("SearchList",productList);
-        }
-        [HttpGet]
-        public IActionResult OtherAccessories(string Id)
-        {
-            var pvm = _productService.ReteriveAll().Where(w => w.TypeId == Id).Select(s => new ProductViewModel
-            {
-                Id = s.Id,
-                Name = s.Name,
-            }).ToList();
-            var spvm = _shopProductService.ReteriveAll().Select(s => new ShopProductViewModel
-            {
-                Id = s.Id,
-                Shop_Id = s.Shop_Id,
-                Product_Id = s.Product_Id,
-                Image_Id = s.Image_Id,
-                ShopName = _shopService.GetById(s.Shop_Id).Name,
-                ProductName = _productService.GetById(s.Product_Id).Name,
-                ImageName = _imageService.GetById(s.Image_Id).ImageName,
-                StockCount = s.StockCount,
-                Description = s.Description,
+        //    return View("SearchList",productList);
+        //}
+        //[HttpGet]
+        //public IActionResult OtherAccessories(string Id)
+        //{
+        //    var pvm = _productService.ReteriveAll().Where(w => w.TypeId == Id).Select(s => new ProductViewModel
+        //    {
+        //        Id = s.Id,
+        //        Name = s.Name,
+        //    }).ToList();
+        //    var spvm = _shopProductService.ReteriveAll().Select(s => new ShopProductViewModel
+        //    {
+        //        Id = s.Id,
+        //        ShopId = s.ShopId,
+        //        ProductId = s.ProductId,
+        //        ImageId = s.ImageId,
+        //        ShopName = _shopService.GetById(s.ShopId).Name,
+        //        ProductName = _productService.GetById(s.ProductId).Name,
+        //        ImageName = _imageService.GetById(s.ImageId).ImageName,
+        //        StockCount = s.StockCount,
+        //        Description = s.Description,
 
-            }).ToList();
-            IList<ShopProductResultViewModel> sprvm = (from t in pvm
-                                                       join s in spvm on t.Id equals s.Product_Id
-                                                       select new ShopProductResultViewModel
-                                                       {
-                                                           Id = s.Id,
-                                                           Shop_Id = s.Shop_Id,
-                                                           Product_Id = s.Product_Id,
-                                                           Image_Id = s.Image_Id,
-                                                           ShopName = _shopService.GetById(s.Shop_Id).Name,
-                                                           ProductName = _productService.GetById(s.Product_Id).Name,
-                                                           ImageName = _imageService.GetById(s.Image_Id).FrontImageUrl,
-                                                           StockCount = s.StockCount,
-                                                           Description = s.Description,
-                                                           Unitprice = _productService.GetById(s.Product_Id).UnitPrice,
+        //    }).ToList();
+        //    IList<ShopProductResultViewModel> sprvm = (from t in pvm
+        //                                               join s in spvm on t.Id equals s.ProductId
+        //                                               select new ShopProductResultViewModel
+        //                                               {
+        //                                                   Id = s.Id,
+        //                                                   ShopId = s.ShopId,
+        //                                                   ProductId = s.ProductId,
+        //                                                   ImageId = s.ImageId,
+        //                                                   ShopName = _shopService.GetById(s.ShopId).Name,
+        //                                                   ProductName = _productService.GetById(s.ProductId).Name,
+        //                                                   ImageName = _imageService.GetById(s.ImageId).FrontImageUrl,
+        //                                                   StockCount = s.StockCount,
+        //                                                   Description = s.Description,
+        //                                                   Unitprice = _productService.GetById(s.ProductId).UnitPrice,
 
-                                                       }).ToList();
+        //                                               }).ToList();
 
 
-            return View("SearchList", sprvm);
-        }
+        //    return View("SearchList", sprvm);
+        //}
     }
     }

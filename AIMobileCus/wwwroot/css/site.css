@@ -68,12 +68,14 @@ html {
     }
 
 .product-Bar {
-    top: 55px;
+    top: 58px;
     background-color: rgb(4, 47, 117);
+    height:auto;
 }
-
+.dropDownScroll {
+    height: 100vh;
+}
 .SlidecContainer {
-    
     background-color: rgb(212, 214, 214);
 }
 

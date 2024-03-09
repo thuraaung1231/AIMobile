@@ -1,11 +1,168 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 @model ProductImageViewModel
+@* 
+@model IList<ImageViewModel> *@
+@*     Product Bar *@
+<div class="product-Bar position-sticky z-2">
+    <div class="container-fluid py-2">
+        <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+            All Products
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark overflow-y-scroll dropDownScroll">
+            @foreach (var product in ViewBag.ProductList)
+            {
+                <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@product.Id">@product.Name</a></li>
+            }
+        </ul>
+        <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Smart Phones
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark overflow-y-scroll dropDownScroll" ">
+            @foreach (var phone in ViewBag.Phones)
+            {
+                <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@phone.Id">@phone.Name</a></li>
+            }
 
-@model IList<ImageViewModel>
+        </ul>
+       
+        <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Laptops
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark overflow-y-scroll dropDownScroll">
+            @foreach (var laptop in ViewBag.Laptops)
+            {
+                <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@laptop.Id">@laptop.Name</a></li>
+            }
+            
+        </ul>
 
+        <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Tablets
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark overflow-y-scroll dropDownScroll">
+            @foreach (var tablet in ViewBag.tablets)
+            {
+                <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@tablet.Id">@tablet.Name</a></li>
+            }
+        </ul>
+        <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm my-auto d-lg-inline d-md-inline d-none" data-bs-toggle="dropdown"
+                aria-expanded="false">
+            Other Accessories
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark overflow-y-scroll dropDownScroll">
+        @foreach (var OtherAccessory in @ViewBag.OtherAccessories)
+        {
+                <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@OtherAccessory.Id">@OtherAccessory.Name</a></li>
+        }
+        </ul>
+        <button class="btn btn-transparent px-2 d-lg-none d-md-none d-inline"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample">
+            <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
+        </button>
+        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative">
+            <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
+               href="#">
+                <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
+                Cart
+                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">+999</span>
+            </a>
+        </button>
+    </div>
+        <div class="offcanvas offcanvas-start bg-transparent border-0"
+             id="offcanvasExample"
+             aria-labelledby="offcanvasExampleLabel">
+            <div class="w-50 ChildOffcanvas">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
+                        Products
+                    </h5>
+                    <button type="button"
+                            class="btn btn-transparent"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close">
+                        <i class="text-light fs-4 fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="offcanvas-body overflow-visible">
+                    <div class="w-100 dropend">
+                        <button type="button"
+                                class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            All Products <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Menu item</a></li>
+                            <li><a class="dropdown-item" href="#">Menu item</a></li>
+                            <li><a class="dropdown-item" href="#">Menu item</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-100 dropend">
+                        <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Smart Phones <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light">
+                            <li><a class="dropdown-item" href="#">Samsung</a></li>
+                            <li><a class="dropdown-item" href="#">RealMe</a></li>
+                            <li><a class="dropdown-item" href="#">Apple</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-100 dropend">
+                        <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Laptops <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light">
+                            <li><a class="dropdown-item" href="#">Samsung</a></li>
+                            <li><a class="dropdown-item" href="#">RealMe</a></li>
+                            <li><a class="dropdown-item" href="#">Apple</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-100 dropend">
+                        <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Tablets <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light">
+                            <li><a class="dropdown-item" href="#">Samsung</a></li>
+                            <li><a class="dropdown-item" href="#">RealMe</a></li>
+                            <li><a class="dropdown-item" href="#">Apple</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-100 dropend">
+                        <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Other Accessories <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light">
+                            <li><a class="dropdown-item" href="#">Samsung</a></li>
+                            <li><a class="dropdown-item" href="#">RealMe</a></li>
+                            <li><a class="dropdown-item" href="#">Apple</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
 <div class="offcanvas offcanvas-start bg-transparent border-0"
      id="offcanvasExample"
      aria-labelledby="offcanvasExampleLabel">
@@ -30,9 +187,7 @@
                     All Products <i class="fa-solid fa-angle-right"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    @foreach(var product in ViewBag.product){
-                        <Li>@product.Name </Li>
-                    }
+                    
                 </ul>
             </div>
             <div class="w-100 dropend">
@@ -145,56 +300,74 @@
     <div class="overflow-x-scroll d-flex justify-content-lg-around align-items-center p-2" 
          id="myover">
         <div >
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2 " id="Laptop" >
-                <p class="fw-bold">LAPTOP</p>
-                <div class="ImgContainer">
-                    <img src="/images/coollaptop.png" class="w-100" alt="MaceBook" />
+            <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.LaptopId">
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2 " id="Laptop">
+                    <p class="fw-bold">LAPTOP</p>
+                    <div class="ImgContainer">
+                        <img src="/images/coollaptop.png" class="w-100" alt="MaceBook" />
+                    </div>
                 </div>
-            </div>
+            </a>
+            
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Phone">
-                <p class="fw-bold">SMART PHONE</p>
-                <div class="ImgContainer">
-                    <img src="/images/samsung-flip.png"
-                         class="w-100"
-                         alt="SamsungFlip" />
+            <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.PhoneId">
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Phone">
+                    <p class="fw-bold">SMART PHONE</p>
+                    <div class="ImgContainer">
+                        <img src="/images/samsung-flip.png"
+                             class="w-100"
+                             alt="SamsungFlip" />
+                    </div>
                 </div>
-            </div>
+            </a>
+            
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Tablet">
-                <p class="fw-bold">TABLET</p>
-                <div class="ImgContainer">
-                    <img src="/images/tablets.png" class="w-100" alt="SamsungFlip" />
+            <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.TabletId">
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Tablet">
+                    <p class="fw-bold">TABLET</p>
+                    <div class="ImgContainer">
+                        <img src="/images/tablets.png" class="w-100" alt="SamsungFlip" />
+                    </div>
                 </div>
-            </div>
+            </a>
+            
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="PowerBank">
-                <p class="fw-bold">POWER BANK</p>
-                <div class="ImgContainer">
-                    <img src="/images/powerbank.png" class="w-100" alt="PowerBank" />
+            <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.PowerBankId">
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="PowerBank">
+                    <p class="fw-bold">POWER BANK</p>
+                    <div class="ImgContainer">
+                        <img src="/images/powerbank.png" class="w-100" alt="PowerBank" />
+                    </div>
                 </div>
-            </div>
+            </a>
+            
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="SmartWatch">
-                <p class="fw-bold">SMART WATCH</p>
-                <div class="ImgContainer">
-                    <img src="/images/smartwatch.png"
-                         class="w-100"
-                         alt="SmartWatch" />
+            <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.SmartWatchId">
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="SmartWatch">
+                    <p class="fw-bold">SMART WATCH</p>
+                    <div class="ImgContainer">
+                        <img src="/images/smartwatch.png"
+                             class="w-100"
+                             alt="SmartWatch" />
+                    </div>
                 </div>
-            </div>
+            </a>
+            
         </div>
         <div>
-            <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="HeadPhone">
-                <p class="fw-bold">HEADPHONE</p>
-                <div class="ImgContainer">
-                    <img src="/images/HeadPhone.png" class="w-100" alt="HeadPhone" />
+            <a class="text-decoration-none" href="/mainpage/showallproduct?Id=@ViewBag.HeadPhoneId">
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="HeadPhone">
+                    <p class="fw-bold">HEADPHONE</p>
+                    <div class="ImgContainer">
+                        <img src="/images/HeadPhone.png" class="w-100" alt="HeadPhone" />
+                    </div>
                 </div>
-            </div>
+             </a>
+            
         </div>
     </div>
 </div>
@@ -250,227 +423,206 @@
     </div>
 </div>
 
-
-        <div class="col-lg-3 col-6 mb-lg-0 mb-2 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-solid fa-reply display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">3 Days Return Policy</div>
-                    <div class="fs-6 fw-normal text-secondary">
-                        Return within 3 Days
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-regular fa-credit-card display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">Easy Payment</div>
-                    <div class="fs-6 fw-normal text-secondary">
-                        Pay with various payment methods
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6 Cursor-Pointer">
-            <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                <i class="fa-solid fa-truck-fast display-6 me-2"></i>
-                <div>
-                    <div class="fw-bold fs-6">Fase Delivery</div>
-                    <div class="fs-6 fw-normal text-secondary">
-                        2 Days deliver in YGN & MDY
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <script>
- 
-    $(document).ready(function () {
-        $("#Laptop").on('click', function () {
-            var searchName = "Laptop";
-            var url = "/Home/Search?searchName=Laptop";
+    $(".SelectProduct").on('click', function () {
+
+        var ImageAndProductId = {};
+        ImageAndProductId.ProductId = $(this).attr("id");
+        ImageAndProductId.ImageId = $(this).children().first().attr("id")
+        var url = "/ShopProduct/ViewShopProduct";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: ImageAndProductId,
+            success: function (response) {
+                var data = JSON.stringify(response);
+
+                if (data != null) {
+                    window.location.href = "/ShopProduct/DetailProduct?shopProductData=" + encodeURIComponent(JSON.stringify(response));
+                }
+
+            },
+            failure: function (error) {
+                console.log(error);
+            }
+        })
+    })
+    // $(document).ready(function () {
+    //     $("#Laptop").on('click', function () {
+    //         var searchName = "Laptop";
+    //         var url = "/Home/Search?searchName=Laptop";
         
-            $.ajax({
-                type: 'POST',
-                url: url,
-              
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: url,
+    //              success: function (response) {
+    //                 var data = JSON.stringify(response);
+    //                  if (data!=null) { 
+                       
+    //                     window.location.href = "/Home/SearchList?Typedata="+ encodeURIComponent(JSON.stringify(response));
+    //                  }
 
-                 success: function (response) {
-                    var data = JSON.stringify(response);
-                     if (data!=null) { 
-                        // window.location = "/Home/SearchList";
-                         // window.Date = data;
-                        window.location.href = "/Home/SearchList?Typedata="+ encodeURIComponent(JSON.stringify(response));
-
-
-                     }
-
-                 },
-                 failure: function (error) { 
-                     console.log(error);
-                     alert("unok");
-                 }
+    //              },
+    //              failure: function (error) { 
+    //                  console.log(error);
+    //                  alert("unok");
+    //              }
 
 
-            })
-        });
-    } );
-    $(document).ready(function () {
-        $("#Phone").on('click', function () {
+    //         })
+    //     });
+    // } );
+    // $(document).ready(function () {
+    //     $("#Phone").on('click', function () {
         
-            var url = "/Home/Search?searchName=Mobile";
+    //         var url = "/Home/Search?searchName=Mobile";
           
-            $.ajax({
-                type: 'POST',
-                url: url,
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: url,
 
 
-                success: function (response) {
-                    var data = JSON.stringify(response);
-                    if (data != null) {
-                        // window.location = "/Home/SearchList";
-                        // window.Date = data;
-                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+    //             success: function (response) {
+    //                 var data = JSON.stringify(response);
+    //                 if (data != null) {
+    //                     // window.location = "/Home/SearchList";
+    //                     // window.Date = data;
+    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
 
 
-                    }
+    //                 }
 
-                },
-                failure: function (error) {
-                    console.log(error);
-                    alert("unok");
-                }
+    //             },
+    //             failure: function (error) {
+    //                 console.log(error);
+    //                 alert("unok");
+    //             }
 
 
-            })
-        });
-    });
-    $(document).ready(function () {
-    $("#Tablet").on('click', function () {
+    //         })
+    //     });
+    // });
+    // $(document).ready(function () {
+    // $("#Tablet").on('click', function () {
 
-            var url = "/Home/Search?searchName=Tablet";
+    //         var url = "/Home/Search?searchName=Tablet";
          
-            $.ajax({
-                type: 'POST',
-                url: url,
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: url,
 
 
-                success: function (response) {
-                    var data = JSON.stringify(response);
-                    if (data != null) {
-                        // window.location = "/Home/SearchList";
-                        // window.Date = data;
-                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+    //             success: function (response) {
+    //                 var data = JSON.stringify(response);
+    //                 if (data != null) {
+    //                     // window.location = "/Home/SearchList";
+    //                     // window.Date = data;
+    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
 
 
-                    }
+    //                 }
 
-                },
-                failure: function (error) {
-                    console.log(error);
-                    alert("unok");
-                }
+    //             },
+    //             failure: function (error) {
+    //                 console.log(error);
+    //                 alert("unok");
+    //             }
 
 
-            })
-        });
-    });
-    $(document).ready(function () {
-        $("#PowerBank").on('click', function () {
+    //         })
+    //     });
+    // });
+    // $(document).ready(function () {
+    //     $("#PowerBank").on('click', function () {
 
-            var url = "/Home/Search?searchName=PowerBank";
+    //         var url = "/Home/Search?searchName=PowerBank";
            
-            $.ajax({
-                type: 'POST',
-                url: url,
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: url,
 
 
-                success: function (response) {
-                    var data = JSON.stringify(response);
-                    if (data != null) {
-                        // window.location = "/Home/SearchList";
-                        // window.Date = data;
-                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+    //             success: function (response) {
+    //                 var data = JSON.stringify(response);
+    //                 if (data != null) {
+    //                     // window.location = "/Home/SearchList";
+    //                     // window.Date = data;
+    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
 
 
-                    }
+    //                 }
 
-                },
-                failure: function (error) {
-                    console.log(error);
-                    alert("unok");
-                }
+    //             },
+    //             failure: function (error) {
+    //                 console.log(error);
+    //                 alert("unok");
+    //             }
 
 
-            })
-        });
-    });
-    $(document).ready(function () {
-        $("#SmartWatch").on('click', function () {
+    //         })
+    //     });
+    // });
+    // $(document).ready(function () {
+    //     $("#SmartWatch").on('click', function () {
 
-            var url = "/Home/Search?searchName=Smart Watch";
+    //         var url = "/Home/Search?searchName=Smart Watch";
          
-            $.ajax({
-                type: 'POST',
-                url: url,
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: url,
 
 
-                success: function (response) {
-                    var data = JSON.stringify(response);
-                    if (data != null) {
-                        // window.location = "/Home/SearchList";
-                        // window.Date = data;
-                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+    //             success: function (response) {
+    //                 var data = JSON.stringify(response);
+    //                 if (data != null) {
+    //                     // window.location = "/Home/SearchList";
+    //                     // window.Date = data;
+    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
 
 
-                    }
+    //                 }
 
-                },
-                failure: function (error) {
-                    console.log(error);
-                    alert("unok");
-                }
+    //             },
+    //             failure: function (error) {
+    //                 console.log(error);
+    //                 alert("unok");
+    //             }
 
 
-            })
-        });
-    });
-    $(document).ready(function () {
-        $("#HeadPhone").on('click', function () {
+    //         })
+    //     });
+    // });
+    // $(document).ready(function () {
+    //     $("#HeadPhone").on('click', function () {
 
-            var url = "/Home/Search?searchName=HeadPhone";
+    //         var url = "/Home/Search?searchName=HeadPhone";
           
-            $.ajax({
-                type: 'POST',
-                url: url,
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: url,
 
 
-                success: function (response) {
-                    var data = JSON.stringify(response);
-                    if (data != null) {
-                        // window.location = "/Home/SearchList";
-                        // window.Date = data;
-                        window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
+    //             success: function (response) {
+    //                 var data = JSON.stringify(response);
+    //                 if (data != null) {
+    //                     // window.location = "/Home/SearchList";
+    //                     // window.Date = data;
+    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
 
 
-                    }
+    //                 }
 
-                },
-                failure: function (error) {
-                    console.log(error);
-                    alert("unok");
-                }
+    //             },
+    //             failure: function (error) {
+    //                 console.log(error);
+    //                 alert("unok");
+    //             }
 
 
-            })
-        });
-    });
+    //         })
+    //     });
+    // });
    
+    
 
 </script>
