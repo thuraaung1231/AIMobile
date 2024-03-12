@@ -106,7 +106,7 @@ html {
 }
 
     .AllProducts:hover {
-        box-shadow: 1px 2px 2px 3px lightgray;
+        box-shadow: 1px 1px 1px 2px lightgray;
     }
 
 .popularProduct {
@@ -143,7 +143,7 @@ html {
 
 .selectProduct {
     background-color: rgb(247, 247, 252);
-    ;
+    
 }
 
 .childSelectProduct {
@@ -255,4 +255,33 @@ html {
 
 .formHeader {
     font-family: Auriol LT Std Black;
+}
+#ResultContainer{
+    position:absolute;
+   top:40px;
+ 
+}
+#ResultContainer::-webkit-scrollbar {
+        cursor: pointer;
+        width:5px;
+    }
+
+#ResultContainer::-webkit-scrollbar-thumb {
+        background-color: rgb(34, 0, 255);
+        border-radius: 5px;
+    }
+
+.ChildProduct{
+    padding:10px;
+    cursor:pointer;
+    transition:all ease-in-out 0.3s;
+   border-bottom:0.5px solid lightgray;
+    height:50px;
+}
+.ChildProduct:hover{
+    background-color:lightblue;
+}
+.RelatedImages{
+    cursor:pointer;
+    
 }

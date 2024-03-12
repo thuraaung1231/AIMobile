@@ -5,7 +5,7 @@
 @* 
 @model IList<ImageViewModel> *@
 @*     Product Bar *@
-<div class="product-Bar position-sticky z-2">
+<div class="product-Bar position-sticky z-1">
     <div class="container-fluid py-2">
         <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
                 data-bs-toggle="dropdown"
@@ -301,10 +301,10 @@
          id="myover">
         <div >
             <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.LaptopId">
-                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2 " id="Laptop">
-                    <p class="fw-bold">LAPTOP</p>
-                    <div class="ImgContainer">
-                        <img src="/images/coollaptop.png" class="w-100" alt="MaceBook" />
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts border" id="Laptop">
+                    <p class="fw-bold mt-2">LAPTOP</p>
+                    <div class="ImgContainer d-flex justify-content-center mt-3">
+                        <i class="fa-solid fa-laptop text-secondary fs-2"></i>
                     </div>
                 </div>
             </a>
@@ -312,12 +312,10 @@
         </div>
         <div>
             <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.PhoneId">
-                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Phone">
-                    <p class="fw-bold">SMART PHONE</p>
-                    <div class="ImgContainer">
-                        <img src="/images/samsung-flip.png"
-                             class="w-100"
-                             alt="SamsungFlip" />
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts border" id="Phone">
+                    <p class="fw-bold mt-2">SMART PHONE</p>
+                    <div class="ImgContainer d-flex justify-content-center mt-3">
+                        <i class="fa-solid fa-mobile text-secondary fs-2"></i>
                     </div>
                 </div>
             </a>
@@ -325,10 +323,10 @@
         </div>
         <div>
             <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.TabletId">
-                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="Tablet">
-                    <p class="fw-bold">TABLET</p>
-                    <div class="ImgContainer">
-                        <img src="/images/tablets.png" class="w-100" alt="SamsungFlip" />
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts border" id="Tablet">
+                    <p class="fw-bold mt-2">TABLET</p>
+                    <div class="ImgContainer d-flex justify-content-center mt-3">
+                        <i class="fa-solid fa-headphones text-secondary fs-2"></i>
                     </div>
                 </div>
             </a>
@@ -336,10 +334,10 @@
         </div>
         <div>
             <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.PowerBankId">
-                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="PowerBank">
-                    <p class="fw-bold">POWER BANK</p>
-                    <div class="ImgContainer">
-                        <img src="/images/powerbank.png" class="w-100" alt="PowerBank" />
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts border" id="PowerBank">
+                    <p class="fw-bold mt-2">POWER BANK</p>
+                    <div class="ImgContainer d-flex justify-content-center mt-3">
+                        <i class="fa-solid fa-tablet text-secondary fs-2"></i>
                     </div>
                 </div>
             </a>
@@ -347,12 +345,10 @@
         </div>
         <div>
             <a class="text-decoration-none" href="/mainpage/showallproduct?id=@ViewBag.SmartWatchId">
-                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="SmartWatch">
-                    <p class="fw-bold">SMART WATCH</p>
-                    <div class="ImgContainer">
-                        <img src="/images/smartwatch.png"
-                             class="w-100"
-                             alt="SmartWatch" />
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts border" id="SmartWatch">
+                    <p class="fw-bold mt-2">SMART WATCH</p>
+                    <div class="ImgContainer d-flex justify-content-center mt-3">
+                        <i class="bi bi-smartwatch text-secondary fs-2"></i>
                     </div>
                 </div>
             </a>
@@ -360,10 +356,10 @@
         </div>
         <div>
             <a class="text-decoration-none" href="/mainpage/showallproduct?Id=@ViewBag.HeadPhoneId">
-                <div class="d-flex flex-column justify-content-center align-items-center AllProducts py-2" id="HeadPhone">
-                    <p class="fw-bold">HEADPHONE</p>
-                    <div class="ImgContainer">
-                        <img src="/images/HeadPhone.png" class="w-100" alt="HeadPhone" />
+                <div class="d-flex flex-column justify-content-center align-items-center AllProducts border" id="HeadPhone">
+                    <p class="fw-bold mt-2">HEADPHONE</p>
+                    <div class="ImgContainer d-flex justify-content-center mt-3">
+                        <i class="fa-solid fa-headphones text-secondary fs-2"></i>
                     </div>
                 </div>
              </a>
@@ -384,10 +380,8 @@
         <div class="col-lg-7 col-md-7 col-12 DeliverySlideConatiner">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="1000">
-                        <img src="/images/deliveryService.jpg" class="d-block w-100 h-50 rounded" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
+                    
+                    <div class="carousel-item active" data-bs-interval="2000">
                         <img src="/images/secureDelivery.jpg" class="d-block w-100 h-50 rounded" alt="...">
                     </div>
                     <div class="carousel-item">
@@ -430,6 +424,7 @@
         ImageAndProductId.ProductId = $(this).attr("id");
         ImageAndProductId.ImageId = $(this).children().first().attr("id")
         var url = "/ShopProduct/ViewShopProduct";
+
         $.ajax({
             type: 'POST',
             url: url,
@@ -447,182 +442,4 @@
             }
         })
     })
-    // $(document).ready(function () {
-    //     $("#Laptop").on('click', function () {
-    //         var searchName = "Laptop";
-    //         var url = "/Home/Search?searchName=Laptop";
-        
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: url,
-    //              success: function (response) {
-    //                 var data = JSON.stringify(response);
-    //                  if (data!=null) { 
-                       
-    //                     window.location.href = "/Home/SearchList?Typedata="+ encodeURIComponent(JSON.stringify(response));
-    //                  }
-
-    //              },
-    //              failure: function (error) { 
-    //                  console.log(error);
-    //                  alert("unok");
-    //              }
-
-
-    //         })
-    //     });
-    // } );
-    // $(document).ready(function () {
-    //     $("#Phone").on('click', function () {
-        
-    //         var url = "/Home/Search?searchName=Mobile";
-          
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: url,
-
-
-    //             success: function (response) {
-    //                 var data = JSON.stringify(response);
-    //                 if (data != null) {
-    //                     // window.location = "/Home/SearchList";
-    //                     // window.Date = data;
-    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
-
-
-    //                 }
-
-    //             },
-    //             failure: function (error) {
-    //                 console.log(error);
-    //                 alert("unok");
-    //             }
-
-
-    //         })
-    //     });
-    // });
-    // $(document).ready(function () {
-    // $("#Tablet").on('click', function () {
-
-    //         var url = "/Home/Search?searchName=Tablet";
-         
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: url,
-
-
-    //             success: function (response) {
-    //                 var data = JSON.stringify(response);
-    //                 if (data != null) {
-    //                     // window.location = "/Home/SearchList";
-    //                     // window.Date = data;
-    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
-
-
-    //                 }
-
-    //             },
-    //             failure: function (error) {
-    //                 console.log(error);
-    //                 alert("unok");
-    //             }
-
-
-    //         })
-    //     });
-    // });
-    // $(document).ready(function () {
-    //     $("#PowerBank").on('click', function () {
-
-    //         var url = "/Home/Search?searchName=PowerBank";
-           
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: url,
-
-
-    //             success: function (response) {
-    //                 var data = JSON.stringify(response);
-    //                 if (data != null) {
-    //                     // window.location = "/Home/SearchList";
-    //                     // window.Date = data;
-    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
-
-
-    //                 }
-
-    //             },
-    //             failure: function (error) {
-    //                 console.log(error);
-    //                 alert("unok");
-    //             }
-
-
-    //         })
-    //     });
-    // });
-    // $(document).ready(function () {
-    //     $("#SmartWatch").on('click', function () {
-
-    //         var url = "/Home/Search?searchName=Smart Watch";
-         
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: url,
-
-
-    //             success: function (response) {
-    //                 var data = JSON.stringify(response);
-    //                 if (data != null) {
-    //                     // window.location = "/Home/SearchList";
-    //                     // window.Date = data;
-    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
-
-
-    //                 }
-
-    //             },
-    //             failure: function (error) {
-    //                 console.log(error);
-    //                 alert("unok");
-    //             }
-
-
-    //         })
-    //     });
-    // });
-    // $(document).ready(function () {
-    //     $("#HeadPhone").on('click', function () {
-
-    //         var url = "/Home/Search?searchName=HeadPhone";
-          
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: url,
-
-
-    //             success: function (response) {
-    //                 var data = JSON.stringify(response);
-    //                 if (data != null) {
-    //                     // window.location = "/Home/SearchList";
-    //                     // window.Date = data;
-    //                     window.location.href = "/Home/SearchList?Typedata=" + encodeURIComponent(JSON.stringify(response));
-
-
-    //                 }
-
-    //             },
-    //             failure: function (error) {
-    //                 console.log(error);
-    //                 alert("unok");
-    //             }
-
-
-    //         })
-    //     });
-    // });
-   
-    
-
 </script>
