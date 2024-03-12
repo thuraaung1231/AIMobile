@@ -4,10 +4,10 @@
         <div class="col-lg-8 col-12 shadow mb-3">
             <h4>Shopping Cart</h4>
             <p class="text-end m-0 px-3">TotalPrice (Ks)</p>
- 
+            
             @for (int i=0; i<Model.Count; i++)
             {               
-                <input type="hidden" value="@Model[i].StockCount" />
+                <input type="hidden" value="@Model[i].StockCount" id="stockCount"/>
                 <div class="row p-3 border-top">
                     <div class="col-3 d-flex justify-content-center align-items-center">
                         <img src="@Model[i].ImageName" class="col-lg-6 col-md-6 mx-auto col-12" alt="" />
@@ -23,12 +23,13 @@
                         <p class="m-0 p-0 mb-2 d-flex">
                             Price:
                             <input class="text-primary search-Bar text-center"
+                                    
                                    value="@Model[i].Unitprice"
-                                   id="productPrice" />
+                                   id="productPrice@(i)" />
 
                         </p>
                         <span>Quantity : </span>
-                        <input type="text" value="reduceButton@(i)" />
+                       
                         <div class="btn-group btn-group-sm"
                              role="group"
                              aria-label="Basic outlined example">
@@ -104,52 +105,38 @@
 
 
 <script>
-    // $(".delete").on('click', function () {
-    //     var data = ;
+    
 
-    //     alert("ok");
-    //     var url = "/ShopProduct/DeleteItem";
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: url,
-    //         data:data ,
-         
-    //         success: function (response) {
-    //             var data = JSON.stringify(response);
-
-    //             if (data != null) {
-    //                 window.location.href = "/ShopProduct/AddtoCart?cart=" + encodeURIComponent(JSON.stringify(response));
-    //             }
-
-    //         },
-    //         failure: function (error) {
-    //             console.log(error);
-    //         }
-    //     })
-    // })
-    //for add to cart check
-
-    var totalItem = 0;
-    var totalPrice = 0;
-
-    for (let i = 0; i <@Model.Count; i++) {
+    var totalItem=0;
+    var totalPrice=0;
+    for (let i = 0; i<@Model.Count; i++) {
         var eachitem = parseInt($("#numberOfItem" + i).val());
-        var eachamount = ($("#totalPrice" + i).val());
+        var eachamount = parseInt($("#totalPrice" + i).val());
         totalItem += eachitem;
         totalPrice += eachamount;
+        
+        
         $("#increaseButton" + i).click(function () {
+            
             var NumberOfItem = parseInt($("#numberOfItem" + i).val());
-            var IncreaseItem = ++NumberOfItem;
-            totalItem++;
-            $("#numberOfItem" + i).val(IncreaseItem);
-            var totalAmount = parseInt($("#productPrice" + i).val() * IncreaseItem);
-            var totalAmount = parseInt($("#productPrice" + i).val() * IncreaseItem);
-            totalPrice += ($("#productPrice" + i).val());
-            $("#totalPrice" + i).val(totalAmount);
-            $("#TotalItems").val(totalItem);
-            $("#TotalItemPrice").val(totalPrice);
-            $("#TotalItems2").val(totalItem);
-            $("#TotalItemPrice2").val(totalPrice);
+            if (NumberOfItem >= $("#stockCount").val()) {
+                alert("Insufficient Product")
+                return
+            }else{
+                var IncreaseItem = ++NumberOfItem;
+                totalItem++;
+                $("#numberOfItem" + i).val(IncreaseItem);
+                var totalAmount = parseInt($("#productPrice" + i).val() * IncreaseItem);
+                console.log(totalPrice);
+                totalPrice += parseInt($("#productPrice" + i).val());
+                console.log(totalPrice);
+                $("#totalPrice" + i).val(totalAmount);
+                $("#TotalItems").val(totalItem);
+                $("#TotalItemPrice").val(totalPrice);
+                $("#TotalItems2").val(totalItem);
+                $("#TotalItemPrice2").val(totalPrice);
+            }
+            
             
         });
         $("#reduceButton" + i).click(function () {
@@ -171,34 +158,11 @@
         });
     }
     $("#TotalItems").val(totalItem);
-     $("#TotalItemPrice").val(totalPrice);
-     $("#TotalItems2").val(totalItem);
-     $("#TotalItemPrice2").val(totalPrice);
+    $("#TotalItemPrice").val(totalPrice);
+    $("#TotalItems2").val(totalItem);
+    $("#TotalItemPrice2").val(totalPrice);
+
     
-
-    // $("#increaseButton").click(function () {
-    //     var NumberOfItem = parseInt($("#numberOfItem").val());
-    //     if (NumberOfItem <= $("#StockCount").val()) {
-    //         var IncreaseItem = ++NumberOfItem;
-    //         $("#numberOfItem").val(IncreaseItem);
-    //         var totalAmount = $("#UnitPrice").val() * IncreaseItem;
-    //         $("#TotalPrice").html(totalAmount)
-    //     } else {
-    //         alert("Insufficient Product")
-    //     }
-
-    // })
-    // $("#reduceButton").click(function () {
-    //     var NumberOfItem = parseInt($("#numberOfItem").val());
-    //     if (NumberOfItem == 1) {
-    //         return;
-    //     } else {
-    //         var DecreaseItem = --NumberOfItem;
-    //         $("#numberOfItem").val(DecreaseItem);
-    //         var totalAmount = $("#UnitPrice").val() * DecreaseItem;
-    //         $("#TotalPrice").html(totalAmount)
-    //     }
-    // })
 
  
 </script>

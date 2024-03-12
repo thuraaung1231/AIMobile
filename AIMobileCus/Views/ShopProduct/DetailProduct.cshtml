@@ -396,13 +396,14 @@
     })
     $("#increaseButton").click(function () {
         var NumberOfItem = parseInt($("#numberOfItem").val());
-        if (NumberOfItem <= $("#StockCount").val()) {
+        if (NumberOfItem >= $("#StockCount").val()) {
+            alert("Insufficient Product")
+            
+        }else{
             var IncreaseItem = ++NumberOfItem;
             $("#numberOfItem").val(IncreaseItem);
             var totalAmount = $("#UnitPrice").val() * IncreaseItem;
             $("#TotalPrice").html(totalAmount)
-        }else{
-            alert("Insufficient Product")
         }
         
     })

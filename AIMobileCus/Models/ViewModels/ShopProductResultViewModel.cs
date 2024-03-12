@@ -16,7 +16,7 @@ namespace AIMobileCus.Models.ViewModels
         public string Name { get; set; }
         public string FrontImageUrl { get; set; }
         
->
+
 
     }
 }
