@@ -1,5 +1,6 @@
 ﻿
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -14,6 +15,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AIMobile.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5c9d3a4741.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
@@ -29,15 +31,18 @@
                  aria-controls="offcanvasRight">
                 <i class="fa-solid fa-house-chimney-user text-light"></i>
             </div>
-            <div class="d-flex col-md-6 col-12">
-                <input type="text"
-                       class="rounded-start search-Bar p-2 col"
-                       placeholder="Search Your Product" />
-                <button class="border-none bg-warning rounded-end search-Button py-2 px-3"
-                        type="button"
-                        id="button-addon2">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+            <div class="d-flex flex-column col-md-6 col-12 position-relative h-50">
+                <div class="col-12 d-flex">
+                    <input type="text"
+                           class="search-Bar p-2 col-10"
+                           placeholder="Search Your Product" id="UserSearch" />
+                    <button class="border-none bg-warning rounded-end search-Button py-2 px-3"
+                            type="button"
+                            id="button-addon2">
+                        <i class="fa-solid fa-magnifying-glass" id="searchButton"></i>
+                    </button>
+                </div>
+                <div id="ResultContainer" class="col-10 bg-light overflow-y-scroll"></div>
             </div>
             <div class="navbar-brand d-lg-none d-md-inline d-none">
                 <i class="fa-solid fa-house-chimney-user text-light Pointer"
@@ -221,14 +226,7 @@
         </div>
 
     </footer>
-    <script>
-        $(document).ready(function () {
-            $("#Allproduct").on('click', function () {
-             alert("ok");
-
-                })
-            });
-    </script>
+    
     <div class="offcanvas offcanvas-start bg-transparent border-0"
          id="offcanvasExample"
          aria-labelledby="offcanvasExampleLabel">
@@ -309,6 +307,8 @@
             </div>
         </div>
     </div>
+   
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -317,6 +317,68 @@
             crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        
+        var allProduct = []; // Declared in the global scope
+
+        window.onload = function () {
+            // Your code here
+            var url = "/home/SearchProduct";
+            var data = "search";
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: data,
+                success: function (response) {
+                    response.forEach(function (product) {
+                        allProduct.push(product);
+                    });
+
+                   
+                },
+                failure: function (error) {
+                    console.log(error);
+                }
+            });
+        };
+        $(document).ready(function () {
+            $("#UserSearch").on('keyup', function () {
+                $("#ResultContainer").html("");
+                let searchValue = $(this).val().toLowerCase();
+                if(searchValue==""){
+                    return;
+                }
+                let filteredProducts = allProduct.filter(product => {
+                    return product.name.toLowerCase().includes(searchValue); // Corrected to product.Name
+                });
+                
+                for (let i = 0; i < filteredProducts.length;i++){
+                  
+                    let productName = filteredProducts[i].name;
+                    let ImageUrl = filteredProducts[i].frontImageUrl;
+                    let NewDiv = $('<div>');
+                    NewDiv.addClass("ChildProduct");
+                    let newLink = $('<a>', {
+                        href: '/MainPage/ShowProduct?id='+filteredProducts[i].productId,
+                        'class':'text-decoration-none d-flex justify-content-between align-items-center'
+                    });
+                    NewDiv.append(newLink);
+                    let NewSpan = $('<span>');
+                    NewSpan.html(productName);
+                    let ImageTag = $('<img>');
+                    ImageTag.attr({
+                        src: ImageUrl,
+                        
+                        width: '50',
+                        height: '50'
+                    });
+                    newLink.append(NewSpan,ImageTag)
+                    $("#ResultContainer").append(NewDiv)
+                } 
+            });
+        });
+        
+    </script>
 </body>
 </html>
 

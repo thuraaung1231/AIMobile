@@ -143,12 +143,7 @@ namespace AIMobile.Controllers
             }).ToList();
 
             ViewBag.OtherAccessories = OtherAccessoryViewModel;
-
-
-
             var shopProductViewModel = JsonConvert.DeserializeObject<ShopProductViewModel>(shopProductData);
-         
-
         //For Search Related Item
         IList<ImageViewModel> RelatedImages=new List<ImageViewModel>();
         IList<ProductViewModel>RelatedProducts=new List<ProductViewModel>();

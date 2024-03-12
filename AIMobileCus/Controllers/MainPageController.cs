@@ -120,6 +120,14 @@ namespace AIMobileCus.Controllers
 
             ViewBag.OtherAccessories = OtherAccessoryViewModel;
 
+            // For filtering the product
+            ViewBag.LaptopId = LapTopId;
+            ViewBag.PhoneId = PhoneId;
+            ViewBag.TabletId = TabletId;
+            ViewBag.SmartWatchId = SmartWatchId;
+            ViewBag.PowerBankId = PowerBankId;
+            ViewBag.HeadPhoneId = HeadPhoneId;
+
             //for All Product
             IList<ShopProductViewModel>shopProducts=_shopProductService.ReteriveAll().Where(s=>s.ProductId==id).Select(p=>new ShopProductViewModel
             {
@@ -181,10 +189,113 @@ namespace AIMobileCus.Controllers
             ViewBag.ProductList=products;
             ViewBag.ImageList = Images;
             ViewBag.ShopList = Shopes;
-            return View("ShowAllProduct",shopProducts);
+            if(shopProducts.Count > 0)
+            {
+                return View("ShowAllProduct", shopProducts);
+            }
+            else
+            {
+                return RedirectToAction("ShowAllProduct");
+            }
+            
         }
       public IActionResult ShowAllProduct(string id)
         {
+
+            //ForNav
+            IList<TypeViewModel> typeViewModels = _typeServices.ReteriveAll().Select(p => new TypeViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+            }).ToList();
+            var PhoneId = "";
+            var LapTopId = "";
+            var TabletId = "";
+            var SmartWatchId = "";
+            var HeadPhoneId = "";
+            var PowerBankId = "";
+            foreach (var type in typeViewModels)
+            {
+                if (type.Name == "Phone")
+                {
+                    PhoneId = type.Id;
+                }
+                else if (type.Name == "Laptop")
+                {
+                    LapTopId = type.Id;
+                }
+                else if (type.Name == "Tablet")
+                {
+                    TabletId = type.Id;
+                }
+                else if (type.Name == "Smart Watch")
+                {
+                    SmartWatchId = type.Id;
+                }
+                else if (type.Name == "HeadPhone")
+                {
+                    HeadPhoneId = type.Id;
+                }
+                else if (type.Name == "PowerBank")
+                {
+                    PowerBankId = type.Id;
+                }
+            }
+            //for Phone Product
+            IList<ProductViewModel> PhoneViewModel = _productService.ReteriveAll().Where(p => p.TypeId == PhoneId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.Phones = PhoneViewModel;
+
+            IList<ProductViewModel> LaptopViewModel = _productService.ReteriveAll().Where(p => p.TypeId == LapTopId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.Laptops = LaptopViewModel;
+
+            IList<ProductViewModel> TabletViewModel = _productService.ReteriveAll().Where(p => p.TypeId == TabletId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.tablets = TabletViewModel;
+
+            IList<ProductViewModel> SmartWatchViewModel = _productService.ReteriveAll().Where(p => p.TypeId == SmartWatchId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.smartWatchs = SmartWatchViewModel;
+
+            IList<ProductViewModel> OtherAccessoryViewModel = _productService.ReteriveAll().Where(p => p.TypeId != PhoneId && p.TypeId != TabletId && p.TypeId != LapTopId && p.TypeId != SmartWatchId).Select(s => new ProductViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                TypeId = s.TypeId,
+                BrandId = s.BrandId,
+            }).ToList();
+            ViewBag.OtherAccessories = OtherAccessoryViewModel;
+
+            //For filtering the product
+            ViewBag.LaptopId = LapTopId;
+            ViewBag.PhoneId = PhoneId;
+            ViewBag.TabletId = TabletId;
+            ViewBag.SmartWatchId = SmartWatchId;
+            ViewBag.PowerBankId = PowerBankId;
+            ViewBag.HeadPhoneId = HeadPhoneId;
+
+            //For Showing the product
             IList<string> Descriptions = new List<string>();
             IList<ImageViewModel> RelatedImages = new List<ImageViewModel>();
             IList<ProductViewModel> RelatedProducts = new List<ProductViewModel>();
@@ -197,11 +308,13 @@ namespace AIMobileCus.Controllers
                 Name = s.Name,
                 TypeId = s.TypeId,
             }).ToList();
+            ViewBag.AllProductList = productViewModels;
             foreach (var product in productViewModels)
             {
                 var shopProductEntity = _shopProductService.GetShopProductByProductId(product.Id);
                 if(shopProductEntity != null)
                 {
+                   
                     ShopProductViewModel shopProduct = new ShopProductViewModel()
                     {
                         Id = shopProductEntity.Id,

@@ -5,7 +5,7 @@
     List<string> DescriptionValues = ViewBag.DescriptionValue;
     List<ImageViewModel> RelatedImages = ViewBag.RelatedImages;
 }
-<div class="product-Bar position-sticky z-2">
+<div class="product-Bar position-sticky z-1">
     <div class="container-fluid py-2">
         <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
                 data-bs-toggle="dropdown"
@@ -165,7 +165,7 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <a href="home.html" class="my-auto py-2 text-decoration-none text-dark"><i class="fa-solid fa-circle-arrow-left"></i> Back to products</a>
+        <a href="/home/index" class="my-auto py-2 text-decoration-none text-dark"><i class="fa-solid fa-circle-arrow-left"></i> Back to Home Page</a>
     </div>
     <div class="row px-2">
         <div class="col-lg-5 selectProduct">
@@ -308,10 +308,10 @@
         <h4>Other Related Products</h4>
         @for(int i = 0; i < RelatedImages.Count; i++)
         {
-            <div class="col-2">
-                <div class="p-3 shadow rounded">
+            <div class="col-2 RelatedImages" id="@RelatedImages[i].Id">
+                <div class="p-3 shadow rounded" id="@Model[i].Id">
                     <div class="bg-body-secondary p-4 rounded">
-                        <img src="@RelatedImages[i].FrontImageUrl" class="w-100" alt="">
+                        <img src="@RelatedImages[i].FrontImageUrl" class="w-100 h-100 imageHeight" alt="">
                     </div>
                     <p class="m-0 p-0 pt-2">@Model[i].Name</p>
                     <p class="m-0 p-0">
@@ -387,6 +387,7 @@
             }
         })
     })
+
     $(".selectItem").click(function (event) {
         var clickedImg = event.target;
         var src = clickedImg.getAttribute('src');
@@ -416,4 +417,27 @@
             $("#TotalPrice").html(totalAmount)
         }
     })
+    $(".RelatedImages").click(function () {
+        var ImageAndProductId = {};
+        ImageAndProductId.ProductId = $(this).children().first().attr("id");
+        ImageAndProductId.ImageId = $(this).attr("id");
+        var url = "/ShopProduct/ViewShopProduct";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: ImageAndProductId,
+            success: function (response) {
+                var data = JSON.stringify(response);
+
+                if (data != null) {
+                    window.location.href = "/ShopProduct/DetailProduct?shopProductData=" + encodeURIComponent(JSON.stringify(response));
+                }
+
+            },
+            failure: function (error) {
+                console.log(error);
+            }
+        })
+    })
+
 </script>

@@ -201,126 +201,41 @@ namespace AIMobileCus.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //public JsonResult Search(string searchName) {
-
-        //    var typeId = _typeServices.GetByName(searchName).Id;
-        //    return Json(typeId);
-        //}
-        //public IActionResult SearchListResult(string SearchListData) {
-
-
-        //    return View();
-        //}
-        //[HttpGet]
-        //public IActionResult SearchList(string Typedata)
-        //{
-        //    var typeid = JsonConvert.DeserializeObject<string>(Typedata);
-        //    var pvm = _productService.ReteriveAll().Where(w => w.TypeId == typeid).Select(s => new ProductViewModel
-        //    {
-        //        Id = s.Id,
-        //        Name = s.Name,
-        //    }).ToList();
-        //    var spvm = _shopProductService.ReteriveAll().Select(s => new ShopProductViewModel
-        //    {
-        //        Id = s.Id,
-        //        ShopId = s.ShopId,
-        //        ProductId = s.ProductId,
-        //        ImageId = s.ImageId,
-        //        ShopName = _shopService.GetById(s.ShopId).Name,
-        //        ProductName = _productService.GetById(s.ProductId).Name,
-        //        ImageName = _imageService.GetById(s.ImageId).ImageName,
-        //        StockCount = s.StockCount,
-        //        Description = s.Description,
-
-        //    }).ToList();
-        //    IList<ShopProductResultViewModel> sprvm = (from t in pvm
-        //                                               join s in spvm on t.Id equals s.ProductId
-        //                                               select new ShopProductResultViewModel
-        //                                               {
-        //                                                   Id = s.Id,
-        //                                                   ShopId = s.ShopId,
-        //                                                   ProductId = s.ProductId,
-        //                                                   ImageId = s.ImageId,
-        //                                                   ShopName = _shopService.GetById(s.ShopId).Name,
-        //                                                   ProductName = _productService.GetById(s.ProductId).Name,
-        //                                                   ImageName = _imageService.GetById(s.ImageId).FrontImageUrl,
-        //                                                   StockCount = s.StockCount,
-        //                                                   Description = s.Description,
-        //                                                   Unitprice = _productService.GetById(s.ProductId).UnitPrice,
-
-        //                                               }).ToList();
-
-        //    return View(sprvm);
-        //}
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
-        //[HttpGet]
-        //public IActionResult Filter(string Id) 
-        //{
-        //    var productList=_shopProductService.ReteriveAll().Where(w=>w.ProductId==Id).Select(s=> new ShopProductResultViewModel {
-
-        //        Id = s.Id,
-        //        ShopId = s.ShopId,
-        //        ProductId = s.ProductId,
-        //        ImageId = s.ImageId,
-        //        ShopName = _shopService.GetById(s.ShopId).Name,
-        //        ProductName = _productService.GetById(s.ProductId).Name,
-        //        ImageName = _imageService.GetById(s.ImageId).FrontImageUrl,
-        //        StockCount = s.StockCount,
-        //        Description = s.Description,
-        //        Unitprice = _productService.GetById(s.ProductId).UnitPrice,
-
-        //    }).ToList();
-            
-            
-        //    return View("SearchList",productList);
-        //}
-        //[HttpGet]
-        //public IActionResult OtherAccessories(string Id)
-        //{
-        //    var pvm = _productService.ReteriveAll().Where(w => w.TypeId == Id).Select(s => new ProductViewModel
-        //    {
-        //        Id = s.Id,
-        //        Name = s.Name,
-        //    }).ToList();
-        //    var spvm = _shopProductService.ReteriveAll().Select(s => new ShopProductViewModel
-        //    {
-        //        Id = s.Id,
-        //        ShopId = s.ShopId,
-        //        ProductId = s.ProductId,
-        //        ImageId = s.ImageId,
-        //        ShopName = _shopService.GetById(s.ShopId).Name,
-        //        ProductName = _productService.GetById(s.ProductId).Name,
-        //        ImageName = _imageService.GetById(s.ImageId).ImageName,
-        //        StockCount = s.StockCount,
-        //        Description = s.Description,
-
-        //    }).ToList();
-        //    IList<ShopProductResultViewModel> sprvm = (from t in pvm
-        //                                               join s in spvm on t.Id equals s.ProductId
-        //                                               select new ShopProductResultViewModel
-        //                                               {
-        //                                                   Id = s.Id,
-        //                                                   ShopId = s.ShopId,
-        //                                                   ProductId = s.ProductId,
-        //                                                   ImageId = s.ImageId,
-        //                                                   ShopName = _shopService.GetById(s.ShopId).Name,
-        //                                                   ProductName = _productService.GetById(s.ProductId).Name,
-        //                                                   ImageName = _imageService.GetById(s.ImageId).FrontImageUrl,
-        //                                                   StockCount = s.StockCount,
-        //                                                   Description = s.Description,
-        //                                                   Unitprice = _productService.GetById(s.ProductId).UnitPrice,
-
-        //                                               }).ToList();
-
-
-        //    return View("SearchList", sprvm);
-        //}
+       public JsonResult SearchProduct(string search)
+        {
+            IList<ShopProductResultViewModel>shopProductResults = new List<ShopProductResultViewModel>();
+            IList<ProductViewModel> productViewModel = _productService.ReteriveAll().Select(p=>new ProductViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                UnitPrice = p.UnitPrice,    
+            }).ToList();
+            IList<ShopProductViewModel>shopProducts=_shopProductService.ReteriveAll().Select(s=>new ShopProductViewModel
+            {
+                Id=s.Id,
+                ImageId=s.ImageId,
+                ProductId=s.ProductId,
+            }).ToList();
+            foreach(var shopProduct in shopProducts)
+            {
+                ShopProductResultViewModel shopProductResultView = new ShopProductResultViewModel
+                {
+                    ProductId = shopProduct.ProductId,
+                    ImageId=shopProduct.ImageId,
+                    Name=_productService.GetById(shopProduct.ProductId).Name,
+                    FrontImageUrl=_imageService.GetById(shopProduct.ImageId).FrontImageUrl,
+                    ShopProductId=shopProduct.Id,
+                };
+                shopProductResults.Add(shopProductResultView);
+            }
+            return Json(shopProductResults);
+        }
     }
     }

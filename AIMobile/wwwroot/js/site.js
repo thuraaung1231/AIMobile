@@ -12,7 +12,8 @@
         });
         }
     for (let i = 0; i < collapseItem.length; i++) {
-        collapseItem.eq(i).on("click", function () {
+        collapseItem.eq(i).on("click", function (event) {
+           
             removingClass();
             $(this).addClass("CollapseBg");
             let title = $(this).closest(".multi-collapse");
@@ -20,14 +21,18 @@
             $("#Title").text(title.attr("id"));
             $("#Category").text(category);
             $(this).children().first().addClass("text-danger");
+            
         });
-        }
+}
+
     function removingClass() {
             for (let i = 0; i < collapseItem.length; i++) {
         collapseItem.eq(i).removeClass("CollapseBg");
     collapseItem.eq(i).children().first().removeClass("text-danger");
             }
-        }
+}
+
+
     $("#FullScreen").on("click", function () {
         toggleFullScreen();
         });

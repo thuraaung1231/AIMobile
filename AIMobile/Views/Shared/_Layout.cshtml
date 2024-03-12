@@ -22,7 +22,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-0 d-lg-block d-none AdminNav SideNav">
+            <div class="col-lg-2 col-0 d-lg-block d-none AdminNav SideNav" id="SideNav">
                 <div class="d-flex row align-items-center justify-content-between py-2 my-auto border-secondary">
                     <span class="fs-5 col-10 text-light d-flex justify-content-center align-items-center" id="adjustLogo">
                         <i class="fa-brands fa-airbnb fw-bold fs-5"></i>
@@ -52,7 +52,7 @@
                             <div class="border-0 p-2 text-light collapseItem">
                                 <a href="/Product/Entry">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
-                                </a>
+                                </a>   
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
                                 <a href="/Product/List">
@@ -390,25 +390,16 @@
                     <main role="main" class="pb-3">
                         @RenderBody()
                     </main>
-
                 </div>
-
-
             </div>
         </div>
     </div>
-
-
-
-
-
     <footer class="bg-light d-flex justify-content-center">
         <p class="py-3 my-auto text-muted">
             CopyRight&copy; 2024. <span class="text-primary">AI Online Shop</span>.
             All rights reserved.
         </p>
     </footer>
-
     @*For the Poppup*@
     <div class="offcanvas offcanvas-start AdminNav SideNav d-lg-none d-block" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="NavScrolling" aria-labelledby="NavScrollingLabel">
         <div class="offcanvas-header">
@@ -423,7 +414,6 @@
                 <p class="fw-bold text-center text-light General py-2 m-0">
                     General
                 </p>
-
                 <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
                         type="button"
                         data-bs-toggle="collapse"
@@ -716,7 +706,7 @@
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/627302b2f5.js"
             crossorigin="anonymous"></script>
-            <script src="https://cdn.datatables.net/2.0.1/js/dataTables.min.js">
+            <script src="https://cdn.datatables.net/2.0.1/js/dataTables.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -725,64 +715,7 @@
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-    <script>
-        let CollapseButton = $(".CollapseButton");
-        let CollapseArrow = $(".CollapseArrow");
-        let collapseItem = $(".collapseItem");
-        for (let i = 0; i < CollapseButton.length; i++) {
-            CollapseButton.eq(i).on("click", function () {
-                CollapseArrow.eq(i).toggleClass("rotate");
-            });
-        }
-        for (let i = 0; i < collapseItem.length; i++) {
-            collapseItem.eq(i).on("click", function () {
-                removingClass();
-                $(this).addClass("CollapseBg");
-                let title = $(this).closest(".multi-collapse");
-                let category = $(this).text();
-                $("#Title").text(title.attr("id"));
-                $("#Category").text(category);
-                $(this).children().first().addClass("text-danger");
-            });
-        }
-        function removingClass() {
-            for (let i = 0; i < collapseItem.length; i++) {
-                collapseItem.eq(i).removeClass("CollapseBg");
-                collapseItem.eq(i).children().first().removeClass("text-danger");
-            }
-        }
-        $("#FullScreen").on("click", function () {
-            toggleFullScreen();
-        });
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
-            }
-        }
-
-        let adjustWidth = true;
-        $("#adjustNav").on("click", function () {
-            if (adjustWidth) {
-                $(".SideNav").removeClass("col-lg-2").addClass("col-lg-1");
-                $("#adjustNav").removeClass("col-2").addClass("col-6");
-                $("#adjustLogo").removeClass("col-10").addClass("col-6");
-                $("#MainNav").removeClass("col-lg-10").addClass("col-lg-11");
-                $(".navText").addClass("d-none");
-                adjustWidth = false;
-            } else {
-                $(".SideNav").removeClass("col-lg-1").addClass("col-lg-2");
-                $("#MainNav").removeClass("col-lg-11").addClass("col-lg-10");
-                $(".navText").removeClass("d-none");
-                $("#adjustNav").removeClass("col-6").addClass("col-2");
-                $("#adjustLogo").removeClass("col-6").addClass("col-10");
-                adjustWidth = true;
-            }
-        });
-    </script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
