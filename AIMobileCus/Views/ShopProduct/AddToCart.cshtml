@@ -1,0 +1,207 @@
+﻿@model IList<CartViewModel>
+<div class="container-fluid">
+    <div class="row p-2">
+        <div class="col-lg-8 col-12 shadow mb-3">
+            <h4>Shopping Cart</h4>
+            <p class="text-end m-0 px-3">TotalPrice (Ks)</p>
+ 
+            @for (int i=0; i<Model.Count; i++)
+            {               
+                <input type="hidden" value="@Model[i].StockCount" />
+                <div class="row p-3 border-top">
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <img src="@Model[i].ImageName" class="col-lg-6 col-md-6 mx-auto col-12" alt="" />
+                    </div>
+                    <div class="col-6">
+                        <h6 class="p-0 m-0">
+                            @Model[i].ProductName
+                        </h6>
+                        <p class="m-0 p-0 mt-1">In Stock</p>
+                        <p class="m-0 p-0">
+                            Shipped From: <span class="text-primary">@Model[i].ShopName</span>
+                        </p>
+                        <p class="m-0 p-0 mb-2 d-flex">
+                            Price:
+                            <input class="text-primary search-Bar text-center"
+                                   value="@Model[i].Unitprice"
+                                   id="productPrice" />
+
+                        </p>
+                        <span>Quantity : </span>
+                        <input type="text" value="reduceButton@(i)" />
+                        <div class="btn-group btn-group-sm"
+                             role="group"
+                             aria-label="Basic outlined example">
+                            <button type="button"
+                                    class="btn btn-primary fs-5"
+                                    id="reduceButton@(i)">
+                                -
+                            </button>
+                            <input type="button"
+                                   value="@Model[i].numberOfItem"
+                                   class="px-3 btn border-primary"
+                                   id="numberOfItem@(i)" />
+                            <button type="button"
+                                    class="btn btn-primary fs-5"
+                                    id="increaseButton@(i)">
+                                +
+                            </button>
+                        </div>
+                        <div class="vr"></div>
+                        <a href="#" class="text-decoration-none text-danger delete ">Delete</a>
+                    </div>
+                    <div class="col-3">
+                        <input type="number"
+                               value="@Model[i].itemxPrice"
+                               class="w-100 text-end fw-bold search-Bar"
+                               id="totalPrice@(i)"
+                               readonly />
+                             
+                    </div>
+                </div>
+              
+               
+            }
+           <p class="text-end px-3 border-top">
+                Subtotal (
+                <input type="number"
+                       id="TotalItems"
+                       class="m-0 p-0 search-Bar inputSize text-center"
+                      />
+                ):
+                <input type="number"
+                       value="10"
+                       class="text-center search-Bar inputSize"
+                       id="TotalItemPrice" />
+            </p>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="border border-2 p-3">
+                <p class="text-center fs-4 fw-bold">Cart Total</p>
+                <div class="d-flex justify-content-between">
+                    <p class="fw-bold">SubTotal</p>
+                    <div>
+                        <input type="text" class="search-Bar text-end" id="TotalItemPrice2" value="1000" />
+                        <span>Ks</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="fw-bold">TotalItems</p>
+                    <div>
+                        <input type="text" class="search-Bar text-end" id="TotalItems2" value="1000" />
+                        <span>Item(s)</span>
+                    </div>
+                </div>
+                <hr />
+                <button class="btn btn-warning w-100" href="ShopProduct/Checkout">Proceed to checkout</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // $(".delete").on('click', function () {
+    //     var data = ;
+
+    //     alert("ok");
+    //     var url = "/ShopProduct/DeleteItem";
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: url,
+    //         data:data ,
+         
+    //         success: function (response) {
+    //             var data = JSON.stringify(response);
+
+    //             if (data != null) {
+    //                 window.location.href = "/ShopProduct/AddtoCart?cart=" + encodeURIComponent(JSON.stringify(response));
+    //             }
+
+    //         },
+    //         failure: function (error) {
+    //             console.log(error);
+    //         }
+    //     })
+    // })
+    //for add to cart check
+
+    var totalItem = 0;
+    var totalPrice = 0;
+
+    for (let i = 0; i <@Model.Count; i++) {
+        var eachitem = parseInt($("#numberOfItem" + i).val());
+        var eachamount = ($("#totalPrice" + i).val());
+        totalItem += eachitem;
+        totalPrice += eachamount;
+        $("#increaseButton" + i).click(function () {
+            var NumberOfItem = parseInt($("#numberOfItem" + i).val());
+            var IncreaseItem = ++NumberOfItem;
+            totalItem++;
+            $("#numberOfItem" + i).val(IncreaseItem);
+            var totalAmount = parseInt($("#productPrice" + i).val() * IncreaseItem);
+            var totalAmount = parseInt($("#productPrice" + i).val() * IncreaseItem);
+            totalPrice += ($("#productPrice" + i).val());
+            $("#totalPrice" + i).val(totalAmount);
+            $("#TotalItems").val(totalItem);
+            $("#TotalItemPrice").val(totalPrice);
+            $("#TotalItems2").val(totalItem);
+            $("#TotalItemPrice2").val(totalPrice);
+            
+        });
+        $("#reduceButton" + i).click(function () {
+            var NumberOfItem = parseInt($("#numberOfItem" + i).val());
+            if (NumberOfItem == 1) {
+                return;
+            } else {
+                var DecreaseItem = --NumberOfItem;
+                totalItem--;
+                $("#numberOfItem" + i).val(DecreaseItem);
+                var totalAmount = $("#productPrice" + i).val() * DecreaseItem;
+                totalPrice -= parseInt($("#productPrice" + i).val());
+                $("#totalPrice" + i).val(totalAmount);
+                $("#TotalItems").val(totalItem);
+                $("#TotalItemPrice").val(totalPrice);
+                $("#TotalItems2").val(totalItem);
+                $("#TotalItemPrice2").val(totalPrice);
+            }
+        });
+    }
+    $("#TotalItems").val(totalItem);
+     $("#TotalItemPrice").val(totalPrice);
+     $("#TotalItems2").val(totalItem);
+     $("#TotalItemPrice2").val(totalPrice);
+    
+
+    // $("#increaseButton").click(function () {
+    //     var NumberOfItem = parseInt($("#numberOfItem").val());
+    //     if (NumberOfItem <= $("#StockCount").val()) {
+    //         var IncreaseItem = ++NumberOfItem;
+    //         $("#numberOfItem").val(IncreaseItem);
+    //         var totalAmount = $("#UnitPrice").val() * IncreaseItem;
+    //         $("#TotalPrice").html(totalAmount)
+    //     } else {
+    //         alert("Insufficient Product")
+    //     }
+
+    // })
+    // $("#reduceButton").click(function () {
+    //     var NumberOfItem = parseInt($("#numberOfItem").val());
+    //     if (NumberOfItem == 1) {
+    //         return;
+    //     } else {
+    //         var DecreaseItem = --NumberOfItem;
+    //         $("#numberOfItem").val(DecreaseItem);
+    //         var totalAmount = $("#UnitPrice").val() * DecreaseItem;
+    //         $("#TotalPrice").html(totalAmount)
+    //     }
+    // })
+
+ 
+</script>
+
+
+

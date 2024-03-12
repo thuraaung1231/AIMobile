@@ -3,6 +3,7 @@ using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
 using AIMobileCus.Controllers;
 using AIMobileCus.Models.ViewModels;
+using AIMobileCus.Services.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
 using Newtonsoft.Json;
@@ -39,6 +40,7 @@ namespace AIMobile.Controllers
                 Description = shopProductEntity.Description,
                 StockCount = shopProductEntity.StockCount,
                 TypeId = typeId,
+                ShopName=_shopService.GetById(shopProductEntity.ShopId).Name,
             };
             
             return Json(shopProductViewModel);
@@ -188,10 +190,11 @@ namespace AIMobile.Controllers
                 }
             }
             //For Show User Select Item
-
+          
             ViewBag.Image = _imageService.GetById(shopProductViewModel.ImageId);
             ViewBag.Product = _productService.GetById(shopProductViewModel.ProductId);
             ViewBag.shopProduct = shopProductViewModel;
+
             var Descriptions = shopProductViewModel.Description;
 
             string[] DescriptionArray = Descriptions.Split(',');
@@ -207,6 +210,57 @@ namespace AIMobile.Controllers
             ViewBag.DescriptionValue=DescriptionValueList;
             ViewBag.RelatedImages = RelatedImages;
             return View("DetailProduct",RelatedProducts);
+        }
+        [HttpPost]
+        public JsonResult cart(CartViewModel selectedItem) {
+          
+            List<CartViewModel> cartViews;
+            if (!HttpContext.Session.Keys.Contains("cart") ) {
+                
+                cartViews = new List<CartViewModel>();   
+                cartViews.Add(selectedItem);
+             
+                SessionHelper.SetDataToSession(HttpContext.Session, "cart", cartViews);
+            }
+            else
+            {
+                cartViews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+                cartViews.Add(selectedItem);
+                SessionHelper.SetDataToSession(HttpContext.Session, "cart", cartViews);
+
+            }
+
+
+            return Json(cartViews);
+        }
+        [HttpPost]
+        public JsonResult CartIcon() {
+
+            var data = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+          
+        return Json( data);
+        
+        }
+        [HttpPost]
+        public JsonResult DeleteItem(object value)
+        {
+            SessionHelper.Delete(HttpContext.Session, value);
+            return Json(value);
+        }
+
+        [HttpGet]
+        public IActionResult AddtoCart(string cart)
+        
+       {
+            IList<CartViewModel> TotalCart = JsonConvert.DeserializeObject<List<CartViewModel>>(cart);
+
+            return View(TotalCart);  
+        }
+        [HttpGet]
+        public IActionResult CheckOut() { 
+        
+        
+        return View();
         }
     }
 }

@@ -1,0 +1,154 @@
+﻿
+<div class="container-fluid">
+    <div class="row p-2">
+        <div class="col-lg-8 col-12 shadow mb-3">
+            <h4>Shopping Cart</h4>
+            <p class="text-end m-0 px-3">TotalPrice (Ks)</p>
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="row p-3 border-top">
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <img src="@item.ImageName" class="col-lg-6 col-md-6 mx-auto col-12" alt="" />
+                    </div>
+                    <div class="col-6">
+                        <h6 class="p-0 m-0">
+                            @item.productName
+                        </h6>
+                        <p class="m-0 p-0 mt-1">In Stock</p>
+                        <p class="m-0 p-0">
+                            Shipped From: <span class="text-primary">@item.shopName</span>
+                        </p>
+                        <p class="m-0 p-0 mb-2 d-flex">
+                            Price:
+                            <input class="text-primary search-Bar text-center"
+                                   value="@item.unitprice"
+                                   id="productPrice" />
+
+                        </p>
+                        <span>Quantity : </span>
+                        <div class="btn-group btn-group-sm"
+                             role="group"
+                             aria-label="Basic outlined example">
+                            <button type="button"
+                                    class="btn btn-primary fs-5"
+                                    id="reduceButton1">
+                                -
+                            </button>
+                            <input type="button"
+                                   value="@item.numberOfItem"
+                                   class="px-3 btn border-primary"
+                                   id="numberOfItem" />
+                            <button type="button"
+                                    class="btn btn-primary fs-5"
+                                    id="increaseButton1">
+                                +
+                            </button>
+                        </div>
+                        <div class="vr"></div>
+                        <a href="#" class="text-decoration-none text-danger">Delete</a>
+                    </div>
+                    <div class="col-3">
+                        <input type="number"
+                               value="@item.itemxPrice"
+                               class="w-100 text-end fw-bold search-Bar"
+                               id="totalPrice"
+                               readonly />
+
+                    </div>
+                </div>
+
+            }
+            <p class="text-end px-3 border-top">
+                Subtotal (
+                <input type="number"
+                       id="TotalItems"
+                       class="m-0 p-0 search-Bar inputSize text-center"
+                       value="" />
+                ):
+                <input type="number"
+                       value="10"
+                       class="text-center search-Bar inputSize"
+                       id="TotalItemPrice" />
+            </p>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="border border-2 p-3">
+                <p class="text-center fs-4 fw-bold">Cart Total</p>
+                <div class="d-flex justify-content-between">
+                    <p class="fw-bold">SubTotal</p>
+                    <div>
+                        <input type="text" class="search-Bar text-end" id="TotalItemPrice2" value="1000" />
+                        <span>Ks</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="fw-bold">TotalItems</p>
+                    <div>
+                        <input type="text" class="search-Bar text-end" id="TotalItems2" value="1000" />
+                        <span>Item(s)</span>
+                    </div>
+                </div>
+                <hr />
+                <button class="btn btn-warning w-100">Proceed to checkout</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    //for add to cart check
+    var totalItem = 0;
+    var totalPrice = 0;
+    for (let i = 1; i < 4; i++) {
+        var eachitem = parseInt($("#numberOfItem" + i).val());
+        var eachamount = parseInt($("#totalPrice" + i).val());
+        totalItem += eachitem;
+        totalPrice += eachamount;
+        $("#increaseButton" + i).click(function () {
+            var NumberOfItem = parseInt($("#numberOfItem" + i).val());
+            var IncreaseItem = ++NumberOfItem;
+            totalItem++;
+            $("#numberOfItem" + i).val(IncreaseItem);
+            var totalAmount = $("#productPrice" + i).val() * IncreaseItem;
+            totalPrice += parseInt($("#productPrice" + i).val());
+            $("#totalPrice" + i).val(totalAmount);
+            $("#TotalItems").val(totalItem);
+            $("#TotalItemPrice").val(totalPrice);
+            $("#TotalItems2").val(totalItem);
+            $("#TotalItemPrice2").val(totalPrice);
+        });
+        $("#reduceButton" + i).click(function () {
+            var NumberOfItem = parseInt($("#numberOfItem" + i).val());
+            if (NumberOfItem == 1) {
+                return;
+            } else {
+                var DecreaseItem = --NumberOfItem;
+                totalItem--;
+                $("#numberOfItem" + i).val(DecreaseItem);
+                var totalAmount = $("#productPrice" + i).val() * DecreaseItem;
+                totalPrice -= parseInt($("#productPrice" + i).val());
+                $("#totalPrice" + i).val(totalAmount);
+                $("#TotalItems").val(totalItem);
+                $("#TotalItemPrice").val(totalPrice);
+                $("#TotalItems2").val(totalItem);
+                $("#TotalItemPrice2").val(totalPrice);
+            }
+        });
+    }
+    $("#TotalItems").val(totalItem);
+    $("#TotalItemPrice").val(totalPrice);
+    $("#TotalItems2").val(totalItem);
+    $("#TotalItemPrice2").val(totalPrice);
+
+</script>
+
+
+
+

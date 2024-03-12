@@ -72,12 +72,12 @@
                 aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
         </button>
-        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative">
+        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative cart" >
             <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
-               href="#">
+               >
                 <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
                 Cart
-                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">+999</span>
+                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary"  >0</span>
             </a>
         </button>
     </div>
@@ -170,16 +170,16 @@
     <div class="row px-2">
         <div class="col-lg-5 selectProduct">
             <div class="col-7 mx-auto p-4">
-                <img src="@ViewBag.Image.FrontImageUrl"
-                     class="w-100"
+                <img src="@ViewBag.Image.FrontImageUrl"  
+                     class="w-100 "
                      id="mainImg"
                      alt="" />
             </div>
             <hr class="mb-1" />
             <div class="row childSelectProduct py-2">
                 <div class="col-3">
-                    <div class="selectItem m-1">
-                        <img src="@ViewBag.Image.FrontImageUrl" class="w-100" alt="" />
+                    <div class="selectItem m-1" >
+                        <img src="@ViewBag.Image.FrontImageUrl" class="w-100" alt="" id="ImageName" />
                     </div>
                 </div>
 
@@ -203,12 +203,12 @@
             </div>
         </div>
         <div class="col-lg-4 px-3">
-            <h4 class="fontFamilies fw-bold">@ViewBag.Product.Name</h4>
+            <h4 class="fontFamilies fw-bold" id="ProductName">@ViewBag.Product.Name</h4>
             <p class="text-justify fs-6">
                 @DescriptionValues[DescriptionValues.Count-1]
             </p>
             <div class="d-flex mb-2 align-items-center">
-                <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice"/>
+                <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice"/>  
                 <span>Price:</span>
                 <div class="text-primary fw-bold fs-5 ms-3">
                     <p class="d-inline" id="TotalPrice">@ViewBag.Product.UnitPrice</p>
@@ -217,6 +217,9 @@
             </div>
 
             <span>Quantity : </span>
+
+            <input type="hidden" value="@ViewBag.shopProduct.Id" id="shopProductId" />
+            <input type="hidden" value="@ViewBag.ShopProduct.ShopName" id="ShopName" />
             <input id="StockCount" hidden value="@ViewBag.shopProduct.StockCount"/>
             <div class="btn-group"
                  role="group"
@@ -238,7 +241,7 @@
             </div>
             <hr />
             <div class="d-flex mt-2 justify-content-around">
-                <button type="button" class="btn btn-primary col-5">
+                <button type="button" class="btn btn-primary col-5 addtocart">
                     ADD TO CART
                 </button>
                 <button type="button" class="btn btn-warning text-light col-5">
@@ -281,6 +284,7 @@
             </div>
         </div>
     </div>
+ 
 </div>
 <div class="container-fluid">
     <div class="row p-2">
@@ -323,6 +327,66 @@
     </div>
 </div>
 <script >
+    $(".cart").on('click', function () {
+        var selectedItem = {};
+        selectedItem.ImageName = $("#ImageName").attr('src');
+        selectedItem.ProductName = $("#ProductName").html();
+        selectedItem.UnitPrice = $("#UnitPrice").val();
+        selectedItem.numberOfItem = $("#numberOfItem").val();
+        selectedItem.Id = $("#shopProductId").val();
+        selectedItem.ShopName = $("#ShopName").val();
+        selectedItem.itemxPrice = $("#UnitPrice").val() * $("#numberOfItem").val();
+        selectedItem.StockCount = $("#StockCount").val();
+
+
+        var url = "/ShopProduct/CartIcon";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: selectedItem,
+            success: function (response) {
+                var data = JSON.stringify(response);
+
+                if (data != null) {
+                    window.location.href = "/ShopProduct/AddtoCart?cart=" + encodeURIComponent(JSON.stringify(response));
+                }
+
+            },
+            failure: function (error) {
+                console.log(error);
+            }
+        })
+    })
+    $(".addtocart").on('click', function () {
+        var selectedItem = {};
+        selectedItem.ImageName = $("#ImageName").attr('src');
+        selectedItem.ProductName = $("#ProductName").html();
+        selectedItem.UnitPrice = $("#UnitPrice").val();
+        selectedItem.numberOfItem = $("#numberOfItem").val();
+        selectedItem.Id = $("#shopProductId").val();
+        selectedItem.ShopName = $("#ShopName").val();
+        selectedItem.itemxPrice = $("#UnitPrice").val()* $("#numberOfItem").val();
+        selectedItem.StockCount = $("#StockCount").val();
+      
+  
+        var url = "/ShopProduct/Cart";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: selectedItem,
+            success: function (response) {
+                var data = JSON.stringify(response);
+
+                if (data != null) {
+                    window.location.href = "/ShopProduct/AddtoCart?cart=" + encodeURIComponent(JSON.stringify(response));
+                }
+
+            },
+            failure: function (error) {
+                console.log(error);
+            }
+        })
+    })
     $(".selectItem").click(function (event) {
         var clickedImg = event.target;
         var src = clickedImg.getAttribute('src');

@@ -13,7 +13,7 @@ namespace AIMobileCus.Models.ViewModels
         public string Description { get; set; }
         public int StockCount { get; set; }
         public decimal Unitprice { get; set;}
-        public decimal UnitPrice { get; set; }
+       
 
     }
 }
