@@ -168,7 +168,7 @@
         <a href="/home/index" class="my-auto py-2 text-decoration-none text-dark"><i class="fa-solid fa-circle-arrow-left"></i> Back to Home Page</a>
     </div>
     <div class="row px-2">
-        <div class="col-lg-5 selectProduct">
+        <div class="col-lg-5 selectProduct mb-2">
             <div class="col-7 mx-auto p-4">
                 <img src="@ViewBag.Image.FrontImageUrl"  
                      class="w-100 "
@@ -211,7 +211,10 @@
                 <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice"/>  
                 <span>Price:</span>
                 <div class="text-primary fw-bold fs-5 ms-3">
-                    <p class="d-inline" id="TotalPrice">@ViewBag.Product.UnitPrice</p>
+                @{
+                        var UnitPrice = Math.Floor(ViewBag.Product.UnitPrice);
+                }
+                    <p class="d-inline" id="TotalPrice">@UnitPrice</p>
                     Ks
                 </div>
             </div>
@@ -308,7 +311,7 @@
         <h4>Other Related Products</h4>
         @for(int i = 0; i < RelatedImages.Count; i++)
         {
-            <div class="col-2 RelatedImages" id="@RelatedImages[i].Id">
+            <div class="col-lg-2 col-md-3 col-6 RelatedImages" id="@RelatedImages[i].Id">
                 <div class="p-3 shadow rounded" id="@Model[i].Id">
                     <div class="bg-body-secondary p-4 rounded">
                         <img src="@RelatedImages[i].FrontImageUrl" class="w-100 h-100 imageHeight" alt="">
@@ -317,7 +320,10 @@
                     <p class="m-0 p-0">
                         <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
                     </p>
-                    <span class="text-primary fw-bold fs-6">@Model[i].UnitPrice<p class="d-inline">Ks</p></span>
+                    @{
+                        var roundedUnitPrice = Math.Floor(Model[i].UnitPrice);
+                    }
+                    <span class="text-primary fw-bold fs-6">@roundedUnitPrice<p class="d-inline"> Ks</p></span>
                 </div>
 
             </div>

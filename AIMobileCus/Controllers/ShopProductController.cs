@@ -214,13 +214,37 @@ namespace AIMobile.Controllers
                 
                 cartViews = new List<CartViewModel>();   
                 cartViews.Add(selectedItem);
-             
+                
                 SessionHelper.SetDataToSession(HttpContext.Session, "cart", cartViews);
             }
             else
             {
+
                 cartViews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
-                cartViews.Add(selectedItem);
+                bool itemExists = false;
+                foreach (var cartView in cartViews)
+                {
+                    if(cartView.Id== selectedItem.Id)
+                    {
+                        var shopProduct=_shopProductService.GetById(selectedItem.Id);
+                       int totalItems= cartView.numberOfItem + selectedItem.numberOfItem;
+                        if (totalItems>shopProduct.StockCount)
+                        {
+                            TempData["Message"] = "You can order under "+ shopProduct.StockCount+" Items";
+                        }
+                        else
+                        {
+                            cartView.numberOfItem += selectedItem.numberOfItem;
+                        }
+                        itemExists = true;
+                        break;
+                    }
+                    
+                }
+                if (!itemExists)
+                {
+                    cartViews.Add(selectedItem);
+                }
                 SessionHelper.SetDataToSession(HttpContext.Session, "cart", cartViews);
 
             }
