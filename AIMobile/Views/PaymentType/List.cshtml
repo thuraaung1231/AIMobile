@@ -9,6 +9,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">PaymentType</th>
+            <th scope="col">PaymentTypeImage</th>
+            <th scope="col">PaymentTypeQR</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -21,6 +23,8 @@
             <tr>
                 <td>@index</td>
                 <td>@item.PaymentType</td>
+                <td><img src="@item.PaymentTypeImage" class="w-25"></td>
+                <td class ="w-25"><img src="@item.PaymentTypeQR" class="w-25"></td>
                 <td>
                     <a class="btn btn-success" href="/paymenttype/edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="/paymenttype/delete?id=@item.Id" onclick="return confirm('Are you sure to delete this record?');" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>

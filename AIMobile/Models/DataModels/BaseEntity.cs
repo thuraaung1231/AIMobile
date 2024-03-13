@@ -1,5 +1,5 @@
-﻿using AIMobile.Services.Utilities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using AIMobile.Services.Utilities;
 
 namespace AIMobile.Models.DataModels
 {
@@ -9,6 +9,6 @@ namespace AIMobile.Models.DataModels
         public string Id { get; set; }
         public DateTime CreatedAt { get; set; }= DateTime.Now;
         public DateTime? UpdatedAt { get; set; }
-        public string IpAddress { get; set; }=NetworkHelper.GetLocalIpAddress();
+        public string IpAddress { get; set; } = NetworkHelper.GetLocalIpAddress();
     }
 }
