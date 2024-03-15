@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,6 +16,16 @@
     <Content Remove="wwwroot\Images\ShopImage\**" />
     <EmbeddedResource Remove="wwwroot\Images\ShopImage\**" />
     <None Remove="wwwroot\Images\ShopImage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\ReportFiles\ShopProductReport.rdlc" />
+    <Content Remove="wwwroot\ReportFiles\ShopReport.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\ReportFiles\ShopProductReport.rdlc" />
+    <EmbeddedResource Include="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
 	<ItemGroup>
 
@@ -37,10 +47,19 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
 		<PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
+
 		<PackageReference Include="System.CodeDom" Version="7.0.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
 		<PackageReference Include="System.Drawing.Common" Version="7.0.0" />
 		<PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+
+		<PackageReference Include="System.CodeDom" Version="6.0.0" />
+		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+	<PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\AIMobile.Helper\AIMobile.Helper.csproj" />
+
 	</ItemGroup>
 
 </Project>

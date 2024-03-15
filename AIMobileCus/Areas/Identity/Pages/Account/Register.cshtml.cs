@@ -20,13 +20,10 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
 
+
 namespace TOMS.Areas.Identity.Pages.Account
 {
-    public class ApplicationUser : IdentityUser
-    {
-        public string UserType { get; set; }
-    }
-    
+
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -37,12 +34,20 @@ namespace TOMS.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
        
 
+        private readonly ILogger<RegisterModel> _logger;
+        private readonly IEmailSender _emailSender;
+
+
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
+
             ILogger<IdentityUser> logger,
             
+
+            ILogger<RegisterModel> logger,
+
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -51,7 +56,9 @@ namespace TOMS.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+
            
+
         }
 
         /// <summary>
@@ -87,6 +94,8 @@ namespace TOMS.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -121,9 +130,13 @@ namespace TOMS.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
                 user.UserType = "User";
 
                 await _userStore.SetUserNameAsync(user, Input.Email,CancellationToken.None);
+
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -169,6 +182,13 @@ namespace TOMS.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email};
                 return user;
+
+        private IdentityUser CreateUser()
+        {
+            try
+            {
+                return Activator.CreateInstance<IdentityUser>();
+
             }
             catch
             {
@@ -188,5 +208,4 @@ namespace TOMS.Areas.Identity.Pages.Account
         }
     }
 
-    
 }

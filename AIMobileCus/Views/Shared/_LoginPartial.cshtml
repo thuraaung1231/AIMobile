@@ -6,22 +6,39 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+
     <li class="nav-item mb-1">
         <a id="manage" class="nav-link text-warning" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>
     <li class="nav-item px-1 rounded LoginLogout mb-1 d-flex justify-content-center">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button id="logout" type="submit" class="nav-link btn btn-link text-light"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+
+    <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+    </li>
+    <li class="nav-item">
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+
         </form>
     </li>
 }
 else
 {
+
     <li class="nav-item me-1 mb-1 px-1 rounded LoginLogout">
             <a class="nav-link text-light text-center" id="register" asp-area="Identity" asp-page="/Account/Register"><i class="fa-solid fa-user-plus"></i> Register</a>
     </li>
         <li class="nav-item me-1 mb-1 px-1 rounded LoginLogout">
             <a class="nav-link text-light text-center" id="login" asp-area="Identity" asp-page="/Account/Login"><i class="fa-solid fa-user"></i> Login</a>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+
     </li>
 }
 </ul>

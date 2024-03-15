@@ -5,7 +5,8 @@ namespace AIMobile.Services.Utilities
 {
     public class NetworkHelper
     {
-        public static string GetLocalIpAddress() {
+        public static string GetLocalIpAddress()
+        {
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {

@@ -8,15 +8,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/AIMobile.styles.css" asp-append-version="true" />
     <script src="https://kit.fontawesome.com/5c9d3a4741.js" crossorigin="anonymous"></script>
-<
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
+   
+    <link rel="stylesheet" href="~/AIMobile.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
 
@@ -40,6 +37,46 @@
                     <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
                             type="button"
                             data-bs-toggle="collapse"
+                            data-bs-target="#Report"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-rectangle-list me-2"></i>
+                        <span class="navText">Reports</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Report">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="/shop/shopreport" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> Shop Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="/Product/report" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> Product Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="/ShopProduct/shopproductReport" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> ShopProduct Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="//report" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> Purchase Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="//report" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> User Report
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
                             data-bs-target="#Product"
                             aria-expanded="false"
                             aria-controls="multiCollapseExample2">
@@ -50,17 +87,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="Product">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Product/Entry">
+                                <a href="/Product/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>   
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Product/List">
+                                <a href="/Product/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Product/Report">
+                                <a href="/Product/Report" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -79,17 +116,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="ShopProduct">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/ShopProduct/Entry">
+                                <a href="/ShopProduct/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/ShopProduct/List">
+                                <a href="/ShopProduct/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/ShopProduct/Report">
+                                <a href="/ShopProduct/shopProductReport" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -108,17 +145,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="Shop">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Shop/Entry">
+                                <a href="/Shop/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Shop/List">
+                                <a href="/Shop/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Shop/Report">
+                                <a href="/Shop/shopReport" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -137,17 +174,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="Image">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Image/Entry">
+                                <a href="/Image/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Image/List">
+                                <a href="/Image/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Image/Report">
+                                <a href="/Image/Report" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -166,17 +203,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="ProductType">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Type/Entry">
+                                <a href="/Type/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Type/List">
+                                <a href="/Type/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Type/Report">
+                                <a href="/Type/Report" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -196,17 +233,17 @@
                          id="ProductBrand">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Brand/Entry">
+                                <a href="/Brand/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Brand/List">
+                                <a href="/Brand/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/Brand/Report">
+                                <a href="/Brand/Report" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -225,17 +262,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="PaymentType">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/PaymentType/Entry">
+                                <a href="/PaymentType/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/PaymentType/List">
+                                <a href="/PaymentType/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/PaymentType/Report">
+                                <a href="/PaymentType/Report" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -254,17 +291,17 @@
                     <div class="collapse multi-collapse w-100 m-0 p-0" id="City">
                         <div class="card card-body rounded-0 m-0 p-0">
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/City/Entry">
+                                <a href="/City/Entry" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Entry
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/City/List">
+                                <a href="/City/List" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> List
                                 </a>
                             </div>
                             <div class="border-0 p-2 text-light collapseItem">
-                                <a href="/City/Report">
+                                <a href="/City/Report" class="text-decoration-none text-light">
                                     <i class="fa-solid fa-circle me-2"></i> Report
                                 </a>
                             </div>
@@ -343,6 +380,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-10 Adminbody" id="MainNav">
                 <div class="row bg-light py-2 border">
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start mb-lg-0 mb-md-0 mb-2 align-items-center my-auto text-body-secondary">
@@ -394,6 +432,7 @@
             </div>
         </div>
     </div>
+
     <footer class="bg-light d-flex justify-content-center">
         <p class="py-3 my-auto text-muted">
             CopyRight&copy; 2024. <span class="text-primary">AI Online Shop</span>.
@@ -401,6 +440,9 @@
         </p>
     </footer>
     @*For the Poppup*@
+
+
+
     <div class="offcanvas offcanvas-start AdminNav SideNav d-lg-none d-block" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="NavScrolling" aria-labelledby="NavScrollingLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title d-flex text-light justify-content-center align-items-center" id="offcanvasScrollingLabel">
@@ -697,16 +739,24 @@
             </div>
         </div>
     </div>
+    <footer class="bg-light d-flex justify-content-center">
+        <p class="py-3 my-auto text-muted">
+            CopyRight&copy; 2024. <span class="text-primary">AI Online Shop</span>.
+            All rights reserved.
+        </p>
+    </footer>
+
+    @*For the Poppup*@
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <script src="https://kit.fontawesome.com/627302b2f5.js"
             crossorigin="anonymous"></script>
             <script src="https://cdn.datatables.net/2.0.1/js/dataTables.min.js"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -716,6 +766,72 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     
+
+    
+    <script src="~/js/site.js" asp-append-version="true"></script>
+   
+    <script>
+        let CollapseButton = $(".CollapseButton");
+        let CollapseArrow = $(".CollapseArrow");
+        let collapseItem = $(".collapseItem");
+        for (let i = 0; i < CollapseButton.length; i++) {
+            CollapseButton.eq(i).on("click", function () {
+                CollapseArrow.eq(i).toggleClass("rotate");
+            });
+        }
+        for (let i = 0; i < collapseItem.length; i++) {
+            collapseItem.eq(i).on("click", function () {
+                removingClass();
+                $(this).addClass("CollapseBg");
+                let title = $(this).closest(".multi-collapse");
+                let category = $(this).text();
+                $("#Title").text(title.attr("id"));
+                $("#Category").text(category);
+               
+                $(this).children('a').children('i').addClass("text-danger");
+            });
+        }
+        function removingClass() {
+            for (let i = 0; i < collapseItem.length; i++) {
+                collapseItem.eq(i).removeClass("CollapseBg");
+               
+                collapseItem.eq(i).children('a').children('i').removeClass("text-danger");
+            }
+        }
+        $("#FullScreen").on("click", function () {
+            toggleFullScreen();
+        });
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        let adjustWidth = true;
+        $("#adjustNav").on("click", function () {
+            if (adjustWidth) {
+                $(".SideNav").removeClass("col-lg-2").addClass("col-lg-1");
+                $("#adjustNav").removeClass("col-2").addClass("col-6");
+                $("#adjustLogo").removeClass("col-10").addClass("col-6");
+                $("#MainNav").removeClass("col-lg-10").addClass("col-lg-11");
+                $(".navText").addClass("d-none");
+                adjustWidth = false;
+            } else {
+                $(".SideNav").removeClass("col-lg-1").addClass("col-lg-2");
+                $("#MainNav").removeClass("col-lg-11").addClass("col-lg-10");
+                $(".navText").removeClass("d-none");
+                $("#adjustNav").removeClass("col-6").addClass("col-2");
+                $("#adjustLogo").removeClass("col-6").addClass("col-10");
+                adjustWidth = true;
+            }
+        });
+        
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

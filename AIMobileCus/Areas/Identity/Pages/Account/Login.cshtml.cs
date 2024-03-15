@@ -128,7 +128,11 @@ namespace TOMS.Areas.Identity.Pages.Account
                 }
                 else
                 {
+
                     ModelState.AddModelError(string.Empty, "Invalid login attempt, Please try Again!");
+
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
                     return Page();
                 }
             }

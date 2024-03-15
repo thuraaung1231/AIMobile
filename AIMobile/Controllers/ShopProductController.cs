@@ -1,7 +1,10 @@
-﻿using AIMobile.Models.DataModels;
+﻿using AIMobile.Helper;
+using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
 
 namespace AIMobile.Controllers
 {
@@ -12,14 +15,16 @@ namespace AIMobile.Controllers
         private readonly IProductService _productService;
         private readonly IImageService _imageService;
         private readonly ITypeServices _typeServices;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ShopProductController(IShopProductService shopProductService,IShopService shopService,IProductService productService,IImageService imageService,ITypeServices typeServices)
+        public ShopProductController(IShopProductService shopProductService,IShopService shopService,IProductService productService,IImageService imageService,ITypeServices typeServices, IWebHostEnvironment webHostEnvironment)
         {
             _shopProductService = shopProductService;
             _shopService = shopService;
             _productService = productService;
             _imageService = imageService;
             _typeServices = typeServices;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Entry()
         {
@@ -163,6 +168,41 @@ namespace AIMobile.Controllers
                 TempData["info"] = "Error when update the record to the system";
             }
             return RedirectToAction("List");
+        }
+
+        public IActionResult ShopProductReport()
+        {
+            ViewBag.Shop = _shopService.ReteriveAll().Select(s=> new ShopViewModel { Id=s.Id, Name=s.Name}).ToList();
+            ViewBag.Product = _productService.ReteriveAll().Select(s=>new ProductViewModel { Id=s.Id,Name=s.Name}).ToList();
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ShopProductReport(string ShopId, string ProductId,int StockCount)
+        {
+            IList<ShopProductReportModel> ShopProductReports = _shopProductService.ReteriveAll().Where(w => w.ShopId == ShopId || w.ProductId == ProductId || w.StockCount==StockCount ).Select(s => new ShopProductReportModel
+            {
+                ShopName=_shopService.GetById(s.ShopId).Name,
+                ProductName=_productService.GetById(s.ProductId).Name,
+                StockCount=StockCount
+            }).ToList();
+            if (ShopProductReports.Count > 0)
+            {
+                var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopProductReport.rdlc");
+                var fs = new FileStream(rdlcPath, FileMode.Open);
+                Stream reportDefination = fs;
+                LocalReport localReport = new LocalReport();
+                localReport.LoadReportDefinition(reportDefination);
+                localReport.DataSources.Add(new ReportDataSource("ShopProductDataSet", ShopProductReports));
+                byte[] pdffile = localReport.Render("pdf");
+                fs.Close();
+                return File(pdffile, "application/pdf");
+            }
+            else
+            {
+                TempData["info"] = "There is no data";
+                return View();
+            }
         }
     }
 }
