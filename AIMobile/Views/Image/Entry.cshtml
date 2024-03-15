@@ -1,4 +1,4 @@
-﻿
+﻿@model ImageViewModel
 <body style="background-color:lightblue">
     @if (TempData["Info"] != null)
     {
@@ -14,36 +14,43 @@
 
         <div class="row">
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">FrontImageUrl*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="FrontImageUrl">
+                <label class="labelFontSize fw-bold fs-5">FrontImageUrl*</label>
+                <input type="file" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="FrontImageUrl">
+                <span asp-validation-for="FrontImageUrl" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">BackImageUrl*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="BackImageUrl">
+                <label class="labelFontSize fw-bold fs-5">BackImageUrl*</label>
+                <input type="file" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="BackImageUrl">
+                <span asp-validation-for="BackImageUrl" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">RightSideImageUrl*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="RightSideImageUrl">
+                <label class="labelFontSize fw-bold fs-5">RightSideImageUrl*</label>
+                <input type="file" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="RightSideImageUrl">
+                <span asp-validation-for="RightSideImageUrl" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">LeftSideImageUrl*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="LeftSideImageUrl">
+                <label class="labelFontSize fw-bold fs-5">LeftSideImageUrl*</label>
+                <input type="file" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="LeftSideImageUrl">
+                <span asp-validation-for="LeftSideImageUrl" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">ModelName*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="ImageName">
+                <label class="labelFontSize fw-bold fs-5">ModelName*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="ImageName">
+                <span asp-validation-for="ImageName" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Filetype*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Filetype">
+                <label class="labelFontSize fw-bold fs-5">Filetype*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="Filetype">
+                <span asp-validation-for="Filetype" class="text-danger"></span>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
-                <label class="labelFontSize fw-bold">Filesize*</label>
-                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="Filesize">
+                <label class="labelFontSize fw-bold fs-5">Filesize*</label>
+                <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="Filesize">
+                <span asp-validation-for="Filesize" class="text-danger"></span>
             </div>
             <div class="col-12 mb-2">
-                <button type="submit" class="btn btn-warning col-5" value="Entry">Entry</button>
-                <button type="reset" class="btn btn-secondary col-5" value="Cancel">Cancel</button>
+                <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Entry</button>
+                <button type="reset" class="btn btn-secondary col-5  fw-bold" value="Cancel">Cancel</button>
             </div>
         </div>
 

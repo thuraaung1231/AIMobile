@@ -207,7 +207,7 @@ html {
 
 .SideNav {
     height: 100vh;
-    overflow-y: scroll;
+    
     overflow-x: hidden;
     transition: width 0.2s ease;
 }

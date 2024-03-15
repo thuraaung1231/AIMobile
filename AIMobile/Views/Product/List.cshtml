@@ -1,6 +1,6 @@
 ﻿@model List<ProductViewModel>
 
-<h1>Type List Information</h1>
+<h1>Product List Information</h1>
 @if (TempData["info"] != null)
 {
     <div class="alert alert-info">@TempData["info"]</div>
@@ -45,5 +45,6 @@
 <script>
     $(document).ready(function () {
         $("#tableProduct").DataTable();
+          
     })
 </script>

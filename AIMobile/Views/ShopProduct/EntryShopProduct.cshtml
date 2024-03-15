@@ -1,7 +1,7 @@
 ﻿@model TypeViewModel
 <form action="/shopproduct/entry" method="post">
     <div class="mb-3">
-        <label class="form-label">ShopName</label>
+        <label class="form-label fw-bold fs-5">ShopName</label>
         <select name="ShopId" class="form-select">
             @foreach (var shop in ViewBag.Shop)
             {
@@ -11,7 +11,7 @@
 
     </div>
     <div class="mb-3">
-        <label class="form-label">ProductName</label>
+        <label class="form-label fw-bold fs-5">ProductName</label>
         <select name="ProductId" class="form-select">
             @foreach (var product in ViewBag.Product)
             {
@@ -21,7 +21,7 @@
 
     </div>
     <div class="mb-3">
-        <label class="form-label">Model Name</label>
+        <label class="form-label fw-bold fs-5">Model Name</label>
         <select name="ImageId" class="form-select">
             @foreach (var image in ViewBag.Image)
             {
@@ -30,43 +30,43 @@
         </select>
 
     </div>
-    @if (Model.Name == "Mobile" || Model.Name == "Tablet")
+    @if (Model.Name == "Phone" || Model.Name == "Tablet")
     {
         <div>
             <div class="mb-3">
-                <label class="form-label" id="Display">Display :</label>
+                <label class="form-label fw-bold fs-5" id="Display">Display </label>
                 <input type="text" class="form-control" name="Display" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Resolutions">Resolutions :</label>
+                <label class="form-label fw-bold fs-5" id="Resolutions">Resolutions </label>
                 <input type="text" class="form-control" name="Resolutions" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="MainCamera">Main Camera :</label>
+                <label class="form-label fw-bold fs-5" id="MainCamera">Main Camera </label>
                 <input type="text" class="form-control" name="Main Camera" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="SelfieCamera">Selfie Camera :</label>
+                <label class="form-label fw-bold fs-5" id="SelfieCamera">Selfie Camera </label>
                 <input type="text" class="form-control" name="Selfie Camera" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Battery">Battery :</label>
+                <label class="form-label fw-bold fs-5" id="Battery">Battery </label>
                 <input type="text" class="form-control" name="Battery" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Charging">Charging :</label>
+                <label class="form-label fw-bold fs-5" id="Charging">Charging </label>
                 <input type="text" class="form-control" name="Charging" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Color">Color :</label>
+                <label class="form-label fw-bold fs-5" id="Color">Color </label>
                 <input type="text" class="form-control" name="Color" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Price">Price :</label>
+                <label class="form-label fw-bold fs-5" id="Price">Price </label>
                 <input type="text" class="form-control" name="Price" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="OtherProperty">Other Property :</label>
+                <label class="form-label fw-bold fs-5" id="OtherProperty">Other Property </label>
                 <textarea class="form-control" placeholder="comment here" name="OtherProperty" style="height: 100px"></textarea>
             </div>
         </div>
@@ -75,39 +75,39 @@
     {
         <div>
             <div class="mb-3">
-                <label class="form-label" id="Processor">Processor :</label>
+                <label class="form-label fw-bold fs-5" id="Processor">Processor </label>
                 <input type="text" class="form-control" name="Processor" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Memory">Memory :</label>
+                <label class="form-label fw-bold fs-5" id="Memory">Memory </label>
                 <input type="text" class="form-control" name="Memory" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Storage">Storage :</label>
+                <label class="form-label fw-bold fs-5" id="Storage">Storage </label>
                 <input type="text" class="form-control" name="Storage" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Graphics">Graphics :</label>
+                <label class="form-label fw-bold fs-5" id="Graphics">Graphics </label>
                 <input type="text" class="form-control" name="Graphics" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Resolutions">Resolutions :</label>
+                <label class="form-label fw-bold fs-5" id="Resolutions">Resolutions </label>
                 <input type="text" class="form-control" name="Resolutions" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Display">Display :</label>
+                <label class="form-label fw-bold fs-5" id="Display">Display </label>
                 <input type="text" class="form-control" name="Display" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Color">Color :</label>
+                <label class="form-label fw-bold fs-5" id="Color">Color </label>
                 <input type="text" class="form-control" name="Color" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Price">Price :</label>
+                <label class="form-label fw-bold fs-5" id="Price">Price </label>
                 <input type="text" class="form-control" name="Price" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="OtherProperty">Other Property :</label>
+                <label class="form-label fw-bold fs-5" id="OtherProperty">Other Property </label>
                 <textarea class="form-control" placeholder="comment here" name="OtherProperty" style="height: 100px"></textarea>
             </div>
         </div>
@@ -116,19 +116,19 @@
     {
         <div>
             <div class="mb-3">
-                <label class="form-label" id="Model">Model :</label>
+                <label class="form-label fw-bold fs-5" id="Model">Model </label>
                 <input type="text" class="form-control" name="Model" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Color">Color :</label>
+                <label class="form-label fw-bold fs-5" id="Color">Color </label>
                 <input type="text" class="form-control" name="Color" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Price">Price :</label>
+                <label class="form-label fw-bold fs-5" id="Price">Price </label>
                 <input type="text" class="form-control" name="Price" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="OtherProperty">Other Property :</label>
+                <label class="form-label fw-bold fs-5" id="OtherProperty">Other Property </label>
                 <textarea class="form-control" placeholder="comment here" name="OtherProperty" style="height: 100px"></textarea>
             </div>
 
@@ -138,35 +138,35 @@
     {
         <div>
             <div class="mb-3">
-                <label class="form-label" id="Model">Model :</label>
+                <label class="form-label fw-bold fs-5" id="Model">Model </label>
                 <input type="text" class="form-control" name="Model" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="BatteryCapacity">Battery Capacity :</label>
+                <label class="form-label fw-bold fs-5" id="BatteryCapacity">Battery Capacity </label>
                 <input type="text" class="form-control" name="BatteryCapacity" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Input">Input :</label>
+                <label class="form-label fw-bold fs-5" id="Input">Input </label>
                 <input type="text" class="form-control" name="Input" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Output">Output :</label>
+                <label class="form-label fw-bold fs-5 " id="Output">Output </label>
                 <input type="text" class="form-control" name="Output" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="MaxPowerOutput">Max Power Output :</label>
+                <label class="form-label fw-bold fs-5" id="MaxPowerOutput">Max Power Output </label>
                 <input type="text" class="form-control" name="MaxPowerOutput" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Color">Color :</label>
+                <label class="form-label fw-bold fs-5" id="Color">Color </label>
                 <input type="text" class="form-control" name="Color" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Price">Price :</label>
+                <label class="form-label fw-bold fs-5" id="Price">Price </label>
                 <input type="text" class="form-control" name="Price" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="OtherProperty">Other Property :</label>
+                <label class="form-label fw-bold fs-5" id="OtherProperty">Other Property </label>
                 <textarea class="form-control" placeholder="comment here" name="OtherProperty" style="height: 100px"></textarea>
             </div>
         </div>
@@ -175,49 +175,49 @@
     {
         <div>
             <div class="mb-3">
-                <label class="form-label" id="Model">Model :</label>
+                <label class="form-label fw-bold fs-5" id="Model">Model </label>
                 <input type="text" class="form-control" name="Model" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="WearingType">Wearing Type :</label>
+                <label class="form-label fw-bold fs-5" id="WearingType">Wearing Type </label>
                 <input type="text" class="form-control" name="WearingType" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Connectivity">Connectivity :</label>
+                <label class="form-label fw-bold fs-5" id="Connectivity">Connectivity </label>
                 <input type="text" class="form-control" name="Connectivity" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="EarphoneJack">Earphone Jack :</label>
+                <label class="form-label fw-bold fs-5" id="EarphoneJack">Earphone Jack </label>
                 <input type="text" class="form-control" name="EarphoneJack" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="FrequencyResponse">Frequency Response :</label>
+                <label class="form-label fw-bold fs-5" id="FrequencyResponse">Frequency Response </label>
                 <input type="text" class="form-control" name="FrequencyResponse" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Sensitivity">Sensitivity :</label>
+                <label class="form-label fw-bold fs-5" id="Sensitivity">Sensitivity </label>
                 <input type="text" class="form-control" name="Sensitivity" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Color">Color :</label>
+                <label class="form-label fw-bold fs-5" id="Color">Color </label>
                 <input type="text" class="form-control" name="Color" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="Price">Price :</label>
+                <label class="form-label fw-bold fs-5" id="Price">Price </label>
                 <input type="text" class="form-control" name="Price" placeholder="PLease Fill the Field!">
             </div>
             <div class="mb-3">
-                <label class="form-label" id="OtherProperty">Other Property :</label>
+                <label class="form-label fw-bold fs-5" id="OtherProperty">Other Property </label>
                 <textarea class="form-control" placeholder="comment here" name="OtherProperty" style="height: 100px"></textarea>
             </div>
         </div>
     }
     <div class="mb-3">
-        <label class="form-label">StockCount</label>
+        <label class="form-label fw-bold fs-5">StockCount</label>
         <input type="number" class="form-control" name="StockCount">
     </div>
     <input type="text" name="Description" id="DescriptionOutput" hidden/>
-    <input type="submit" class="btn btn_primary" value="Entry" id="EntryBtn" />
+    <input type="submit" class="btn btn-warning col-1 fw-bold" value="Entry" id="EntryBtn" />
 </form>
     
 

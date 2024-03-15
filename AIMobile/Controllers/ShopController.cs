@@ -1,17 +1,24 @@
-﻿using AIMobile.Models.DataModels;
+﻿using AIMobile.Helper;
+using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
+using static AIMobile.Services.Utilities.NetworkHelper;
+
 
 namespace AIMobile.Controllers
 {
     public class ShopController : Controller
     {
         private readonly IShopService _shopService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ShopController(IShopService shopService)
+        public ShopController(IShopService shopService, IWebHostEnvironment webHostEnvironment)
         {
             _shopService = shopService;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Entry()
         {
@@ -119,6 +126,37 @@ namespace AIMobile.Controllers
                 TempData["info"] = "Error when update the record to the system";
             }
             return RedirectToAction("List");
+        }
+
+        public IActionResult ShopReport()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ShopReport(string Name, string Address, string Status)
+        {
+            IList<ShopReportModel> ShopReports = _shopService.ReteriveAll().Where(w => w.Name == Name || w.Address == Address || w.Status == Status).Select(s => new ShopReportModel
+            {
+                Name = s.Name,
+                Address = s.Address,
+            }).ToList();
+            if (ShopReports.Count > 0)
+            {
+                var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopReport.rdlc");
+                var fs = new FileStream(rdlcPath, FileMode.Open);
+                Stream reportDefination = fs;
+                LocalReport localReport = new LocalReport();
+                localReport.LoadReportDefinition(reportDefination);
+                localReport.DataSources.Add(new ReportDataSource("ShopReportDataSet", ShopReports));
+                byte[] pdffile = localReport.Render("pdf");
+                fs.Close();
+                return File(pdffile, "application/pdf");
+            }
+            else
+            {
+                TempData["info"] = "There is no data";
+                return View();
+            }
         }
     }
 }
