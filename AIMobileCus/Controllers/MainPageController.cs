@@ -203,6 +203,16 @@ namespace AIMobileCus.Controllers
         {
 
             //ForNav
+            IList<ProductViewModel> AllProductViewModels = _productService.ReteriveAll().Select(p => new ProductViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                TypeId = p.TypeId,
+                BrandId = p.BrandId,
+                UnitPrice = p.UnitPrice,
+
+            }).ToList();
+            ViewBag.AllProductList = AllProductViewModels;
             IList<TypeViewModel> typeViewModels = _typeServices.ReteriveAll().Select(p => new TypeViewModel
             {
                 Id = p.Id,
@@ -308,7 +318,7 @@ namespace AIMobileCus.Controllers
                 Name = s.Name,
                 TypeId = s.TypeId,
             }).ToList();
-            ViewBag.AllProductList = productViewModels;
+            
             foreach (var product in productViewModels)
             {
                 var shopProductEntity = _shopProductService.GetShopProductByProductId(product.Id);

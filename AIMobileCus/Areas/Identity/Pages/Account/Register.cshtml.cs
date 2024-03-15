@@ -32,22 +32,12 @@ namespace TOMS.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<IdentityUser> _logger;
         private readonly IEmailSender _emailSender;
-       
-
-        private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
-
-
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
 
             ILogger<IdentityUser> logger,
-            
-
-            ILogger<RegisterModel> logger,
-
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -56,11 +46,8 @@ namespace TOMS.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-
-           
-
         }
-
+       
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -130,10 +117,7 @@ namespace TOMS.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
-                user.UserType = "User";
-
-                await _userStore.SetUserNameAsync(user, Input.Email,CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
 
@@ -175,14 +159,6 @@ namespace TOMS.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
-
-        private ApplicationUser CreateUser()
-        {
-            try
-            {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email};
-                return user;
-
         private IdentityUser CreateUser()
         {
             try
@@ -207,5 +183,4 @@ namespace TOMS.Areas.Identity.Pages.Account
             return (IUserEmailStore<IdentityUser>)_userStore;
         }
     }
-
 }

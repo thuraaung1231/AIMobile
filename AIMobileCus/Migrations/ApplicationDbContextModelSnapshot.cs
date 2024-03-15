@@ -437,7 +437,7 @@ namespace AIMobileCus.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(450)")
 
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
@@ -486,7 +486,7 @@ namespace AIMobileCus.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(450)")
 
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
@@ -555,6 +555,11 @@ namespace AIMobileCus.Migrations
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
+        }
+
+        private bool HasMaxLength(int v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

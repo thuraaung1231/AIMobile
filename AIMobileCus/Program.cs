@@ -26,15 +26,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(o => o.SignIn.RequireConfirmed
 
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(o =>
-{
-    o.SignIn.RequireConfirmedAccount = false;
-    o.Password.RequireDigit = true;
-    o.Password.RequiredLength = 8;
-    o.Password.RequireUppercase = true;
-    o.Password.RequireLowercase = true;
-})
-.AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+
 
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ITypeServices, TypeServices>();
