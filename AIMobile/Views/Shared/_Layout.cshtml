@@ -37,6 +37,46 @@
                     <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
                             type="button"
                             data-bs-toggle="collapse"
+                            data-bs-target="#Report"
+                            aria-expanded="false"
+                            aria-controls="multiCollapseExample2">
+                        <i class="fa-solid fa-rectangle-list me-2"></i>
+                        <span class="navText">Reports</span>
+                        <i class="fa-solid fa-angle-left float-end my-auto mt-1 CollapseArrow"></i>
+                    </button>
+                    <div class="collapse multi-collapse w-100 m-0 p-0" id="Report">
+                        <div class="card card-body rounded-0 m-0 p-0">
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="/shop/shopreport" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> Shop Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="/Product/report" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> Product Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="/ShopProduct/shopproductReport" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> ShopProduct Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="//report" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> Purchase Report
+                                </a>
+                            </div>
+                            <div class="border-0 p-2 text-light collapseItem">
+                                <a href="//report" class="text-decoration-none text-light">
+                                    <i class="fa-solid fa-circle me-2"></i> User Report
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn text-start AdminNav btn-outline-transparent text-light w-100 border-0 border-bottom border-primary rounded-0 py-3 CollapseButton"
+                            type="button"
+                            data-bs-toggle="collapse"
                             data-bs-target="#Product"
                             aria-expanded="false"
                             aria-controls="multiCollapseExample2">
@@ -340,6 +380,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-10 Adminbody" id="MainNav">
                 <div class="row bg-light py-2 border">
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start mb-lg-0 mb-md-0 mb-2 align-items-center my-auto text-body-secondary">
