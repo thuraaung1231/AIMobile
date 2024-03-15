@@ -238,7 +238,6 @@ namespace AIMobileCus.Controllers
             }
             return Json(shopProductResults);
         }
-    }
 
 
         public IActionResult FreeShipping()
@@ -260,5 +259,9 @@ namespace AIMobileCus.Controllers
         {
             return View();
         }
+    }
+
+
+       
 
     }
