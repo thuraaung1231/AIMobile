@@ -259,6 +259,8 @@ html {
 #ResultContainer{
     position:absolute;
    top:40px;
+  max-height:70vh;
+  
  
 }
 #ResultContainer::-webkit-scrollbar {
@@ -276,7 +278,7 @@ html {
     cursor:pointer;
     transition:all ease-in-out 0.3s;
    border-bottom:0.5px solid lightgray;
-    height:50px;
+    height:70px;
 }
 .ChildProduct:hover{
     background-color:lightblue;
@@ -289,4 +291,11 @@ html {
     position:fixed;
     top:150px;
     cursor:pointer;
+}
+.LoginBg{
+    background-image:url(/Images/LoginBG.jpg);
+   height:90vh;
+}
+.loginForm {
+    background-color: rgba(255, 255, 255, 0.7);
 }

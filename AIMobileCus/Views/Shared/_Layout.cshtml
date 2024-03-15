@@ -32,17 +32,17 @@
                 <i class="fa-solid fa-house-chimney-user text-light"></i>
             </div>
             <div class="d-flex flex-column col-md-6 col-12 position-relative h-50">
-                <div class="col-12 d-flex">
+                <div class="col-12 d-flex mx-auto">
                     <input type="text"
-                           class="search-Bar p-2 col-10"
+                           class="search-Bar p-2 col-11"
                            placeholder="Search Your Product" id="UserSearch" />
-                    <button class="border-none bg-warning rounded-end search-Button py-2 px-3"
+                    <button class="border-none col-1 bg-warning rounded-end search-Button py-2 px-3"
                             type="button"
                             id="button-addon2">
                         <i class="fa-solid fa-magnifying-glass" id="searchButton"></i>
                     </button>
                 </div>
-                <div id="ResultContainer" class="col-10 bg-light overflow-y-scroll"></div>
+                <div id="ResultContainer" class="col-11 bg-light overflow-y-scroll"></div>
             </div>
             <div class="navbar-brand d-lg-none d-md-inline d-none">
                 <i class="fa-solid fa-house-chimney-user text-light Pointer"
@@ -52,15 +52,14 @@
             </div>
             <div class="d-lg-inline d-md-none d-none">
                 <ul class="navbar-nav ms-auto z-4">
-                    <li class="nav-item me-1 px-1 rounded LoginLogout ms-auto">
-                        <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
-                           aria-current="page"
-                           href="#"><i class="fa-solid fa-user px-1"></i>Login</a>
-                    </li>
-                    <li class="nav-item px-1 rounded LoginLogout ms-auto">
+                    
+                       
+                          <partial name="_loginPartial" />
+                   
+                    @* <li class="nav-item px-1 rounded LoginLogout ms-auto">
                         <a class="nav-link active text-light px-2 fs-6 d-flex justify-content-center align-items-center"
                            href="#"><i class="fa-solid fa-user-plus px-1 fs-6"></i>SignUp</a>
-                    </li>
+                    </li> *@
                 </ul>
             </div>
         </div>
@@ -82,19 +81,12 @@
                 <i class="fa-solid fa-xmark text-light fs-5"></i>
             </button>
         </div>
-        <div class="offcanvas-body">
-            <button class="btn btn-transparent border-primary d-block w-100 mb-2 LoginLogout">
-                <a href="#" class="text-decoration-none text-warning"><i class="fa-solid fa-user-plus px-1 fs-6"></i> Sign Up</a>
-            </button>
-            <button class="btn btn-transparent border-primary d-block w-100 LoginLogout">
-                <a href="#" class="text-decoration-none text-warning"><i class="fa-solid fa-user px-1"></i> Login In</a>
-            </button>
+        <div class="offcanvas-body product-Bar">
+            <ul class="navbar-nav ms-auto z-4">
+                <partial name="_loginPartial" />
+            </ul>
         </div>
     </div>
-
-   
-
-
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
