@@ -135,6 +135,7 @@ namespace AIMobile.Controllers
 
         public IActionResult ProductDetailReport()
         {
+
             ViewBag.Type = _typeServices.ReteriveAll().Select(s => new TypeViewModel { Id = s.Id, Name = s.Name }).ToList();
             ViewBag.Brand = _brandService.ReteriveAll().Select(s => new BrandViewModels { Id = s.Id, Name = s.Name }).ToList();
 
@@ -150,6 +151,24 @@ namespace AIMobile.Controllers
                 Name=s.Name,
               
                 UnitPrice = s.UnitPrice,
+
+            ViewBag.Brand = _brandService.ReteriveAll().Select(s => new BrandViewModels { Id = s.Id, Name = s.Name }).ToList();
+            ViewBag.Type = _typeServices.ReteriveAll().Select(s => new TypeViewModel { Id = s.Id, Name = s.Name }).ToList();
+            
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ProductDetailReport(string BrandId, string TypeId, string Name,decimal UnitPrice)
+        {
+            IList<ProductReportModel> products = _productService.ReteriveAll().Where(w =>
+            w.Name == Name || w.BrandId == BrandId || w.TypeId == TypeId||w.UnitPrice==UnitPrice).Select(s => new ProductReportModel
+            {
+
+                TypeName=_typeServices.GetById(TypeId).Name,
+                Name=s.Name,
+                UnitPrice=s.UnitPrice,
+ 
+
 
             }).ToList();
             if (products.Count > 0)

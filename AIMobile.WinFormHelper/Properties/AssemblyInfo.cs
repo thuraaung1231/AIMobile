@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AIMobile.Helper")]
+[assembly: AssemblyTitle("AIMobile.WinFormHelper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AIMobile.Helper")]
+[assembly: AssemblyProduct("AIMobile.WinFormHelper")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,11 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-
-[assembly: Guid("d3a0a09b-3174-4aec-b831-4db60eca6ad2")]
-
-[assembly: Guid("646455ed-02e3-486f-b2a3-8419a286ec2d")]
-
+[assembly: Guid("b23e5bfb-51b9-4cdd-b52f-94ea000d9def")]
 
 // Version information for an assembly consists of the following four values:
 //

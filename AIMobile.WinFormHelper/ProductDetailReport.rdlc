@@ -6,7 +6,11 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
+
               <Width>1.42139in</Width>
+
+              <Width>1in</Width>
+
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
@@ -21,7 +25,11 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+
                     <Textbox Name="Textbox5">
+
+                    <Textbox Name="Textbox3">
+
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -35,7 +43,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
+
                       <rd:DefaultName>Textbox5</rd:DefaultName>
+
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
+
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -51,7 +63,11 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+
                     <Textbox Name="Textbox13">
+
+                    <Textbox Name="Textbox7">
+
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -65,7 +81,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
+
                       <rd:DefaultName>Textbox13</rd:DefaultName>
+
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -82,6 +102,9 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox9">
+
+                    <Textbox Name="Textbox12">
+
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -95,7 +118,11 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
+
                       <rd:DefaultName>Textbox9</rd:DefaultName>
+
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
+
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -226,10 +253,17 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ProductDetailReport</DataSetName>
+
         <Top>0.14458in</Top>
         <Left>1.99875in</Left>
         <Height>0.5in</Height>
         <Width>3.42139in</Width>
+
+        <Top>0.13417in</Top>
+        <Left>1.68625in</Left>
+        <Height>0.5in</Height>
+        <Width>3in</Width>
+
         <Style>
           <Border>
             <Style>None</Style>
@@ -237,7 +271,11 @@
         </Style>
       </Tablix>
     </ReportItems>
+
     <Height>0.875in</Height>
+
+    <Height>0.78125in</Height>
+
     <Style />
   </Body>
   <Width>6.5in</Width>
@@ -262,10 +300,47 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
+
           <Top>0.11806in</Top>
           <Left>2.40625in</Left>
           <Height>0.29167in</Height>
           <Width>1.40056in</Width>
+
+          <Top>0.10292in</Top>
+          <Left>2.37375in</Left>
+          <Height>0.25in</Height>
+          <Width>1.59375in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value />
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.24306in</Top>
+          <Left>5.2175in</Left>
+          <Height>0.20833in</Height>
+          <Width>1in</Width>
+          <ZIndex>1</ZIndex>
+
           <Style>
             <Border>
               <Style>None</Style>
@@ -284,11 +359,19 @@
       </Style>
     </PageHeader>
     <PageFooter>
+
       <Height>1in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
         <Textbox Name="Textbox2">
+
+      <Height>0.54167in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox9">
+
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -302,9 +385,15 @@
               <Style />
             </Paragraph>
           </Paragraphs>
+
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>0.26042in</Top>
           <Left>1.40625in</Left>
+
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>0.11681in</Top>
+          <Left>1.51958in</Left>
+
           <Height>0.25in</Height>
           <Width>1in</Width>
           <Style>
@@ -317,7 +406,11 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+
         <Textbox Name="Textbox3">
+
+        <Textbox Name="Textbox10">
+
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -334,6 +427,11 @@
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Top>0.26042in</Top>
           <Left>2.40625in</Left>
+
+          <rd:DefaultName>Textbox10</rd:DefaultName>
+          <Top>0.11681in</Top>
+          <Left>2.53347in</Left>
+
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>1</ZIndex>
@@ -347,7 +445,11 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+
         <Textbox Name="Textbox4">
+
+        <Textbox Name="Textbox11">
+
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -361,9 +463,15 @@
               <Style />
             </Paragraph>
           </Paragraphs>
+
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>0.26042in</Top>
           <Left>3.42014in</Left>
+
+          <rd:DefaultName>Textbox11</rd:DefaultName>
+          <Top>0.11681in</Top>
+          <Left>3.51958in</Left>
+
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>2</ZIndex>
@@ -398,6 +506,9 @@
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>b15b1efd-8d41-43c2-b3f7-f1e3f633c1ef</rd:DataSourceID>
+
+      <rd:DataSourceID>937140c8-27d4-4479-ae1d-e7b91a61c002</rd:DataSourceID>
+
     </DataSource>
   </DataSources>
   <DataSets>
@@ -436,9 +547,16 @@
         <rd:DataSetName>AIMobile.Helper</rd:DataSetName>
         <rd:TableName>ProductDetailReport</rd:TableName>
         <rd:ObjectDataSourceType>AIMobile.Helper.ProductDetailReport, AIMobile.Helper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+
+        <rd:TableName>ProductReportModel</rd:TableName>
+        <rd:ObjectDataSourceType>AIMobile.Helper.ProductReportModel, AIMobile.Helper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>6e3467f4-42de-4a56-8d76-73a6a9b6d1cd</rd:ReportID>
+
+
+  <rd:ReportID>322e9363-1e4a-48e5-8335-f8bc9ed1dc77</rd:ReportID>
+
 </Report>

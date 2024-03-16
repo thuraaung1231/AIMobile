@@ -21,6 +21,13 @@
   <ItemGroup>
     <Content Remove="wwwroot\ReportFile\ProductDetailReport.rdlc" />
   </ItemGroup>
+
+
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\ReportFile\ProductDetailReport.rdlc" />
+  </ItemGroup>
+
 	<ItemGroup>
 
 		<PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
@@ -49,9 +56,11 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AIMobile.Helper\AIMobile.Helper.csproj" />
+
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="wwwroot\ReportFile\ProductDetailReport.rdlc" />
+
 	</ItemGroup>
 
 </Project>

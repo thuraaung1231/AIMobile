@@ -1,4 +1,7 @@
 ﻿<h1>Product Detail Report</h1>
+
+
+
 @if (TempData["info"] != null)
 {
     <div class="alert alert-warning">
@@ -7,16 +10,34 @@
 }
 <form action="/product/productdetailreport" method="post">
     
+
     <div class="mb-3">
         <label class="form-label">Type Name</label>
+
+        <div class="mb-3">
+        <label class="form-label">Type</label>
+
         <select name="TypeId" class="form-control">
             @foreach (var type in ViewBag.Type)
             {
                 <option value="@type.Id">@type.Name</option>
             }
+
         </select>
 
        
+
+            <link href="c:\users\dell\source\repos\AIMobile2\AIMobile1\views\shared\_layout_admin.cshtml.css" rel="stylesheet" />
+            <a href="c:\users\dell\source\repos\AIMobile2\AIMobile1\views\shared\_layout_admin.cshtml">c:\users\dell\source\repos\AIMobile2\AIMobile1\views\shared\_layout_admin.cshtml</a>
+        </select>
+
+        <div class="mb-3">
+            <label class="form-label">UnitPrice</label>
+            <input type="text" class="form-control" name="UnitPrice">
+
+        </div>
+
+
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Show</button>
         </div>
