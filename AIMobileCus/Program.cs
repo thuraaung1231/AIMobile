@@ -1,5 +1,6 @@
 using AIMobile.DAO;
 using AIMobile.Services.Domains;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
@@ -12,6 +13,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 var config = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(config.GetConnectionString("AIMobileDB")));
+
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(o =>
 {
     o.SignIn.RequireConfirmedAccount = false;
@@ -19,7 +24,12 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(o =>
     o.Password.RequiredLength = 8;
     o.Password.RequireUppercase = true;
     o.Password.RequireLowercase = true;
+
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+
+
+})
+.AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ITypeServices, TypeServices>();

@@ -56,6 +56,9 @@
                         <a class="nav-link active text-light px-2 fs-6 d-flex justify-content-center align-items-center"
                            href="#"><i class="fa-solid fa-user-plus px-1 fs-6"></i>SignUp</a>
                     </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <partial name="_loginPartial" />
+                    </li>
                 </ul>
             </div>
         </div>
@@ -282,9 +285,9 @@
 
     <div class="container-fluid pageFooter mt-3 border-top border-secondary">
         <div class="row border-bottom border-secondary p-2">
-            <div class="col-lg-3 col-6  mb-lg-0 mb-2 Cursor-Pointer">
-                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
-                    <i class="fa-solid fa-truck display-6 me-2"></i>
+            <div class="col-lg-3 col-6  mb-lg-0 mb-2 Cursor-Pointer" >
+                <div id="freeShippingDiv"  class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                    <i class="fa-solid fa-truck display-6 me-2" ></i>
                     <div>
                         <div class="fw-bold fs-6">Free Shipping</div>
                         <div class="fs-6 fw-normal text-secondary">For Every State</div>
@@ -294,7 +297,7 @@
 
 
             <div class="col-lg-3 col-6 mb-lg-0 mb-2 Cursor-Pointer">
-                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <div id="ReturnPolicyDiv" class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
                     <i class="fa-solid fa-reply display-6 me-2"></i>
                     <div>
                         <div class="fw-bold fs-6">3 Days Return Policy</div>
@@ -305,7 +308,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-6 Cursor-Pointer">
-                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <div id="EasyPaymentDiv" class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
                     <i class="fa-regular fa-credit-card display-6 me-2"></i>
                     <div>
                         <div class="fw-bold fs-6">Easy Payment</div>
@@ -316,7 +319,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-6 Cursor-Pointer">
-                <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
+                <div id="FaceDeliveryDiv" class="w-100 h-100 d-flex align-items-center justify-content-center bg-light py-2 px-lg-0 px-2">
                     <i class="fa-solid fa-truck-fast display-6 me-2"></i>
                     <div>
                         <div class="fw-bold fs-6">Fase Delivery</div>
@@ -489,6 +492,35 @@
     <script src="https://kit.fontawesome.com/627302b2f5.js"
             crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $('#freeShippingDiv').click(function () {
+                // Redirect to a specific page or perform any other action
+                window.location.href = '/home/freeshipping'; // Replace with the desired URL
+            });
+        });
+
+        $(document).ready(function () {
+            $('#ReturnPolicyDiv').click(function () {
+                // Redirect to a specific page or perform any other action
+                window.location.href = '/home/returnpolicy'; // Replace with the desired URL
+            });
+        });
+
+        $(document).ready(function () {
+            $('#EasyPaymentDiv').click(function () {
+                // Redirect to a specific page or perform any other action
+                window.location.href = '/home/easypayment'; // Replace with the desired URL
+            });
+        });
+
+        $(document).ready(function () {
+            $('#FaceDeliveryDiv').click(function () {
+                // Redirect to a specific page or perform any other action
+                window.location.href = '/home/facedelivery'; // Replace with the desired URL
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

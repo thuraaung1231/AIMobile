@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Content Remove="wwwroot\ReportFile\ProductDetailReport.rdlc" />
   </ItemGroup>
 
@@ -26,6 +27,16 @@
 
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\ReportFile\ProductDetailReport.rdlc" />
+  </ItemGroup>
+
+
+    <Content Remove="wwwroot\ReportFiles\ShopProductReport.rdlc" />
+    <Content Remove="wwwroot\ReportFiles\ShopReport.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\ReportFiles\ShopProductReport.rdlc" />
+    <EmbeddedResource Include="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -52,6 +63,7 @@
 		<PackageReference Include="System.CodeDom" Version="6.0.0" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+
 		<PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
@@ -60,6 +72,12 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="wwwroot\ReportFile\ProductDetailReport.rdlc" />
+
+
+	<PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\AIMobile.Helper\AIMobile.Helper.csproj" />
 
 	</ItemGroup>
 

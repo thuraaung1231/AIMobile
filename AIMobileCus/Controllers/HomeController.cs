@@ -99,5 +99,25 @@ namespace AIMobileCus.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult FreeShipping()
+        {
+            return View();
+        }
+
+        public IActionResult ReturnPolicy()
+        {
+            return View();
+        }
+
+        public IActionResult EasyPayment()
+        {
+            return View();
+        }
+
+        public IActionResult FaceDelivery()
+        {
+            return View();
+        }
     }
 }

@@ -11,7 +11,11 @@
             <th scope="col">PaymentType</th>
             <th scope="col">PaymentTypeImage</th>
 
+
             <th scope="col">PaymentTypQR</th>
+
+
+            <th scope="col">PaymentTypeQR</th>
 
             <th scope="col">Action</th>
         </tr>
@@ -25,9 +29,14 @@
             <tr>
                 <td>@index</td>
                 <td>@item.PaymentType</td>
+
                 <td><img src="@item.PaymentTypeImage" class="w-25" /></td>
 
                 <td class="w-25"><img src="@item.PaymentTypeQR" class="w-25" /></td>
+
+
+                <td><img src="@item.PaymentTypeImage" class="w-25"></td>
+                <td class ="w-25"><img src="@item.PaymentTypeQR" class="w-25"></td>
 
                 <td>
                     <a class="btn btn-success" href="/paymenttype/edit?id=@item.Id"><i class="fa-solid fa-pen-to-square"></i></a>

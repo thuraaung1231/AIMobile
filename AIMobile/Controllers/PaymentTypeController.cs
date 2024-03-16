@@ -26,6 +26,7 @@ namespace AIMobile.Controllers
         {
             try
             {
+
                 string imgUrl="/Images/";
               var   PaymentTypeEntity  = new PaymentTypeEntity()
                 {
@@ -33,6 +34,15 @@ namespace AIMobile.Controllers
                     PaymentType = pvm.PaymentType,
                    PaymentTypeImage=imgUrl+pvm.PaymentTypeImage,
                    PaymentTypeQR=imgUrl+pvm.PaymentTypeQR,
+
+                string imgUrl = "/Images/";
+                var PaymentTypeEntity = new PaymentTypeEntity()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    PaymentType = pvm.PaymentType,
+                    PaymentTypeImage = imgUrl+ pvm.PaymentTypeImage,
+                    PaymentTypeQR  = imgUrl+ pvm.PaymentTypeQR,
+
                 };
                 _paymentTypeService.Entry(PaymentTypeEntity);
                 TempData["info"] = "Save Successfully the record to the system";
@@ -51,8 +61,13 @@ namespace AIMobile.Controllers
             {
                 Id = u.Id,
                 PaymentType = u.PaymentType,
+
                 PaymentTypeImage= u.PaymentTypeImage,
                 PaymentTypeQR=u.PaymentTypeQR,
+
+                PaymentTypeImage = u.PaymentTypeImage,
+                PaymentTypeQR = u.PaymentTypeQR,
+
             }).ToList();
             return View(payments);
         }
@@ -83,7 +98,11 @@ namespace AIMobile.Controllers
                 payment.Id = PaymentDataModel.Id;
                 payment.PaymentType = PaymentDataModel.PaymentType;
                 payment.PaymentTypeImage = PaymentDataModel.PaymentTypeImage;
+
                 payment.PaymentTypeQR = PaymentDataModel.PaymentTypeQR; 
+
+                payment.PaymentTypeQR = PaymentDataModel.PaymentTypeQR;
+
             }
             return View(payment);
         }
@@ -100,8 +119,13 @@ namespace AIMobile.Controllers
                 {
                     Id = pvm.Id,
                     PaymentType = pvm.PaymentType,
+
                     PaymentTypeImage=imgUrl+pvm.PaymentTypeImage,
                     PaymentTypeQR=imgUrl+pvm.PaymentTypeQR,
+
+                    PaymentTypeImage = imgUrl+ pvm.PaymentTypeImage,
+                    PaymentTypeQR = imgUrl+ pvm.PaymentTypeQR,
+
                     UpdatedAt = DateTime.Now,
                 };
                 _paymentTypeService.Update(payment);

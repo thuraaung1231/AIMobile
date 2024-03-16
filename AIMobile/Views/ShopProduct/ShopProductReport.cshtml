@@ -1,0 +1,38 @@
+﻿<h1>Shop Product Report</h1>
+@if (TempData["info"] != null)
+{
+    <div class="alert alert-warning">
+        <span>@TempData["info"]</span>
+    </div>
+}
+
+
+<div class="col-12 m-0 p-0">
+    <h4 class="col-lg-7 col-md-6 col-10 mx-auto text-center text-light py-3 formHeader m-0 p-0 rounded-top AdminNav">Shop Report</h4>
+</div>
+<form action="/shopproduct/shopproductreport" method="post" class="col-lg-7 col-md-6 col-10 mx-auto shadow-sm p-3 border border-2 border-secondary rounded-bottom">
+
+    <div class="row">
+        @*<div class="col-12 mb-3 d-flex flex-column">
+            <label class="labelFontSize fw-bold fs-5">ShopName*</label>
+            <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="@Model.Shop.Name">
+        </div>*@
+
+    <div class="mb-3">
+        <label class="form-label fw-bold fs-5">ShopName</label>
+        <select name="ShopId" class="form-select">
+            @foreach (var shop in ViewBag.Shop)
+            {
+                <option value="@shop.Id">@shop.Name</option>
+            }
+        </select>
+
+    </div>
+        
+        <div class="col-12 mb-2">
+            <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Entry</button>
+            <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>
+        </div>
+    </div>
+
+</form>
