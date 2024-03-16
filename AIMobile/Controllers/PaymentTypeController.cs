@@ -8,10 +8,12 @@ namespace AIMobile.Controllers
     public class PaymentTypeController : Controller
     {
         private readonly IPaymentTypeService _paymentTypeService;
+        private readonly IImageService _imageService;
 
-        public PaymentTypeController(IPaymentTypeService paymentTypeService)
+        public PaymentTypeController(IPaymentTypeService paymentTypeService,IImageService imageService)
         {
             _paymentTypeService = paymentTypeService;
+            _imageService = imageService;
         }
         public IActionResult Entry()
         {
@@ -24,12 +26,15 @@ namespace AIMobile.Controllers
         {
             try
             {
-                PaymentTypeEntity payment = new PaymentTypeEntity()
+                string imgUrl="/Images/";
+              var   PaymentTypeEntity  = new PaymentTypeEntity()
                 {
                     Id = Guid.NewGuid().ToString(),
                     PaymentType = pvm.PaymentType,
+                   PaymentTypeImage=imgUrl+pvm.PaymentTypeImage,
+                   PaymentTypeQR=imgUrl+pvm.PaymentTypeQR,
                 };
-                _paymentTypeService.Entry(payment);
+                _paymentTypeService.Entry(PaymentTypeEntity);
                 TempData["info"] = "Save Successfully the record to the system";
               
             }
@@ -46,6 +51,8 @@ namespace AIMobile.Controllers
             {
                 Id = u.Id,
                 PaymentType = u.PaymentType,
+                PaymentTypeImage= u.PaymentTypeImage,
+                PaymentTypeQR=u.PaymentTypeQR,
             }).ToList();
             return View(payments);
         }
@@ -75,6 +82,8 @@ namespace AIMobile.Controllers
             {
                 payment.Id = PaymentDataModel.Id;
                 payment.PaymentType = PaymentDataModel.PaymentType;
+                payment.PaymentTypeImage = PaymentDataModel.PaymentTypeImage;
+                payment.PaymentTypeQR = PaymentDataModel.PaymentTypeQR; 
             }
             return View(payment);
         }
@@ -86,10 +95,13 @@ namespace AIMobile.Controllers
         {
             try
             {
+                string imgUrl = "/Images/";
                 PaymentTypeEntity payment = new PaymentTypeEntity()
                 {
                     Id = pvm.Id,
                     PaymentType = pvm.PaymentType,
+                    PaymentTypeImage=imgUrl+pvm.PaymentTypeImage,
+                    PaymentTypeQR=imgUrl+pvm.PaymentTypeQR,
                     UpdatedAt = DateTime.Now,
                 };
                 _paymentTypeService.Update(payment);

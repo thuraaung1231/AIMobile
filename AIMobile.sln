@@ -5,7 +5,11 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIMobile", "AIMobile\AIMobile.csproj", "{E70E9AEB-7E57-4109-98BA-14CF0B19CDA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIMobileCus", "AIMobileCus\AIMobileCus.csproj", "{9224C6B7-7F72-425F-8D40-3BF05F62C413}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIMobileCus", "AIMobileCus\AIMobileCus.csproj", "{9224C6B7-7F72-425F-8D40-3BF05F62C413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIMobile.Helper", "AIMobile.Helper\AIMobile.Helper.csproj", "{D3A0A09B-3174-4AEC-B831-4DB60ECA6AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIMobile.WinFormHelper", "AIMobile.WinFormHelper\AIMobile.WinFormHelper.csproj", "{18A92AB5-A63D-492F-A0DB-F4DDB27359B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{9224C6B7-7F72-425F-8D40-3BF05F62C413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9224C6B7-7F72-425F-8D40-3BF05F62C413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9224C6B7-7F72-425F-8D40-3BF05F62C413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A0A09B-3174-4AEC-B831-4DB60ECA6AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A0A09B-3174-4AEC-B831-4DB60ECA6AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A0A09B-3174-4AEC-B831-4DB60ECA6AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A0A09B-3174-4AEC-B831-4DB60ECA6AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18A92AB5-A63D-492F-A0DB-F4DDB27359B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A92AB5-A63D-492F-A0DB-F4DDB27359B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A92AB5-A63D-492F-A0DB-F4DDB27359B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A92AB5-A63D-492F-A0DB-F4DDB27359B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

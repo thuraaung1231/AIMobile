@@ -22,6 +22,16 @@
                 <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="PaymentType">
                 <span asp-validation-for="PaymentType" class="text-danger"></span>
             </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold fs-5">PaymentTypeImage*</label>
+                <input type="file" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="PaymentTypeImage">
+                <span asp-validation-for="PaymentTypeImage" class="text-danger"></span>
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+                <label class="labelFontSize fw-bold fs-5">PaymentTypeQR*</label>
+                <input type="file" class="border-0 border-bottom border-primary bg-transparent search-Bar" asp-for="PaymentTypeQR">
+                <span asp-validation-for="PaymentTypeQR" class="text-danger"></span>
+            </div>
             <div class="col-12 mb-2">
                 <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Entry</button>
                 <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>

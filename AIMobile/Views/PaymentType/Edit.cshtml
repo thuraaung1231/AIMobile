@@ -22,6 +22,32 @@
                 <label class="labelFontSize fw-bold fs-5">PaymentType</label>
                 <input type="text" class="border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentType" value="@Model.PaymentType">
             </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+
+                <label class="labelFontSize fw-bold pb-2">Payment Type Image</label>
+                <div class="col-5">
+                    <img class="w-50 bg-transparent rounded p-2" src="@Model.PaymentTypeImage" alt="">
+                </div>
+                <label class="labelFontSize fw-bold">Payment Type Image URL</label>
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentTypeImage" value="@Model.PaymentTypeImage" id="RightSideImageUrl">
+                <div class="input-group mt-2">
+                    <input type="file" class="form-control" hidden id="HiddenRightImgUrl">
+                    <label class="input-group-text rounded" for="HiddenRightImgUrl">Choose</label>
+                </div>
+            </div>
+            <div class="col-12 mb-3 d-flex flex-column">
+
+                <label class="labelFontSize fw-bold pb-2">Payment Type QR</label>
+                <div class="col-5">
+                    <img class="w-50 bg-transparent rounded p-2" src="@Model.PaymentTypeQR" alt="">
+                </div>
+                <label class="labelFontSize fw-bold">Payment Type QR URL</label>
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentTypeQR" value="@Model.PaymentTypeQR" id="RightSideQRUrl">
+                <div class="input-group mt-2">
+                    <input type="file" class="form-control" hidden id="HiddenRightQRUrl">
+                    <label class="input-group-text rounded" for="HiddenRightQRUrl">Choose</label>
+                </div>
+            </div>
             <div class="col-12 mb-2">
                 <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Update</button>
                 <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>

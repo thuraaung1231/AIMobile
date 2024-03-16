@@ -7,5 +7,7 @@ namespace AIMobile.Models.DataModels
 
     {
         public string PaymentType { get; set; }
+        public string PaymentTypeImage { get; set; }
+        public string PaymentTypeQR { get; set; }
     }
 }
