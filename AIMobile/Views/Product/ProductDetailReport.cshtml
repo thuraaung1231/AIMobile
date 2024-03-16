@@ -1,0 +1,28 @@
+﻿<h1>Product Detail Report</h1>
+@if (TempData["info"] != null)
+{
+    <div class="alert alert-warning">
+        <span>@TempData["info"]</span>
+    </div>
+}
+<form action="/product/productdetailreport" method="post">
+
+    <div class="row">
+        <div class="mb-3">
+            <label class="form-label fw-bold fs-5">Type Name</label>
+            <select name="TypeId" class="form-select">
+                @foreach (var type in ViewBag.Type)
+                {
+                    <option value="@type.Id">@type.Name</option>
+                }
+            </select>
+
+        </div>
+        <div class="col-12 mb-2">
+            <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Entry</button>
+            <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>
+        </div>
+    </div>
+        
+</form>
+
