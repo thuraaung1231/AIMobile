@@ -162,8 +162,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ShopReportDataSet</DataSetName>
-        <Top>0.06944in</Top>
-        <Left>0.85in</Left>
+        <Top>0.26111in</Top>
+        <Left>1.86444in</Left>
         <Height>0.6in</Height>
         <Width>3.79444in</Width>
         <Style>
@@ -179,7 +179,7 @@
   <Width>7.47556in</Width>
   <Page>
     <PageHeader>
-      <Height>0.68333in</Height>
+      <Height>0.81666in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

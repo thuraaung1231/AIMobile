@@ -1,7 +1,10 @@
-﻿using AIMobile.Models.DataModels;
+﻿using AIMobile.Helper;
+using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
 
 namespace AIMobile.Controllers
 {
@@ -10,12 +13,14 @@ namespace AIMobile.Controllers
         private readonly IBrandService _brandService;
         private readonly IProductService _productService;
         private readonly ITypeServices _typeServices;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(IBrandService brandService, IProductService productService,ITypeServices typeServices)
+        public ProductController(IBrandService brandService, IProductService productService,ITypeServices typeServices,IWebHostEnvironment webHostEnvironment)
         {
             _brandService = brandService;
             _productService = productService;
             _typeServices = typeServices;
+            _webHostEnvironment = webHostEnvironment;
         }
         [HttpGet]
         public IActionResult Entry()
@@ -125,6 +130,46 @@ namespace AIMobile.Controllers
             }
             return RedirectToAction("List");
             //Test Branch
+
+        }
+
+
+        public IActionResult ProductDetailReport()
+        {
+            ViewBag.Type = _typeServices.ReteriveAll().Select(s => new TypeViewModel { Id = s.Id, Name = s.Name }).ToList();
+            ViewBag.Brand = _brandService.ReteriveAll().Select(s => new BrandViewModels { Id = s.Id, Name = s.Name }).ToList();
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ProductDetailReport(string TypeId, string BrandId, decimal UnitPrice)
+        {
+            IList<ProductDetailReport> products = _productService.ReteriveAll().Where(w =>
+            w.TypeId == TypeId || w.BrandId == BrandId || w.UnitPrice == UnitPrice).Select(s => new ProductDetailReport
+            {
+                TypeName = _typeServices.GetById(TypeId).Name,
+                Name = s.Name,
+
+                UnitPrice = s.UnitPrice,
+
+            }).ToList();
+            if (products.Count > 0)
+            {
+                var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ProductDetailReport.rdlc");
+                var fs = new FileStream(rdlcPath, FileMode.Open);
+                Stream reportDefination = fs;
+                LocalReport localReport = new LocalReport();
+                localReport.LoadReportDefinition(reportDefination);
+                localReport.DataSources.Add(new ReportDataSource("ProductDetailReport", products));
+                byte[] pdffile = localReport.Render("pdf");
+                fs.Close();
+                return File(pdffile, "application/pdf");
+            }
+            else
+            {
+                TempData["Info"] = "There is no data";
+                return View();
+            }
 
         }
 

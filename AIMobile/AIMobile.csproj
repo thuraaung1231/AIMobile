@@ -19,11 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\ReportFiles\ProductDetailReport.rdlc" />
     <Content Remove="wwwroot\ReportFiles\ShopProductReport.rdlc" />
     <Content Remove="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="wwwroot\ReportFiles\ProductDetailReport.rdlc" />
     <EmbeddedResource Include="wwwroot\ReportFiles\ShopProductReport.rdlc" />
     <EmbeddedResource Include="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
