@@ -1,6 +1,8 @@
 ﻿using AIMobile.Models.DataModels;
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
+using AIMobileCus.Models.ViewModels;
+using AIMobileCus.Services.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AIMobileCus.Controllers
@@ -23,6 +25,20 @@ namespace AIMobileCus.Controllers
         }
         public IActionResult ShowProduct(string id)
         {
+            //For Cart
+            int count;
+            List<CartViewModel> cartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+            if (cartviews == null)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = cartviews.Count;
+            }
+
+            TempData["count"] = count;
+
             //ForNav Bar
             IList<ProductViewModel> productViewModels = _productService.ReteriveAll().Select(p => new ProductViewModel
             {
@@ -201,6 +217,19 @@ namespace AIMobileCus.Controllers
         }
       public IActionResult ShowAllProduct(string id)
         {
+            //For Cart
+            int count;
+            List<CartViewModel> cartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+            if (cartviews == null)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = cartviews.Count;
+            }
+
+            TempData["count"] = count;
 
             //ForNav
             IList<ProductViewModel> AllProductViewModels = _productService.ReteriveAll().Select(p => new ProductViewModel

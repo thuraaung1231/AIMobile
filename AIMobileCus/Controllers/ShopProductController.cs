@@ -47,6 +47,20 @@ namespace AIMobile.Controllers
         }
         public IActionResult DetailProduct(string shopProductData)
         {
+            //For Cart
+            int count;
+            List<CartViewModel> cartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+            if (cartviews == null)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = cartviews.Count;
+            }
+
+            TempData["count"] = count;
+
             //ForNav Bar
             IList<ProductViewModel> productView = _productService.ReteriveAll().Select(p => new ProductViewModel
             {
@@ -261,10 +275,25 @@ namespace AIMobile.Controllers
         
         }
         [HttpPost]
-        public JsonResult DeleteItem(object value)
+        public JsonResult DeleteItem(string value)
         {
-            SessionHelper.Delete(HttpContext.Session, value);
-            return Json(value);
+            
+            List<CartViewModel> cartViews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+           for (int i=0;i< cartViews.Count;i++)
+            {
+                if (cartViews[i].Id == value)
+                {
+                    cartViews.Remove(cartViews[i]);
+                }
+            }
+            SessionHelper.SetDataToSession(HttpContext.Session, "cart", cartViews);
+            List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+
+            return Json(resultcartviews);
+        }
+        public JsonResult BuyNow(object value) { 
+        
+        return Json(null);
         }
 
         [HttpGet]
@@ -276,10 +305,10 @@ namespace AIMobile.Controllers
             return View(TotalCart);  
         }
         [HttpGet]
-        public IActionResult CheckOut() { 
-        
-        
-        return View();
+        public IActionResult CheckOut() {
+            List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+
+            return View(resultcartviews);
         }
     }
 }

@@ -3,6 +3,7 @@ using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
 using AIMobileCus.Models;
 using AIMobileCus.Models.ViewModels;
+using AIMobileCus.Services.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Newtonsoft.Json;
@@ -32,6 +33,21 @@ namespace AIMobileCus.Controllers
 
         public IActionResult Index()
         {
+            //For Cart
+            int count;
+            List<CartViewModel> cartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+            if (cartviews == null)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = cartviews.Count;
+            }
+
+            TempData["count"] = count;
+
+
             //for Nav DropDown
 
             IList<ProductViewModel> productViewModels = _productService.ReteriveAll().Select(p => new ProductViewModel

@@ -1,0 +1,204 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IList<CartViewModel>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-lg-6 col-11 mx-auto">
+                <p class="fw-bold fs-4 px-3">Purchasing & Shipping</p>
+                <form action="#" class="p-3 shadow-sm">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput"
+                               class="form-label fw-bold labelFontSize">Full Name (FirstName and LastName)</label>
+                        <input type="text"
+                               class="form-control border border-3 border-secondary"
+                               id="formGroupExampleInput"
+                               placeholder="Enter Your Full Name" />
+                    </div>
+                    <div class="mb-3 d-flex">
+                        <p class="fw-bold labelFontSize d-inline me-3 my-auto">
+                            Delivery To:
+                        </p>
+                        <div class="d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input border-2 border-secondary"
+                                       type="radio"
+                                       name="flexRadioDefault"
+                                       id="Yangon" />
+                                <label class="form-check-label" for="Yangon"> Yangon </label>
+                            </div>
+                            <div class="form-check ms-3">
+                                <input class="form-check-input border-2 border-secondary"
+                                       type="radio"
+                                       name="flexRadioDefault"
+                                       id="Other" />
+                                <label class="form-check-label" for="Other">
+                                    Other States
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-none" id="YangonTownship">
+                        <label class="form-label fw-bold labelFontSize"
+                               for="specificSizeSelect">Township</label>
+                        <select class="form-select w-100 border border-3 border-secondary"
+                                id="specificSizeSelect">
+                            <option selected>Choose...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 d-none" id="YangonDetailAddress">
+                        <label for="formGroupExampleInput"
+                               class="form-label fw-bold labelFontSize">Detail Address (Street/ Building / RoomNo)</label>
+                        <textarea class="form-control border border-3 border-secondary"
+                                  id="formGroupExampleInput">
+                      </textarea>
+                    </div>
+                    <div class="mb-3 d-none" id="OtherDetailAddress">
+                        <label for="formGroupExampleInput"
+                               class="form-label fw-bold labelFontSize">Detail Address (Region/ Township/ Street/ Building/ RoomNo)</label>
+                        <textarea class="form-control border border-3 border-secondary"
+                                  id="formGroupExampleInput">
+                      </textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput"
+                               class="form-label fw-bold labelFontSize">Phone</label>
+                        <input type="text"
+                               class="form-control border border-3 border-secondary"
+                               id="formGroupExampleInput"
+                               placeholder="Your Phone Number" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput"
+                               class="form-label fw-bold labelFontSize">Email</label>
+                        <input type="text"
+                               class="form-control border border-3 border-secondary"
+                               id="formGroupExampleInput"
+                               placeholder="Your Email Address" />
+                    </div>
+                </form>
+                <p class="fs-6 text-center fw-bold text-danger">
+                    Your Personal Data will be used to proceed your order and shipping
+                    process.
+                </p>
+            </div>
+            <div class="col-lg-6 col-11 mx-auto">
+                <p class="fw-bold fs-4 ps-lg-5 ps-2">Order Details</p>
+                <div class="col-lg-10 col-11 mx-auto p-3 border rounded">
+                    <table class="table w-100">
+                        <thead>
+                            <tr class="border-bottom border-secondary">
+                                <td scope="col" class="fw-bold">Product</td>
+                                <td scope="col" class="text-end fw-bold">SubTotal</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td scope="col">@item.ProductName (<span>@item.numberOfItem</span>)</td>
+                                    <td scope="col" class="text-end">@item.itemxPrice</td>
+                                </tr>
+                            }
+
+                            <tr>
+                                <td scope="col" class="fw-bold">Subtotal</td>
+                                <td scope="col" class="text-end fw-bold">5062000</td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="fw-bold">Delivery Fee</td>
+                                <td scope="col" class="text-end">1000</td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="fw-bold fs-5">Order Total</td>
+                                <td scope="col" class="text-end fs-5 fw-bold">5012000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--Payment Methods-->
+                <p class="text-center mt-3">Choose Payment Methods</p>
+                <div class="col-10 d-flex mx-auto paymentMethods"
+                     id="choosePaymentMethods">
+                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/images/cbpay.png"
+                             class="w-50 border-warning border-2 paymentImg rounded"
+                             alt="" />
+                    </div>
+                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/images/kpay.png"
+                             class="w-50 border-warning border-2 paymentImg rounded"
+                             alt="" />
+                    </div>
+                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/images/aya.png"
+                             class="w-50 border-warning border-2 paymentImg rounded"
+                             alt="" />
+                    </div>
+                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/images/uabpay.png"
+                             class="w-50 border-warning border-2 paymentImg rounded"
+                             alt="" />
+                    </div>
+                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/images/visa.png"
+                             class="w-50 border-warning border-2 paymentImg rounded"
+                             alt="" />
+                    </div>
+                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/images/master.png"
+                             class="w-50 border-warning border-2 paymentImg rounded"
+                             alt="" />
+                    </div>
+                </div>
+                <hr />
+                <div class="d-none" id="AskSreeenShot">
+                    <label for="" class="fw-bold mb-2">Upload Your Payment ScreenShot</label>
+                    <input type="file" class="form-control">
+                </div>
+
+                <hr />
+                <div class="mb-3 form-check ms-5 mt-2">
+                    <input type="checkbox" class="form-check-input" id="checked" />
+                    <label class="form-check-label labelFontSize fw-bold">I haved read and agree the terms and policy</label>
+                </div>
+                <div class="col-10 mx-auto">
+                    <button class="btn btn-warning w-100" id="OrderButton" disabled>
+                        Make Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Scan the Following QR Code</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <img src="/images/QR code.png" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}else{
+    <script>
+        window.location.href = '/Identity/Account/Login';
+    </script>
+}

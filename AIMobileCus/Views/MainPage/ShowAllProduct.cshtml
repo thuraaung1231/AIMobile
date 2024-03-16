@@ -67,12 +67,12 @@
                 aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
         </button>
-        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative">
+        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative cart">
             <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
                href="#">
                 <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
                 Cart
-                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">+999</span>
+                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">  @TempData["count"]</span>
             </a>
         </button>
     </div>
@@ -324,5 +324,26 @@
         
         $("#FilterContainer").toggleClass("d-none position-fixed top-25 w-50")
     })
-   
+    $(".cart").on('click', function () {
+        var url = "/ShopProduct/CartIcon";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            
+            success: function (response) {
+                var data = JSON.stringify(response);
+
+                if (response == null || response.length === 0) {
+                    alert("Your Cart is Empty!");
+                    return;
+                } else {
+                    window.location.href = "/ShopProduct/AddtoCart?cart=" + encodeURIComponent(JSON.stringify(response));
+                }
+
+            },
+            failure: function (error) {
+                console.log(error);
+            }
+        })
+    })
 </script>
