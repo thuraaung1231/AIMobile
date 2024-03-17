@@ -267,26 +267,14 @@
                 ရက်အတွင်းပြန်လည်ပို့ပေးရန်လိုပါသည်။
             </p>
             <p>Available Payment Methods</p>
-            <div class="row paymentMethods">
-                <div class="col-2">
-                    <img src="/images/cbpay.png" class="w-100" alt="" />
+                <div class="row paymentMethods">
+                     @foreach(var PaymentImage in ViewBag.PaymentTypes)
+                        {
+                            <div class="col-2">
+                                <img src="@PaymentImage.PaymentTypeImage" class="w-100" alt="" />
+                            </div>
+                        }
                 </div>
-                <div class="col-2">
-                    <img src="/images/kpay.png" class="w-100" alt="" />
-                </div>
-                <div class="col-2">
-                    <img src="/images/aya.png" class="w-100" alt="" />
-                </div>
-                <div class="col-2">
-                    <img src="/images/uabpay.png" class="w-100" alt="" />
-                </div>
-                <div class="col-2">
-                    <img src="/images/visa.png" class="w-100" alt="" />
-                </div>
-                <div class="col-2">
-                    <img src="/images/master.png" class="w-100" alt="" />
-                </div>
-            </div>
         </div>
     </div>
 

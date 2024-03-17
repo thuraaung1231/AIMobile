@@ -28,28 +28,44 @@ namespace AIMobile.Controllers
         }
         public IActionResult Entry()
         {
-            IList<TypeViewModel> typeViewModel=_typeServices.ReteriveAll().Select(p=>new TypeViewModel
+            try
             {
-                Id = p.Id,
-                Name = p.Name,
-            }).ToList();
-            
-            
-            return View(typeViewModel);
+                IList<TypeViewModel> typeViewModel = _typeServices.ReteriveAll().Select(p => new TypeViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                }).ToList();
+
+
+                return View(typeViewModel);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
         }
         [HttpGet]
         public IActionResult EntryShopProduct(string id)
         {
-            ViewBag.Shop = _shopService.ReteriveAll().ToList();
-            ViewBag.Product = _productService.ReteriveAll().Where(p=>p.TypeId==id).ToList();
-            ViewBag.Image = _imageService.ReteriveAll().ToList();
-            TypeEntity typeEntity  =_typeServices.GetById(id);
-            TypeViewModel typeViewModel = new TypeViewModel()
+            try
             {
-                Id = typeEntity.Id,
-                Name = typeEntity.Name,
-            };
-            return View(typeViewModel);
+                ViewBag.Shop = _shopService.ReteriveAll().ToList();
+                ViewBag.Product = _productService.ReteriveAll().Where(p => p.TypeId == id).ToList();
+                ViewBag.Image = _imageService.ReteriveAll().ToList();
+                TypeEntity typeEntity = _typeServices.GetById(id);
+                TypeViewModel typeViewModel = new TypeViewModel()
+                {
+                    Id = typeEntity.Id,
+                    Name = typeEntity.Name,
+                };
+                return View(typeViewModel);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
         }
         [HttpPost]
         public IActionResult Entry(ShopProductViewModel spv) {
@@ -77,31 +93,48 @@ namespace AIMobile.Controllers
         }
         public IActionResult GetById(string id)
         {
-            var shopProductEntity=_shopProductService.GetById("6b0dc9df-ecc5-4b0b-a2cd-a4b6eb9061b4");
-            ShopProductViewModel shopProductViewModel = new ShopProductViewModel()
+            try
             {
-                Description = shopProductEntity.Description,
-                StockCount = shopProductEntity.StockCount,
-            };
-            return View(shopProductViewModel);
+                var shopProductEntity = _shopProductService.GetById("6b0dc9df-ecc5-4b0b-a2cd-a4b6eb9061b4");
+                ShopProductViewModel shopProductViewModel = new ShopProductViewModel()
+                {
+                    Description = shopProductEntity.Description,
+                    StockCount = shopProductEntity.StockCount,
+                };
+                return View(shopProductViewModel);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
         }
 
         public IActionResult List()
         {
-            IList<ShopProductViewModel> shopProducts = _shopProductService.ReteriveAll().Select(sp => new ShopProductViewModel
+            try
             {
-                Id = sp.Id,
-                ShopId = sp.ShopId,
-                ProductId = sp.ProductId,
-                ImageId=sp.ImageId,
-                ShopName=_shopService.GetById(sp.ShopId)?.Name,
-                ProductName=_productService.GetById(sp.ProductId)?.Name,
-                ImageName=_imageService.GetById(sp.ImageId)?.ImageName,
-                Description = sp.Description,
-                StockCount=sp.StockCount,
+                IList<ShopProductViewModel> shopProducts = _shopProductService.ReteriveAll().Select(sp => new ShopProductViewModel
+                {
+                    Id = sp.Id,
+                    ShopId = sp.ShopId,
+                    ProductId = sp.ProductId,
+                    ImageId = sp.ImageId,
+                    ShopName = _shopService.GetById(sp.ShopId)?.Name,
+                    ProductName = _productService.GetById(sp.ProductId)?.Name,
+                    ImageName = _imageService.GetById(sp.ImageId)?.ImageName,
+                    Description = sp.Description,
+                    StockCount = sp.StockCount,
 
-            }).ToList();
-            return View(shopProducts);
+                }).ToList();
+                return View(shopProducts);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
+            
         }
 
 
@@ -123,24 +156,33 @@ namespace AIMobile.Controllers
 
         public IActionResult Edit(string id)
         {
-            ShopProductViewModel shopProduct = new ShopProductViewModel();
-            var SPDataModel = _shopProductService.GetById(id);
-            if (SPDataModel != null)
+            try
             {
-                shopProduct.Id = SPDataModel.Id;
-                shopProduct.ShopId = SPDataModel.ShopId;
-                shopProduct.ProductId = SPDataModel.ProductId;
-                shopProduct.ImageId=SPDataModel.ImageId;
-                shopProduct.ShopName=_shopService.GetById(SPDataModel.ShopId).Name;
-                shopProduct.ProductName=_productService.GetById(SPDataModel.ProductId).Name;
-                shopProduct.ImageName = _imageService.GetById(SPDataModel.ImageId).ImageName;
-                shopProduct.Description= SPDataModel.Description;
-                shopProduct.StockCount=SPDataModel.StockCount;
+                ShopProductViewModel shopProduct = new ShopProductViewModel();
+                var SPDataModel = _shopProductService.GetById(id);
+                if (SPDataModel != null)
+                {
+                    shopProduct.Id = SPDataModel.Id;
+                    shopProduct.ShopId = SPDataModel.ShopId;
+                    shopProduct.ProductId = SPDataModel.ProductId;
+                    shopProduct.ImageId = SPDataModel.ImageId;
+                    shopProduct.ShopName = _shopService.GetById(SPDataModel.ShopId).Name;
+                    shopProduct.ProductName = _productService.GetById(SPDataModel.ProductId).Name;
+                    shopProduct.ImageName = _imageService.GetById(SPDataModel.ImageId).ImageName;
+                    shopProduct.Description = SPDataModel.Description;
+                    shopProduct.StockCount = SPDataModel.StockCount;
+                }
+                ViewBag.FromShopId = _shopService.ReteriveAll().Select(s => new ShopViewModel { Id = s.Id, Name = s.Name }).ToList();
+                ViewBag.FormProductId = _productService.ReteriveAll().Select(s => new ProductViewModel { Id = s.Id, Name = s.Name }).ToList();
+                ViewBag.FormImageId = _imageService.ReteriveAll().Select(s => new ImageViewModel { Id = s.Id, ImageName = s.ImageName }).ToList();
+                return View(shopProduct);
             }
-            ViewBag.FromShopId = _shopService.ReteriveAll().Select(s => new ShopViewModel { Id = s.Id, Name = s.Name }).ToList();
-            ViewBag.FormProductId=_productService.ReteriveAll().Select(s=>new ProductViewModel { Id=s.Id, Name=s.Name }).ToList();
-            ViewBag.FormImageId=_imageService.ReteriveAll().Select(s=>new ImageViewModel { Id=s.Id,ImageName=s.ImageName}).ToList();
-            return View(shopProduct);
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
+            
         }
 
 
@@ -180,29 +222,38 @@ namespace AIMobile.Controllers
         [HttpPost]
         public IActionResult ShopProductReport(string ShopId, string ProductId,int StockCount)
         {
-            IList<ShopProductReportModel> ShopProductReports = _shopProductService.ReteriveAll().Where(w => w.ShopId == ShopId || w.ProductId == ProductId || w.StockCount==StockCount ).Select(s => new ShopProductReportModel
+            try
             {
-                ShopName=_shopService.GetById(s.ShopId).Name,
-                ProductName=_productService.GetById(s.ProductId).Name,
-                StockCount=StockCount
-            }).ToList();
-            if (ShopProductReports.Count > 0)
-            {
-                var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopProductReport.rdlc");
-                var fs = new FileStream(rdlcPath, FileMode.Open);
-                Stream reportDefination = fs;
-                LocalReport localReport = new LocalReport();
-                localReport.LoadReportDefinition(reportDefination);
-                localReport.DataSources.Add(new ReportDataSource("ShopProductDataSet", ShopProductReports));
-                byte[] pdffile = localReport.Render("pdf");
-                fs.Close();
-                return File(pdffile, "application/pdf");
+                IList<ShopProductReportModel> ShopProductReports = _shopProductService.ReteriveAll().Where(w => w.ShopId == ShopId || w.ProductId == ProductId || w.StockCount == StockCount).Select(s => new ShopProductReportModel
+                {
+                    ShopName = _shopService.GetById(s.ShopId).Name,
+                    ProductName = _productService.GetById(s.ProductId).Name,
+                    StockCount = StockCount
+                }).ToList();
+                if (ShopProductReports.Count > 0)
+                {
+                    var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopProductReport.rdlc");
+                    var fs = new FileStream(rdlcPath, FileMode.Open);
+                    Stream reportDefination = fs;
+                    LocalReport localReport = new LocalReport();
+                    localReport.LoadReportDefinition(reportDefination);
+                    localReport.DataSources.Add(new ReportDataSource("ShopProductDataSet", ShopProductReports));
+                    byte[] pdffile = localReport.Render("pdf");
+                    fs.Close();
+                    return File(pdffile, "application/pdf");
+                }
+                else
+                {
+                    TempData["info"] = "There is no data";
+                    return View();
+                }
             }
-            else
+            catch (Exception)
             {
-                TempData["info"] = "There is no data";
-                return View();
+                TempData["info"] = "Error occur";
             }
+            return View();
+            
         }
     }
 }

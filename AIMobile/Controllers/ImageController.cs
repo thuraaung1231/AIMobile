@@ -49,18 +49,27 @@ namespace AIMobile.Controllers
         }
         public IActionResult List()
         {
-            IList<ImageViewModel> Image= _imageservice.ReteriveAll().Select(s => new ImageViewModel
+            try
             {
-                Id = s.Id,
-                ImageName = s.ImageName,
-                FrontImageUrl= s.FrontImageUrl,
-                BackImageUrl= s.BackImageUrl,
-                RightSideImageUrl= s.RightSideImageUrl,
-                LeftSideImageUrl= s.LeftSideImageUrl,
-                Filetype = s.Filetype,
-                Filesize = s.Filesize,
-            }).ToList();
-            return View(Image);
+                IList<ImageViewModel> Image = _imageservice.ReteriveAll().Select(s => new ImageViewModel
+                {
+                    Id = s.Id,
+                    ImageName = s.ImageName,
+                    FrontImageUrl = s.FrontImageUrl,
+                    BackImageUrl = s.BackImageUrl,
+                    RightSideImageUrl = s.RightSideImageUrl,
+                    LeftSideImageUrl = s.LeftSideImageUrl,
+                    Filetype = s.Filetype,
+                    Filesize = s.Filesize,
+                }).ToList();
+                return View(Image);
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Error occur ";
+
+            }
+            return View();
         }
         public IActionResult Delete(string Id)
         {
@@ -79,23 +88,32 @@ namespace AIMobile.Controllers
         }
         public IActionResult Edit(string Id)
         {
-            var imageDataModel=_imageservice.GetById(Id);
-            ImageViewModel ivm = new ImageViewModel();
-               
-            if(imageDataModel != null) 
+            try
             {
-              ivm.Id= imageDataModel.Id;
-                ivm.ImageName= imageDataModel.ImageName;
-                ivm.FrontImageUrl= imageDataModel.FrontImageUrl;
-                ivm.BackImageUrl= imageDataModel.BackImageUrl;
-                ivm.RightSideImageUrl= imageDataModel.RightSideImageUrl;
-                ivm.LeftSideImageUrl= imageDataModel.LeftSideImageUrl;
-                ivm.Filesize = imageDataModel.Filesize;
-                ivm.Filetype = imageDataModel.Filetype;
+                var imageDataModel = _imageservice.GetById(Id);
+                ImageViewModel ivm = new ImageViewModel();
 
-            };
-            return View(ivm);
-            
+                if (imageDataModel != null)
+                {
+                    ivm.Id = imageDataModel.Id;
+                    ivm.ImageName = imageDataModel.ImageName;
+                    ivm.FrontImageUrl = imageDataModel.FrontImageUrl;
+                    ivm.BackImageUrl = imageDataModel.BackImageUrl;
+                    ivm.RightSideImageUrl = imageDataModel.RightSideImageUrl;
+                    ivm.LeftSideImageUrl = imageDataModel.LeftSideImageUrl;
+                    ivm.Filesize = imageDataModel.Filesize;
+                    ivm.Filetype = imageDataModel.Filetype;
+
+                };
+                return View(ivm);
+            }
+            catch (Exception)
+            {
+
+                TempData["Info"] = "Error cccur";
+
+            }
+            return View();
         }
         [HttpPost]
         public IActionResult Edit(ImageViewModel ivm)

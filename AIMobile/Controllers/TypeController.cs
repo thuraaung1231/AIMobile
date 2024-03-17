@@ -51,13 +51,22 @@ namespace AIMobile.Controllers
         }
         public IActionResult list()
         {
-            IList<TypeViewModel> Type = _typeServices.ReteriveAll().Select(b => new TypeViewModel
+            try
             {
-                Id = b.Id,
-                Name = b.Name,
+                IList<TypeViewModel> Type = _typeServices.ReteriveAll().Select(b => new TypeViewModel
+                {
+                    Id = b.Id,
+                    Name = b.Name,
 
-            }).ToList();
-            return View(Type);
+                }).ToList();
+                return View(Type);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
+           
         }
 
         public IActionResult Delete(string Id)
@@ -78,16 +87,25 @@ namespace AIMobile.Controllers
 
         public IActionResult Edit(string Id)
         {
-            var typeDataModel= _typeServices.GetById(Id);
-            TypeViewModel tvm = new TypeViewModel();
-            TypeEntity typeEntity = new TypeEntity();
-            if (typeDataModel!=null)
+            try
             {
-                tvm.Id= typeDataModel.Id;
-                tvm.Name= typeDataModel.Name;
-            };
+                var typeDataModel = _typeServices.GetById(Id);
+                TypeViewModel tvm = new TypeViewModel();
+                TypeEntity typeEntity = new TypeEntity();
+                if (typeDataModel != null)
+                {
+                    tvm.Id = typeDataModel.Id;
+                    tvm.Name = typeDataModel.Name;
+                };
 
-            return View(tvm);
+                return View(tvm);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur";
+            }
+            return View();
+            
 
         }
         [HttpPost]

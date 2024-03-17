@@ -29,10 +29,10 @@
                     <img class="w-50 bg-transparent rounded p-2" src="@Model.PaymentTypeImage" alt="">
                 </div>
                 <label class="labelFontSize fw-bold">Payment Type Image URL</label>
-                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentTypeImage" value="@Model.PaymentTypeImage" id="RightSideImageUrl">
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentTypeImage" value="@Model.PaymentTypeImage" id="PaymentTypeImageUrl">
                 <div class="input-group mt-2">
-                    <input type="file" class="form-control" hidden id="HiddenRightImgUrl">
-                    <label class="input-group-text rounded" for="HiddenRightImgUrl">Choose</label>
+                    <input type="file" class="form-control" hidden id="HiddenPaymentTypeImageUrl">
+                    <label class="input-group-text rounded" for="HiddenPaymentTypeImageUrl">Choose</label>
                 </div>
             </div>
             <div class="col-12 mb-3 d-flex flex-column">
@@ -42,16 +42,30 @@
                     <img class="w-50 bg-transparent rounded p-2" src="@Model.PaymentTypeQR" alt="">
                 </div>
                 <label class="labelFontSize fw-bold">Payment Type QR URL</label>
-                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentTypeQR" value="@Model.PaymentTypeQR" id="RightSideQRUrl">
+                <input type="text" class="text-primary border-0 border-bottom border-primary bg-transparent search-Bar" name="PaymentTypeQR" value="@Model.PaymentTypeQR" id="PaymentTypeQRUrl">
                 <div class="input-group mt-2">
-                    <input type="file" class="form-control" hidden id="HiddenRightQRUrl">
-                    <label class="input-group-text rounded" for="HiddenRightQRUrl">Choose</label>
+                    <input type="file" class="form-control" hidden id="HiddenPaymentTypeQRUrl">
+                    <label class="input-group-text rounded" for="HiddenPaymentTypeQRUrl">Choose</label>
                 </div>
             </div>
             <div class="col-12 mb-2">
                 <button type="submit" class="btn btn-warning col-5 fw-bold" value="Entry">Update</button>
                 <button type="reset" class="btn btn-secondary col-5 fw-bold" value="Cancel">Cancel</button>
             </div>
+           
         </div>
     </form>
+    <script>
+        $("#HiddenPaymentTypeImageUrl").change(function (event) {
+            var ImagePath =event.target.files[0].name;
+            console.log(ImagePath)
+            $("#PaymentTypeImageUrl").val(ImagePath)
+        })
+        $("#HiddenPaymentTypeQRUrl").change(function (event) {
+            var ImagePath = event.target.files[0].name;
+            console.log(ImagePath)
+            $("#PaymentTypeQRUrl").val(ImagePath)
+        })
+        
+    </script>
 </body>

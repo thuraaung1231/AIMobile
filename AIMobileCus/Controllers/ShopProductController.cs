@@ -64,6 +64,17 @@ namespace AIMobile.Controllers
 
             TempData["count"] = count;
 
+            //for payment
+
+            IList<PaymentTypeViewModel> paymentTypes=_paymentTypeService.ReteriveAll().Select(p=>new PaymentTypeViewModel
+            {
+                Id=p.Id,
+                PaymentType = p.PaymentType,
+                PaymentTypeImage = p.PaymentTypeImage,
+                PaymentTypeQR=p.PaymentTypeQR,
+            }).ToList();
+            ViewBag.PaymentTypes = paymentTypes;
+
             //ForNav Bar
             IList<ProductViewModel> productView = _productService.ReteriveAll().Select(p => new ProductViewModel
             {
@@ -201,8 +212,11 @@ namespace AIMobile.Controllers
                     
                 }
             }
+
+           
+
             //For Show User Select Item
-          
+
             ViewBag.Image = _imageService.GetById(shopProductViewModel.ImageId);
             ViewBag.Product = _productService.GetById(shopProductViewModel.ProductId);
             ViewBag.shopProduct = shopProductViewModel;

@@ -62,14 +62,22 @@ namespace AIMobile.Controllers
 
         public IActionResult List()
         {
-            IList<ShopViewModel> shopViewModels = _shopService.ReteriveAll().Select(u => new ShopViewModel
+            try
             {
-                Id = u.Id,
-                Name = u.Name,
-                Status = u.Status,
-                Address = u.Address,
-            }).ToList();
-            return View(shopViewModels);
+                IList<ShopViewModel> shopViewModels = _shopService.ReteriveAll().Select(u => new ShopViewModel
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Status = u.Status,
+                    Address = u.Address,
+                }).ToList();
+                return View(shopViewModels);
+            }
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur ";
+            }
+            return View();
         }
 
 
@@ -91,16 +99,24 @@ namespace AIMobile.Controllers
 
         public IActionResult Edit(string id)
         {
-            ShopViewModel shop = new ShopViewModel();
-            var ShopDataModel = _shopService.GetById(id);
-            if (ShopDataModel != null)
+            try
             {
-                shop.Id = ShopDataModel.Id;
-                shop.Name = ShopDataModel.Name;
-                shop.Status = ShopDataModel.Status;
-                shop.Address = ShopDataModel.Address;
+                ShopViewModel shop = new ShopViewModel();
+                var ShopDataModel = _shopService.GetById(id);
+                if (ShopDataModel != null)
+                {
+                    shop.Id = ShopDataModel.Id;
+                    shop.Name = ShopDataModel.Name;
+                    shop.Status = ShopDataModel.Status;
+                    shop.Address = ShopDataModel.Address;
+                }
+                return View(shop);
             }
-            return View(shop);
+            catch (Exception)
+            {
+                TempData["info"] = "Error occur ";
+            }
+            return View();
         }
 
 
@@ -130,33 +146,42 @@ namespace AIMobile.Controllers
 
         public IActionResult ShopReport()
         {
+            ViewBag.Shop = _shopService.ReteriveAll().Select(s => new ShopViewModel { Id = s.Id, Name = s.Name }).ToList();
             return View();
         }
         [HttpPost]
-        public IActionResult ShopReport(string Name, string Address, string Status)
+        public IActionResult ShopReport(string Id)
         {
-            IList<ShopReportModel> ShopReports = _shopService.ReteriveAll().Where(w => w.Name == Name || w.Address == Address || w.Status == Status).Select(s => new ShopReportModel
+            try
             {
-                Name = s.Name,
-                Address = s.Address,
-            }).ToList();
-            if (ShopReports.Count > 0)
-            {
-                var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopReport.rdlc");
-                var fs = new FileStream(rdlcPath, FileMode.Open);
-                Stream reportDefination = fs;
-                LocalReport localReport = new LocalReport();
-                localReport.LoadReportDefinition(reportDefination);
-                localReport.DataSources.Add(new ReportDataSource("ShopReportDataSet", ShopReports));
-                byte[] pdffile = localReport.Render("pdf");
-                fs.Close();
-                return File(pdffile, "application/pdf");
+                IList<ShopReportModel> ShopReports = _shopService.ReteriveAll().Where(w => w.Id == Id).Select(s => new ShopReportModel
+                {
+                    Name = _shopService.GetById(s.Id).Name,
+                    Address = s.Address,
+                }).ToList();
+                if (ShopReports.Count > 0)
+                {
+                    var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopReport.rdlc");
+                    var fs = new FileStream(rdlcPath, FileMode.Open);
+                    Stream reportDefination = fs;
+                    LocalReport localReport = new LocalReport();
+                    localReport.LoadReportDefinition(reportDefination);
+                    localReport.DataSources.Add(new ReportDataSource("ShopReportDataSet", ShopReports));
+                    byte[] pdffile = localReport.Render("pdf");
+                    fs.Close();
+                    return File(pdffile, "application/pdf");
+                }
+                else
+                {
+                    TempData["info"] = "There is no data";
+                    return View();
+                }
             }
-            else
+            catch (Exception)
             {
-                TempData["info"] = "There is no data";
-                return View();
+                TempData["info"] = "Error occur ";
             }
+            return View();
         }
     }
 }

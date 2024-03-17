@@ -88,21 +88,25 @@
 
     </form>
     <script>
-        $("#HidenFrontImgUrl").change(function () {
-            var ImagePath = $(this).val();
+        $("#HidenFrontImgUrl").change(function (event) {
+            var ImagePath = event.target.files[0].name;
+            console.log(ImagePath)
             $("#frontImageUrl").val(ImagePath)
         })
-        $("#HiddenBackImgUrl").change(function () {
-            var ImagePath = $(this).val();
+        $("#HiddenBackImgUrl").change(function (event) {
+            var ImagePath = event.target.files[0].name;
+            console.log(ImagePath)
             $("#BackImageUrl").val(ImagePath)
         })
-        $("#HiddenRightImgUrl").change(function () {
-            var ImagePath = $(this).val();
+        $("#HiddenRightImgUrl").change(function (event) {
+            var ImagePath = event.target.files[0].name;
+            console.log(ImagePath)
             $("#RightSideImageUrl").val(ImagePath)
 
         })
-        $("#HiddenLeftImgUrl").change(function () {
-            var ImagePath = $(this).val();
+        $("#HiddenLeftImgUrl").change(function (event) {
+            var ImagePath = event.target.files[0].name;
+            console.log(ImagePath)
             $("#LeftSideImageUrl").val(ImagePath)
         })
     </script>

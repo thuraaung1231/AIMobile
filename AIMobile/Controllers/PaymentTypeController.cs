@@ -47,14 +47,22 @@ namespace AIMobile.Controllers
 
         public IActionResult List()
         {
-            IList<PaymentTypeViewModel> payments = _paymentTypeService.ReteriveAll().Select(u => new PaymentTypeViewModel
+            try
             {
-                Id = u.Id,
-                PaymentType = u.PaymentType,
-                PaymentTypeImage = u.PaymentTypeImage,
-                PaymentTypeQR = u.PaymentTypeQR,
-            }).ToList();
-            return View(payments);
+                IList<PaymentTypeViewModel> payments = _paymentTypeService.ReteriveAll().Select(u => new PaymentTypeViewModel
+                {
+                    Id = u.Id,
+                    PaymentType = u.PaymentType,
+                    PaymentTypeImage = u.PaymentTypeImage,
+                    PaymentTypeQR = u.PaymentTypeQR,
+                }).ToList();
+                return View(payments);
+            }
+            catch (Exception e)
+            {
+                TempData["info"] = "Error occur ";
+            }
+            return View();
         }
 
 
@@ -76,16 +84,24 @@ namespace AIMobile.Controllers
 
         public IActionResult Edit(string id)
         {
-            PaymentTypeViewModel payment = new PaymentTypeViewModel();
-            var PaymentDataModel = _paymentTypeService.GetById(id);
-            if (PaymentDataModel != null)
+            try
             {
-                payment.Id = PaymentDataModel.Id;
-                payment.PaymentType = PaymentDataModel.PaymentType;
-                payment.PaymentTypeImage = PaymentDataModel.PaymentTypeImage;
-                payment.PaymentTypeQR = PaymentDataModel.PaymentTypeQR;
+                PaymentTypeViewModel payment = new PaymentTypeViewModel();
+                var PaymentDataModel = _paymentTypeService.GetById(id);
+                if (PaymentDataModel != null)
+                {
+                    payment.Id = PaymentDataModel.Id;
+                    payment.PaymentType = PaymentDataModel.PaymentType;
+                    payment.PaymentTypeImage = PaymentDataModel.PaymentTypeImage;
+                    payment.PaymentTypeQR = PaymentDataModel.PaymentTypeQR;
+                }
+                return View(payment);
             }
-            return View(payment);
+            catch (Exception e)
+            {
+                TempData["info"] = "Error occur ";
+            }
+            return View();
         }
 
 

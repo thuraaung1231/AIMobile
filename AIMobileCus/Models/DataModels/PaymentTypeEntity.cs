@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AIMobile.Models.DataModels
 {
@@ -8,6 +9,11 @@ namespace AIMobile.Models.DataModels
     {
         public string PaymentType { get; set; }
         public string PaymentTypeImage { get; set; }
+
+        public string PaymentTypeQR { get; set; }
+
+
+
         public string PaymentTypeQR { get; set; }
 
     }

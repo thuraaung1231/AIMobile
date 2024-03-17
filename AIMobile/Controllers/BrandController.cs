@@ -43,13 +43,22 @@ namespace AIMobile.Controllers
         }
         public IActionResult list()
         {
-            IList<BrandViewModels> brands =_brandService.ReteriveAll().Select(b=>new BrandViewModels
-            { 
-            Id=b.Id,
-            Name=b.Name,
-            
-            }).ToList();
-            return View(brands);
+            try
+            {
+                IList<BrandViewModels> brands = _brandService.ReteriveAll().Select(b => new BrandViewModels
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+
+                }).ToList(); 
+                return View(brands);
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Error Occur";
+
+            }
+            return View();
         }
         public IActionResult Delete( string Id) 
         {
@@ -67,17 +76,27 @@ namespace AIMobile.Controllers
         }
         [HttpGet]   
         
-        public IActionResult Edit(string Id) { 
-            var brandDataModel=_brandService.GetById(Id);
-            BrandViewModels bvm = new BrandViewModels();
-            BrandEntity brandEntity = new BrandEntity();
-            if (brandDataModel!=null)
+        public IActionResult Edit(string Id)
+        {
+            try
             {
-                bvm.Id = brandDataModel.Id;
-                bvm.Name = brandDataModel.Name;
-            };
+                var brandDataModel = _brandService.GetById(Id);
+                BrandViewModels bvm = new BrandViewModels();
+                BrandEntity brandEntity = new BrandEntity();
+                if (brandDataModel != null)
+                {
+                    bvm.Id = brandDataModel.Id;
+                    bvm.Name = brandDataModel.Name;
+                };
 
-        return View(bvm);
+                return View(bvm);
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Error Occur";
+
+            }
+            return View();
 
         }
         [HttpPost]

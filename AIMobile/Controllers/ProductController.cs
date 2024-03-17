@@ -56,18 +56,26 @@ namespace AIMobile.Controllers
         }
         public IActionResult list()
         {
-            IList<ProductViewModel> product = _productService.ReteriveAll().Select(b => new ProductViewModel
+            try
             {
-                Id = b.Id,
-                Name = b.Name,
-                UnitPrice = b.UnitPrice,
-                BrandName =_brandService.GetById(b.BrandId)?.Name,
-                BrandId = b.BrandId,
-                TypeName =_typeServices.GetById(b.TypeId)?.Name,
-                TypeId=b.TypeId,
+                IList<ProductViewModel> product = _productService.ReteriveAll().Select(b => new ProductViewModel
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    UnitPrice = b.UnitPrice,
+                    BrandName = _brandService.GetById(b.BrandId)?.Name,
+                    BrandId = b.BrandId,
+                    TypeName = _typeServices.GetById(b.TypeId)?.Name,
+                    TypeId = b.TypeId,
 
-            }).ToList();
-            return View(product);
+                }).ToList();
+                return View(product);
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Error Occur";
+            }
+            return View();
         }
         public IActionResult Delete(string Id)
         {
@@ -87,24 +95,32 @@ namespace AIMobile.Controllers
 
         public IActionResult Edit(string Id)
         {
-            var ProductDataModel = _productService.GetById(Id);
-            ProductViewModel pvm = new ProductViewModel();
-         
-            if (ProductDataModel != null)
+            try
             {
-                pvm.Id = ProductDataModel.Id;
-                pvm.Name = ProductDataModel.Name;
-                pvm.UnitPrice = ProductDataModel.UnitPrice; 
-                pvm.BrandId = ProductDataModel.BrandId;
-                pvm.BrandName = _brandService.GetById(ProductDataModel.BrandId).Name;
-                pvm.TypeId = ProductDataModel.TypeId;
-                pvm.TypeName = _typeServices.GetById(ProductDataModel.TypeId).Name;
-            };
-            ViewBag.FromBrandId = _brandService.ReteriveAll().Select(s => new BrandViewModels { Id = s.Id, Name = s.Name }).ToList();
-            ViewBag.FromTypeId = _typeServices.ReteriveAll().Select(s => new TypeViewModel { Id = s.Id, Name = s.Name }).ToList();
+                var ProductDataModel = _productService.GetById(Id);
+                ProductViewModel pvm = new ProductViewModel();
+
+                if (ProductDataModel != null)
+                {
+                    pvm.Id = ProductDataModel.Id;
+                    pvm.Name = ProductDataModel.Name;
+                    pvm.UnitPrice = ProductDataModel.UnitPrice;
+                    pvm.BrandId = ProductDataModel.BrandId;
+                    pvm.BrandName = _brandService.GetById(ProductDataModel.BrandId).Name;
+                    pvm.TypeId = ProductDataModel.TypeId;
+                    pvm.TypeName = _typeServices.GetById(ProductDataModel.TypeId).Name;
+                };
+                ViewBag.FromBrandId = _brandService.ReteriveAll().Select(s => new BrandViewModels { Id = s.Id, Name = s.Name }).ToList();
+                ViewBag.FromTypeId = _typeServices.ReteriveAll().Select(s => new TypeViewModel { Id = s.Id, Name = s.Name }).ToList();
 
 
-            return View(pvm);
+                return View(pvm);
+            }
+            catch (Exception)
+            {
+                TempData["Info"] = "Error Occur";
+            }
+            return View();
 
         }
         [HttpPost]
@@ -144,7 +160,9 @@ namespace AIMobile.Controllers
         [HttpPost]
         public IActionResult ProductDetailReport(string TypeId, string BrandId, decimal UnitPrice)
         {
-            IList<ProductDetailReport> products = _productService.ReteriveAll().Where(w =>
+            try
+            {
+                IList<ProductDetailReport> products = _productService.ReteriveAll().Where(w =>
             w.TypeId == TypeId || w.BrandId == BrandId || w.UnitPrice == UnitPrice).Select(s => new ProductDetailReport
             {
                 TypeName = _typeServices.GetById(TypeId).Name,
@@ -153,23 +171,29 @@ namespace AIMobile.Controllers
                 UnitPrice = s.UnitPrice,
 
             }).ToList();
-            if (products.Count > 0)
-            {
-                var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ProductDetailReport.rdlc");
-                var fs = new FileStream(rdlcPath, FileMode.Open);
-                Stream reportDefination = fs;
-                LocalReport localReport = new LocalReport();
-                localReport.LoadReportDefinition(reportDefination);
-                localReport.DataSources.Add(new ReportDataSource("ProductDetailReport", products));
-                byte[] pdffile = localReport.Render("pdf");
-                fs.Close();
-                return File(pdffile, "application/pdf");
+                if (products.Count > 0)
+                {
+                    var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ProductDetailReport.rdlc");
+                    var fs = new FileStream(rdlcPath, FileMode.Open);
+                    Stream reportDefination = fs;
+                    LocalReport localReport = new LocalReport();
+                    localReport.LoadReportDefinition(reportDefination);
+                    localReport.DataSources.Add(new ReportDataSource("ProductDetailReport", products));
+                    byte[] pdffile = localReport.Render("pdf");
+                    fs.Close();
+                    return File(pdffile, "application/pdf");
+                }
+                else
+                {
+                    TempData["Info"] = "There is no data";
+                    return View();
+                }
             }
-            else
+            catch (Exception)
             {
-                TempData["Info"] = "There is no data";
-                return View();
+                TempData["Info"] = "Error Occur";
             }
+            return View();
 
         }
 
