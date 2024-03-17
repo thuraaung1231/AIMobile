@@ -311,9 +311,9 @@
                 var data = JSON.stringify(response);
 
                 if (data != null) {
+                    console
                     window.location.href = "/ShopProduct/DetailProduct?shopProductData=" + encodeURIComponent(JSON.stringify(response));
                 }
-
             },
             failure: function (error) {
                 console.log(error);

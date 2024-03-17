@@ -126,38 +126,18 @@
 
                 <!--Payment Methods-->
                 <p class="text-center mt-3">Choose Payment Methods</p>
-                <div class="col-10 d-flex mx-auto paymentMethods"
+                <div class="row mx-auto paymentMethods"
                      id="choosePaymentMethods">
-                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="/images/cbpay.png"
-                             class="w-50 border-warning border-2 paymentImg rounded"
-                             alt="" />
-                    </div>
-                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="/images/kpay.png"
-                             class="w-50 border-warning border-2 paymentImg rounded"
-                             alt="" />
-                    </div>
-                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="/images/aya.png"
-                             class="w-50 border-warning border-2 paymentImg rounded"
-                             alt="" />
-                    </div>
-                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="/images/uabpay.png"
-                             class="w-50 border-warning border-2 paymentImg rounded"
-                             alt="" />
-                    </div>
-                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="/images/visa.png"
-                             class="w-50 border-warning border-2 paymentImg rounded"
-                             alt="" />
-                    </div>
-                    <div class="col-2 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <img src="/images/master.png"
-                             class="w-50 border-warning border-2 paymentImg rounded"
-                             alt="" />
-                    </div>
+                    @foreach (var paymentType in ViewBag.PaymentTypes)
+                    {
+                        <div class="col-2 mt-3 d-flex justify-content-center" id="@paymentType.Id" data-bs-toggle="modal" data-bs-target="#QRCode">
+                            <img src="@paymentType.PaymentTypeImage"
+                                 class="w-50 border-warning border-2 paymentImg rounded" id="@paymentType.PaymentTypeQR"
+                                 alt="" />
+                        </div>
+                    }
+                    
+                   
                 </div>
                 <hr />
                 <div class="d-none" id="AskSreeenShot">
@@ -179,26 +159,67 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Scan the Following QR Code</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="d-flex justify-content-center">
-                        <img src="/images/QR code.png" alt="">
+    
+        <div class="modal fade" id="QRCode" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Scan the Following QR Code</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center p-3">
+                            <img alt="" class="w-50" id="QRImage"/>
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
+    
+    
 
 }else{
     <script>
         window.location.href = '/Identity/Account/Login';
     </script>
 }
+<script>
+    //for delivery check
+    $("#Yangon").on("click", function () {
+        $("#YangonTownship").removeClass("d-none");
+        $("#YangonDetailAddress").removeClass("d-none");
+        $("#OtherDetailAddress").addClass("d-none");
+    });
+    $("#Other").on("click", function () {
+        $("#YangonTownship").addClass("d-none");
+        $("#YangonDetailAddress").addClass("d-none");
+        $("#OtherDetailAddress").removeClass("d-none");
+    });
+
+    //Bodering Payment types
+    $("#choosePaymentMethods").on("click", ".paymentImg", function (event) {
+        $("#AskSreeenShot").removeClass("d-none");
+        $(".paymentImg").removeClass("border");
+        var choosenPayment = $(event.target);
+        choosenPayment.addClass("border");
+    });
+    //For QR Code
+    $(".paymentImg").on('click', function (event) {
+        let ImageUrl = event.target.id;
+      
+        $("#QRImage").attr("src", ImageUrl);
+    })
+
+
+    //terms and policy
+    $("#checked").on("click", function () {
+        $(this).toggleClass("hasAgree");
+        if ($(this).hasClass("hasAgree")) {
+            $("#OrderButton").removeAttr("disabled").attr("enabled", "enabled");
+        } else {
+            $("#OrderButton").removeAttr("enabled").attr("disabled", "disabled");
+        }
+    });
+</script>

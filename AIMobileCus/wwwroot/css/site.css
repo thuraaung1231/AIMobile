@@ -67,11 +67,11 @@ html {
         background-color: rgb(104, 104, 247);
     }
 
-.product-Bar {
+/*.product-Bar {
     top: 58px;
     background-color: rgb(4, 47, 117);
     height:auto;
-}
+}*/
 .dropDownScroll {
     height: 100vh;
 }

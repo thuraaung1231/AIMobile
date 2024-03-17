@@ -17,14 +17,16 @@ namespace AIMobile.Controllers
         private readonly IProductService _productService;
         private readonly IImageService _imageService;
         private readonly ITypeServices _typeServices;
+        private readonly IPaymentTypeService _paymentTypeService;
 
-        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices)
+        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices,IPaymentTypeService paymentTypeService)
         {
             _shopProductService = shopProductService;
             _shopService = shopService;
             _productService = productService;
             _imageService = imageService;
             _typeServices = typeServices;
+            _paymentTypeService = paymentTypeService;
         }
 
         [HttpPost]
@@ -47,6 +49,7 @@ namespace AIMobile.Controllers
         }
         public IActionResult DetailProduct(string shopProductData)
         {
+            var shopProductViewModel = JsonConvert.DeserializeObject<ShopProductViewModel>(shopProductData);
             //For Cart
             int count;
             List<CartViewModel> cartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
@@ -157,7 +160,7 @@ namespace AIMobile.Controllers
             }).ToList();
 
             ViewBag.OtherAccessories = OtherAccessoryViewModel;
-            var shopProductViewModel = JsonConvert.DeserializeObject<ShopProductViewModel>(shopProductData);
+            
         //For Search Related Item
         IList<ImageViewModel> RelatedImages=new List<ImageViewModel>();
         IList<ProductViewModel>RelatedProducts=new List<ProductViewModel>();
@@ -306,6 +309,14 @@ namespace AIMobile.Controllers
         }
         [HttpGet]
         public IActionResult CheckOut() {
+            IList<PaymentTypeViewModel> paymentTypeViews= _paymentTypeService.ReteriveAll().Select(p=>new PaymentTypeViewModel
+            {
+                Id= p.Id,
+                PaymentType = p.PaymentType,
+               PaymentTypeImage = p.PaymentTypeImage,
+               PaymentTypeQR=p.PaymentTypeQR,
+            }).ToList();
+            ViewBag.PaymentTypes= paymentTypeViews;
             List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
 
             return View(resultcartviews);

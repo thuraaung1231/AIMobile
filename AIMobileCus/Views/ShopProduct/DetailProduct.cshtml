@@ -1,7 +1,6 @@
-﻿
-@model IList<ProductViewModel>
+﻿@model IList<ProductViewModel>
 @{
-    List<string>DescriptionKeys = ViewBag.DescriptionKey;
+    List<string> DescriptionKeys = ViewBag.DescriptionKey;
     List<string> DescriptionValues = ViewBag.DescriptionValue;
     List<ImageViewModel> RelatedImages = ViewBag.RelatedImages;
 }
@@ -72,96 +71,99 @@
                 aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
         </button>
-        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative cart" >
-            <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
-               >
+        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative cart">
+            <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center">
                 <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
                 Cart
                 <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">  @TempData["count"]</span>
             </a>
         </button>
     </div>
-    <div class="offcanvas offcanvas-start bg-transparent border-0"
-         id="offcanvasExample"
-         aria-labelledby="offcanvasExampleLabel">
-        <div class="w-50 ChildOffcanvas">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
-                    Products
-                </h5>
+</div>
+<div class="offcanvas offcanvas-start bg-transparent border-0"
+     id="offcanvasExample"
+     aria-labelledby="offcanvasExampleLabel">
+    <div class="w-50 ChildOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-light" id="offcanvasExampleLabel">
+                Products
+            </h5>
+            <button type="button"
+                    class="btn btn-transparent"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close">
+                <i class="text-light fs-4 fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body overflow-visible">
+            <div class="w-100 dropend">
                 <button type="button"
-                        class="btn btn-transparent"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Close">
-                    <i class="text-light fs-4 fa-solid fa-xmark"></i>
+                        class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    All Products <i class="fa-solid fa-angle-right"></i>
                 </button>
+                <ul class="dropdown-menu dropdown-menu-light overflow-y-scroll dropDownScroll">
+        @foreach (var product in ViewBag.AllProductList)
+        {
+                        <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@product.Id">@product.Name</a></li>
+        }
+                </ul>
             </div>
-            <div class="offcanvas-body overflow-visible">
-                <div class="w-100 dropend">
-                    <button type="button"
-                            class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        All Products <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                    </ul>
-                </div>
-                <div class="w-100 dropend">
-                    <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        Smart Phones <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
-                        <li><a class="dropdown-item" href="#">Samsung</a></li>
-                        <li><a class="dropdown-item" href="#">RealMe</a></li>
-                        <li><a class="dropdown-item" href="#">Apple</a></li>
-                    </ul>
-                </div>
-                <div class="w-100 dropend">
-                    <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        Laptops <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
-                        <li><a class="dropdown-item" href="#">Samsung</a></li>
-                        <li><a class="dropdown-item" href="#">RealMe</a></li>
-                        <li><a class="dropdown-item" href="#">Apple</a></li>
-                    </ul>
-                </div>
-                <div class="w-100 dropend">
-                    <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        Tablets <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
-                        <li><a class="dropdown-item" href="#">Samsung</a></li>
-                        <li><a class="dropdown-item" href="#">RealMe</a></li>
-                        <li><a class="dropdown-item" href="#">Apple</a></li>
-                    </ul>
-                </div>
-                <div class="w-100 dropend">
-                    <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        Other Accessories <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-light">
-                        <li><a class="dropdown-item" href="#">Samsung</a></li>
-                        <li><a class="dropdown-item" href="#">RealMe</a></li>
-                        <li><a class="dropdown-item" href="#">Apple</a></li>
-                    </ul>
-                </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Smart Phones <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light overflow-y-scroll dropDownScroll">
+        @foreach (var phone in ViewBag.Phones)
+        {
+                        <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@phone.Id">@phone.Name</a></li>
+        }
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Laptops <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light overflow-y-scroll dropDownScroll">
+        @foreach (var laptop in ViewBag.Laptops)
+        {
+                        <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@laptop.Id">@laptop.Name</a></li>
+        }
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Tablets <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light overflow-y-scroll dropDownScroll">
+        @foreach (var tablet in ViewBag.tablets)
+        {
+                        <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@tablet.Id">@tablet.Name</a></li>
+        }
+                </ul>
+            </div>
+            <div class="w-100 dropend">
+                <button class="btn btn-transparent text-light w-100 mb-2 d-flex justify-content-between align-items-center"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Other Accessories <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light overflow-y-scroll dropDownScroll">
+        @foreach (var OtherAccessory in @ViewBag.OtherAccessories)
+        {
+                        <li><a class="dropdown-item" href="/MainPage/ShowProduct?id=@OtherAccessory.Id">@OtherAccessory.Name</a></li>
+        }
+                </ul>
             </div>
         </div>
     </div>
-
 </div>
 <div class="container-fluid">
     <div class="row">
@@ -170,7 +172,7 @@
     <div class="row px-2">
         <div class="col-lg-5 selectProduct mb-2">
             <div class="col-7 mx-auto p-4">
-                <img src="@ViewBag.Image.FrontImageUrl"  
+                <img src="@ViewBag.Image.FrontImageUrl"
                      class="w-100 "
                      id="mainImg"
                      alt="" />
@@ -178,7 +180,7 @@
             <hr class="mb-1" />
             <div class="row childSelectProduct py-2">
                 <div class="col-3">
-                    <div class="selectItem m-1" >
+                    <div class="selectItem m-1">
                         <img src="@ViewBag.Image.FrontImageUrl" class="w-100" alt="" id="ImageName" />
                     </div>
                 </div>
@@ -208,12 +210,12 @@
                 @DescriptionValues[DescriptionValues.Count-1]
             </p>
             <div class="d-flex mb-2 align-items-center">
-                <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice"/>  
+                <input hidden value="@ViewBag.Product.UnitPrice" id="UnitPrice" />
                 <span>Price:</span>
                 <div class="text-primary fw-bold fs-5 ms-3">
-                @{
+                    @{
                         var UnitPrice = Math.Floor(ViewBag.Product.UnitPrice);
-                }
+                    }
                     <p class="d-inline" id="TotalPrice">@UnitPrice</p>
                     Ks
                 </div>
@@ -223,7 +225,7 @@
 
             <input type="hidden" value="@ViewBag.shopProduct.Id" id="shopProductId" />
             <input type="hidden" value="@ViewBag.ShopProduct.ShopName" id="ShopName" />
-            <input id="StockCount" hidden value="@ViewBag.shopProduct.StockCount"/>
+            <input id="StockCount" hidden value="@ViewBag.shopProduct.StockCount" />
             <div class="btn-group"
                  role="group"
                  aria-label="Basic outlined example">
@@ -287,7 +289,7 @@
             </div>
         </div>
     </div>
- 
+
 </div>
 <div class="container-fluid">
     <div class="row p-2">
@@ -309,7 +311,7 @@
     <hr>
     <div class="row">
         <h4>Other Related Products</h4>
-        @for(int i = 0; i < RelatedImages.Count; i++)
+        @for (int i = 0; i < RelatedImages.Count; i++)
         {
             <div class="col-lg-2 col-md-3 col-6 RelatedImages" id="@RelatedImages[i].Id">
                 <div class="p-3 shadow rounded" id="@Model[i].Id">
@@ -317,9 +319,7 @@
                         <img src="@RelatedImages[i].FrontImageUrl" class="w-100 h-100 imageHeight" alt="">
                     </div>
                     <p class="m-0 p-0 pt-2">@Model[i].Name</p>
-                    <p class="m-0 p-0">
-                        <i class="fa-solid fa-circle me-2" style="color: red;"></i><i class="fa-solid fa-circle me-2" style="color: blue;"></i><i class="fa-solid fa-circle" style="color: green;"></i>
-                    </p>
+                    
                     @{
                         var roundedUnitPrice = Math.Floor(Model[i].UnitPrice);
                     }
@@ -328,11 +328,11 @@
 
             </div>
         }
-        
-        
+
+
     </div>
 </div>
-<script >
+<script>
     $("#BuyNow").on('click', function () {
         var selectedItem = {};
         selectedItem.ImageName = $("#ImageName").attr('src');
@@ -354,7 +354,7 @@
                 var data = JSON.stringify(response);
 
                 if (data != null) {
-                    window.location.href = "/ShopProduct/CheckOut" ;
+                    window.location.href = "/ShopProduct/CheckOut";
                 }
 
             },
@@ -404,10 +404,10 @@
         selectedItem.numberOfItem = $("#numberOfItem").val();
         selectedItem.Id = $("#shopProductId").val();
         selectedItem.ShopName = $("#ShopName").val();
-        selectedItem.itemxPrice = $("#UnitPrice").val()* $("#numberOfItem").val();
+        selectedItem.itemxPrice = $("#UnitPrice").val() * $("#numberOfItem").val();
         selectedItem.StockCount = $("#StockCount").val();
-      
-  
+
+
         var url = "/ShopProduct/Cart";
         $.ajax({
             type: 'POST',
@@ -437,14 +437,14 @@
         var NumberOfItem = parseInt($("#numberOfItem").val());
         if (NumberOfItem >= $("#StockCount").val()) {
             alert("Insufficient Product")
-            
-        }else{
+
+        } else {
             var IncreaseItem = ++NumberOfItem;
             $("#numberOfItem").val(IncreaseItem);
             var totalAmount = $("#UnitPrice").val() * IncreaseItem;
             $("#TotalPrice").html(totalAmount)
         }
-        
+
     })
     $("#reduceButton").click(function () {
         var NumberOfItem = parseInt($("#numberOfItem").val());
