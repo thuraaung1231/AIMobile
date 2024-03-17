@@ -99,26 +99,31 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @{
+                                int count = 0;
+                                foreach (var item in Model)
+                                {
 
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td scope="col">@item.ProductName (<span>@item.numberOfItem</span>)</td>
-                                    <td scope="col" class="text-end">@item.itemxPrice</td>
-                                </tr>
-                            }
+                                                            <tr>
+                                                                <td scope="col">@item.ProductName (<span>@item.numberOfItem</span>)</td>
+                                                                <td scope="col" class="text-end" id="Price@(count)">@item.itemxPrice</td>
+                                                            </tr>
+                                    count++;
+                                }
+                            } 
+                            
 
                             <tr>
                                 <td scope="col" class="fw-bold">Subtotal</td>
-                                <td scope="col" class="text-end fw-bold">5062000</td>
+                                <td scope="col" class="text-end fw-bold" id="SubTotal"></td>
                             </tr>
                             <tr>
                                 <td scope="col" class="fw-bold">Delivery Fee</td>
-                                <td scope="col" class="text-end">1000</td>
+                                <td scope="col" class="text-end" id="DeliveryFee">1000</td>
                             </tr>
                             <tr>
                                 <td scope="col" class="fw-bold fs-5">Order Total</td>
-                                <td scope="col" class="text-end fs-5 fw-bold">5012000</td>
+                                <td scope="col" class="text-end fs-5 fw-bold" id="OrderTotal"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -186,6 +191,19 @@
     </script>
 }
 <script>
+    //for checking the subtotal
+    
+        let TotalSub = 0;
+        for (let i = 0; i < @Model.Count; i++) {
+            TotalSub += parseFloat($("#Price" + i).html());
+        }
+       
+        $("#SubTotal").html(TotalSub);
+    var SubTotal = parseFloat($("#SubTotal").html());
+    var DeliveryFee = parseFloat ($("#DeliveryFee").html());
+   
+    $("#OrderTotal").html(SubTotal+DeliveryFee)
+
     //for delivery check
     $("#Yangon").on("click", function () {
         $("#YangonTownship").removeClass("d-none");

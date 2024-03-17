@@ -12,9 +12,5 @@ namespace AIMobile.Models.DataModels
 
         public string PaymentTypeQR { get; set; }
 
-
-
-        public string PaymentTypeQR { get; set; }
-
     }
 }
