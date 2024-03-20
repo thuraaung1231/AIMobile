@@ -3,10 +3,12 @@ using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
 using AIMobileCus.Controllers;
 using AIMobileCus.Models.ViewModels;
+using AIMobileCus.Services.Domains;
 using AIMobileCus.Services.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace AIMobile.Controllers
 {
@@ -18,8 +20,9 @@ namespace AIMobile.Controllers
         private readonly IImageService _imageService;
         private readonly ITypeServices _typeServices;
         private readonly IPaymentTypeService _paymentTypeService;
+        private readonly IPurchaseService _purchaseService;
 
-        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices,IPaymentTypeService paymentTypeService)
+        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices,IPaymentTypeService paymentTypeService,IPurchaseService purchaseService)
         {
             _shopProductService = shopProductService;
             _shopService = shopService;
@@ -27,6 +30,7 @@ namespace AIMobile.Controllers
             _imageService = imageService;
             _typeServices = typeServices;
             _paymentTypeService = paymentTypeService;
+            _purchaseService = purchaseService;
         }
 
         [HttpPost]
@@ -334,6 +338,44 @@ namespace AIMobile.Controllers
             List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
 
             return View(resultcartviews);
+        }
+
+        [HttpPost]
+        public IActionResult MakeOrder(PurchaseEntity purchase)
+        {
+            try
+            {
+                List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+                if (resultcartviews.Count > 0)
+                {
+                    for (int i = 0; i < resultcartviews.Count; i++)
+                    {
+                        PurchaseEntity purchaseEntity = new PurchaseEntity()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            ShopProduct_Id = resultcartviews[i].Id,
+                            Customer_Id = this.User.FindFirstValue(ClaimTypes.NameIdentifier),
+                            PurchaseDateTime = DateTime.Now,
+                            TotalPrice = Convert.ToInt32(resultcartviews[i].itemxPrice),
+                            ScreenShot = purchase.ScreenShot,
+                            PaymentType_Id = purchase.PaymentType_Id,
+                            Deli_Id = purchase.Deli_Id,
+                            CreatedAt = DateTime.Now,
+                            UpdatedAt = DateTime.Now,
+                        };
+                        if (purchaseEntity is PurchaseEntity pur)
+                        {
+                            _purchaseService.Entry(pur);
+                        }
+                    }
+                }
+                TempData["Info"] = "Order Success";
+            }
+            catch(Exception ex) 
+            {
+                TempData["Info"] = "Order Unsuccess";
+            }
+            return View();
         }
     }
 }

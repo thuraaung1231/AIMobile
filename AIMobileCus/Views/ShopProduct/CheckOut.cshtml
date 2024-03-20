@@ -90,76 +90,82 @@
             </div>
             <div class="col-lg-6 col-11 mx-auto">
                 <p class="fw-bold fs-4 ps-lg-5 ps-2">Order Details</p>
-                <div class="col-lg-10 col-11 mx-auto p-3 border rounded">
-                    <table class="table w-100">
-                        <thead>
-                            <tr class="border-bottom border-secondary">
-                                <td scope="col" class="fw-bold">Product</td>
-                                <td scope="col" class="text-end fw-bold">SubTotal</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @{
-                                int count = 0;
-                                foreach (var item in Model)
-                                {
+                <form action="/shopproduct/makeorder" method="post">
+                    <div class="col-lg-10 col-11 mx-auto p-3 border rounded">
+                        <table class="table w-100">
+                            <thead>
+                                <tr class="border-bottom border-secondary">
+                                    <td scope="col" class="fw-bold">Product</td>
+                                    <td scope="col" class="text-end fw-bold">SubTotal</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int count = 0;
+                                    foreach (var item in Model)
+                                    {
 
-                                                            <tr>
-                                                                <td scope="col">@item.ProductName (<span>@item.numberOfItem</span>)</td>
-                                                                <td scope="col" class="text-end" id="Price@(count)">@item.itemxPrice</td>
-                                                            </tr>
-                                    count++;
+                                        <tr>
+                                            <td scope="col">@item.ProductName (<span>@item.numberOfItem</span>)</td>
+                                            <td scope="col" class="text-end" id="Price@(count)">@item.itemxPrice</td>
+                                        </tr>
+                                        count++;
+                                    }
                                 }
-                            } 
-                            
 
-                            <tr>
-                                <td scope="col" class="fw-bold">Subtotal</td>
-                                <td scope="col" class="text-end fw-bold" id="SubTotal"></td>
-                            </tr>
-                            <tr>
-                                <td scope="col" class="fw-bold">Delivery Fee</td>
-                                <td scope="col" class="text-end" id="DeliveryFee">1000</td>
-                            </tr>
-                            <tr>
-                                <td scope="col" class="fw-bold fs-5">Order Total</td>
-                                <td scope="col" class="text-end fs-5 fw-bold" id="OrderTotal"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-                <!--Payment Methods-->
-                <p class="text-center mt-3">Choose Payment Methods</p>
-                <div class="row mx-auto paymentMethods"
-                     id="choosePaymentMethods">
-                    @foreach (var paymentType in ViewBag.PaymentTypes)
-                    {
-                        <div class="col-2 mt-3 d-flex justify-content-center" id="@paymentType.Id" data-bs-toggle="modal" data-bs-target="#QRCode">
-                            <img src="@paymentType.PaymentTypeImage"
-                                 class="w-50 border-warning border-2 paymentImg rounded" id="@paymentType.PaymentTypeQR"
-                                 alt="" />
-                        </div>
-                    }
-                    
-                   
-                </div>
-                <hr />
-                <div class="d-none" id="AskSreeenShot">
-                    <label for="" class="fw-bold mb-2">Upload Your Payment ScreenShot</label>
-                    <input type="file" class="form-control">
-                </div>
+                                <tr>
+                                    <td scope="col" class="fw-bold">Subtotal</td>
+                                    <td scope="col" class="text-end fw-bold" id="SubTotal"></td>
+                                </tr>
+                                <tr>
+                                    <td scope="col" class="fw-bold">Delivery Fee</td>
+                                    <td scope="col" class="text-end" id="DeliveryFee">1000</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col" class="fw-bold fs-5">Order Total</td>
+                                    <td scope="col" class="text-end fs-5 fw-bold" id="OrderTotal"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <hr />
-                <div class="mb-3 form-check ms-5 mt-2">
-                    <input type="checkbox" class="form-check-input" id="checked" />
-                    <label class="form-check-label labelFontSize fw-bold">I haved read and agree the terms and policy</label>
-                </div>
-                <div class="col-10 mx-auto">
-                    <button class="btn btn-warning w-100" id="OrderButton" disabled>
-                        Make Order
-                    </button>
-                </div>
+                    <!--Payment Methods-->
+                    <p class="text-center mt-3">Choose Payment Methods</p>
+                    <div class="row mx-auto paymentMethods"
+                         id="choosePaymentMethods">
+                        @foreach (var paymentType in ViewBag.PaymentTypes)
+                        {
+                            <div class="col-2 mt-3 d-flex justify-content-center" id="@paymentType.Id" data-bs-toggle="modal" data-bs-target="#QRCode">
+                                <img src="@paymentType.PaymentTypeImage"
+                                     class="w-50 border-warning border-2 rounded" id="@paymentType.PaymentTypeQR"
+                                     alt="" />
+                                <div class="col-2 mt-2 d-flex justify-align-center" id="@paymentType.Id" data-bs-toggle="modal" data-bs-target="#QRCode">
+                                    <input type="radio" value="@paymentType.Id" name="PaymentType_Id" id="@paymentType.PaymentTypeQR" class="ms-2 paymentImg" />
+                                </div>
+                            </div>
+                           
+                        }
+
+
+                    </div>
+                    <hr />
+                    <div class="d-none" id="AskSreeenShot">
+                        <label for="" class="fw-bold mb-2">Upload Your Payment ScreenShot</label>
+                        <input type="file" class="form-control">
+                    </div>
+
+                    <hr />
+                    <div class="mb-3 form-check ms-5 mt-2">
+                        <input type="checkbox" class="form-check-input" id="checked" />
+                        <label class="form-check-label labelFontSize fw-bold">I haved read and agree the terms and policy</label>
+                    </div>
+                    <div class="col-10 mx-auto">
+                        <button class="btn btn-warning w-100" id="OrderButton" disabled>
+                            Make Order
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
