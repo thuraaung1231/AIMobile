@@ -248,7 +248,9 @@ html {
 }
 
 .Adminbody {
+   
     background: linear-gradient(-45deg,rgb(232, 232, 238), rgb(199, 199, 219), rgb(222, 222, 231));
+    
 }
 
 .formHeader {
@@ -263,4 +265,13 @@ a {
 .Description{
     font-size:14px;
 }
-
+.AdminLogin{
+    position:absolute;
+    left:0; 
+    right:0;
+    top:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+   background-color:darkblue;
+}

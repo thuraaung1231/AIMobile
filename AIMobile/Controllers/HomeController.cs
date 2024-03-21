@@ -26,11 +26,11 @@ namespace AIMobile.Controllers
 
         public IActionResult Index()
         {
-            IList<TypeViewModel> typeViewModels = _typeServices.ReteriveAll().Where(t => t.Name == "Phone").Select(p => new TypeViewModel
-            {
-               Id = p.Id,
-               Name = p.Name,
-            }).ToList();
+            //IList<TypeViewModel> typeViewModels = _typeServices.ReteriveAll().Where(t => t.Name == "Phone").Select(p => new TypeViewModel
+            //{
+            //   Id = p.Id,
+            //   Name = p.Name,
+            //}).ToList();
             return View();
         }
 
@@ -38,7 +38,10 @@ namespace AIMobile.Controllers
         {
             return View();
         }
-
+        public IActionResult Main()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

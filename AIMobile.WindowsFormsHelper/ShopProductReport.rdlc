@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.38861in</Width>
+              <Width>2.04833in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.38861in</Width>
+              <Width>2.17861in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.38861in</Width>
+              <Width>2.10139in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -226,10 +226,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ShopProductDataSet</DataSetName>
-        <Top>0.23833in</Top>
         <Left>0.17167in</Left>
         <Height>0.625in</Height>
-        <Width>4.16583in</Width>
+        <Width>6.32833in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -237,13 +236,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.39167in</Height>
+    <Height>0.66945in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.65278in</Width>
   <Page>
     <PageHeader>
-      <Height>0.58333in</Height>
+      <Height>0.51389in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -258,14 +257,15 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>0.13195in</Top>
-          <Left>2.70416in</Left>
-          <Height>0.31944in</Height>
-          <Width>1.63334in</Width>
+          <Top>0.00695in</Top>
+          <Height>0.24305in</Height>
+          <Width>6.5in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -289,14 +289,16 @@
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
           <Top>0.25833in</Top>
-          <Left>4.85416in</Left>
+          <Left>3.74999in</Left>
           <Height>0.25556in</Height>
-          <Width>1.29167in</Width>
+          <Width>2.75001in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -331,7 +333,9 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -360,7 +364,9 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
             <Paragraph>
               <TextRuns>
@@ -374,9 +380,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>0.17084in</Top>
-          <Left>3.12084in</Left>
+          <Left>3.01944in</Left>
           <Height>0.30833in</Height>
-          <Width>0.25833in</Width>
+          <Width>0.35973in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -399,14 +405,16 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
           <Top>0.17084in</Top>
-          <Left>3.56528in</Left>
+          <Left>3.44861in</Left>
           <Height>0.30833in</Height>
-          <Width>1in</Width>
+          <Width>1.11667in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>

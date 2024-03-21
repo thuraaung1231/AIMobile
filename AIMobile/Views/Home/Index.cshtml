@@ -3,6 +3,36 @@
 }
 
 
+<div class="AdminLogin d-flex flex-column align-items-center">
+    @if (TempData["Info"] != null)
+    {
+        <div class="col-12 alert alert-secondary text-danger fw-bold text-center">@TempData["Info"]</div>
+    }
+   
+        <form class="col-5 mx-auto my-auto bg-light p-3 rounded " method="post" action="/AdminRegister/AdminLogin">
+            <h3 class="text-center mb-4">Login to AI Mobile Online Shop</h3>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" name="EmailAddress" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="Password" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <input type="submit" class="btn btn-primary col-12 mb-3" value="Login" />
+            <div class="col-12 d-flex">
+                <div class="col-5"><hr /></div>
+                <div class="col-2 fst-italic p-0 m-0 text-center">OR</div>
+                <div class="col-5"><hr /></div>
+            </div>
+            <div class="col-12 text-center">
+                <a href="/adminregister/register" class="text-decoration-underline text-primary">Register as a new user</a>
+            </div>
+
+        </form>
+   
+</div>
+
 
 
 

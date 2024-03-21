@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSession();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -29,6 +29,7 @@ builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
 builder.Services.AddScoped<IShopService, ShopService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IShopProductService, ShopProductService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,7 +42,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
