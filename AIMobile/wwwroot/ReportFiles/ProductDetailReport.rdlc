@@ -6,18 +6,18 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.46389in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.49444in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>3.3in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.29583in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -32,7 +32,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -41,6 +43,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Gold</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -62,7 +65,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -71,6 +76,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Gold</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -92,7 +98,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox13</rd:DefaultName>
@@ -101,6 +109,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Gold</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -112,7 +121,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.29583in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -127,7 +136,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Name</rd:DefaultName>
@@ -157,7 +168,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>TypeName</rd:DefaultName>
@@ -187,7 +200,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>UnitPrice</rd:DefaultName>
@@ -226,10 +241,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ProductDetailReport</DataSetName>
-        <Top>0.255in</Top>
-        <Left>1.79583in</Left>
-        <Height>0.5in</Height>
-        <Width>3in</Width>
+        <Top>0.05556in</Top>
+        <Left>0.175in</Left>
+        <Height>0.59167in</Height>
+        <Width>6.25833in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -237,13 +252,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.25833in</Height>
+    <Height>0.76666in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.64999in</Width>
   <Page>
     <PageHeader>
-      <Height>0.68333in</Height>
+      <Height>0.71111in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -260,14 +275,16 @@
                   </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
-          <Top>0.29444in</Top>
-          <Left>5.04584in</Left>
+          <Top>0.36111in</Top>
+          <Left>4.55277in</Left>
           <Height>0.25556in</Height>
-          <Width>1.29167in</Width>
+          <Width>1.88055in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -286,17 +303,20 @@
               <TextRuns>
                 <TextRun>
                   <Value>Product Report</Value>
-                  <Style />
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                  </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>0.11528in</Top>
-          <Left>2.70416in</Left>
+          <Left>0.01666in</Left>
           <Height>0.31944in</Height>
-          <Width>1.09167in</Width>
+          <Width>6.41667in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -331,12 +351,14 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
           <Top>0.125in</Top>
-          <Left>1.98334in</Left>
+          <Left>2in</Left>
           <Height>0.30833in</Height>
           <Width>1.13333in</Width>
           <Style>
@@ -360,7 +382,9 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
             <Paragraph>
               <TextRuns>
@@ -374,7 +398,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
           <Top>0.125in</Top>
-          <Left>3.25417in</Left>
+          <Left>3.13333in</Left>
           <Height>0.30833in</Height>
           <Width>0.25833in</Width>
           <ZIndex>1</ZIndex>
@@ -399,12 +423,14 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
           <Top>0.125in</Top>
-          <Left>3.725in</Left>
+          <Left>3.4611in</Left>
           <Height>0.30833in</Height>
           <Width>1in</Width>
           <ZIndex>2</ZIndex>
