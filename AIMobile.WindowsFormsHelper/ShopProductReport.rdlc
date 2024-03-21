@@ -6,6 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
+
               <Width>2.04833in</Width>
             </TablixColumn>
             <TablixColumn>
@@ -13,6 +14,12 @@
             </TablixColumn>
             <TablixColumn>
               <Width>2.10139in</Width>
+
+              <Width>3in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.25834in</Width>
+
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -32,7 +39,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -41,6 +50,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Gold</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -62,7 +72,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -71,42 +83,14 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>Gold</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox13">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Stock Count</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -127,7 +111,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ShopName</rd:DefaultName>
@@ -157,40 +143,12 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ProductName</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="StockCount">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!StockCount.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>StockCount</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -212,7 +170,6 @@
           <TablixMembers>
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -226,9 +183,16 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ShopProductDataSet</DataSetName>
+
         <Left>0.17167in</Left>
         <Height>0.625in</Height>
         <Width>6.32833in</Width>
+
+        <Top>0.06944in</Top>
+        <Left>0.11249in</Left>
+        <Height>0.625in</Height>
+        <Width>6.25834in</Width>
+
         <Style>
           <Border>
             <Style>None</Style>
@@ -236,13 +200,21 @@
         </Style>
       </Tablix>
     </ReportItems>
+
     <Height>0.66945in</Height>
+
+    <Height>0.71667in</Height>
+
     <Style />
   </Body>
   <Width>6.65278in</Width>
   <Page>
     <PageHeader>
+
       <Height>0.51389in</Height>
+
+      <Height>0.62499in</Height>
+
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -254,7 +226,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>Shop Product Report</Value>
-                  <Style />
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
@@ -264,8 +238,14 @@
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
           <Top>0.00695in</Top>
+
           <Height>0.24305in</Height>
           <Width>6.5in</Width>
+
+          <Left>0.11249in</Left>
+          <Height>0.31944in</Height>
+          <Width>6.25834in</Width>
+
           <Style>
             <Border>
               <Style>None</Style>
@@ -290,7 +270,11 @@
                 </TextRun>
               </TextRuns>
               <Style>
+
                 <TextAlign>Left</TextAlign>
+
+                <TextAlign>Right</TextAlign>
+
               </Style>
             </Paragraph>
           </Paragraphs>
@@ -299,6 +283,12 @@
           <Left>3.74999in</Left>
           <Height>0.25556in</Height>
           <Width>2.75001in</Width>
+
+          <Top>0.32777in</Top>
+          <Left>4.47083in</Left>
+          <Height>0.25556in</Height>
+          <Width>1.9in</Width>
+
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -318,7 +308,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.65in</Height>
+      <Height>0.43333in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -339,7 +329,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>0.17084in</Top>
+          <Top>0.04584in</Top>
           <Left>1.81667in</Left>
           <Height>0.30833in</Height>
           <Width>1.13333in</Width>
@@ -379,8 +369,13 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
+
           <Top>0.17084in</Top>
           <Left>3.01944in</Left>
+
+          <Top>0.04584in</Top>
+          <Left>2.97778in</Left>
+
           <Height>0.30833in</Height>
           <Width>0.35973in</Width>
           <ZIndex>1</ZIndex>
@@ -411,8 +406,13 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
+
           <Top>0.17084in</Top>
           <Left>3.44861in</Left>
+
+          <Top>0.04584in</Top>
+          <Left>3.27777in</Left>
+
           <Height>0.30833in</Height>
           <Width>1.11667in</Width>
           <ZIndex>2</ZIndex>

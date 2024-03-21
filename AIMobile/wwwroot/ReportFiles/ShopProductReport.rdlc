@@ -10,6 +10,12 @@
             </TablixColumn>
             <TablixColumn>
               <Width>3.08888in</Width>
+
+              <Width>3in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.25834in</Width>
+
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -40,7 +46,11 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+
                         <BackgroundColor>MidnightBlue</BackgroundColor>
+
+                        <BackgroundColor>Gold</BackgroundColor>
+
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -73,7 +83,11 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+
                         <BackgroundColor>MidnightBlue</BackgroundColor>
+
+                        <BackgroundColor>Gold</BackgroundColor>
+
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -172,9 +186,16 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ShopProductDataSet</DataSetName>
+
         <Left>0.11556in</Left>
         <Height>0.625in</Height>
         <Width>6.07888in</Width>
+
+        <Top>0.06944in</Top>
+        <Left>0.11249in</Left>
+        <Height>0.625in</Height>
+        <Width>6.25834in</Width>
+
         <Style>
           <Border>
             <Style>None</Style>
@@ -182,13 +203,21 @@
         </Style>
       </Tablix>
     </ReportItems>
+
     <Height>0.6625in</Height>
+
+    <Height>0.71667in</Height>
+
     <Style />
   </Body>
   <Width>6.29167in</Width>
   <Page>
     <PageHeader>
+
       <Height>0.69306in</Height>
+
+      <Height>0.62499in</Height>
+
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -205,7 +234,9 @@
                   </Style>
                 </TextRun>
               </TextRuns>
+
               <ListLevel>2</ListLevel>
+
               <Style>
                 <TextAlign>Center</TextAlign>
               </Style>
@@ -215,6 +246,12 @@
           <Left>0.11556in</Left>
           <Height>0.33333in</Height>
           <Width>6.07888in</Width>
+
+          <Top>0.00695in</Top>
+          <Left>0.11249in</Left>
+          <Height>0.31944in</Height>
+          <Width>6.25834in</Width>
+
           <Style>
             <Border>
               <Style>None</Style>
@@ -244,10 +281,17 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
+
           <Top>0.40278in</Top>
           <Left>3.92638in</Left>
           <Height>0.25556in</Height>
           <Width>2.26806in</Width>
+
+          <Top>0.32777in</Top>
+          <Left>4.47083in</Left>
+          <Height>0.25556in</Height>
+          <Width>1.9in</Width>
+
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -267,7 +311,11 @@
       </Style>
     </PageHeader>
     <PageFooter>
+
       <Height>0.33056in</Height>
+
+      <Height>0.43333in</Height>
+
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -288,7 +336,12 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
+
           <Left>3.69167in</Left>
+
+          <Top>0.04584in</Top>
+          <Left>1.81667in</Left>
+
           <Height>0.30833in</Height>
           <Width>1.13333in</Width>
           <Style>
@@ -331,7 +384,12 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
+
           <Left>4.86667in</Left>
+
+          <Top>0.04584in</Top>
+          <Left>2.97778in</Left>
+
           <Height>0.30833in</Height>
           <Width>0.25833in</Width>
           <ZIndex>1</ZIndex>
@@ -362,7 +420,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
+
           <Left>5.16667in</Left>
+          <Top>0.04584in</Top>
+          <Left>3.27777in</Left>
+
           <Height>0.30833in</Height>
           <Width>1in</Width>
           <ZIndex>2</ZIndex>
