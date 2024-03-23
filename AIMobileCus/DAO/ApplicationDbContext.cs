@@ -1,4 +1,5 @@
 ﻿using AIMobile.Models.DataModels;
+using AIMobileCus.Models.DataModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,5 +17,6 @@ public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : ba
         public DbSet<ShopEntity> Shop { get; set; }
         public DbSet<ImageEntity>Image { get; set; }
         public DbSet<ShopProductEntity> ShopProduct { get; set; }
+        public DbSet<NotiEntity> Noti { get; set; }
     }
 }

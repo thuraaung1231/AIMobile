@@ -2,7 +2,9 @@
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
 using AIMobileCus.Controllers;
+using AIMobileCus.Models.DataModels;
 using AIMobileCus.Models.ViewModels;
+using AIMobileCus.Services.Domains;
 using AIMobileCus.Services.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
@@ -18,8 +20,9 @@ namespace AIMobile.Controllers
         private readonly IImageService _imageService;
         private readonly ITypeServices _typeServices;
         private readonly IPaymentTypeService _paymentTypeService;
+        private readonly INotiService _notiService;
 
-        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices,IPaymentTypeService paymentTypeService)
+        public ShopProductController(IShopProductService shopProductService, IShopService shopService, IProductService productService, IImageService imageService, ITypeServices typeServices,IPaymentTypeService paymentTypeService,INotiService notiService)
         {
             _shopProductService = shopProductService;
             _shopService = shopService;
@@ -27,6 +30,7 @@ namespace AIMobile.Controllers
             _imageService = imageService;
             _typeServices = typeServices;
             _paymentTypeService = paymentTypeService;
+            _notiService = notiService;
         }
 
         [HttpPost]
@@ -322,18 +326,60 @@ namespace AIMobile.Controllers
             return View(TotalCart);  
         }
         [HttpGet]
-        public IActionResult CheckOut() {
-            IList<PaymentTypeViewModel> paymentTypeViews= _paymentTypeService.ReteriveAll().Select(p=>new PaymentTypeViewModel
+        public IActionResult CheckOut()
+        {
+            IList<PaymentTypeViewModel> paymentTypeViews = _paymentTypeService.ReteriveAll().Select(p => new PaymentTypeViewModel
             {
-                Id= p.Id,
+                Id = p.Id,
                 PaymentType = p.PaymentType,
-               PaymentTypeImage = p.PaymentTypeImage,
-               PaymentTypeQR=p.PaymentTypeQR,
+                PaymentTypeImage = p.PaymentTypeImage,
+                PaymentTypeQR = p.PaymentTypeQR,
             }).ToList();
-            ViewBag.PaymentTypes= paymentTypeViews;
+            ViewBag.PaymentTypes = paymentTypeViews;
             List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
 
             return View(resultcartviews);
         }
+        [HttpPost]
+        public IActionResult MakeOrder(NotiEntity notiEntity)
+        {
+            try
+            {
+                var TransactionId = Guid.NewGuid().ToString();
+                var DeliId = Guid.NewGuid().ToString();
+                string status = "Pending....";
+                List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
+                if (resultcartviews.Count > 0)
+                {
+
+                    foreach (var item in resultcartviews)
+                    {
+                        notiEntity.Id = Guid.NewGuid().ToString();
+                       
+                        notiEntity.DeliId = DeliId;
+                        notiEntity.ShopProductId = item.Id;
+                        notiEntity.TotalPrice = Convert.ToInt32(item.itemxPrice);
+                        notiEntity.PurchaseDateTime = DateTime.Now;
+                        notiEntity.TransactionId = TransactionId;
+                        notiEntity.Status = status;
+                        _notiService.Entry(notiEntity);
+                    }
+
+                }
+                SessionHelper.ClearSession(HttpContext.Session);
+                return RedirectToAction("OrderSuccess");
+            }
+            catch (Exception ex)
+            {
+                TempData["Info"] = "Order Unsuccess";
+                return RedirectToAction("CheckOut");
+            }
+            
+        }
+        public IActionResult OrderSuccess()
+        {
+            return View();
+        }
+
     }
 }

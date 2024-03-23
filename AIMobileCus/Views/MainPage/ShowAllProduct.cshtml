@@ -251,45 +251,45 @@
                 for (int i = 0; i < Model.Count; i++)
                 {
                     var counter = Model[i];
-                        <div class="row border mb-2">
-                            <div class="col-3 selectItem p-3">
+                                <div class="row border mb-2">
+                                    <div class="col-3 selectItem p-3">
 
-                                <img src="@ViewBag.ImageList[i].FrontImageUrl" class="w-100" alt="" />
+                                        <img src="@ViewBag.ImageList[i].FrontImageUrl" class="w-100" alt="" />
 
 
-                            </div>
-                            <div class="col-9 d-flex flex-column justify-content-between align-items-between p-2">
-                                <div>
-                                    <p class="fw-bold fs-5 m-0 p-0">@ViewBag.ProductList[i].Name</p>
-                                    <h6 class="p-0 m-0">
-                                    @ViewBag.DescriptionList[i]
-                                    </h6>
-                                </div>
-                                <div id="@ViewBag.ImageList[i].Id" class="@ViewBag.ProductList[i].Id">
-                                    <button class="btn active btn-sm fs-6 SeeOptions">See Options</button>
-                                </div>
-                                <div>
-                                    
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-primary fw-bold fs-6 d-flex">
-                                        @{
-                                            var roundedUnitPrice = Math.Floor(ViewBag.ProductList[i].UnitPrice);
-                                        }
-                                            <p>@roundedUnitPrice</p>
-                                            <p class="d-inline ms-2">Ks</p>
-                                        </span>
-                                        <span class="text-primary">@ViewBag.ShopList[i].Name</span>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="col-9 d-flex flex-column justify-content-between align-items-between p-2">
+                                        <div>
+                                            <p class="fw-bold fs-5 m-0 p-0">@ViewBag.ProductList[i].Name</p>
+                                            <h6 class="p-0 m-0">
+                                            @ViewBag.DescriptionList[i]
+                                            </h6>
+                                        </div>
+                                        <div id="@ViewBag.ImageList[i].Id" class="@ViewBag.ProductList[i].Id">
+                                            <button class="btn active btn-sm fs-6 SeeOptions">See Options</button>
+                                        </div>
+                                        <div>
+                                            
+                                            <div class="d-flex justify-content-between">
+                                                <span class="text-primary fw-bold fs-6 d-flex">
+                                                @{
+                                            var roundedUnitPrice = Math.Floor(ViewBag.ProductList[i].UnitPrice);
+                                                }
+                                                    <p>@roundedUnitPrice</p>
+                                                    <p class="d-inline ms-2">Ks</p>
+                                                </span>
+                                                <span class="text-primary">@ViewBag.ShopList[i].Name</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                               </div>
                 }
             }
             else
             {
-                    <div class="d-flex justify-content-center align-items-center">
-                        <img src="/Images/OutOfStock.png" class="w-50 h-50" />
-                    </div>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="/Images/OutOfStock.png" class="w-50 h-50" />
+                            </div>
             }
         }
         </div>
@@ -298,10 +298,10 @@
 
 <script>
     $(".SeeOptions").on('click', function () {
-        var ImageAndProductId = {};
-        var parentDiv = $(this).parent();
-        ImageAndProductId.ImageId = parentDiv.attr('id');
-        ImageAndProductId.ProductId = parentDiv.attr('class');
+        var ImageAndProductId = {}
+        var parentDiv = $(this).parent()
+        ImageAndProductId.ImageId = parentDiv.attr('id')
+        ImageAndProductId.ProductId = parentDiv.attr('class')
         var url = "/ShopProduct/ViewShopProduct";
         $.ajax({
             type: 'POST',
@@ -319,11 +319,11 @@
                 console.log(error);
             }
         })
-    })
-    $("#Filter").on('click',function(){
-        
+    });
+    $("#Filter").on('click', function () {
+
         $("#FilterContainer").toggleClass("d-none position-fixed top-25 w-50")
-    })
+    });
     $(".cart").on('click', function () {
         var url = "/ShopProduct/CartIcon";
         $.ajax({
