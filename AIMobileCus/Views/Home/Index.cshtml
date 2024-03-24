@@ -1,11 +1,14 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
     ViewData["Title"] = "Home Page";
 }
 @model ProductImageViewModel
 @* 
 @model IList<ImageViewModel> *@
 @*     Product Bar *@
-<div class="product-Bar position-sticky z-1">
+<div class="product-Bar position-sticky z-3">
     <div class="container-fluid py-2">
         <button class="btn btn-transparent border border-primary text-light dropdown-toggle btn-sm d-lg-inline d-md-inline d-none"
                 data-bs-toggle="dropdown"
@@ -72,14 +75,28 @@
                 aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
         </button>
-        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative cart">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <button class="float-end btn btn-transparent text-light btn-sm my-auto position-relative mx-3">
+                <a class="nav-link active text-light d-flex justify-content-center align-items-center"
+                   href="/ShopHistory/ViewShopHistory?userId=@UserManager.GetUserId(User)">
+                    <i class="fa-solid fa-envelope fs-4 text-warning"></i>
+                    <span class="position-absolute start-75 translate-middle badge" style="top:5px"><i class="fa-solid fa-circle text-danger fa-beat"></i></span>
+                </a>
+            </button>
+        }
+        
+        
+        <button class="float-end btn btn-transparent text-light btn-sm my-auto position-relative cart">
             <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
                href="#">
                 <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
                 Cart
-                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">  @TempData["count"]</span>
+                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill">  @TempData["count"]</span>
             </a>
         </button>
+        
+        
     </div>
        
 </div>
@@ -346,7 +363,7 @@
 
 <script>
     $(".SelectProduct").on('click', function () {
-
+        
         var ImageAndProductId = {};
         ImageAndProductId.ProductId = $(this).attr("id");
         ImageAndProductId.ImageId = $(this).children().first().attr("id")

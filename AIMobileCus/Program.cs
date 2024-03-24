@@ -1,5 +1,6 @@
 using AIMobile.DAO;
 using AIMobile.Services.Domains;
+using AIMobileCus.Services.Domains;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TOMS.Areas.Identity.Pages.Account;
@@ -31,11 +32,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(o => o.SignIn.RequireConfirmed
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ITypeServices, TypeServices>();
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddScoped<IPaymentTypeService, PaymentTypeService>();
 builder.Services.AddScoped<IShopService, ShopService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IShopProductService, ShopProductService>();
+builder.Services.AddScoped<INotiService, NotiService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

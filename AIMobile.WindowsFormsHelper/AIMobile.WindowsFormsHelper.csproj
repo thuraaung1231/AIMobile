@@ -64,6 +64,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PurchaseReport.rdlc" />
     <EmbeddedResource Include="ShopProductReport.rdlc" />
     <EmbeddedResource Include="ShopReport.rdlc" />
     <None Include="Properties\DataSources\ShopProductReportModel.datasource" />
