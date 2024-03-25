@@ -9,9 +9,7 @@ namespace AIMobileCus.Models.DataModels
 {
     [Table("tbl_Noti")]
 
-    public class NotiEntity:BaseEntity
-
-    public class NotiEntity
+    public class NotiEntity : BaseEntity
 
     {
         public string ShopProductId { get; set; }
@@ -25,6 +23,5 @@ namespace AIMobileCus.Models.DataModels
 
         public string Status { get; set; }
     }
-
-    }
+}
 

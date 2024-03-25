@@ -32,7 +32,9 @@ builder.Services.AddScoped<IShopService, ShopService>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IShopProductService, ShopProductService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+
 builder.Services.AddScoped<INotiService, NotiService>();
+
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 var app = builder.Build();
 
