@@ -224,11 +224,11 @@ namespace AIMobile.Controllers
         {
             try
             {
-                IList<ShopProductReportModel> ShopProductReports = _shopProductService.ReteriveAll().Where(w => w.ShopId == ShopId || w.ProductId == ProductId || w.StockCount == StockCount).Select(s => new ShopProductReportModel
+                IList<ShopProductReportModel> ShopProductReports = _shopProductService.ReteriveAll().Where(w => w.ShopId == ShopId || w.ProductId == ProductId || w.StockCount == StockCount ).Select(s => new ShopProductReportModel
                 {
                     ShopName = _shopService.GetById(s.ShopId).Name,
                     ProductName = _productService.GetById(s.ProductId).Name,
-                    StockCount = StockCount
+                    StockCount = s.StockCount
                 }).ToList();
                 if (ShopProductReports.Count > 0)
                 {
@@ -237,7 +237,7 @@ namespace AIMobile.Controllers
                     Stream reportDefination = fs;
                     LocalReport localReport = new LocalReport();
                     localReport.LoadReportDefinition(reportDefination);
-                    localReport.DataSources.Add(new ReportDataSource("ShopProductDataSet", ShopProductReports));
+                    localReport.DataSources.Add(new ReportDataSource("ShopProductReportDataSet", ShopProductReports));
                     byte[] pdffile = localReport.Render("pdf");
                     fs.Close();
                     return File(pdffile, "application/pdf");
