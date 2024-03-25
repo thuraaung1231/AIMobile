@@ -265,13 +265,13 @@ a {
 .Description{
     font-size:14px;
 }
-.AdminLogin{
-    position:absolute;
-    left:0; 
-    right:0;
-    top:0;
-    bottom:0;
-    width:100%;
-    height:100%;
-   background-color:darkblue;
+.AdminLogin {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #007bff, #00008b,#007bff);
 }

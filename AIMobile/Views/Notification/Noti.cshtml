@@ -1,0 +1,66 @@
+﻿@model List<NotiViewModel>
+
+<div class="mt-3  px-3">
+   
+        @foreach(var Noti in Model)
+        {       
+                <div class="row py-0 mb-2 bg-secondary p-2 rounded">
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
+                                <label class="row labelFontSize fw-bold">CustomerId :</label>
+
+                                <span type="text" class="row text-warning px-2 border-0 search-Bar">
+                                    @Noti.CustomerId
+                                </span>
+                            </div>
+                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
+                                <label class="row labelFontSize fw-bold">TransactionId :</label>
+
+                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
+                                    @Noti.TransactionId
+                                </span>
+                            </div>
+                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
+                                <label class="row labelFontSize fw-bold">PaymentTypeId :</label>
+
+                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
+                                    @Noti.PaymentTypeId
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
+                                <label class="row labelFontSize fw-bold">PurchaseDate :</label>
+                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
+                                    @Noti.PurchaseDateTime
+                                </span>
+
+                            </div>
+                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
+                                <label class="row labelFontSize fw-bold">ShopProductId :</label>
+                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
+                                    @Noti.ShopProductId
+                                </span>
+
+                            </div>
+
+                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
+                                <label class="row labelFontSize fw-bold">Total Price :</label>
+                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
+                                    @Noti.TotalPrice Ks
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                            <a href="/Notification/Noticonfirm?NotiId=@Noti.Id" class="btn btn-success col-2 btn-sm">Accept</a>
+                            <a href="#" class="btn btn-danger col-2 m-2 btn-sm">Reject</a>
+                    </div>
+                     
+                </div>               
+        }
+    </div>

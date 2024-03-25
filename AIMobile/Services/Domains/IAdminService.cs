@@ -9,5 +9,6 @@ namespace AIMobile.Services.Domains
         void Entry(AdminRegisterEntity adminRegister);
         IList<AdminRegisterEntity> RetrieveAll();
         AdminRegisterEntity RetrieveByEmailAndPassword(string Email,string EnterPassword);
+        AdminRegisterEntity GetByEmail(string Email);
     }
 }

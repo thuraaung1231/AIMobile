@@ -17,6 +17,11 @@ namespace AIMobile.Services.Domains
             _applicationDbContext.SaveChanges();
         }
 
+        public AdminRegisterEntity GetByEmail(string Email)
+        {
+            return _applicationDbContext.Admin.Where(a => a.EmailAddress == Email).FirstOrDefault();
+        }
+
         public IList<AdminRegisterEntity> RetrieveAll()
         {
             return _applicationDbContext.Admin.ToList();

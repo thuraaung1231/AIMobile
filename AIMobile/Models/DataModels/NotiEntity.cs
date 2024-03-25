@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using AIMobile.Models.DataModels;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AIMobile.Models.DataModels
+namespace AIMobileCus.Models.DataModels
 {
-    [Table("Tbl_Purchase")]
-    public class PurchaseEntity:BaseEntity
+    [Table("tbl_Noti")]
+    public class NotiEntity:BaseEntity
     {
         public string ShopProductId { get; set; }
         public string CustomerId { get; set; }
@@ -13,6 +14,7 @@ namespace AIMobile.Models.DataModels
         public string PaymentTypeId { get; set; }
         public string? DeliId { get; set; }
         public string TransactionId { get; set; }
-        
+        public string Status { get; set; }
     }
+
 }

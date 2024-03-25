@@ -5,6 +5,7 @@ using AIMobileCus.Models.ViewModels;
 using AIMobileCus.Services.Domains;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace AIMobileCus.Controllers
 {
@@ -39,6 +40,7 @@ namespace AIMobileCus.Controllers
                 TotalPrice= n.TotalPrice,
                 PaymentTypeId = n.PaymentTypeId,
                 Status = n.Status,
+                UpdatedAt = n.UpdatedAt,
             }).ToList();
             foreach(var noti in notiViews)
             {

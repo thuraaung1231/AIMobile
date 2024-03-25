@@ -337,7 +337,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-10 Adminbody" id="MainNav">
+            <div class="col-lg-10 Adminbody z-5" id="MainNav">
                 <div class="row bg-light py-2 border position-sticky top-0">
                     <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start mb-lg-0 mb-md-0 mb-2 align-items-center my-auto text-body-secondary">
                         <a href="#" class="me-2 d-lg-none d-block" data-bs-toggle="offcanvas" data-bs-target="#NavScrolling" aria-controls="NavScrolling"><i class="fa-solid fa-bars-staggered fw-bold text-body-secondary"></i></a>
@@ -356,13 +356,14 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
-                        <button type="button"
+                        <a href="/notification/noti"
                                 class="btn btn-transparent position-relative search-Bar me-4">
-                            <i class="fa-regular fa-bell text-secondary fs-5 fw-bold"></i>
-                            <span class="position-absolute m-0 p-0 Noti fw-bolder bg-warning px-2">
-                                99
+                            
+                            <i class="fa-regular fa-bell text-secondary fs-4 fw-bold"></i>
+                            <span class="position-absolute m-0 p-0 Noti fw-bolder bg-warning px-2 " id="notiCount">
+                            
                             </span>
-                        </button>
+                        </a>
                         <button type="button"
                                 class="btn btn-transparent search-Bar"
                                 id="FullScreen">
@@ -741,6 +742,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     <script>
+        
+
         let CollapseButton = $(".CollapseButton");
         let CollapseArrow = $(".CollapseArrow");
         let collapseItem = $(".collapseItem");
@@ -799,9 +802,36 @@
                 adjustWidth = true;
             }
         });
+
+        
+        
         
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        window.onload = function () {
+            var url = "/Notification/NotiIcon";
+            
+            $.ajax({
+                type: 'POST',
+                url: url,
+               
+                success: function (response) {
+                    if(response>0){
+                        $("#notiCount").addClass("fa-bounce");
+                        $(".fa-bell").addClass("fa-shake");
+                    }else{
+                        $("#notiCount").removeClass("fa-bounce");
+                        $(".fa-bell").removeClass("fa-shake");
+                    }
+                    $("#notiCount").html(response);
+                },
+                failure: function (error) {
+                    console.log(error);
+                }
+            });
+        };
+    </script>
 </body>
 </html>

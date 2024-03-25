@@ -39,51 +39,85 @@ namespace AIMobile.Controllers
         [HttpPost]
         public IActionResult Register(AdminRegisterViewModel adminRegister)
         {
-            IList<AdminRegisterViewModel> AdminViews=_adminService.RetrieveAll().Select(a=>new AdminRegisterViewModel
+            bool notSamePassword = false;
+            if (adminRegister.Password != adminRegister.ConfirmPassword)
             {
-                Id = a.Id,
-                EmailAddress=a.EmailAddress,
-                Password=a.Password,
-            }).ToList();
-            bool hasBeenRegister=false;
-            foreach(var adminView in AdminViews) { 
-                if(adminView.EmailAddress == adminRegister.EmailAddress && adminRegister.Password!=adminRegister.ConfirmPassword)
-                {
-                    hasBeenRegister = true;
-                    break;
-                }
-               
-            }
-            
-            if (hasBeenRegister)
-            {
-                TempData["Info"] = "Your Email Address already registred!";
+                notSamePassword = true;
+
             }
             else
             {
-                try
-                {
-                    // Create new AdminRegisterEntity
-                    AdminRegisterEntity adminRegisterEntity = new AdminRegisterEntity()
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        EmailAddress = adminRegister.EmailAddress,
-                        Password = adminRegister.Password, // Store hashed password
-                    };
-
-                    // Add new admin
-                    _adminService.Entry(adminRegisterEntity);
-
-                    TempData["Info"] = "Successfully Registered!";
-                }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions (e.g., database error)
-                    ViewBag.Message = "An error occurred while processing your request. Please try again later.";
-                    // Log the exception for further analysis
-                    
-                }
+                notSamePassword = false;
             }
+            AdminRegisterEntity Admin = _adminService.GetByEmail(adminRegister.EmailAddress);
+            if(Admin != null) {
+                TempData["Info"] = "Your Email Address already registred!";
+                return RedirectToAction("register", "adminregister");
+            }
+            else if(Admin==null && notSamePassword)
+            {
+                TempData["Info"] = "Password and Confirm confirm password are different";
+                return RedirectToAction("register", "adminregister");
+            }
+            else if(Admin==null && !notSamePassword)
+            {
+                AdminRegisterEntity adminRegisterEntity = new AdminRegisterEntity()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    EmailAddress = adminRegister.EmailAddress,
+                    Password = adminRegister.Password,
+                };
+
+                // Add new admin
+                _adminService.Entry(adminRegisterEntity);
+
+                TempData["Info"] = "Successfully Registered!";
+            }
+            //IList<AdminRegisterViewModel> AdminViews=_adminService.RetrieveAll().Select(a=>new AdminRegisterViewModel
+            //{
+            //    Id = a.Id,
+            //    EmailAddress=a.EmailAddress,
+            //    Password=a.Password,
+            //}).ToList();
+            //bool hasBeenRegister=false;
+            //foreach(var adminView in AdminViews) { 
+            //    if(adminView.EmailAddress == adminRegister.EmailAddress)
+            //    {
+            //        hasBeenRegister = true;
+            //        break;
+            //    }
+               
+            //}
+            
+            //if (hasBeenRegister)
+            //{
+            //    TempData["Info"] = "Your Email Address already registred!";
+            //}
+            //else
+            //{
+            //    try
+            //    {
+            //        // Create new AdminRegisterEntity
+            //        AdminRegisterEntity adminRegisterEntity = new AdminRegisterEntity()
+            //        {
+            //            Id = Guid.NewGuid().ToString(),
+            //            EmailAddress = adminRegister.EmailAddress,
+            //            Password = adminRegister.Password, 
+            //        };
+
+            //        // Add new admin
+            //        _adminService.Entry(adminRegisterEntity);
+
+            //        TempData["Info"] = "Successfully Registered!";
+            //    }
+            //    catch (Exception ex)
+            //    {
+                    
+            //        ViewBag.Message = "An error occurred while processing your request. Please try again later.";
+            //        // Log the exception for further analysis
+                    
+            //    }
+            //}
             return RedirectToAction("Index","Home");
         }
         public IActionResult Logout()

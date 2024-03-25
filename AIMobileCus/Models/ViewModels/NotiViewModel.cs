@@ -12,5 +12,6 @@
         public string? DeliId { get; set; }
         public string TransactionId { get; set; }
         public string Status { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
