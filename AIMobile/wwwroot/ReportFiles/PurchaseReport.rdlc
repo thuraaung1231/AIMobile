@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.35278in</Width>
+              <Width>1.19029in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.35278in</Width>
+              <Width>1.21111in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.35278in</Width>
+              <Width>1.13611in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.15in</Width>
+              <Width>1.13333in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.17917in</Width>
+              <Width>1.225in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -27,7 +27,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -43,7 +43,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -60,14 +60,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox10">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Shop Product Id</Value>
+                              <Value>Product Name</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -76,7 +76,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -93,14 +93,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="Textbox12">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Payment Type Id</Value>
+                              <Value>Shop Name</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -109,7 +109,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -126,7 +126,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox17">
+                    <Textbox Name="Textbox14">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -142,7 +142,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <rd:DefaultName>Textbox14</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -159,14 +159,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox19">
+                    <Textbox Name="Textbox1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Purchase Date Time</Value>
+                              <Value>Purchase Date</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -175,7 +175,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -227,21 +227,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ShopProductId">
+                    <Textbox Name="ProductName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ShopProductId.Value</Value>
+                              <Value>=Fields!ProductName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ShopProductId</rd:DefaultName>
+                      <rd:DefaultName>ProductName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -257,21 +257,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="PaymentTypeId">
+                    <Textbox Name="ShopName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!PaymentTypeId.Value</Value>
+                              <Value>=Fields!ShopName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>PaymentTypeId</rd:DefaultName>
+                      <rd:DefaultName>ShopName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -298,7 +298,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>TotalPrice</rd:DefaultName>
@@ -313,25 +315,26 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="PurchaseDateTime">
+                    <Textbox Name="PurchaseDate">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!PurchaseDateTime.Value</Value>
+                              <Value>=Fields!PurchaseDate.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>PurchaseDateTime</rd:DefaultName>
+                      <rd:DefaultName>PurchaseDate</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -369,9 +372,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>PurchaseDataSet</DataSetName>
-        <Top>0.06944in</Top>
+        <Top>0.255in</Top>
+        <Left>0.37916in</Left>
         <Height>0.5in</Height>
-        <Width>6.38751in</Width>
+        <Width>5.89584in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -379,13 +383,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.71667in</Height>
+    <Height>1.25833in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.53749in</Width>
   <Page>
     <PageHeader>
-      <Height>0.70833in</Height>
+      <Height>0.71667in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -408,8 +412,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Height>0.31944in</Height>
-          <Width>6.5in</Width>
+          <Height>0.33611in</Height>
+          <Width>6.275in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -439,10 +443,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox16</rd:DefaultName>
-          <Top>0.38888in</Top>
-          <Left>4.4625in</Left>
+          <Top>0.41944in</Top>
+          <Left>4.40833in</Left>
           <Height>0.25556in</Height>
-          <Width>1.925in</Width>
+          <Width>1.86667in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -462,31 +466,31 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.43333in</Height>
+      <Height>0.45in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox6">
+        <Textbox Name="Textbox5">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Globals!TotalPages</Value>
+                  <Value>=Globals!PageNumber</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Left</TextAlign>
+                <TextAlign>Right</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox6</rd:DefaultName>
+          <rd:DefaultName>Textbox5</rd:DefaultName>
           <Top>0.05556in</Top>
-          <Left>3.37916in</Left>
+          <Left>1.94167in</Left>
           <Height>0.30833in</Height>
-          <Width>1in</Width>
+          <Width>1.13333in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -523,8 +527,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.05556in</Top>
-          <Left>3.07917in</Left>
+          <Top>0.06944in</Top>
+          <Left>3.12084in</Left>
           <Height>0.30833in</Height>
           <Width>0.25833in</Width>
           <ZIndex>1</ZIndex>
@@ -538,27 +542,25 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox5">
+        <Textbox Name="Textbox6">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Globals!PageNumber</Value>
+                  <Value>=Globals!TotalPages</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style>
-                <TextAlign>Right</TextAlign>
-              </Style>
+              <Style />
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox5</rd:DefaultName>
+          <rd:DefaultName>Textbox6</rd:DefaultName>
           <Top>0.05556in</Top>
-          <Left>1.91806in</Left>
+          <Left>3.43472in</Left>
           <Height>0.30833in</Height>
-          <Width>1.13333in</Width>
+          <Width>1in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -590,22 +592,25 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>8afb42d7-9ef8-4aff-b461-2d96e305b5d7</rd:DataSourceID>
+      <rd:DataSourceID>4cc21a07-9690-4bc1-ab70-c5ebf5909da3</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="AIMobileHelper1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>2407537f-0548-4dab-8ecf-07041a9a3c29</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="PurchaseDataSet">
       <Query>
-        <DataSourceName>AIMobileHelper</DataSourceName>
+        <DataSourceName>AIMobileHelper1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
         <Field Name="CustomerId">
           <DataField>CustomerId</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DeliId">
-          <DataField>DeliId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Id">
@@ -616,12 +621,16 @@
           <DataField>PaymentTypeId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PurchaseDateTime">
-          <DataField>PurchaseDateTime</DataField>
+        <Field Name="ProductName">
+          <DataField>ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PurchaseDate">
+          <DataField>PurchaseDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="ScreenShot">
-          <DataField>ScreenShot</DataField>
+        <Field Name="ShopName">
+          <DataField>ShopName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ShopProductId">
@@ -645,5 +654,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>4cda356e-a92c-46c1-8c96-c0c0ec207e31</rd:ReportID>
+  <rd:ReportID>7a8d98f0-35e0-426e-9c15-43119c30a068</rd:ReportID>
 </Report>

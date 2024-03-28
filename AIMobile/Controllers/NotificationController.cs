@@ -52,6 +52,7 @@ namespace AIMobile.Controllers
         public IActionResult Noticonfirm(string NotiId) {
 
             var noti=_notiService.GetById(NotiId);
+            
             noti.Status = "Approved";
             noti.UpdatedAt = DateTime.Now;
             PurchaseEntity purchase = new PurchaseEntity() {
@@ -63,7 +64,7 @@ namespace AIMobile.Controllers
                 PaymentTypeId = noti.PaymentTypeId,
                 DeliId = noti.DeliId,
                 TransactionId = noti.TransactionId,
-                PurchaseDateTime = noti.PurchaseDateTime,
+               PurchaseDateTime =noti.PurchaseDateTime,
                 CreatedAt = DateTime.Now,
             
             };
