@@ -11,7 +11,7 @@ namespace AIMobileCus.Models.DataModels
 
     public class NotiEntity:BaseEntity
 
-    public class NotiEntity
+   
 
     {
         public string ShopProductId { get; set; }

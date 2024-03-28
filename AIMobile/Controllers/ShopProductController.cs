@@ -232,12 +232,12 @@ namespace AIMobile.Controllers
                 }).ToList();
                 if (ShopProductReports.Count > 0)
                 {
-                    var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopProductReport.rdlc");
+                    var rdlcPath = Path.Combine(_webHostEnvironment.WebRootPath, "ReportFiles", "ShopProductDetailReport.rdlc");
                     var fs = new FileStream(rdlcPath, FileMode.Open);
                     Stream reportDefination = fs;
                     LocalReport localReport = new LocalReport();
                     localReport.LoadReportDefinition(reportDefination);
-                    localReport.DataSources.Add(new ReportDataSource("ShopProductReportDataSet", ShopProductReports));
+                    localReport.DataSources.Add(new ReportDataSource("ShopProductDetailReport", ShopProductReports));
                     byte[] pdffile = localReport.Render("pdf");
                     fs.Close();
                     return File(pdffile, "application/pdf");

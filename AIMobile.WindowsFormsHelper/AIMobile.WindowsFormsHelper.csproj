@@ -64,9 +64,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="PurchaseReport.rdlc" />
-    <EmbeddedResource Include="ShopProductReport.rdlc" />
+    <EmbeddedResource Include="PurchaseDetailReport.rdlc" />
+    <EmbeddedResource Include="ShopProductDetailReport.rdlc" />
     <EmbeddedResource Include="ShopReport.rdlc" />
+    <None Include="Properties\DataSources\AIMobile.Helper.PurchaseReportModel.datasource" />
     <None Include="Properties\DataSources\ShopProductReportModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

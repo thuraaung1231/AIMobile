@@ -20,15 +20,15 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\ReportFiles\ProductDetailReport.rdlc" />
-    <Content Remove="wwwroot\ReportFiles\PurchaseDetailReport.rdlc" />
-    <Content Remove="wwwroot\ReportFiles\ShopProductDetailReport.rdlc" />
+    <Content Remove="wwwroot\ReportFiles\PurchaseReport.rdlc" />
+    <Content Remove="wwwroot\ReportFiles\ShopProductReport.rdlc" />
     <Content Remove="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\ReportFiles\ProductDetailReport.rdlc" />
-    <EmbeddedResource Include="wwwroot\ReportFiles\PurchaseDetailReport.rdlc" />
-    <EmbeddedResource Include="wwwroot\ReportFiles\ShopProductDetailReport.rdlc" />
+    <EmbeddedResource Include="wwwroot\ReportFiles\PurchaseReport.rdlc" />
+    <EmbeddedResource Include="wwwroot\ReportFiles\ShopProductReport.rdlc" />
     <EmbeddedResource Include="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
 	<ItemGroup>
