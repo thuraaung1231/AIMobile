@@ -1,8 +1,11 @@
-﻿namespace AIMobileCus.Models.ViewModels
+﻿using AIMobile.Models.DataModels;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AIMobileCus.Models.DataModels
 {
-    public class NotiViewModel
+    [Table("tbl_Noti")]
+    public class NotiEntity:BaseEntity
     {
-        public string Id { get; set; }
         public string ShopProductId { get; set; }
         public string CustomerId { get; set; }
         public DateTime PurchaseDateTime { get; set; }
@@ -12,6 +15,6 @@
         public string? DeliId { get; set; }
         public string TransactionId { get; set; }
         public string Status { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
+
 }

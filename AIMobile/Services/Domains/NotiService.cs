@@ -1,5 +1,6 @@
 ﻿using AIMobile.DAO;
 using AIMobileCus.Models.DataModels;
+using System.Drawing.Drawing2D;
 
 namespace AIMobileCus.Services.Domains
 {
@@ -16,15 +17,22 @@ namespace AIMobileCus.Services.Domains
             _applicationDbContext.Noti.Add(notiEntity);
             _applicationDbContext.SaveChanges();
         }
+        public NotiEntity GetById(string id)
+        {
+            return _applicationDbContext.Noti.Where(w => w.Id == id).SingleOrDefault();
+        }
+
 
         public IList<NotiEntity> RetrieveAll()
         {
-            return _applicationDbContext.Noti.ToList();    
+            return _applicationDbContext.Noti.ToList();
         }
 
-        public IList<NotiEntity> RetrieveAll(string customerId)
+        public void Update(NotiEntity Noti)
         {
-            return _applicationDbContext.Noti.Where(n=>n.CustomerId==customerId).ToList();
+       
+            _applicationDbContext.Noti.Update(Noti);
+            _applicationDbContext.SaveChanges();
         }
     }
 }

@@ -4,31 +4,73 @@
     <a href="/home/index"> <i class="fa-solid fa-circle-left pb-3"></i> Back To Home</a>
     @for (int i=0;i<Model.Count;i++)
     {
-        <div class="row d-flex align-items-center justify-content-between border rounded mb-2">
-            <div class="d-flex flex-column col-4">
-                <p class="fw-bold">@ViewBag.Products[i].Name</p>
-                <div>
-                    <img src="@ViewBag.Images[i].FrontImageUrl" class="w-50">
+        @if (Model[i].Status == "Pending....")
+        {
+            <div class="row d-flex align-items-center justify-content-between border rounded mb-2 p-2">
+                <div class="d-flex flex-column col-4">
+                    <p class="fw-bold">@ViewBag.Products[i].Name</p>
+                    <div>
+                        <img src="@ViewBag.Images[i].FrontImageUrl" class="w-50">
+                    </div>
+                    <p class="text-primary">@ViewBag.Shops[i].Name</p>
                 </div>
-                <p class="text-primary">@ViewBag.Shops[i].Name</p>
+                <div class="col-4">
+                    <p class="d-inline fw-bold">@Model[i].TotalPrice</p>
+                    <span class="fw-bold">Ks</span>
+                </div>
+                <div class="col-4">                           
+                        <button class="btn btn-warning">@Model[i].Status</button>
+                </div>
+                <div class="row">
+                    
+                        <div class="col-6">
+                            <span class="row">Purchase Date:</span>
+                            <span class="row text-primary">@Model[i].PurchaseDateTime</span>
+                        </div>
+                        <div class="col-6 d-flex">
+                            <span class="row">Approved Date:</span>
+                            <span class="row text-primary">@Model[i].UpdatedAt</span>
+                        </div>
+                   
+                </div>
             </div>
-            <div class="col-4">
-                <p class="d-inline fw-bold">@Model[i].TotalPrice</p>
-                <span class="fw-bold">Ks</span>
-            </div>
-            <div class="col-4">
-                @if(Model[i].Status=="Pending"){
-                    <button class="btn btn-warning">@Model[i].Status</button>
-                }
-                else
-                {
-                    <button class="btn btn-success">@Model[i].Status</button>
-                }
-                
-                
-            </div>
-
-        </div>
+            
+        }
+       
     }
-    
+   <p class="text-center fw-bold pt-3">Approved Status</p>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        @if (Model[i].Status != "Pending....")
+        {
+            <div class="row d-flex align-items-center justify-content-between border rounded mb-2 p-2">
+                <div class="d-flex flex-column col-4">
+                    <p class="fw-bold">@ViewBag.Products[i].Name</p>
+                    <div>
+                        <img src="@ViewBag.Images[i].FrontImageUrl" class="w-50">
+                    </div>
+                    <p class="text-primary">@ViewBag.Shops[i].Name</p>
+                </div>
+                <div class="col-4">
+                    <p class="d-inline fw-bold">@Model[i].TotalPrice</p>
+                    <span class="fw-bold">Ks</span>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-success">@Model[i].Status</button>
+                </div>
+                <div class="row">
+
+                    <div class="col-6">
+                        <span class="row">Purchase Date:</span>
+                        <span class="row text-primary">@Model[i].PurchaseDateTime</span>
+                    </div>
+                    <div class="col-6">
+                        <span class="row">Approved Date:</span>
+                        <span class="row text-primary">@Model[i].UpdatedAt</span>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
 </div>
