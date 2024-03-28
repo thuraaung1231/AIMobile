@@ -9,15 +9,11 @@ namespace AIMobile.Services.Domains
     public class PurchaseService : IPurchaseService
     {
 
-        private readonly ApplicationDbContext _application;
-
-        public PurchaseService(ApplicationDbContext application)
-        {
-            _application = application;
-        }
+        
         public void Entry(PurchaseEntity purchase)
         {
-         _application.Purchase.Add(purchase);  
+            _applicationDbContext.Purchase.Add(purchase);
+        }
 
         private readonly ApplicationDbContext _applicationDbContext;
 
@@ -44,6 +40,11 @@ namespace AIMobile.Services.Domains
         {
             return _applicationDbContext.Purchase.ToList();
 
+        }
+
+        public IList<PurchaseEntity> GetByShopProductAndDate(string shopProductId, DateTime fromDate, DateTime toDate)
+        {
+            return _applicationDbContext.Purchase.Where(p => p.ShopProductId == shopProductId && p.PurchaseDateTime.Date >= fromDate.Date && p.PurchaseDateTime.Date<=toDate.Date).ToList();
         }
     }
 }

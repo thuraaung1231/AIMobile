@@ -134,6 +134,7 @@ namespace AIMobile.Controllers
         }
         public IActionResult Noticonfirm(string TransactionId) {
 
+
             IList<NotiEntity> notiEntities=_notiService.RetrieveByTransactionId(TransactionId);
             foreach(var notiEntity in notiEntities)
             {
@@ -156,6 +157,23 @@ namespace AIMobile.Controllers
                 _purchaseService.Entry(purchase);
                 _notiService.Update(notiEntity);
             }
+
+            var noti=_notiService.GetById(NotiId);
+            
+            noti.Status = "Approved";
+            noti.UpdatedAt = DateTime.Now;
+            PurchaseEntity purchase = new PurchaseEntity() {
+                Id = noti.Id,
+                ShopProductId = noti.ShopProductId,
+                CustomerId = noti.CustomerId,
+                TotalPrice = noti.TotalPrice,
+                ScreenShot = noti.ScreenShot,
+                PaymentTypeId = noti.PaymentTypeId,
+                DeliId = noti.DeliId,
+                TransactionId = noti.TransactionId,
+               PurchaseDateTime =noti.PurchaseDateTime,
+                CreatedAt = DateTime.Now,
+
             
             return RedirectToAction("Noti");
         }

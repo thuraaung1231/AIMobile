@@ -2,6 +2,7 @@
 using AIMobile.Models.ViewModels;
 using AIMobile.Services.Domains;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Packaging.Signing;
 
 namespace AIMobile.Controllers
 {
@@ -121,14 +122,50 @@ namespace AIMobile.Controllers
             try
             {
                 string imgUrl = "/Images/";
+                var frontimg = "";
+                var backimg = "";
+                var rightimg = "";
+                var leftimg = "";
+                if (ivm.FrontImageUrl.Contains("/Images"))
+                {
+                    frontimg = ivm.FrontImageUrl;
+                }
+                else
+                {
+                    frontimg = imgUrl + ivm.FrontImageUrl;
+                }
+                if (ivm.BackImageUrl.Contains("/Images"))
+                {
+                    backimg = ivm.BackImageUrl;
+                }
+                else
+                {
+                    backimg = imgUrl + ivm.BackImageUrl;
+                }
+                if (ivm.RightSideImageUrl.Contains("/Images"))
+                {
+                    rightimg = ivm.RightSideImageUrl;
+                }
+                else
+                {
+                    rightimg = imgUrl + ivm.RightSideImageUrl;
+                }
+                if (ivm.LeftSideImageUrl.Contains("/Images"))
+                {
+                    leftimg = ivm.LeftSideImageUrl;
+                }
+                else
+                {
+                    leftimg = imgUrl + ivm.LeftSideImageUrl;
+                }
                 ImageEntity imageEntity = new ImageEntity()
                 {
                     Id = ivm.Id,
                     ImageName = ivm.ImageName,
-                   FrontImageUrl=imgUrl+ivm.FrontImageUrl,
-                   BackImageUrl=imgUrl+ivm.BackImageUrl,
-                   LeftSideImageUrl=imgUrl+ivm.LeftSideImageUrl,
-                   RightSideImageUrl=imgUrl+ivm.RightSideImageUrl,
+                   FrontImageUrl=ivm.FrontImageUrl,
+                   BackImageUrl=ivm.BackImageUrl,
+                   LeftSideImageUrl=ivm.LeftSideImageUrl,
+                   RightSideImageUrl=ivm.RightSideImageUrl,
                     Filesize = ivm.Filesize,
                     Filetype = ivm.Filetype,
 
