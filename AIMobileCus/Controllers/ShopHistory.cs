@@ -41,6 +41,7 @@ namespace AIMobileCus.Controllers
                 PaymentTypeId = n.PaymentTypeId,
                 Status = n.Status,
                 UpdatedAt = n.UpdatedAt,
+                NumberOfItem = n.NumberOfItem,
             }).ToList();
             foreach(var noti in notiViews)
             {

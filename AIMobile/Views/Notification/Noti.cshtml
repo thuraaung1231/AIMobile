@@ -1,66 +1,126 @@
 ﻿@model List<NotiViewModel>
 
 <div class="mt-3  px-3">
-   
-        @foreach(var Noti in Model)
-        {       
-                <div class="row py-0 mb-2 bg-secondary p-2 rounded">
+    @if (ViewBag.EmptyNoti != null)
+    {
+        <h3 class="text-center">@ViewBag.EmptyNoti</h3>
+    }
+    else
+    {
+        @foreach (var Noti in Model)
+        {
+            int totalNetPrice = 0;
+            <div class="row py-0 mb-2 bg-info-subtle py-3 rounded">
 
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
-                                <label class="row labelFontSize fw-bold">CustomerId :</label>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4 mb-2 px-3 d-flex justify-content-around align-items-center">
+                            <label class="row labelFontSize fw-bold">EmailAddress :</label>
 
-                                <span type="text" class="row text-warning px-2 border-0 search-Bar">
-                                    @Noti.CustomerId
-                                </span>
-                            </div>
-                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
-                                <label class="row labelFontSize fw-bold">TransactionId :</label>
-
-                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
-                                    @Noti.TransactionId
-                                </span>
-                            </div>
-                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
-                                <label class="row labelFontSize fw-bold">PaymentTypeId :</label>
-
-                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
-                                    @Noti.PaymentTypeId
-                                </span>
-                            </div>
+                            <span type="text" class="row text-dark px-2 border-0 search-Bar">
+                                @Noti.CustomerEmail
+                            </span>
                         </div>
 
-                        <div class="row">
-                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
-                                <label class="row labelFontSize fw-bold">PurchaseDate :</label>
-                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
-                                    @Noti.PurchaseDateTime
-                                </span>
+                        <div class="col-4 mb-2 px-3 d-flex justify-content-around align-items-center">
+                            <label class="row labelFontSize fw-bold">PaymentType :</label>
 
-                            </div>
-                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
-                                <label class="row labelFontSize fw-bold">ShopProductId :</label>
-                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
-                                    @Noti.ShopProductId
-                                </span>
-
-                            </div>
-
-                            <div class="col-4 mb-2 border-end border-bottom border-2 px-3">
-                                <label class="row labelFontSize fw-bold">Total Price :</label>
-                                <span type="text" class="text-warning row px-2 border-0 search-Bar">
-                                    @Noti.TotalPrice Ks
-                                </span>
-
-                            </div>
+                            <span type="text" class="text-dark row px-2 border-0 search-Bar">
+                                @Noti.PaymentTypeName
+                            </span>
                         </div>
                     </div>
-                    <div class="col-12">
-                            <a href="/Notification/Noticonfirm?NotiId=@Noti.Id" class="btn btn-success col-2 btn-sm">Accept</a>
-                            <a href="#" class="btn btn-danger col-2 m-2 btn-sm">Reject</a>
+
+                    <div class="row">
+                        <div class="col-4 mb-2 px-3 d-flex justify-content-around align-items-center">
+                            <label class="text-dark row labelFontSize fw-bold">PurchaseDate :</label>
+                            <span type="text" class="text-dark row px-2 border-0 search-Bar">
+                                @Noti.PurchaseDateTime
+                            </span>
+
+                        </div>
+                        @if (Noti.TransactionList != null)
+                        {
+                            @foreach (var transaction in Noti.TransactionList)
+                            {
+
+                                totalNetPrice += transaction.TotalPrice;
+                            }
+                        }
+
+                        <div class="col-4 mb-2 px-3 d-flex justify-content-around align-items-center">
+                            <label class="row labelFontSize fw-bold">Total Net Price :</label>
+                            <span type="text" class="text-dark row px-2 border-0 search-Bar">
+                                @totalNetPrice
+                            </span>
+
+                        </div>
+                        
                     </div>
-                     
-                </div>               
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="@Noti.ScreenShot" id="@Noti.ScreenShot" class="w-100 paymentScreenShot" data-bs-toggle="modal" data-bs-target="#ScreenShot">
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <div class="row mx-auto">
+
+                        <div class="row d-flex">
+                            <label class="col-3 labelFontSize fw-bold">Product Name :</label>
+                            <label class="col-3 labelFontSize fw-bold">Shop Name</label>
+                            <label class="col-3 labelFontSize fw-bold"></label>
+                            <label class="col-3 labelFontSize fw-bold">TotalPrice</label>
+                        </div>
+                        @if (Noti.TransactionList != null)
+                        {
+                            @foreach (var transaction in Noti.TransactionList)
+                            {
+                                <div class="row d-flex">
+                                    <span class="col-3">@transaction.ProductName</span>
+                                    <span class="col-3">@transaction.ShopName</span>
+                                    <span class="col-3">x @transaction.NumberOfItem</span>
+                                    <span class="col-3">@transaction.TotalPrice</span>
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+                    <div class="col-12">
+                        <a href="/Notification/Noticonfirm?TransactionId=@Noti.TransactionId" class="btn btn-success col-2 btn-sm">Accept</a>
+                        <a href="#" class="btn btn-danger col-2 m-2 btn-sm">Reject</a>
+                    </div>
+                </div>
+            </div>
         }
+    }
+   @*  Modal *@
+    <div class="modal fade" id="ScreenShot" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment ScreenShot</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center p-3">
+                        <img alt="" class="w-100" id="ScreenShotImg" />
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
     </div>
+
+        </div>
+<script>
+    //For QR Code
+    $(".paymentScreenShot").on('click', function (event) {
+        let ImageUrl = event.target.id;
+        
+        $("#ScreenShotImg").attr("src", ImageUrl);
+        
+    })
+</script>

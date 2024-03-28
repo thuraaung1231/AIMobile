@@ -1,4 +1,7 @@
-﻿@model IList<ProductViewModel>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IList<ProductViewModel>
 @{
     List<string> DescriptionKeys = ViewBag.DescriptionKey;
     List<string> DescriptionValues = ViewBag.DescriptionValue;
@@ -71,11 +74,22 @@
                 aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars-staggered fs-4 text-primary"></i>
         </button>
-        <button class="float-end btn btn-primary text-light btn-sm my-auto position-relative cart">
-            <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <button class="float-end btn btn-transparent text-light btn-sm my-auto position-relative mx-3">
+                <a class="nav-link active text-light d-flex justify-content-center align-items-center"
+                   href="/ShopHistory/ViewShopHistory?userId=@UserManager.GetUserId(User)">
+                    <i class="fa-solid fa-envelope fs-4 text-warning"></i>
+                    <span class="position-absolute start-75 translate-middle badge" style="top:5px"><i class="fa-solid fa-circle text-danger fa-beat"></i></span>
+                </a>
+            </button>
+        }
+        <button class="float-end btn btn-transparent text-light btn-sm my-auto position-relative cart">
+            <a class="nav-link active text-light fs-6 d-flex justify-content-center align-items-center"
+               href="#">
                 <i class="fa-solid fa-cart-shopping text-warning px-1"></i>
                 Cart
-                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill text-bg-secondary">  @TempData["count"]</span>
+                <span class="position-absolute top-0 end-50 translate-middle badge rounded-pill">  @TempData["count"]</span>
             </a>
         </button>
     </div>

@@ -15,6 +15,8 @@ namespace AIMobileCus.Models.DataModels
         public string? DeliId { get; set; }
         public string TransactionId { get; set; }
         public string Status { get; set; }
+        public string CustomerEmail { get; set; }
+        public int NumberOfItem { get; set; }
     }
 
 }

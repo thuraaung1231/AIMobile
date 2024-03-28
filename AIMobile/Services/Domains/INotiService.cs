@@ -8,5 +8,6 @@ namespace AIMobileCus.Services.Domains
         void Entry(NotiEntity notiEntity);
         IList<NotiEntity> RetrieveAll ();
         void Update(NotiEntity Noti);
+        IList<NotiEntity> RetrieveByTransactionId(string TransactionId);
     }
 }

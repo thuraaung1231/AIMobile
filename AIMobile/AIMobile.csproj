@@ -28,7 +28,6 @@
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\ReportFiles\ProductDetailReport.rdlc" />
     <EmbeddedResource Include="wwwroot\ReportFiles\PurchaseReport.rdlc" />
-    <EmbeddedResource Include="wwwroot\ReportFiles\ShopProductReport.rdlc" />
     <EmbeddedResource Include="wwwroot\ReportFiles\ShopReport.rdlc" />
   </ItemGroup>
 	<ItemGroup>

@@ -18,6 +18,7 @@
                     <p class="fw-bold fs-4 px-3">Purchasing & Shipping</p>
                     <div class="p-3 shadow-sm">
                         <input value="@UserManager.GetUserId(User)" name="CustomerId" type="hidden">
+                        <input value="@UserManager.GetUserName(User)" name="CustomerEmail" type="hidden">
                         <div class="mb-3">
                             <label for="formGroupExampleInput"
                                    class="form-label fw-bold labelFontSize">Full Name (FirstName and LastName)</label>
@@ -160,16 +161,23 @@
                     </div>
                     <hr />
                     <div class="d-none" id="AskSreeenShot">
-                        <label for="" class="fw-bold mb-2">Upload Your Payment ScreenShot</label>
-                        <input type="file" class="form-control" name="ScreenShot">
+                        <div>
+                            <label for="" class="fw-bold mb-2">Upload Your Payment ScreenShot</label>
+                            <input type="file" class="form-control" name="ScreenShot">
+                        </div>
+                        <div class="mt-2">
+                            <label class="fw-bold">Please Enter Your Mobile Banking Phone Number and Account Name</label>
+                            <input type="text" class="form-control" name="UserBankInfo">
+                        </div>
+                        
                     </div>
-
+                    
                     <hr />
-                    <div class="mb-3 form-check ms-5 mt-2">
-                        <input type="checkbox" class="form-check-input" id="checked" />
-                        <label class="form-check-label labelFontSize fw-bold">I haved read and agree the terms and policy</label>
+                    <div class="mb-3 form-check mt-2">
+                        <input type="checkbox" class="form-check-input border border-primary border-2" id="checked" />
+                        <label class="form-check-label labelFontSize fw-bold fs-6">I haved read and agree the terms and policy</label>
                     </div>
-                    <div class="col-10 mx-auto">
+                    <div class="col-12 mx-auto">
                         <button class="btn btn-warning w-100" type="submit" id="OrderButton" disabled>
                             Make Order
                         </button>
@@ -192,7 +200,15 @@
                         <div class="d-flex justify-content-center p-3">
                             <img alt="" class="w-50" id="QRImage"/>
                         </div>
-
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <div>
+                                <span>TotalPrice(Ks): </span><span id="QrPrice"></span>
+                            </div>
+                            
+                            <div>
+                            <i class="fa-solid fa-triangle-exclamation text-warning"></i> <span class="fw-bold">Please Check TotalPrice Before Your Transfer Process </span> <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -245,8 +261,9 @@
     //For QR Code
     $(".paymentImg").on('click', function (event) {
         let ImageUrl = event.target.id;
-      
+        let orderTotal = $("#OrderTotal").html();
         $("#QRImage").attr("src", ImageUrl);
+        $("#QrPrice").html(orderTotal);
     })
 
 

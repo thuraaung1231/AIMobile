@@ -346,6 +346,8 @@ namespace AIMobile.Controllers
             try
             {
                 var TransactionId = Guid.NewGuid().ToString();
+                var ImagePath = "/Images/";
+                notiEntity.ScreenShot = ImagePath + notiEntity.ScreenShot;
                 var DeliId = Guid.NewGuid().ToString();
                 string status = "Pending....";
                 List<CartViewModel> resultcartviews = SessionHelper.GetDataFromSession<List<CartViewModel>>(HttpContext.Session, "cart");
@@ -355,10 +357,11 @@ namespace AIMobile.Controllers
                     foreach (var item in resultcartviews)
                     {
                         notiEntity.Id = Guid.NewGuid().ToString();
-                       
+                        notiEntity.NumberOfItem = item.numberOfItem;
                         notiEntity.DeliId = DeliId;
                         notiEntity.ShopProductId = item.Id;
                         notiEntity.TotalPrice = Convert.ToInt32(item.itemxPrice);
+                        
                         notiEntity.PurchaseDateTime = DateTime.Now;
                         notiEntity.TransactionId = TransactionId;
                         notiEntity.Status = status;

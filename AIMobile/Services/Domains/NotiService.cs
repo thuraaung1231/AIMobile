@@ -28,6 +28,11 @@ namespace AIMobileCus.Services.Domains
             return _applicationDbContext.Noti.ToList();
         }
 
+        public IList<NotiEntity> RetrieveByTransactionId(string TransactionId)
+        {
+            return _applicationDbContext.Noti.Where(n=>n.TransactionId == TransactionId).ToList();
+        }
+
         public void Update(NotiEntity Noti)
         {
        

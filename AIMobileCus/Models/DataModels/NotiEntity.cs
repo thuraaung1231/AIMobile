@@ -11,11 +11,12 @@ namespace AIMobileCus.Models.DataModels
 
     public class NotiEntity:BaseEntity
 
-    public class NotiEntity
+   
 
     {
         public string ShopProductId { get; set; }
         public string CustomerId { get; set; }
+        public string CustomerEmail { get; set; }
         public DateTime PurchaseDateTime { get; set; }
         public int TotalPrice { get; set; }
         public string ScreenShot { get; set; }
@@ -24,6 +25,7 @@ namespace AIMobileCus.Models.DataModels
         public string TransactionId { get; set; }
 
         public string Status { get; set; }
+        public int NumberOfItem { get; set; }
     }
 
     }

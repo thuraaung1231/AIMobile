@@ -13,5 +13,6 @@
         public string TransactionId { get; set; }
         public string Status { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public int NumberOfItem { get; set; }
     }
 }

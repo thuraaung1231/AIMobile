@@ -18,12 +18,12 @@
             <span asp-validation-for="EmailAddress" class="text-danger"></span>
         </div>
         <div class="form-floating mb-3">
-            <input asp-for="Password" class="form-control border border-warning" autocomplete="new-password" aria-required="true" placeholder="Please Enter Password" />
+            <input asp-for="Password" type="password" class="form-control border border-warning" autocomplete="new-password" aria-required="true" placeholder="Please Enter Password" />
             <label asp-for="Password"></label>
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-floating mb-3">
-            <input asp-for="ConfirmPassword" class="form-control border border-warning" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
+            <input asp-for="ConfirmPassword" type="password" class="form-control border border-warning" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
             <label asp-for="ConfirmPassword"></label>
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>

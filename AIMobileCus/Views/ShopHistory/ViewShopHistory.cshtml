@@ -1,28 +1,28 @@
 ﻿@model IList<NotiViewModel>
 <h3 class="fw-bold text-center pt-4">Your Order Details</h3>
-<div class="col-6 mx-auto border border-2 px-5 py-3">
+<div class="col-8 mx-auto border border-2 px-5 py-1">
     <a href="/home/index"> <i class="fa-solid fa-circle-left pb-3"></i> Back To Home</a>
     @for (int i=0;i<Model.Count;i++)
     {
         @if (Model[i].Status == "Pending....")
         {
             <div class="row d-flex align-items-center justify-content-between border rounded mb-2 p-2">
-                <div class="d-flex flex-column col-4">
+                <div class="d-flex flex-column col-3 bg-danger">
                     <p class="fw-bold">@ViewBag.Products[i].Name</p>
                     <div>
                         <img src="@ViewBag.Images[i].FrontImageUrl" class="w-50">
                     </div>
                     <p class="text-primary">@ViewBag.Shops[i].Name</p>
                 </div>
-                <div class="col-4">
+                <div class="col-3">x @Model[i].NumberOfItem</div>
+                <div class="col-3">
                     <p class="d-inline fw-bold">@Model[i].TotalPrice</p>
                     <span class="fw-bold">Ks</span>
                 </div>
-                <div class="col-4">                           
+                <div class="col-3">                           
                         <button class="btn btn-warning">@Model[i].Status</button>
                 </div>
-                <div class="row">
-                    
+                <div class="row">                    
                         <div class="col-6">
                             <span class="row">Purchase Date:</span>
                             <span class="row text-primary">@Model[i].PurchaseDateTime</span>
@@ -44,18 +44,19 @@
         @if (Model[i].Status != "Pending....")
         {
             <div class="row d-flex align-items-center justify-content-between border rounded mb-2 p-2">
-                <div class="d-flex flex-column col-4">
+                <div class="d-flex flex-column col-3">
                     <p class="fw-bold">@ViewBag.Products[i].Name</p>
                     <div>
                         <img src="@ViewBag.Images[i].FrontImageUrl" class="w-50">
                     </div>
                     <p class="text-primary">@ViewBag.Shops[i].Name</p>
                 </div>
-                <div class="col-4">
+                <div class="col-3">x @Model[i].NumberOfItem</div>
+                <div class="col-3">
                     <p class="d-inline fw-bold">@Model[i].TotalPrice</p>
                     <span class="fw-bold">Ks</span>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <button class="btn btn-success">@Model[i].Status</button>
                 </div>
                 <div class="row">
