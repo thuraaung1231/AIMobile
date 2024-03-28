@@ -11,7 +11,10 @@ namespace AIMobileCus.Models.DataModels
 
     public class NotiEntity:BaseEntity
 
-   
+
+
+    public class NotiEntity : BaseEntity
+
 
     {
         public string ShopProductId { get; set; }
@@ -27,6 +30,5 @@ namespace AIMobileCus.Models.DataModels
         public string Status { get; set; }
         public int NumberOfItem { get; set; }
     }
-
-    }
+}
 

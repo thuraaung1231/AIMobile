@@ -64,7 +64,7 @@ namespace AIMobileCus.Controllers
             var PowerBankId = "";
             foreach (var type in typeViewModels)
             {
-                if (type.Name == "Phone")
+                if (type.Name == "Mobile")
                 {
                     PhoneId = type.Id;
                 }
@@ -255,7 +255,7 @@ namespace AIMobileCus.Controllers
             var PowerBankId = "";
             foreach (var type in typeViewModels)
             {
-                if (type.Name == "Phone")
+                if (type.Name == "Mobile")
                 {
                     PhoneId = type.Id;
                 }
